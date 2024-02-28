@@ -1,0 +1,7 @@
+body {
+    cursor: default;
+}
+
+td.move {
+    font-weight: bold;
+}
