@@ -5,3 +5,13 @@ body {
 td.move {
     font-weight: bold;
 }
+
+:root {
+    --bs-body-font-size: 0.9rem;
+}
+
+.table-sm {
+    > :not(caption) > * > * {
+        padding: 1px;
+    }
+}
