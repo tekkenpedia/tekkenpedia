@@ -2,9 +2,8 @@
 
 set -eu
 
-readonly ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/../..")"
-readonly DOCKER_CONTAINER_NAME=tekkenpedia
-
+readonly ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/..")"
+readonly DOCKER_CONTAINER_NAME=tekkenpedia_nginx
 
 readonly containers=$(docker ps -q --filter name="${DOCKER_CONTAINER_NAME}")
 if [ "${containers}" != "" ]; then

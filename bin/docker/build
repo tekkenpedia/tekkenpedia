@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eu
+
+readonly ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/../..")"
+
+source "${ROOT_PATH}"/bin/docker.inc.bash
+
+docker \
+    build \
+        "${ROOT_PATH}" \
+        --file "${ROOT_PATH}"/docker/php/Dockerfile \
+        --tag "${DOCKER_PHP_IMAGE_NAME}"
