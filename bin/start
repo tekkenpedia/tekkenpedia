@@ -20,3 +20,5 @@ docker \
         --name "${DOCKER_CONTAINER_NAME}" \
         -p 80:80 \
         nginx:1.25.4
+
+"${ROOT_PATH}"/bin/composer install
