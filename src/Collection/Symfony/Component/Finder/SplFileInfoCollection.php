@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Collection;
+namespace App\Collection\Symfony\Component\Finder;
 
 use Steevanb\PhpCollection\{
     ObjectCollection\AbstractObjectCollection,
-    ScalarCollection\StringCollection
-};
+    ScalarCollection\StringCollection};
 use Symfony\Component\Finder\SplFileInfo;
 
 class SplFileInfoCollection extends AbstractObjectCollection

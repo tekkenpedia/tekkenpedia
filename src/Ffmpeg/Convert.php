@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Ffmpeg;
 
 use App\{
-    Collection\SplFileInfoCollection,
+    Collection\Symfony\Component\Finder\SplFileInfoCollection,
     Ffmpeg\Filter\Gif30FpsFilter
 };
 use FFMpeg\{
