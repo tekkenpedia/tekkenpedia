@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Generator\MovesGenerator;
+use App\Generator\DefenseGenerator;
 use Symfony\Component\Console\{
     Command\Command,
     Input\InputInterface,
@@ -23,7 +23,7 @@ class GenerateMovesCommand extends Command
         return 'Generate moves for all characters';
     }
 
-    public function __construct(private readonly MovesGenerator $movesGenerator)
+    public function __construct(private readonly DefenseGenerator $movesGenerator)
     {
         parent::__construct();
     }

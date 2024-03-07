@@ -19,3 +19,7 @@ services:
     App\Move\Moves:
         arguments:
             $projectDir: "%kernel.project_dir%"
+
+    App\Generator\DefenseGenerator:
+        arguments:
+            $projectDir: "%kernel.project_dir%"

@@ -41,16 +41,16 @@ class Moves
         return $return;
     }
 
-    public function getMoves(string $characterSlug): SectionCollection
+    public function getSections(string $characterSlug): SectionCollection
     {
         $return = new SectionCollection();
 
         foreach ($this->resolve($this->decodeJson($characterSlug)) as $sectionName => $movesData) {
             $moves = new MoveCollection();
             foreach ($movesData as $moveName => $moveData) {
-                $moves->set(
-                    $moveName,
+                $moves->add(
                     new Move(
+                        $moveName,
                         PropertyEnum::create($moveData['property']),
                         $moveData['distance'],
                         new Frames(

@@ -9,6 +9,7 @@ use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 readonly class Move
 {
     public function __construct(
+        public string $name,
         public PropertyEnum $property,
         public int $distance,
         public Frames $frames,

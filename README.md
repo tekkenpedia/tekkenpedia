@@ -2,11 +2,12 @@
 
 https://tekkenpedia.github.io/tekkenpedia/
 
-https://new.express.adobe.com/tools/merge-videos
+```bash
+bin/start
 
-https://ezgif.com/video-to-gif
+bin/console concat:videos
+bin/console convert:video:gif
+bin/console videos:to:gif
 
-GIF configuration:
- * Size: 320xAUTO
- * Frame rate: maximum
- * Method: FFMPEG
+bin/console generate:moves
+```

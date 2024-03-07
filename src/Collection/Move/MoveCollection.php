@@ -14,8 +14,8 @@ class MoveCollection extends AbstractObjectCollection
         parent::__construct(Move::class);
     }
 
-    public function set(string $name, Move $move): static
+    public function add(Move $move): static
     {
-        return $this->doSet($name, $move);
+        return $this->doAdd($move);
     }
 }
