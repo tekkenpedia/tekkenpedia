@@ -42,7 +42,7 @@
                 "startup": 22,
                 "normal-hit": 23,
                 "counter-hit": 23,
-                "block": -6
+                "block": 6
             },
             "hits": {
                 "normal": "KNOCKDOWN",
