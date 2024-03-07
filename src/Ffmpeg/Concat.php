@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Ffmpeg;
 
-use App\Collection\SplFileInfoCollection;
+use App\Collection\Symfony\Component\Finder\SplFileInfoCollection;
 use FFMpeg\{
     FFMpeg,
     Media\Video
 };
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\{
     Finder,
     SplFileInfo
 };
-use Symfony\Component\Filesystem\Filesystem;
 
 class Concat
 {

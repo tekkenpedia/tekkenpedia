@@ -1,0 +1,63 @@
+{
+    "Basics": {
+        "db+2": {
+            "property": "LOW",
+            "frames": {
+                "startup": 23,
+                "normal-hit": 2,
+                "counter-hit": 14,
+                "block": -12
+            },
+            "distance": 300,
+            "damages": {
+                "normal-hit": 15,
+                "counter-hit": 18
+            },
+            "steps": {
+                "swl": "EASY",
+                "ssr": "EASY",
+                "swr": "EASY"
+            },
+            "comments": [
+                "High crush: end"
+            ]
+        },
+        "f+4": {
+            "property": "HIGH",
+            "frames": {
+                "startup": 19,
+                "normal-hit": 13,
+                "counter-hit": 13,
+                "block": 3
+            },
+            "distance": 250,
+            "damages": {
+                "normal-hit": 21,
+                "counter-hit": 25
+            }
+        },
+        "f,f+1+2": {
+            "property": "MIDDLE",
+            "frames": {
+                "startup": 22,
+                "normal-hit": 23,
+                "counter-hit": 23,
+                "block": -6
+            },
+            "hits": {
+                "normal": "KNOCKDOWN",
+                "counter": "KNOCKDOWN"
+            },
+            "distance": 270,
+            "damages": {
+                "normal-hit": 30,
+                "counter-hit": 36
+            },
+            "steps": {
+                "swl": "EASY",
+                "ssr": "EASY",
+                "swr": "EASY"
+            }
+        }
+    }
+}
