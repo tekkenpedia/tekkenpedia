@@ -15,3 +15,7 @@ td.move {
         padding: 1px;
     }
 }
+
+h1 {
+    margin-bottom: 0;
+}
