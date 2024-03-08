@@ -58,6 +58,30 @@
                 "ssr": "EASY",
                 "swr": "EASY"
             }
+        },
+        "SS2": {
+            "property": "MIDDLE",
+            "frames": {
+                "startup": 16,
+                "normal-hit": 14,
+                "counter-hit": 34,
+                "block": -9
+            },
+            "hits": {
+                "normal": "KNOCKDOWN",
+                "counter": "KNOCKDOWN"
+            },
+            "distance": 220,
+            "damages": {
+                "normal-hit": 27,
+                "counter-hit": 32
+            },
+            "steps": {
+                "ssl": "EASY",
+                "swl": "EASY",
+                "ssr": "EASY",
+                "swr": "EASY"
+            }
         }
     }
 }
