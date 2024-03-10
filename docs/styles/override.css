@@ -19,3 +19,7 @@ td.move {
 h1 {
     margin-bottom: 0;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

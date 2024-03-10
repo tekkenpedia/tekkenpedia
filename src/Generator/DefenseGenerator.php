@@ -28,7 +28,7 @@ readonly class DefenseGenerator
             $filesystem->dumpFile(
                 $this->renderPath . '/' . $charactersSlug . '/defense.html',
                 $this->twig->render(
-                    'characters/moves.html.twig',
+                    'characters/defense.html.twig',
                     [
                         'characterSlug' => $charactersSlug,
                         'sections' => $this->moves->getSections($charactersSlug)

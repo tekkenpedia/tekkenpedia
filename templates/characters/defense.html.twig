@@ -13,7 +13,7 @@
     <div class="container">
         {% for section in sections.toArray() -%}
             {% set toggleId = characterSlug ~ '_' ~ section.slug %}
-            <h1{% if not loop.first %} class="mt-4"{% endif %} data-toggle data-toggle-id="{{ toggleId }}">
+            <h1 class="cursor-pointer{% if not loop.first %} mt-4{% endif %}" data-toggle data-toggle-id="{{ toggleId }}">
                 {{ section.name }}
                 <i class="bi bi-toggle-on" data-toggle-icon="{{ toggleId }}"></i>
             </h1>
