@@ -114,7 +114,7 @@
         "1,2,2,2": {
             "property": "MIDDLE",
             "frames": {
-                "startup": 33,
+                "startup": 23,
                 "normal-hit": 34,
                 "counter-hit": 34,
                 "block": -13
