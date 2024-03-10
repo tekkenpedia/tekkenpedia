@@ -6,12 +6,12 @@ namespace App\Move;
 
 use App\{
     Enum\CreateTrait,
-    Enum\GetEnumValuesTrait
+    Enum\GetNamesTrait
 };
 
 enum StepEnum
 {
-    use GetEnumValuesTrait;
+    use GetNamesTrait;
     use CreateTrait;
 
     case EASY;

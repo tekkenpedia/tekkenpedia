@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Move;
 
-use Steevanb\PhpCollection\ScalarCollection\StringCollection;
+use App\Collection\Move\CommentCollection;
 
 readonly class Move
 {
@@ -16,7 +16,7 @@ readonly class Move
         public Damages $damages,
         public Hits $hits,
         public Steps $steps,
-        public StringCollection $comments
+        public CommentCollection $comments
     ) {
     }
 }

@@ -74,12 +74,10 @@ class FormatExtension extends AbstractExtension
 
     private function formatAttack(HitEnum $hit, int $frame): string
     {
-        if ($hit === HitEnum::KNOCKDOWN) {
-            $return = 'KD';
-        } else {
-            $return = $this->formatFrame($frame);
-        }
-
-        return $return;
+        return match ($hit) {
+            HitEnum::KNOCKDOWN => 'KD',
+            HitEnum::AIR => 'AIR',
+            HitEnum::HIT => $this->formatFrame($frame)
+        };
     }
 }

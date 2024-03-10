@@ -19,7 +19,10 @@
                 "swr": "EASY"
             },
             "comments": [
-                "High crush: end"
+                {
+                    "comment": "High crush at the end.",
+                    "type": "STRENGTH"
+                }
             ]
         },
         "f+4": {
@@ -82,6 +85,58 @@
                 "ssr": "EASY",
                 "swr": "EASY"
             }
+        }
+    },
+    "1,2": {
+        "1,2,2": {
+            "property": "HIGH",
+            "frames": {
+                "startup": 16,
+                "normal-hit": 11,
+                "counter-hit": 20,
+                "block": 11
+            },
+            "distance": 200,
+            "damages": {
+                "normal-hit": 17,
+                "counter-hit": 20
+            },
+            "comments": [
+                {
+                    "comment": "The last 2 can be ducked on block or normal hit.",
+                    "type": "DEFENSE"
+                },
+                {
+                    "comment": "Guaranteed if 1 or the first 2 is on counter hit."
+                }
+            ]
+        },
+        "1,2,2,2": {
+            "property": "MIDDLE",
+            "frames": {
+                "startup": 33,
+                "normal-hit": 34,
+                "counter-hit": 34,
+                "block": -13
+            },
+            "hits": {
+                "normal": "AIR",
+                "counter": "AIR"
+            },
+            "distance": 350,
+            "damages": {
+                "normal-hit": 24,
+                "counter-hit": 28
+            },
+            "steps": {
+                "swl": "EASY"
+            },
+            "comments": [
+                {
+                    "comment": "High crush most of the time.",
+                    "type": "STRENGTH"
+                }
+            ]
         }
     }
 }
