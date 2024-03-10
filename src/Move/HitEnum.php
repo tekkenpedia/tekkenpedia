@@ -6,14 +6,15 @@ namespace App\Move;
 
 use App\{
     Enum\CreateTrait,
-    Enum\GetEnumValuesTrait
+    Enum\GetNamesTrait
 };
 
 enum HitEnum
 {
-    use GetEnumValuesTrait;
+    use GetNamesTrait;
     use CreateTrait;
 
     case HIT;
     case KNOCKDOWN;
+    case AIR;
 }

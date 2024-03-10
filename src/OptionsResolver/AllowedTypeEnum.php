@@ -9,5 +9,4 @@ enum AllowedTypeEnum: string
     case ARRAY = 'array';
     case INTEGER = 'int';
     case STRING = 'string';
-    case ARRAY_OF_STRINGS = 'string[]';
 }

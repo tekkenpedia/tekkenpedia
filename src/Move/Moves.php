@@ -5,8 +5,12 @@ declare(strict_types=1);
 namespace App\Move;
 
 use App\{
+    Collection\Move\CommentCollection,
     Collection\Move\MoveCollection,
     Collection\Move\SectionCollection,
+    Move\Comment\Comment,
+    Move\Comment\TypeEnum,
+    Move\Comment\WidthEnum,
     OptionsResolver\AllowedTypeEnum
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
@@ -48,6 +52,17 @@ class Moves
         foreach ($this->resolve($this->decodeJson($characterSlug)) as $sectionName => $movesData) {
             $moves = new MoveCollection();
             foreach ($movesData as $moveName => $moveData) {
+                $comments = new CommentCollection();
+                foreach ($moveData['comments'] as $commentData) {
+                    $comments->add(
+                        new Comment(
+                            $commentData['comment'],
+                            TypeEnum::create($commentData['type']),
+                            WidthEnum::from($commentData['width'])
+                        )
+                    );
+                }
+
                 $moves->add(
                     new Move(
                         $moveName,
@@ -70,7 +85,7 @@ class Moves
                             StepEnum::create($moveData['steps']['ssr']),
                             StepEnum::create($moveData['steps']['swr'])
                         ),
-                        new StringCollection($moveData['comments'])
+                        $comments
                     )
                 );
             }
@@ -137,7 +152,7 @@ class Moves
         $resolver
             ->define('property')
             ->required()
-            ->allowedValues(...PropertyEnum::getValues()->toArray());
+            ->allowedValues(...PropertyEnum::getNames()->toArray());
 
         $resolver
             ->define('frames')
@@ -188,7 +203,12 @@ class Moves
         $resolver
             ->define('comments')
             ->default([])
-            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
+            ->allowedValues(
+                function(&$comments): bool {
+                    return $this->configureCommentsResolver($comments);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         return $this;
     }
@@ -223,12 +243,12 @@ class Moves
         $resolver
             ->define('normal')
             ->default(HitEnum::HIT->name)
-            ->allowedValues(...HitEnum::getValues()->toArray());
+            ->allowedValues(...HitEnum::getNames()->toArray());
 
         $resolver
             ->define('counter')
             ->default(HitEnum::HIT->name)
-            ->allowedValues(...HitEnum::getValues()->toArray());
+            ->allowedValues(...HitEnum::getNames()->toArray());
 
         return $this;
     }
@@ -238,22 +258,22 @@ class Moves
         $resolver
             ->define('ssl')
             ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getValues()->toArray());
+            ->allowedValues(...StepEnum::getNames()->toArray());
 
         $resolver
             ->define('swl')
             ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getValues()->toArray());
+            ->allowedValues(...StepEnum::getNames()->toArray());
 
         $resolver
             ->define('ssr')
             ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getValues()->toArray());
+            ->allowedValues(...StepEnum::getNames()->toArray());
 
         $resolver
             ->define('swr')
             ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getValues()->toArray());
+            ->allowedValues(...StepEnum::getNames()->toArray());
 
         return $this;
     }
@@ -277,5 +297,29 @@ class Moves
             );
 
         return $this;
+    }
+
+    private function configureCommentsResolver(array &$comments): bool
+    {
+        $resolver = new OptionsResolver();
+
+        $resolver
+            ->define('comment')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $resolver
+            ->define('type')
+            ->default(TypeEnum::NORMAL->name)
+            ->allowedValues(...TypeEnum::getNames()->toArray());
+
+        $resolver
+            ->define('width')
+            ->default(WidthEnum::FOUR->value)
+            ->allowedValues(...WidthEnum::getValues()->toArray());
+
+        $comments = array_map([$resolver, 'resolve'], $comments);
+
+        return true;
     }
 }
