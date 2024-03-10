@@ -137,6 +137,62 @@
                     "type": "STRENGTH"
                 }
             ]
+        },
+        "1,2,2,1": {
+            "property": "HIGH",
+            "frames": {
+                "startup": 13,
+                "normal-hit": 4,
+                "counter-hit": 4,
+                "block": -7
+            },
+            "distance": 260,
+            "damages": {
+                "normal-hit": 7,
+                "counter-hit": 8
+            },
+            "steps": {
+                "ssr": "EASY",
+                "swr": "EASY"
+            },
+            "comments": [
+                {
+                    "comment": "The last 1 can be ducked on block, normal hit or counter hit.",
+                    "type": "DEFENSE"
+                }
+            ]
+        },
+        "1,2,2,1,1": {
+            "property": "HIGH",
+            "frames": {
+                "startup": 23,
+                "normal-hit": 30,
+                "counter-hit": 4,
+                "block": -4
+            },
+            "hits": {
+                "normal": "KNOCKDOWN",
+                "counter": "KNOCKDOWN"
+            },
+            "distance": 270,
+            "damages": {
+                "normal-hit": 26,
+                "counter-hit": 31
+            },
+            "comments": [
+                {
+                    "comment": "The last 1,1 can be ducked on block, normal hit or counter hit.",
+                    "type": "DEFENSE"
+                },
+                {
+                    "comment": "The last 1 can be ducked on block.",
+                    "type": "DEFENSE"
+                },
+                {
+                    "comment": "SWR from the one before the last steps the last 1.",
+                    "type": "DEFENSE"
+                }
+            ]
         }
     }
 }
