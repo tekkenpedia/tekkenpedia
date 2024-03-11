@@ -49,49 +49,8 @@ class Moves
     {
         $return = new SectionCollection();
 
-        foreach ($this->resolve($this->decodeJson($characterSlug)) as $sectionName => $movesData) {
-            $moves = new MoveCollection();
-            foreach ($movesData as $moveName => $moveData) {
-                $comments = new CommentCollection();
-                foreach ($moveData['comments'] as $commentData) {
-                    $comments->add(
-                        new Comment(
-                            $commentData['comment'],
-                            TypeEnum::create($commentData['type']),
-                            WidthEnum::from($commentData['width'])
-                        )
-                    );
-                }
-
-                $moves->add(
-                    new Move(
-                        $moveName,
-                        PropertyEnum::create($moveData['property']),
-                        $moveData['distance'],
-                        new Frames(
-                            $moveData['frames']['startup'],
-                            $moveData['frames']['normal-hit'],
-                            $moveData['frames']['counter-hit'],
-                            $moveData['frames']['block']
-                        ),
-                        new Damages($moveData['damages']['normal-hit'], $moveData['damages']['counter-hit']),
-                        new Hits(
-                            HitEnum::create($moveData['hits']['normal']),
-                            HitEnum::create($moveData['hits']['counter'])
-                        ),
-                        new Steps(
-                            StepEnum::create($moveData['steps']['ssl']),
-                            StepEnum::create($moveData['steps']['swl']),
-                            StepEnum::create($moveData['steps']['ssr']),
-                            StepEnum::create($moveData['steps']['swr'])
-                        ),
-                        $comments
-                    )
-                );
-            }
-            $moves->setReadOnly();
-
-            $return->add(new Section($sectionName, $moves));
+        foreach ($this->resolve($this->decodeJson($characterSlug)) as $sectionName => $sectionData) {
+            $return->add($this->createSection($sectionName, $sectionData));
         }
 
         return $return->setReadOnly();
@@ -112,37 +71,61 @@ class Moves
         return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
     }
 
-    private function resolve(array $moves): array
+    private function resolve(array $data): array
     {
         $resolver = new OptionsResolver();
 
-        foreach (array_keys($moves) as $sectionName) {
+        foreach (array_keys($data) as $sectionName) {
             $resolver
                 ->define($sectionName)
-                ->required()
                 ->default(
-                    function (OptionsResolver $sectionResolver) use ($moves, $sectionName): void {
-                        $this->configureSectionResolver($sectionResolver, $moves[$sectionName]);
+                    function (OptionsResolver $sectionResolver) use ($data, $sectionName): void {
+                        $this->configureSectionResolver($sectionResolver, $data[$sectionName]);
                     }
                 )
                 ->allowedTypes(AllowedTypeEnum::ARRAY->value);
         }
 
-        return $resolver->resolve($moves);
+        return $resolver->resolve($data);
     }
 
-    private function configureSectionResolver(OptionsResolver $resolver, array $moves): static
+    private function configureSectionResolver(OptionsResolver $resolver, array $section): static
     {
-        foreach (array_keys($moves) as $moveName) {
-            $resolver
-                ->define($moveName)
-                ->required()
-                ->default(
-                    function (OptionsResolver $moveResolver) {
-                        $this->configureMoveResolver($moveResolver);
+        $resolver
+            ->define('moves')
+            ->default(
+                function (OptionsResolver $optionsResolver) use ($section): void {
+                    foreach (array_keys($section['moves'] ?? []) as $moveName) {
+                        $optionsResolver
+                            ->define($moveName)
+                            ->default(
+                                function(OptionsResolver $moveResolver): void {
+                                    $this->configureMoveResolver($moveResolver);
+                                }
+                            )
+                            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
                     }
-                );
-        }
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('sections')
+            ->default(
+                function (OptionsResolver $optionsResolver) use ($section): void {
+                    foreach (array_keys($section['sections'] ?? []) as $sectionName) {
+                        $optionsResolver
+                            ->define($sectionName)
+                            ->default(
+                                function(OptionsResolver $sectionResolver) use ($section, $sectionName): void {
+                                    $this->configureSectionResolver($sectionResolver, $section['sections'][$sectionName]);
+                                }
+                            )
+                            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+                    }
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         return $this;
     }
@@ -321,5 +304,60 @@ class Moves
         $comments = array_map([$resolver, 'resolve'], $comments);
 
         return true;
+    }
+
+    private function createMove(string $name, array $data): Move
+    {
+        $comments = new CommentCollection();
+        foreach ($data['comments'] as $commentData) {
+            $comments->add(
+                new Comment(
+                    $commentData['comment'],
+                    TypeEnum::create($commentData['type']),
+                    WidthEnum::from($commentData['width'])
+                )
+            );
+        }
+
+        return new Move(
+            $name,
+            PropertyEnum::create($data['property']),
+            $data['distance'],
+            new Frames(
+                $data['frames']['startup'],
+                $data['frames']['normal-hit'],
+                $data['frames']['counter-hit'],
+                $data['frames']['block']
+            ),
+            new Damages($data['damages']['normal-hit'], $data['damages']['counter-hit']),
+            new Hits(
+                HitEnum::create($data['hits']['normal']),
+                HitEnum::create($data['hits']['counter'])
+            ),
+            new Steps(
+                StepEnum::create($data['steps']['ssl']),
+                StepEnum::create($data['steps']['swl']),
+                StepEnum::create($data['steps']['ssr']),
+                StepEnum::create($data['steps']['swr'])
+            ),
+            $comments
+        );
+    }
+
+    private function createSection(string $name, array $data): Section
+    {
+        $moves = new MoveCollection();
+        foreach ($data['moves'] as $moveName => $moveData) {
+            $moves->add($this->createMove($moveName, $moveData));
+        }
+        $moves->setReadOnly();
+
+        $sections = new SectionCollection();
+        foreach ($data['sections'] as $subSectionName => $subSectionData) {
+            $sections->add($this->createSection($subSectionName, $subSectionData));
+        }
+        $sections->setReadOnly();
+
+        return new Section($name, $moves, $sections);
     }
 }
