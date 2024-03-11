@@ -1,5 +1,5 @@
 $(function() {
-    $('h1[data-toggle]').each(function(index, element) {
+    $('h1[data-toggle],h2[data-toggle]').each(function(index, element) {
         let $element = $(element);
         let id = $(element).data('toggle-id');
 
