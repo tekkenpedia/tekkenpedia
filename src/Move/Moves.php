@@ -8,18 +8,23 @@ use App\{
     Collection\Move\CommentCollection,
     Collection\Move\MoveCollection,
     Collection\Move\SectionCollection,
+    Collection\Move\Throw\PropertyEnumCollection,
+    Collection\Move\Throw\ThrowCollection,
     Move\Comment\Comment,
     Move\Comment\TypeEnum,
     Move\Comment\WidthEnum,
-    OptionsResolver\AllowedTypeEnum
-};
+    Move\Throw\Distances,
+    Move\Throw\Frames as ThrowFrames,
+    Move\Throw\PropertyEnum as ThrowPropertyEnum,
+    Move\Throw\Throw_,
+    OptionsResolver\AllowedTypeEnum};
+use Steevanb\PhpCollection\ScalarCollection\IntegerCollection;
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\{
     Constraints\Positive,
-    Validation
-};
+    Validation};
 
 class Moves
 {
@@ -92,6 +97,24 @@ class Moves
     private function configureSectionResolver(OptionsResolver $resolver, array $section): static
     {
         $resolver
+            ->define('throws')
+            ->default(
+                function (OptionsResolver $optionsResolver) use ($section): void {
+                    foreach (array_keys($section['throws'] ?? []) as $throwName) {
+                        $optionsResolver
+                            ->define($throwName)
+                            ->default(
+                                function(OptionsResolver $moveResolver): void {
+                                    $this->configureThrowResolver($moveResolver);
+                                }
+                            )
+                            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+                    }
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
             ->define('moves')
             ->default(
                 function (OptionsResolver $optionsResolver) use ($section): void {
@@ -130,6 +153,68 @@ class Moves
         return $this;
     }
 
+    private function configureThrowResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('frames')
+            ->required()
+            ->default(
+                function(OptionsResolver $framesResolver): void {
+                    $this->configureThrowFramesResolver($framesResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('distances')
+            ->required()
+            ->default(
+                function(OptionsResolver $framesResolver): void {
+                    $this->configureThrowDistancesResolver($framesResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('escapes')
+            ->default([])
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_INTEGERS->value);
+
+        $resolver
+            ->define('damage')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+
+        $resolver
+            ->define('properties')
+            ->default([])
+            ->allowedValues(
+                function(array $properties): bool {
+                    $allowedProperties = ThrowPropertyEnum::getNames();
+                    foreach ($properties as $property) {
+                        if (in_array($property, $allowedProperties->toArray(), true) === false) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
+
+        $resolver
+            ->define('comments')
+            ->default([])
+            ->allowedValues(
+                function(&$comments): bool {
+                    return $this->configureCommentsResolver($comments);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        return $this;
+    }
+
     private function configureMoveResolver(OptionsResolver $resolver): static
     {
         $resolver
@@ -142,7 +227,7 @@ class Moves
             ->required()
             ->default(
                 function(OptionsResolver $framesResolver): void {
-                    $this->configureFramesResolver($framesResolver);
+                    $this->configureMoveFramesResolver($framesResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -196,7 +281,42 @@ class Moves
         return $this;
     }
 
-    private function configureFramesResolver(OptionsResolver $resolver): static
+    private function configureThrowDistancesResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('startup')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+
+        $resolver
+            ->define('after-escape')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::NULL->value, AllowedTypeEnum::INTEGER->value);
+
+        return $this;
+    }
+
+    private function configureThrowFramesResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('startup')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+
+        $resolver
+            ->define('escape')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::NULL->value, AllowedTypeEnum::INTEGER->value);
+
+        $resolver
+            ->define('after-escape')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::NULL->value, AllowedTypeEnum::INTEGER->value);
+
+        return $this;
+    }
+
+    private function configureMoveFramesResolver(OptionsResolver $resolver): static
     {
         $resolver
             ->define('startup')
@@ -306,19 +426,33 @@ class Moves
         return true;
     }
 
-    private function createMove(string $name, array $data): Move
+    private function createThrow(string $name, array $data): Throw_
     {
-        $comments = new CommentCollection();
-        foreach ($data['comments'] as $commentData) {
-            $comments->add(
-                new Comment(
-                    $commentData['comment'],
-                    TypeEnum::create($commentData['type']),
-                    WidthEnum::from($commentData['width'])
-                )
-            );
+        $properties = new PropertyEnumCollection();
+        foreach ($data['properties'] as $property) {
+            $properties->add(ThrowPropertyEnum::create($property));
         }
 
+        return new Throw_(
+            $name,
+            new ThrowFrames(
+                $data['frames']['startup'],
+                $data['frames']['escape'],
+                $data['frames']['after-escape']
+            ),
+            new Distances(
+                $data['distances']['startup'],
+                $data['distances']['after-escape'],
+            ),
+            new IntegerCollection($data['escapes']),
+            $data['damage'],
+            $properties,
+            $this->createComments($data)
+        );
+    }
+
+    private function createMove(string $name, array $data): Move
+    {
         return new Move(
             $name,
             PropertyEnum::create($data['property']),
@@ -340,12 +474,34 @@ class Moves
                 StepEnum::create($data['steps']['ssr']),
                 StepEnum::create($data['steps']['swr'])
             ),
-            $comments
+            $this->createComments($data)
         );
+    }
+
+    private function createComments(array $data): CommentCollection
+    {
+        $return = new CommentCollection();
+        foreach ($data['comments'] as $commentData) {
+            $return->add(
+                new Comment(
+                    $commentData['comment'],
+                    TypeEnum::create($commentData['type']),
+                    WidthEnum::from($commentData['width'])
+                )
+            );
+        }
+
+        return $return;
     }
 
     private function createSection(string $name, array $data): Section
     {
+        $throws = new ThrowCollection();
+        foreach ($data['throws'] as $throwName => $throwData) {
+            $throws->add($this->createThrow($throwName, $throwData));
+        }
+        $throws->setReadOnly();
+
         $moves = new MoveCollection();
         foreach ($data['moves'] as $moveName => $moveData) {
             $moves->add($this->createMove($moveName, $moveData));
@@ -358,6 +514,6 @@ class Moves
         }
         $sections->setReadOnly();
 
-        return new Section($name, $moves, $sections);
+        return new Section($name, $throws, $moves, $sections);
     }
 }
