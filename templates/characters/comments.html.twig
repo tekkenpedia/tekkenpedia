@@ -1,0 +1,9 @@
+{% for comment in comments.toArray() %}
+    {% if comment.width.value == 4 %}
+        <tr>
+    {% endif %}
+    <td class="{{ comment.type|comment_type_bg_class }}" colspan="{{ comment.width.value }}">{{ comment.comment }}</td>
+    {% if comment.width.value == 4 %}
+        </tr>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,42 @@
+<div class="row">
+    {% for throw in section.throws.toArray() -%}
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
+            <div class="card text-center">
+                <img class="card-img-top" src="../../images/characters/{{ characterSlug }}/defense/{{ throw.name }}.gif" alt="{{ throw.name }}">
+                <table class="table table-bordered table-sm mb-0">
+                    <tbody>
+                        <tr>
+                            <td class="move col-3">{{ throw.name }}</td>
+                            <td class="col-3" title="Throw startup frames">{{ throw.frames.startup|format_frame(true) }}</td>
+                            {% if throw.frames.escape is not null %}
+                                <td class="col-3" title="Throw escape frames">{{ throw.frames.escape|format_frame(true) }}</td>
+                                <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="Throw after escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
+                            {% else %}
+                                <td class="col-6 bg-danger text-white" colspan="2">Can't be escaped.</td>
+                            {% endif %}
+
+                        </tr>
+                        <tr>
+                            <td{% if throw.escapes.count() > 0%} class="bg-success text-white"{% endif %} title="Escape">{{ throw.escapes.toArray()|join(' or ') }}</td>
+                            <td title="Max distance from opponent">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
+                            <td class="col-3" title="Distance after escape">
+                                {% if throw.distances.afterEscape is not null %}
+                                    {{ (throw.distances.afterEscape / 100)|number_format(2) }}
+                                {% endif %}
+                            </td>
+                            <td title="Damages">{{ throw.damage }}</td>
+                        </tr>
+                        {% if throw.properties.count() > 0 %}
+                            <tr>
+                                <td class="bg-danger text-white" colspan="4">
+                                    {{ throw.properties|throw_properties }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                        {% include 'characters/comments.html.twig' with {comments: throw.comments} only %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+</div>

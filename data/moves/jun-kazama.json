@@ -1,4 +1,21 @@
 {
+    "Throws": {
+        "throws": {
+            "1+3": {
+                "frames": {
+                    "startup": 12,
+                    "escape": 22,
+                    "after-escape": 0
+                },
+                "distances": {
+                    "startup": 180,
+                    "after-escape": 220
+                },
+                "escapes": [1, 2],
+                "damage": 35
+            }
+        }
+    },
     "Basics": {
         "moves": {
             "db+2": {

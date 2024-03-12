@@ -1,37 +1,29 @@
 <div class="row">
     {% for move in section.moves.toArray() -%}
-        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 mt-3">
             <div class="card text-center">
                 <img class="card-img-top" src="../../images/characters/{{ characterSlug }}/defense/{{ move.name }}.gif" alt="{{ move.name }}">
                 <table class="table table-bordered table-sm mb-0">
                     <tbody>
-                    <tr>
-                        <td class="move col-3">{{ move.name }}</td>
-                        <td class="col-3">{{ move.property|format_property }}</td>
-                        <td class="col-3" title="Attack startup frames">{{ move.frames.startup|format_frame(true) }}</td>
-                        <td class="col-3" title="Max distance from opponent">{{ (move.distance / 100)|number_format(2) }}</td>
-                    </tr>
-                    <tr>
-                        <td title="Damages on normal hit / Damages on counter hit">{{ move.damages.normalHit }} / {{ move.damages.counterHit }}</td>
-                        <td class="{{ move|normal_hit_bg_class }}" title="Normal hit">{{ move|format_normal_hit }}</td>
-                        <td class="{{ move|counter_hit_bg_class }}" title="Counter hit">{{ move|format_counter_hit }}</td>
-                        <td class="{{ move|block_bg_class }}" title="Block">{{ move|format_block }}</td>
-                    </tr>
-                    <tr>
-                        <td class="{{ move.steps.ssl|step_bg_class }}" title="Side step left">SSL</td>
-                        <td class="{{ move.steps.swl|step_bg_class }}" title="Side walk left">SWL</td>
-                        <td class="{{ move.steps.ssr|step_bg_class }}" title="Side step right">SSR</td>
-                        <td class="{{ move.steps.swr|step_bg_class }}" title="Side walk right">SWR</td>
-                    </tr>
-                    {% for comment in move.comments.toArray() %}
-                        {% if comment.width.value == 4 %}
-                            <tr>
-                        {% endif %}
-                        <td class="{{ comment.type|comment_type_bg_class }}" colspan="{{ comment.width.value }}">{{ comment.comment }}</td>
-                        {% if comment.width.value == 4 %}
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
+                        <tr>
+                            <td class="move col-3">{{ move.name }}</td>
+                            <td class="col-3">{{ move.property|format_property }}</td>
+                            <td class="col-3" title="Attack startup frames">{{ move.frames.startup|format_frame(true) }}</td>
+                            <td class="col-3" title="Max distance from opponent">{{ (move.distance / 100)|number_format(2) }}</td>
+                        </tr>
+                        <tr>
+                            <td title="Damages on normal hit / Damages on counter hit">{{ move.damages.normalHit }} / {{ move.damages.counterHit }}</td>
+                            <td class="{{ move|normal_hit_bg_class }}" title="Normal hit">{{ move|format_normal_hit }}</td>
+                            <td class="{{ move|counter_hit_bg_class }}" title="Counter hit">{{ move|format_counter_hit }}</td>
+                            <td class="{{ move|block_bg_class }}" title="Block">{{ move|format_block }}</td>
+                        </tr>
+                        <tr>
+                            <td class="{{ move.steps.ssl|step_bg_class }}" title="Side step left">SSL</td>
+                            <td class="{{ move.steps.swl|step_bg_class }}" title="Side walk left">SWL</td>
+                            <td class="{{ move.steps.ssr|step_bg_class }}" title="Side step right">SSR</td>
+                            <td class="{{ move.steps.swr|step_bg_class }}" title="Side walk right">SWR</td>
+                        </tr>
+                        {% include 'characters/comments.html.twig' with {comments: move.comments} only %}
                     </tbody>
                 </table>
             </div>
