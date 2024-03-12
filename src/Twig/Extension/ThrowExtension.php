@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Collection\Move\Throw\PropertyEnumCollection;
-use App\Move\Throw\PropertyEnum;
+use App\{
+    Collection\Move\Throw\BehaviorEnumCollection,
+    Move\Throw\BehaviorEnum
+};
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter
@@ -17,20 +19,20 @@ class ThrowExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('throw_properties', [$this, 'throwProperties'])
+            new TwigFilter('throw_behaviors', [$this, 'throwBehaviors'])
         ];
     }
 
-    public function throwProperties(PropertyEnumCollection $properties): string
+    public function throwBehaviors(BehaviorEnumCollection $behaviors): string
     {
         $values = new StringCollection();
-        foreach ($properties->toArray() as $property) {
+        foreach ($behaviors->toArray() as $behavior) {
             $values->add(
-                match ($property) {
-                    PropertyEnum::FLOOR_BOUNCE => 'Floor bounce',
-                    PropertyEnum::FLOOR_BREAK => 'Floor break',
-                    PropertyEnum::WALL_BOUNCE => 'Wall bounce',
-                    PropertyEnum::WALL_SPLAT => 'Wall splat'
+                match ($behavior) {
+                    BehaviorEnum::FLOOR_BOUNCE => 'Floor bounce',
+                    BehaviorEnum::FLOOR_BREAK => 'Floor break',
+                    BehaviorEnum::WALL_BOUNCE => 'Wall bounce',
+                    BehaviorEnum::WALL_SPLAT => 'Wall splat'
                 }
             );
         }

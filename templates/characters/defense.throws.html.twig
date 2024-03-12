@@ -7,29 +7,39 @@
                     <tbody>
                         <tr>
                             <td class="move col-3">{{ throw.name }}</td>
-                            <td class="col-3" title="Throw startup frames">{{ throw.frames.startup|format_frame(true) }}</td>
-                            {% if throw.frames.escape is not null %}
-                                <td class="col-3" title="Throw escape frames">{{ throw.frames.escape|format_frame(true) }}</td>
-                                <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="Throw after escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
-                            {% else %}
-                                <td class="col-6 bg-danger text-white" colspan="2">Can't be escaped.</td>
-                            {% endif %}
-
-                        </tr>
-                        <tr>
-                            <td{% if throw.escapes.count() > 0%} class="bg-success text-white"{% endif %} title="Escape">{{ throw.escapes.toArray()|join(' or ') }}</td>
-                            <td title="Max distance from opponent">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
-                            <td class="col-3" title="Distance after escape">
-                                {% if throw.distances.afterEscape is not null %}
-                                    {{ (throw.distances.afterEscape / 100)|number_format(2) }}
+                            <td class="col-3">{{ throw.property|format_property }}</td>
+                            <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
+                                {% if throw.escapes.count() > 0 %}
+                                    {{ throw.escapes.toArray()|join(' or ') }}
+                                {% else %}
+                                    Can't
                                 {% endif %}
                             </td>
-                            <td title="Damages">{{ throw.damage }}</td>
+                            <td class="col-3" title="Damages">{{ throw.damage }}</td>
                         </tr>
-                        {% if throw.properties.count() > 0 %}
+                        <tr>
+                            <td class="col-3" title="Startup frames">{{ throw.frames.startup|format_frame(true) }}</td>
+                            <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class }}" title="After hit frames">{{ throw.frames.hit|format_frame(true) }}</td>
+                            {% if throw.frames.escape is not null %}
+                                <td class="col-3" title="Escape frames">{{ throw.frames.escape|format_frame(true) }}</td>
+                                <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="After escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
+                            {% else %}
+                                <td class="col-6" colspan="2"></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td title="Max distance from opponent">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
+                            <td title="Distance after hit">{{ (throw.distances.hit / 100)|number_format(2) }}</td>
+                            <td class="col-3" title="Distance after escape">
+                                {% if throw.distances.escape is not null %}
+                                    {{ (throw.distances.escape / 100)|number_format(2) }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% if throw.behaviors.count() > 0 %}
                             <tr>
                                 <td class="bg-danger text-white" colspan="4">
-                                    {{ throw.properties|throw_properties }}
+                                    {{ throw.behaviors|throw_behaviors }}
                                 </td>
                             </tr>
                         {% endif %}

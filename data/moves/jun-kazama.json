@@ -4,15 +4,47 @@
             "1+3": {
                 "frames": {
                     "startup": 12,
-                    "escape": 22,
+                    "hit": 0,
+                    "escape": 21,
                     "after-escape": 0
                 },
                 "distances": {
-                    "startup": 180,
-                    "after-escape": 220
+                    "startup": 175,
+                    "hit": 310,
+                    "escape": 220
                 },
                 "escapes": [1, 2],
                 "damage": 35
+            },
+            "2+4": {
+                "frames": {
+                    "startup": 12,
+                    "hit": 0,
+                    "escape": 21,
+                    "after-escape": 0
+                },
+                "distances": {
+                    "startup": 175,
+                    "hit": 130,
+                    "escape": 300
+                },
+                "escapes": [1, 2],
+                "damage": 35
+            },
+            "df+2+3": {
+                "frames": {
+                    "startup": 12,
+                    "hit": -6,
+                    "escape": 21,
+                    "after-escape": -6
+                },
+                "distances": {
+                    "startup": 175,
+                    "hit": 230,
+                    "escape": 160
+                },
+                "escapes": [2],
+                "damage": 40
             }
         }
     },
@@ -125,7 +157,7 @@
                         },
                         "comments": [
                             {
-                                "comment": "The last 2 can be ducked on block or normal hit.",
+                                "comment": "2 can be ducked on block or normal hit.",
                                 "type": "DEFENSE"
                             },
                             {
@@ -179,7 +211,7 @@
                         },
                         "comments": [
                             {
-                                "comment": "The last 1 can be ducked on block, normal hit or counter hit.",
+                                "comment": "1 can be ducked on block, normal hit or counter hit.",
                                 "type": "DEFENSE"
                             }
                         ]
@@ -203,11 +235,11 @@
                         },
                         "comments": [
                             {
-                                "comment": "The last 1,1 can be ducked on block, normal hit or counter hit.",
+                                "comment": "1,1 can be ducked on block, normal hit or counter hit.",
                                 "type": "DEFENSE"
                             },
                             {
-                                "comment": "The last 1 can be ducked on block.",
+                                "comment": "1 can be ducked on block.",
                                 "type": "DEFENSE"
                             },
                             {
