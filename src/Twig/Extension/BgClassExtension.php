@@ -24,6 +24,7 @@ class BgClassExtension extends AbstractExtension
             new TwigFilter('counter_hit_bg_class', [$this, 'counterHitBgClass']),
             new TwigFilter('block_bg_class', [$this, 'blockBgClass']),
             new TwigFilter('step_bg_class', [$this, 'stepBgClass']),
+            new TwigFilter('throw_hit_bg_class', [$this, 'throwHitBgClass']),
             new TwigFilter('throw_escape_bg_class', [$this, 'throwEscapeBgClass']),
             new TwigFilter('comment_type_bg_class', [$this, 'commentTypeBgClass'])
         ];
@@ -63,11 +64,24 @@ class BgClassExtension extends AbstractExtension
         };
     }
 
-    public function throwEscapeBgClass(int $frame): string
+    public function throwHitBgClass(int $frame): ?string
     {
         if ($frame === 0) {
-            $return = 'bg-warning';
-        } elseif ($frame > 0) {
+            $return = null;
+        } elseif ($frame < 0) {
+            $return = 'bg-success text-white';
+        } else {
+            $return = 'bg-danger text-white';
+        }
+
+        return $return;
+    }
+
+    public function throwEscapeBgClass(int $frame): ?string
+    {
+        if ($frame === 0) {
+            $return = null;
+        } elseif ($frame < 0) {
             $return = 'bg-success text-white';
         } else {
             $return = 'bg-danger text-white';

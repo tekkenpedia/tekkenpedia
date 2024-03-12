@@ -8,6 +8,7 @@ readonly class Frames
 {
     public function __construct(
         public int $startup,
+        public int $hit,
         public ?int $escape = null,
         public ?int $afterEscape = null
     ) {
