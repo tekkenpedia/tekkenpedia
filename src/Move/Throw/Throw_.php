@@ -9,7 +9,7 @@ use App\{
     Collection\Move\Throw\BehaviorEnumCollection,
     Move\PropertyEnum
 };
-use Steevanb\PhpCollection\ScalarCollection\IntegerCollection;
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 readonly class Throw_
 {
@@ -18,7 +18,7 @@ readonly class Throw_
         public PropertyEnum $property,
         public Frames $frames,
         public Distances $distances,
-        public IntegerCollection $escapes,
+        public StringCollection $escapes,
         public int $damage,
         public BehaviorEnumCollection $behaviors,
         public CommentCollection $comments

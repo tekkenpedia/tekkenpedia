@@ -18,10 +18,7 @@ use App\{
     Move\Throw\BehaviorEnum,
     Move\Throw\Throw_
 };
-use Steevanb\PhpCollection\{
-    ScalarCollection\IntegerCollection,
-    ScalarCollection\StringCollection
-};
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
 
 class Moves
@@ -81,7 +78,7 @@ class Moves
                 $data['distances']['hit'],
                 $data['distances']['escape']
             ),
-            new IntegerCollection($data['escapes']),
+            new StringCollection($data['escapes']),
             $data['damage'],
             $behaviors,
             $this->createComments($data)
