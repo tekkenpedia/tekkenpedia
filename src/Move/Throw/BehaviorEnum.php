@@ -18,4 +18,5 @@ enum BehaviorEnum
     case WALL_BOUNCE;
     case FLOOR_BREAK;
     case FLOOR_BOUNCE;
+    case AIR;
 }

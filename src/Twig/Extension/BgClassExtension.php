@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
+    Collection\Move\Throw\BehaviorEnumCollection,
     Move\Comment\TypeEnum,
     Move\HitEnum,
     Move\Move,
-    Move\StepEnum
+    Move\PropertyEnum,
+    Move\StepEnum,
+    Move\Throw\BehaviorEnum
 };
 use Twig\{
     Extension\AbstractExtension,
@@ -26,6 +29,7 @@ class BgClassExtension extends AbstractExtension
             new TwigFilter('step_bg_class', [$this, 'stepBgClass']),
             new TwigFilter('throw_hit_bg_class', [$this, 'throwHitBgClass']),
             new TwigFilter('throw_escape_bg_class', [$this, 'throwEscapeBgClass']),
+            new TwigFilter('throw_property_bg_class', [$this, 'throwPropertyBgClass']),
             new TwigFilter('comment_type_bg_class', [$this, 'commentTypeBgClass'])
         ];
     }
@@ -64,9 +68,9 @@ class BgClassExtension extends AbstractExtension
         };
     }
 
-    public function throwHitBgClass(int $frame): ?string
+    public function throwHitBgClass(int $frame, BehaviorEnumCollection $behaviors): ?string
     {
-        if ($frame === 0) {
+        if ($frame === 0 || $behaviors->contains(BehaviorEnum::AIR)) {
             $return = null;
         } elseif ($frame < 0) {
             $return = 'bg-success text-white';
@@ -88,6 +92,14 @@ class BgClassExtension extends AbstractExtension
         }
 
         return $return;
+    }
+
+    public function throwPropertyBgClass(PropertyEnum $property): ?string
+    {
+        return match ($property) {
+            PropertyEnum::HIGH => null,
+            PropertyEnum::MIDDLE, PropertyEnum::LOW => 'bg-warning'
+        };
     }
 
     private function getHitBgClass(HitEnum $hit, int $frame): string

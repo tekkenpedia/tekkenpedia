@@ -7,7 +7,7 @@
                     <tbody>
                         <tr>
                             <td class="move col-3">{{ throw.name }}</td>
-                            <td class="col-3">{{ throw.property|format_property }}</td>
+                            <td class="col-3 {{ throw.property|throw_property_bg_class }}">{{ throw.property|format_property }}</td>
                             <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
                                 {% if throw.escapes.count() > 0 %}
                                     {{ throw.escapes.toArray()|join(' or ') }}
@@ -18,10 +18,18 @@
                             <td class="col-3" title="Damages">{{ throw.damage }}</td>
                         </tr>
                         <tr>
-                            <td class="col-3" title="Startup frames">{{ throw.frames.startup|format_frame(true) }}</td>
-                            <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class }}" title="After hit frames">{{ throw.frames.hit|format_frame(true) }}</td>
+                            <td
+                                class="col-3{% if throw.frames.startup < 12 %} bg-danger text-white{% elseif throw.frames.startup > 12 %} bg-warning{% endif %}"
+                                title="Startup frames"
+                            >{{ throw.frames.startup|format_frame(true) }}</td>
+                            <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="After hit frames">{{ throw.frames.hit|format_frame(true) }}</td>
                             {% if throw.frames.escape is not null %}
-                                <td class="col-3" title="Escape frames">{{ throw.frames.escape|format_frame(true) }}</td>
+                                <td
+                                    class="col-3{% if throw.frames.escape < 21 %} bg-danger text-white{% elseif throw.frames.escape > 21 %} bg-warning{% endif %}"
+                                    title="Escape frames"
+                                >
+                                        {{ throw.frames.escape|format_frame(true) }}
+                                </td>
                                 <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="After escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
                             {% else %}
                                 <td class="col-6" colspan="2"></td>
@@ -36,13 +44,13 @@
                                 {% endif %}
                             </td>
                         </tr>
-                        {% if throw.behaviors.count() > 0 %}
+                        {% for behavior in throw.behaviors.toArray() %}
                             <tr>
                                 <td class="bg-danger text-white" colspan="4">
-                                    {{ throw.behaviors|throw_behaviors }}
+                                    {{ behavior|throw_behavior }}
                                 </td>
                             </tr>
-                        {% endif %}
+                        {% endfor %}
                         {% include 'characters/comments.html.twig' with {comments: throw.comments} only %}
                     </tbody>
                 </table>

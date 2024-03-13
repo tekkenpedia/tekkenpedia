@@ -19,6 +19,11 @@ class BehaviorEnumCollection extends AbstractEnumCollection
         return $this->doAdd($move);
     }
 
+    public function contains(BehaviorEnum $behavior): bool
+    {
+        return in_array($behavior, $this->toArray());
+    }
+
     /** @return array<BehaviorEnum> */
     public function toArray(): array
     {

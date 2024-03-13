@@ -139,7 +139,7 @@ class JsonParser
         $resolver
             ->define('escapes')
             ->default([])
-            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_INTEGERS->value);
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
 
         $resolver
             ->define('damage')

@@ -13,7 +13,7 @@
                     "hit": 310,
                     "escape": 220
                 },
-                "escapes": [1, 2],
+                "escapes": ["1", "2"],
                 "damage": 35
             },
             "2+4": {
@@ -28,7 +28,7 @@
                     "hit": 130,
                     "escape": 300
                 },
-                "escapes": [1, 2],
+                "escapes": ["1", "2"],
                 "damage": 35
             },
             "df+2+3": {
@@ -38,13 +38,48 @@
                     "escape": 21,
                     "after-escape": -6
                 },
+                "behaviors": [
+                    "FLOOR_BREAK",
+                    "FLOOR_BOUNCE"
+                ],
                 "distances": {
                     "startup": 175,
                     "hit": 230,
                     "escape": 160
                 },
-                "escapes": [2],
+                "escapes": ["2"],
                 "damage": 40
+            },
+            "uf+1+2": {
+                "frames": {
+                    "startup": 12,
+                    "hit": 0,
+                    "escape": 21,
+                    "after-escape": -6
+                },
+                "distances": {
+                    "startup": 165,
+                    "hit": 190,
+                    "escape": 180
+                },
+                "escapes": ["1+2"],
+                "damage": 40
+            },
+            "FC,db+1+2": {
+                "frames": {
+                    "startup": 11,
+                    "escape": 21,
+                    "hit": 56,
+                    "after-escape": -6
+                },
+                "behaviors": ["AIR"],
+                "distances": {
+                    "startup": 170,
+                    "hit": 190,
+                    "escape": 165
+                },
+                "escapes": ["1+2"],
+                "damage": 15
             }
         }
     },
