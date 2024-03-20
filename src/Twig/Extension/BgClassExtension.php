@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
-    Collection\Move\Throw\BehaviorEnumCollection,
-    Move\Comment\TypeEnum,
-    Move\HitEnum,
-    Move\Move,
-    Move\PropertyEnum,
-    Move\StepEnum,
-    Move\Throw\BehaviorEnum
+    Character\Move\Comment\TypeEnum,
+    Character\Move\HitEnum,
+    Character\Move\Move,
+    Character\Move\PropertyEnum,
+    Character\Move\Step\StepEnum,
+    Character\Move\Throw\BehaviorEnum,
+    Collection\Move\Throw\BehaviorEnumCollection
 };
 use Twig\{
     Extension\AbstractExtension,

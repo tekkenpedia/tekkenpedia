@@ -16,7 +16,7 @@ services:
         arguments:
             $projectDir: "%kernel.project_dir%"
 
-    App\Move\Moves:
+    App\Character\Factory:
         arguments:
             $projectDir: "%kernel.project_dir%"
 

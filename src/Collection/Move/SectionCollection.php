@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Collection\Move;
 
-use App\Move\Section;
+use App\Character\Move\Section;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
 class SectionCollection extends AbstractObjectCollection

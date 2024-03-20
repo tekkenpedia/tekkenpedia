@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Collection\Move\Throw;
 
-use App\Move\Throw\Throw_;
+use App\Character\Move\Throw\Throw_;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
 class ThrowCollection extends AbstractObjectCollection

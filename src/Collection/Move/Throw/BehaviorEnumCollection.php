@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Collection\Move\Throw;
 
-use App\Move\Throw\BehaviorEnum;
+use App\Character\Move\Throw\BehaviorEnum;
 use Steevanb\PhpCollection\EnumCollection\AbstractEnumCollection;
 
 class BehaviorEnumCollection extends AbstractEnumCollection

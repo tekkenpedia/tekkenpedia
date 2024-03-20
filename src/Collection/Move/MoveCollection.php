@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Collection\Move;
 
-use App\Move\Move;
+use App\Character\Move\Move;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
 class MoveCollection extends AbstractObjectCollection
