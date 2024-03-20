@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Collection\Move;
+namespace App\Collection\Character\Move;
 
 use App\Character\Move\Move;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Collection\Move\Throw;
+namespace App\Collection\Character\Move\Throw;
 
 use App\Character\Move\Throw\BehaviorEnum;
 use Steevanb\PhpCollection\EnumCollection\AbstractEnumCollection;

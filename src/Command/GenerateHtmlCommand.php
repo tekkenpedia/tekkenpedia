@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Generator\CharactersListGenerator;
 use App\Generator\DefenseGenerator;
 use Symfony\Component\Console\{
     Command\Command,
@@ -23,13 +24,16 @@ class GenerateHtmlCommand extends Command
         return 'Generate static HTML';
     }
 
-    public function __construct(private readonly DefenseGenerator $defenseGenerator)
-    {
+    public function __construct(
+        private readonly CharactersListGenerator $charactersListGenerator,
+        private readonly DefenseGenerator $defenseGenerator
+    ) {
         parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $this->charactersListGenerator->generate($output);
         $this->defenseGenerator->generate($output);
 
         return static::SUCCESS;
