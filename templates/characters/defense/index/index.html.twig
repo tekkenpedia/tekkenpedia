@@ -11,6 +11,24 @@
     </head>
     <body>
     <div class="container">
+        {% set breadcrumb = [
+            {
+                "href": "../../../",
+                "label": "TekkenPedia"
+            },
+            {
+                "href": "../../../",
+                "label": "Characters"
+            },
+            {
+                "href": ".",
+                "label": character.name
+            },
+            {
+                "label": "Defense"
+            }
+        ] %}
+        {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
         {% include 'characters/defense/index/sections.html.twig' with {sections: character.sections, characterSlug: characterSlug, level: 1} only %}
     </div>
 
