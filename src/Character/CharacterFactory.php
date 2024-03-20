@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Character;
 
 use App\{
-    Character\Move\Factory as MoveFactory,
+    Character\Move\MoveFactory,
+    Collection\Character\CharacterCollection,
     Parser\Character\JsonParser
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
 
-readonly class Factory
+readonly class CharacterFactory
 {
     private string $charactersPath;
 
@@ -20,7 +21,25 @@ readonly class Factory
         $this->charactersPath = $projectDir . '/data/characters';
     }
 
-    public function getSlugs(): StringCollection
+    public function create(string $slug): Character
+    {
+        $jsonPathname = $this->charactersPath . '/' . $slug . '.json';
+        $data = $this->jsonParser->getData($jsonPathname);
+
+        return new Character($data['name'], $slug, MoveFactory::create($data));
+    }
+
+    public function createAll(): CharacterCollection
+    {
+        $return = new CharacterCollection();
+        foreach ($this->getSlugs()->toArray() as $slug) {
+            $return->add($this->create($slug));
+        }
+
+        return $return->setReadOnly();
+    }
+
+    private function getSlugs(): StringCollection
     {
         $files = (new Finder())
             ->in($this->charactersPath)
@@ -33,13 +52,5 @@ readonly class Factory
         }
 
         return $return;
-    }
-
-    public function create(string $slug): Character
-    {
-        $jsonPathname = $this->charactersPath . '/' . $slug . '.json';
-        $data = $this->jsonParser->getData($jsonPathname);
-
-        return new Character($data['name'], $slug, MoveFactory::create($data));
     }
 }

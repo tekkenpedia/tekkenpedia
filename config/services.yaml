@@ -16,7 +16,11 @@ services:
         arguments:
             $projectDir: "%kernel.project_dir%"
 
-    App\Character\Factory:
+    App\Character\CharacterFactory:
+        arguments:
+            $projectDir: "%kernel.project_dir%"
+
+    App\Generator\CharactersListGenerator:
         arguments:
             $projectDir: "%kernel.project_dir%"
 

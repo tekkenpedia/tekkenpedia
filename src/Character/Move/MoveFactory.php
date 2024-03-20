@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace App\Character\Move;
 
 use App\{
+    Character\Move\Comment\Comment,
+    Character\Move\Comment\TypeEnum,
     Character\Move\Comment\WidthEnum,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
-    Collection\Move\CommentCollection,
-    Collection\Move\MoveCollection,
-    Collection\Move\SectionCollection,
-    Collection\Move\Throw\BehaviorEnumCollection,
-    Collection\Move\Throw\ThrowCollection,
-    Character\Move\Comment\Comment,
-    Character\Move\Comment\TypeEnum,
     Character\Move\Throw\BehaviorEnum,
     Character\Move\Throw\Distances,
     Character\Move\Throw\Frames as ThrowFrames,
-    Character\Move\Throw\Throw_
+    Character\Move\Throw\Throw_,
+    Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\MoveCollection,
+    Collection\Character\Move\SectionCollection,
+    Collection\Character\Move\Throw\BehaviorEnumCollection,
+    Collection\Character\Move\Throw\ThrowCollection
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
-class Factory
+class MoveFactory
 {
     public static function create(array &$data): SectionCollection
     {

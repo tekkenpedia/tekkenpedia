@@ -6,8 +6,8 @@ namespace App\Character\Move\Throw;
 
 use App\{
     Character\Move\PropertyEnum,
-    Collection\Move\CommentCollection,
-    Collection\Move\Throw\BehaviorEnumCollection
+    Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\Throw\BehaviorEnumCollection
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 

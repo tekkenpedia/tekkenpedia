@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Character\Move;
 
 use App\{
-    Collection\Move\MoveCollection,
-    Collection\Move\SectionCollection,
-    Collection\Move\Throw\ThrowCollection
+    Collection\Character\Move\MoveCollection,
+    Collection\Character\Move\SectionCollection,
+    Collection\Character\Move\Throw\ThrowCollection
 };
 use Symfony\Component\String\Slugger\AsciiSlugger;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Generator;
 
-use App\Character\Factory;
+use App\Character\CharacterFactory;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
@@ -13,8 +13,11 @@ readonly class DefenseGenerator
 {
     private string $renderPath;
 
-    public function __construct(string $projectDir, private Factory $factory, private Environment $twig)
-    {
+    public function __construct(
+        string $projectDir,
+        private CharacterFactory $characterFactory,
+        private Environment $twig
+    ) {
         $this->renderPath = $projectDir . '/docs/characters';
     }
 
@@ -22,17 +25,21 @@ readonly class DefenseGenerator
     {
         $filesystem = new Filesystem();
 
-        foreach ($this->factory->getSlugs()->toArray() as $charactersSlug) {
-            $output->writeln('Generating defense for <info>' . $charactersSlug . '</info>.');
+        foreach ($this->characterFactory->createAll()->toArray() as $character) {
+            $defensePath = $this->renderPath . '/' . $character->slug . '/defense';
+            if (is_dir($defensePath)) {
+                $output->writeln('Removing <info>' . $defensePath . '</info>.');
+                $filesystem->remove($defensePath);
+            }
+
+            $renderPathname = $defensePath . '/index.html';
+            $output->writeln('Generating <info>' . $renderPathname . '</info>.');
 
             $filesystem->dumpFile(
-                $this->renderPath . '/' . $charactersSlug . '/defense/index.html',
+                $renderPathname,
                 $this->twig->render(
                     'characters/defense/index/index.html.twig',
-                    [
-                        'characterSlug' => $charactersSlug,
-                        'character' => $this->factory->create($charactersSlug)
-                    ]
+                    ['character' => $character]
                 )
             );
         }

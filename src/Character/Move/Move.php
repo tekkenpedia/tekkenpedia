@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Character\Move;
 
 use App\Character\Move\Step\Steps;
-use App\Collection\Move\CommentCollection;
+use App\Collection\Character\Move\CommentCollection;
 
 readonly class Move
 {

@@ -11,7 +11,7 @@ use App\{
     Character\Move\PropertyEnum,
     Character\Move\Step\StepEnum,
     Character\Move\Throw\BehaviorEnum,
-    Collection\Move\Throw\BehaviorEnumCollection
+    Collection\Character\Move\Throw\BehaviorEnumCollection
 };
 use Twig\{
     Extension\AbstractExtension,
