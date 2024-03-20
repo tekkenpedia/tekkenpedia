@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
-    Move\HitEnum,
-    Move\Move,
-    Move\PropertyEnum
+    Character\Move\HitEnum,
+    Character\Move\Move,
+    Character\Move\PropertyEnum
 };
 use Twig\{
     Extension\AbstractExtension,
