@@ -38,3 +38,16 @@ h2 {
 .float-right {
     float: right;
 }
+
+.icon-move-property {
+    max-width: 16px;
+}
+
+#tooltip {
+    position: fixed;
+    background-color: #333;
+    color: white;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2em;
+    display: none;
+}

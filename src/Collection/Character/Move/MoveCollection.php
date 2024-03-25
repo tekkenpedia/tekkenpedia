@@ -18,4 +18,10 @@ class MoveCollection extends AbstractObjectCollection
     {
         return $this->doAdd($move);
     }
+
+    /** @return array<Move> */
+    public function toArray(): array
+    {
+        return parent::toArray();
+    }
 }

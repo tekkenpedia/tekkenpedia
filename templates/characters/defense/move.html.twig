@@ -1,0 +1,45 @@
+<div class="{{ moveClass }}">
+    <div class="card text-center">
+        <img class="card-img-top" src="../../../images/characters/{{ character.slug }}/defense/{{ move.name }}.gif" alt="{{ move.name }}">
+        <table class="table table-bordered table-sm mb-0">
+            <tbody>
+                <tr>
+                    <td class="move col-3">{{ move.name }}</td>
+                    <td class="col-3">Move</td>
+                    <td class="col-3">{{ move.property|format_property }}</td>
+                    <td class="col-3">
+                        <a href="../../../characters/{{ character.slug }}/defense/{{ move.slug }}.html" class="text-black" title="Show"><i class="bi bi-eye"></i></a>
+                        <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ move.slug }}.html" title="Copy link"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-3" title="Attack startup frames">{{ move.frames.startup|format_frame(true) }}</td>
+                    <td class="col-3" title="Max distance from opponent">{{ (move.distance / 100)|number_format(2) }}</td>
+                    <td title="Damages on normal hit / Damages on counter hit">{{ move.damages.normalHit }} / {{ move.damages.counterHit }}</td>
+                    <td>
+                        {% for behavior in move.behaviors.toArray() %}
+                            {{ behavior|move_behavior_icon }}
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="{{ move|normal_hit_bg_class }}" title="Normal hit">{{ move|format_normal_hit }}</td>
+                    <td class="{{ move|counter_hit_bg_class }}" title="Counter hit">{{ move|format_counter_hit }}</td>
+                    <td class="{{ move|block_bg_class }}" title="Block">{{ move|format_block }}</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="{{ move.steps.ssl|step_bg_class }}" title="Side step left">SSL</td>
+                    <td class="{{ move.steps.swl|step_bg_class }}" title="Side walk left">SWL</td>
+                    <td class="{{ move.steps.ssr|step_bg_class }}" title="Side step right">SSR</td>
+                    <td class="{{ move.steps.swr|step_bg_class }}" title="Side walk right">SWR</td>
+                </tr>
+
+                {% include 'characters/defense/index/comments.html.twig' with {comments: move.comments} only %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -21,15 +21,21 @@
                 "label": "Characters"
             },
             {
-                "href": ".",
+                "href": "index.html",
                 "label": character.name
             },
             {
+                "href": "index.html",
                 "label": "Defense"
+            },
+            {
+                "label": move.slug
             }
         ] %}
         {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
-        {% include 'characters/defense/index/sections.html.twig' with {sections: character.sections, character: character, level: 1} only %}
+        <div class="row justify-content-md-center">
+            {% include 'characters/defense/move.html.twig' with {move: move, character: character, moveClass: "col-12 col-sm-12 col-md-12 col-lg-6"} only %}
+        </div>
     </div>
 
     <div id="tooltip"></div>

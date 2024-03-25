@@ -1,0 +1,66 @@
+<div class="{{ throwClass }}">
+    <div class="card text-center">
+        <img class="card-img-top" src="../../../images/characters/{{ character.slug }}/defense/{{ throw.name }}.gif" alt="{{ throw.name }}">
+        <table class="table table-bordered table-sm mb-0">
+            <tbody>
+                <tr>
+                    <td class="move col-3">{{ throw.name }}</td>
+                    <td class="col-3">Throw</td>
+                    <td class="col-3 {{ throw.property|throw_property_bg_class }}">{{ throw.property|format_property }}</td>
+                    <td class="col-3">
+                        <a href="../../../characters/{{ character.slug }}/defense/{{ throw.slug }}.html" class="text-black" title="Show"><i class="bi bi-eye"></i></a>
+                        <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ throw.slug }}.html" title="Copy link"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
+                        {% if throw.escapes.count() > 0 %}
+                            {{ throw.escapes.toArray()|join(' or ') }}
+                        {% else %}
+                            Can't
+                        {% endif %}
+                    </td>
+                    <td title="Damages">{{ throw.damage }}</td>
+                    <td>
+                        {% for behavior in throw.behaviors.toArray() %}
+                            {{ behavior|move_behavior_icon }}
+                        {% endfor %}
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td
+                        class="col-3{% if throw.frames.startup < 12 %} bg-danger text-white{% elseif throw.frames.startup > 12 %} bg-warning{% endif %}"
+                        title="Startup frames"
+                    >{{ throw.frames.startup|format_frame(true) }}</td>
+                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="After hit frames">{{ throw.frames.hit|format_frame(true) }}</td>
+                    {% if throw.frames.escape is not null %}
+                        <td
+                            class="col-3{% if throw.frames.escape < 21 %} bg-danger text-white{% elseif throw.frames.escape > 21 %} bg-warning{% endif %}"
+                            title="Escape frames"
+                        >
+                            {{ throw.frames.escape|format_frame(true) }}
+                        </td>
+                        <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="After escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
+                    {% else %}
+                        <td class="col-6" colspan="2"></td>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <td title="Max distance from opponent">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
+                    <td title="Distance after hit">{{ (throw.distances.hit / 100)|number_format(2) }}</td>
+                    <td class="col-3" title="Distance after escape">
+                        {% if throw.distances.escape is not null %}
+                            {{ (throw.distances.escape / 100)|number_format(2) }}
+                        {% endif %}
+                    </td>
+                </tr>
+
+                {% include 'characters/defense/index/comments.html.twig' with {comments: throw.comments} only %}
+            </tbody>
+        </table>
+    </div>
+</div>

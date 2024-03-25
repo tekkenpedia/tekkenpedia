@@ -15,6 +15,7 @@ readonly class Throw_
 {
     public function __construct(
         public string $name,
+        public string $slug,
         public PropertyEnum $property,
         public Frames $frames,
         public Distances $distances,
