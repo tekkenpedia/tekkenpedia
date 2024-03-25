@@ -22,4 +22,28 @@ $(function() {
             });
         });
     });
+
+    $('i[data-copy-url]').each(function(index, element) {
+        let $element = $(element);
+
+        $element.on('click', function(event) {
+            navigator.clipboard.writeText(window.location.origin + '/' + $element.data('copy-url'));
+
+            let $tooltip = $("#tooltip");
+            $tooltip.text('Link copied');
+
+            $tooltip.css({
+                top: event.pageY + 30,
+                left: event.pageX - ($tooltip.width() / 2)
+            });
+
+            $tooltip.show();
+            setTimeout(
+                function(){
+                    $tooltip.fadeOut();
+                },
+                1000
+            );
+        });
+    });
 });

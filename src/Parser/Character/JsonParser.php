@@ -135,6 +135,11 @@ class JsonParser
     private function configureThrowResolver(OptionsResolver $resolver): static
     {
         $resolver
+            ->define('slug')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $resolver
             ->define('frames')
             ->required()
             ->default(
@@ -165,23 +170,6 @@ class JsonParser
             ->allowedTypes(AllowedTypeEnum::INTEGER->value);
 
         $resolver
-            ->define('behaviors')
-            ->default([])
-            ->allowedValues(
-                function(array $behaviors): bool {
-                    $allowedBehaviors = BehaviorEnum::getNames();
-                    foreach ($behaviors as $behavior) {
-                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-                }
-            )
-            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
-
-        $resolver
             ->define('property')
             ->default(PropertyEnum::HIGH->name)
             ->allowedValues(...PropertyEnum::getNames()->toArray());
@@ -196,11 +184,18 @@ class JsonParser
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
+        $this->configureBehaviorsResolver($resolver);
+
         return $this;
     }
 
     private function configureMoveResolver(OptionsResolver $resolver): static
     {
+        $resolver
+            ->define('slug')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::STRING->value);
+
         $resolver
             ->define('property')
             ->required()
@@ -261,6 +256,8 @@ class JsonParser
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $this->configureBehaviorsResolver($resolver);
 
         return $this;
     }
@@ -418,5 +415,27 @@ class JsonParser
         $comments = array_map([$resolver, 'resolve'], $comments);
 
         return true;
+    }
+
+    private function configureBehaviorsResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('behaviors')
+            ->default([])
+            ->allowedValues(
+                function(array $behaviors): bool {
+                    $allowedBehaviors = BehaviorEnum::getNames();
+                    foreach ($behaviors as $behavior) {
+                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
+
+        return $this;
     }
 }

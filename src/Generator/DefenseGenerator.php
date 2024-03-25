@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace App\Generator;
 
-use App\Character\CharacterFactory;
+use App\{
+    Character\Character,
+    Character\CharacterFactory,
+    Character\Move\Section
+};
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
@@ -26,24 +30,111 @@ readonly class DefenseGenerator
         $filesystem = new Filesystem();
 
         foreach ($this->characterFactory->createAll()->toArray() as $character) {
-            $defensePath = $this->renderPath . '/' . $character->slug . '/defense';
-            if (is_dir($defensePath)) {
-                $output->writeln('Removing <info>' . $defensePath . '</info>.');
-                $filesystem->remove($defensePath);
-            }
+            $this
+                ->clear($character, $filesystem, $output)
+                ->generateIndex($character, $filesystem, $output);
 
-            $renderPathname = $defensePath . '/index.html';
+            foreach ($character->sections->toArray() as $section) {
+                $this
+                    ->generateThrows($character, $section, $filesystem, $output)
+                    ->generateMoves($character, $section, $filesystem, $output);
+            }
+        }
+
+        return $this;
+    }
+
+    private function clear(Character $character, Filesystem $filesystem, OutputInterface $output): static
+    {
+        $rootPath = $this->getRootPath($character);
+        if (is_dir($rootPath)) {
+            $output->writeln('Removing <info>' . $rootPath . '</info>.');
+            $filesystem->remove($rootPath);
+        }
+
+        return $this;
+    }
+
+    private function generateIndex(Character $character, Filesystem $filesystem, OutputInterface $output): static
+    {
+        $renderPathname = $this->getRootPath($character) . '/index.html';
+        $output->writeln('Generating <info>' . $renderPathname . '</info>.');
+
+        $filesystem->dumpFile(
+            $renderPathname,
+            $this->twig->render(
+                'characters/defense/index/index.html.twig',
+                ['character' => $character]
+            )
+        );
+
+        return $this;
+    }
+
+    private function generateThrows(
+        Character $character,
+        Section $section,
+        Filesystem $filesystem,
+        OutputInterface $output
+    ): static {
+        $rootPath = $this->getRootPath($character);
+
+        foreach ($section->throws->toArray() as $throw) {
+            $renderPathname = $rootPath . '/' . $throw->slug . '.html';
             $output->writeln('Generating <info>' . $renderPathname . '</info>.');
 
             $filesystem->dumpFile(
                 $renderPathname,
                 $this->twig->render(
-                    'characters/defense/index/index.html.twig',
-                    ['character' => $character]
+                    'characters/defense/throw/throw.html.twig',
+                    [
+                        'character' => $character,
+                        'throw' => $throw
+                    ]
                 )
             );
         }
 
+        foreach ($section->sections->toArray() as $subSection) {
+            $this->generateThrows($character, $subSection, $filesystem, $output);
+        }
+
         return $this;
+    }
+
+    private function generateMoves(
+        Character $character,
+        Section $section,
+        Filesystem $filesystem,
+        OutputInterface $output
+    ): static {
+        $rootPath = $this->getRootPath($character);
+
+        foreach ($section->moves->toArray() as $move) {
+            $renderPathname = $rootPath . '/' . $move->slug . '.html';
+            $output->writeln('Generating <info>' . $renderPathname . '</info>.');
+
+            $filesystem->dumpFile(
+                $renderPathname,
+                $this->twig->render(
+                    'characters/defense/move/move.html.twig',
+                    [
+                        'character' => $character,
+                        'move' => $move
+                    ]
+                )
+            );
+        }
+
+        foreach ($section->sections->toArray() as $subSection) {
+            $this->generateMoves($character, $subSection, $filesystem, $output);
+        }
+
+        return $this;
+    }
+
+    private function getRootPath(Character $character): string
+    {
+        return $this->renderPath . '/' . $character->slug . '/defense';
     }
 }

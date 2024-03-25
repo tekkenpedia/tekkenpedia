@@ -4,18 +4,23 @@ declare(strict_types=1);
 
 namespace App\Character\Move;
 
-use App\Character\Move\Step\Steps;
-use App\Collection\Character\Move\CommentCollection;
+use App\{
+    Character\Move\Step\Steps,
+    Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\Throw\BehaviorEnumCollection
+};
 
 readonly class Move
 {
     public function __construct(
         public string $name,
+        public string $slug,
         public PropertyEnum $property,
         public int $distance,
         public Frames $frames,
         public Damages $damages,
         public Hits $hits,
+        public BehaviorEnumCollection $behaviors,
         public Steps $steps,
         public CommentCollection $comments
     ) {

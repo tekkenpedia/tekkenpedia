@@ -37,13 +37,9 @@ class MoveFactory
 
     private static function createThrow(string $name, array $data): Throw_
     {
-        $behaviors = new BehaviorEnumCollection();
-        foreach ($data['behaviors'] as $behavior) {
-            $behaviors->add(BehaviorEnum::create($behavior));
-        }
-
         return new Throw_(
             $name,
+            $data['slug'],
             PropertyEnum::create($data['property']),
             new ThrowFrames(
                 $data['frames']['startup'],
@@ -58,7 +54,7 @@ class MoveFactory
             ),
             new StringCollection($data['escapes']),
             $data['damage'],
-            $behaviors,
+            static::createBehaviors($data['behaviors']),
             static::createComments($data)
         );
     }
@@ -67,6 +63,7 @@ class MoveFactory
     {
         return new Move(
             $name,
+            $data['slug'],
             PropertyEnum::create($data['property']),
             $data['distance'],
             new Frames(
@@ -80,6 +77,7 @@ class MoveFactory
                 HitEnum::create($data['hits']['normal']),
                 HitEnum::create($data['hits']['counter'])
             ),
+            static::createBehaviors($data['behaviors']),
             new Steps(
                 StepEnum::create($data['steps']['ssl']),
                 StepEnum::create($data['steps']['swl']),
@@ -88,6 +86,16 @@ class MoveFactory
             ),
             static::createComments($data)
         );
+    }
+
+    private static function createBehaviors(array &$behaviors): BehaviorEnumCollection
+    {
+        $return = new BehaviorEnumCollection();
+        foreach ($behaviors as $behavior) {
+            $return->add(BehaviorEnum::create($behavior));
+        }
+
+        return $return;
     }
 
     private static function createComments(array $data): CommentCollection
