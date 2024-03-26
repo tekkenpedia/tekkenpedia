@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\{
-    Character\Move\HitEnum,
-    Character\Move\Move,
-    Character\Move\PropertyEnum
-};
+use App\Character\Move\PropertyEnum;
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter
@@ -20,40 +16,8 @@ class FormatExtension extends AbstractExtension
     {
         return [
             new TwigFilter('format_frame', [$this, 'formatFrame']),
-            new TwigFilter('format_normal_hit', [$this, 'formatNormalHit']),
-            new TwigFilter('format_counter_hit', [$this, 'formatCounterHit']),
-            new TwigFilter('format_block', [$this, 'formatBlock']),
-            new TwigFilter('frame_bg_class', [$this, 'frameBgClass']),
             new TwigFilter('format_property', [$this, 'formatProperty'])
         ];
-    }
-
-    public function formatNormalHit(Move $move): string
-    {
-        return $this->formatAttack($move->hits->normal, $move->frames->normalHit);
-    }
-
-    public function formatCounterHit(Move $move): string
-    {
-        return $this->formatAttack($move->hits->counter, $move->frames->counterHit);
-    }
-
-    public function formatBlock(Move $move): string
-    {
-        return $this->formatAttack(HitEnum::HIT, $move->frames->block);
-    }
-
-    public function frameBgClass(int $frame): string
-    {
-        if ($frame === 0) {
-            $return = 'bg-warning';
-        } elseif ($frame < 0) {
-            $return = 'bg-success';
-        } else {
-            $return = 'bg-danger';
-        }
-
-        return $return;
     }
 
     public function formatProperty(PropertyEnum $property): string
@@ -70,14 +34,5 @@ class FormatExtension extends AbstractExtension
         }
 
         return $return;
-    }
-
-    private function formatAttack(HitEnum $hit, int $frame): string
-    {
-        return match ($hit) {
-            HitEnum::KNOCKDOWN => 'KD',
-            HitEnum::AIR => 'AIR',
-            HitEnum::HIT => $this->formatFrame($frame)
-        };
     }
 }

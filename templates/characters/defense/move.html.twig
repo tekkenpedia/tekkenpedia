@@ -8,27 +8,37 @@
                     <td class="col-3">Move</td>
                     <td class="col-3">{{ move.property|format_property }}</td>
                     <td class="col-3">
-                        <a href="../../../characters/{{ character.slug }}/defense/{{ move.slug }}.html" class="text-black" title="Show"><i class="bi bi-eye"></i></a>
+                        <a href="../../../characters/{{ character.slug }}/defense/{{ move.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
                         <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ move.slug }}.html" title="Copy link"></i>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="col-3" title="Attack startup frames">{{ move.frames.startup|format_frame(true) }}</td>
+                    <td class="{{ move.frames.block|frame_bg_class }}" title="Frames on block">{{ move.frames.block|format_frame }}</td>
                     <td class="col-3" title="Max distance from opponent">{{ (move.distance / 100)|number_format(2) }}</td>
-                    <td title="Damages on normal hit / Damages on counter hit">{{ move.damages.normalHit }} / {{ move.damages.counterHit }}</td>
-                    <td>
-                        {% for behavior in move.behaviors.toArray() %}
+                </tr>
+
+                <tr>
+                    <td title="Normal hit informations on this row">NH <i class="bi bi-arrow-right"></i></td>
+                    <td class="{{ move.frames.normalHit|frame_bg_class }}" title="Frames on normal hit">{{ move.frames.normalHit|format_frame }}</td>
+                    <td title="Damages on normal hit">{{ move.damages.normalHit }}</td>
+                    <td title="Behaviors on normal hit">
+                        {% for behavior in move.normalHitBehaviors.toArray() %}
                             {{ behavior|move_behavior_icon }}
                         {% endfor %}
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="{{ move|normal_hit_bg_class }}" title="Normal hit">{{ move|format_normal_hit }}</td>
-                    <td class="{{ move|counter_hit_bg_class }}" title="Counter hit">{{ move|format_counter_hit }}</td>
-                    <td class="{{ move|block_bg_class }}" title="Block">{{ move|format_block }}</td>
-                    <td></td>
+                    <td title="Counter hit informations on this row">CH <i class="bi bi-arrow-right"></i></td>
+                    <td class="{{ move.frames.counterHit|frame_bg_class }}" title="Frames on counter hit">{{ move.frames.counterHit|format_frame }}</td>
+                    <td title="Damages on counter hit">{{ move.damages.counterHit }}</td>
+                    <td title="Behaviors on counter hit">
+                        {% for behavior in move.counterHitBehaviors.toArray() %}
+                            {{ behavior|move_behavior_icon }}
+                        {% endfor %}
+                    </td>
                 </tr>
 
                 <tr>

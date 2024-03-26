@@ -22,44 +22,46 @@ class MoveExtension extends AbstractExtension
     public function moveBehaviorIcon(BehaviorEnum $behavior): string
     {
         switch ($behavior) {
-            case BehaviorEnum::WALL_BOUND:
-                $icon = 'wall-bound';
-                $title = 'Wall bound';
+            case BehaviorEnum::WALL_SPLAT_BREAK_BOUND:
+                $icon = 'bi-box-arrow-in-right';
+                $title = 'Wall splat - wall break - wall bound';
+                $type = MoveBehaviorIconTypeEnum::I;
                 break;
-            case BehaviorEnum::WALL_BREAK:
-                $icon = 'wall-break';
-                $title = 'Wall break';
+            case BehaviorEnum::FLOOR_BREAK_BLAST:
+                $icon = 'bi-download';
+                $title = 'Floor break - floor blast';
+                $type = MoveBehaviorIconTypeEnum::I;
                 break;
-            case BehaviorEnum::WALL_SPLAT:
-                $icon = 'wall-splat';
-                $title = 'Wall splat';
-                break;
-            case BehaviorEnum::FLOOR_BREAK:
-                $icon = 'floor-break';
-                $title = 'Floor break';
-                break;
-            case BehaviorEnum::FLOOR_BLAST:
-                $icon = 'floor-blast';
-                $title = 'Floor blast';
+            case BehaviorEnum::KNOCKDOWN:
+                $icon = 'bi-arrow-90deg-down';
+                $title = 'Knockdown';
+                $type = MoveBehaviorIconTypeEnum::I;
                 break;
             case BehaviorEnum::AIR:
                 $icon = 'air';
                 $title = 'Air';
+                $type = MoveBehaviorIconTypeEnum::PNG;
                 break;
             case BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR:
                 $icon = 'delete-recoverable-life-bar';
                 $title = 'Delete recoverable life bar';
+                $type = MoveBehaviorIconTypeEnum::PNG;
                 break;
             case BehaviorEnum::HEAT_ENGAGER:
                 $icon = 'heat-engager';
                 $title = 'Heat engager';
+                $type = MoveBehaviorIconTypeEnum::PNG;
                 break;
             case BehaviorEnum::POWER_CRUSH:
                 $icon = 'power-crush';
                 $title = 'Power crush';
+                $type = MoveBehaviorIconTypeEnum::PNG;
                 break;
         }
 
-        return '<img class="icon-move-property" src="../../../images/properties/' . $icon . '.png" title="' . $title . '">';
+        return $type === MoveBehaviorIconTypeEnum::I
+            ? '<i class="icon-move-behavior bi ' . $icon . '" title="' . $title . '"></i>'
+            : '<img class="icon-move-behavior" src="../../../images/properties/' . $icon . '.png" title="' . $title . '">';
+
     }
 }

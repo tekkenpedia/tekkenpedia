@@ -6,8 +6,6 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Move\Comment\TypeEnum,
-    Character\Move\HitEnum,
-    Character\Move\Move,
     Character\Move\PropertyEnum,
     Character\Move\Step\StepEnum,
     Character\Move\Throw\BehaviorEnum,
@@ -23,30 +21,13 @@ class BgClassExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('normal_hit_bg_class', [$this, 'normalHitBgClass']),
-            new TwigFilter('counter_hit_bg_class', [$this, 'counterHitBgClass']),
-            new TwigFilter('block_bg_class', [$this, 'blockBgClass']),
+            new TwigFilter('frame_bg_class', [$this, 'frameBgClass']),
             new TwigFilter('step_bg_class', [$this, 'stepBgClass']),
             new TwigFilter('throw_hit_bg_class', [$this, 'throwHitBgClass']),
             new TwigFilter('throw_escape_bg_class', [$this, 'throwEscapeBgClass']),
             new TwigFilter('throw_property_bg_class', [$this, 'throwPropertyBgClass']),
             new TwigFilter('comment_type_bg_class', [$this, 'commentTypeBgClass'])
         ];
-    }
-
-    public function normalHitBgClass(Move $move): string
-    {
-        return $this->getHitBgClass($move->hits->normal, $move->frames->normalHit);
-    }
-
-    public function counterHitBgClass(Move $move): string
-    {
-        return $this->getHitBgClass($move->hits->counter, $move->frames->counterHit);
-    }
-
-    public function blockBgClass(Move $move): string
-    {
-        return $this->getHitBgClass(HitEnum::HIT, $move->frames->block);
     }
 
     public function stepBgClass(StepEnum $step): string
@@ -102,16 +83,17 @@ class BgClassExtension extends AbstractExtension
         };
     }
 
-    private function getHitBgClass(HitEnum $hit, int $frame): string
+    public function frameBgClass(int $frame): string
     {
-        if ($hit === HitEnum::KNOCKDOWN || $frame > 0) {
-            $return = 'bg-danger';
+        $return = 'text-white';
+        if ($frame > 0) {
+            $return .= ' bg-danger';
         } elseif ($frame < 0) {
-            $return = 'bg-success';
+            $return .= ' bg-success';
         } else {
-            $return = 'bg-warning';
+            $return .= ' bg-warning';
         }
 
-        return $return . ' text-white';
+        return $return;
     }
 }

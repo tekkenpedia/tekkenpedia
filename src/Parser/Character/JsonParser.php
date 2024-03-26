@@ -7,7 +7,6 @@ namespace App\Parser\Character;
 use App\{
     Character\Move\Comment\TypeEnum,
     Character\Move\Comment\WidthEnum,
-    Character\Move\HitEnum,
     Character\Move\PropertyEnum,
     Character\Move\Step\StepEnum,
     Character\Move\Throw\BehaviorEnum,
@@ -184,7 +183,22 @@ class JsonParser
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $this->configureBehaviorsResolver($resolver);
+        $resolver
+            ->define('behaviors')
+            ->default([])
+            ->allowedValues(
+                function(array $behaviors): bool {
+                    $allowedBehaviors = BehaviorEnum::getNames();
+                    foreach ($behaviors as $behavior) {
+                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
 
         return $this;
     }
@@ -207,15 +221,6 @@ class JsonParser
             ->default(
                 function(OptionsResolver $framesResolver): void {
                     $this->configureMoveFramesResolver($framesResolver);
-                }
-            )
-            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
-
-        $resolver
-            ->define('hits')
-            ->default(
-                function(OptionsResolver $hitsResolver): void {
-                    $this->configureHitsResolver($hitsResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -257,7 +262,21 @@ class JsonParser
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $this->configureBehaviorsResolver($resolver);
+        $resolver
+            ->define('behaviors')
+            ->default(['normal-hit' => [], 'counter-hit' => []])
+            ->allowedValues(
+                function(array $behaviors): bool {
+                    $allowedBehaviors = BehaviorEnum::getNames();
+                    foreach (array_merge($behaviors['normal-hit'], $behaviors['counter-hit']) as $behavior) {
+                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            );
 
         return $this;
     }
@@ -332,21 +351,6 @@ class JsonParser
         return $this;
     }
 
-    private function configureHitsResolver(OptionsResolver $resolver): static
-    {
-        $resolver
-            ->define('normal')
-            ->default(HitEnum::HIT->name)
-            ->allowedValues(...HitEnum::getNames()->toArray());
-
-        $resolver
-            ->define('counter')
-            ->default(HitEnum::HIT->name)
-            ->allowedValues(...HitEnum::getNames()->toArray());
-
-        return $this;
-    }
-
     private function configureStepsResolver(OptionsResolver $resolver): static
     {
         $resolver
@@ -415,27 +419,5 @@ class JsonParser
         $comments = array_map([$resolver, 'resolve'], $comments);
 
         return true;
-    }
-
-    private function configureBehaviorsResolver(OptionsResolver $resolver): static
-    {
-        $resolver
-            ->define('behaviors')
-            ->default([])
-            ->allowedValues(
-                function(array $behaviors): bool {
-                    $allowedBehaviors = BehaviorEnum::getNames();
-                    foreach ($behaviors as $behavior) {
-                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
-                            return false;
-                        }
-                    }
-
-                    return true;
-                }
-            )
-            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
-
-        return $this;
     }
 }
