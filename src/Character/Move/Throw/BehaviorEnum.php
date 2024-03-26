@@ -14,11 +14,9 @@ enum BehaviorEnum
     use CreateTrait;
     use GetNamesTrait;
 
-    case WALL_SPLAT;
-    case WALL_BREAK;
-    case WALL_BOUND;
-    case FLOOR_BREAK;
-    case FLOOR_BLAST;
+    case WALL_SPLAT_BREAK_BOUND;
+    case FLOOR_BREAK_BLAST;
+    case KNOCKDOWN;
     case AIR;
     case DELETE_RECOVERABLE_LIFE_BAR;
     case HEAT_ENGAGER;

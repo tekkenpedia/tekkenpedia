@@ -19,8 +19,8 @@ readonly class Move
         public int $distance,
         public Frames $frames,
         public Damages $damages,
-        public Hits $hits,
-        public BehaviorEnumCollection $behaviors,
+        public BehaviorEnumCollection $normalHitBehaviors,
+        public BehaviorEnumCollection $counterHitBehaviors,
         public Steps $steps,
         public CommentCollection $comments
     ) {

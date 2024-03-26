@@ -73,11 +73,8 @@ class MoveFactory
                 $data['frames']['block']
             ),
             new Damages($data['damages']['normal-hit'], $data['damages']['counter-hit']),
-            new Hits(
-                HitEnum::create($data['hits']['normal']),
-                HitEnum::create($data['hits']['counter'])
-            ),
-            static::createBehaviors($data['behaviors']),
+            static::createBehaviors($data['behaviors']['normal-hit']),
+            static::createBehaviors($data['behaviors']['counter-hit']),
             new Steps(
                 StepEnum::create($data['steps']['ssl']),
                 StepEnum::create($data['steps']['swl']),

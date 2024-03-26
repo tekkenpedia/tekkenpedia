@@ -49,10 +49,7 @@
                         "escape": 21,
                         "after-escape": -6
                     },
-                    "behaviors": [
-                        "FLOOR_BREAK",
-                        "FLOOR_BLAST"
-                    ],
+                    "behaviors": ["FLOOR_BREAK_BLAST"],
                     "distances": {
                         "startup": 175,
                         "hit": 230,
@@ -89,9 +86,7 @@
                         "hit": 56,
                         "after-escape": -6
                     },
-                    "behaviors": [
-                        "AIR"
-                    ],
+                    "behaviors": ["AIR"],
                     "distances": {
                         "startup": 170,
                         "hit": 190,
@@ -162,15 +157,16 @@
                         "counter-hit": 23,
                         "block": 6
                     },
-                    "hits": {
-                        "normal": "KNOCKDOWN",
-                        "counter": "KNOCKDOWN"
+                    "behaviors": {
+                        "normal-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ],
+                        "counter-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ]
                     },
-                    "behaviors": [
-                        "WALL_SPLAT",
-                        "WALL_BREAK",
-                        "WALL_BOUND"
-                    ],
                     "distance": 270,
                     "damages": {
                         "normal-hit": 30,
@@ -191,15 +187,16 @@
                         "counter-hit": 34,
                         "block": -9
                     },
-                    "hits": {
-                        "normal": "KNOCKDOWN",
-                        "counter": "KNOCKDOWN"
+                    "behaviors": {
+                        "normal-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ],
+                        "counter-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ]
                     },
-                    "behaviors": [
-                        "WALL_SPLAT",
-                        "WALL_BREAK",
-                        "WALL_BOUND"
-                    ],
                     "distance": 220,
                     "damages": {
                         "normal-hit": 27,
@@ -251,13 +248,10 @@
                                 "counter-hit": 34,
                                 "block": -13
                             },
-                            "hits": {
-                                "normal": "AIR",
-                                "counter": "AIR"
+                            "behaviors": {
+                                "normal-hit": ["AIR"],
+                                "counter-hit": ["AIR"]
                             },
-                            "behaviors": [
-                                "AIR"
-                            ],
                             "distance": 350,
                             "damages": {
                                 "normal-hit": 24,
@@ -307,15 +301,16 @@
                                 "counter-hit": 4,
                                 "block": -4
                             },
-                            "hits": {
-                                "normal": "KNOCKDOWN",
-                                "counter": "KNOCKDOWN"
+                            "behaviors": {
+                                "normal-hit": [
+                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "KNOCKDOWN"
+                                ],
+                                "counter-hit": [
+                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "KNOCKDOWN"
+                                ]
                             },
-                            "behaviors": [
-                                "WALL_SPLAT",
-                                "WALL_BREAK",
-                                "WALL_BOUND"
-                            ],
                             "distance": 270,
                             "damages": {
                                 "normal-hit": 26,
