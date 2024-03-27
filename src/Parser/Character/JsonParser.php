@@ -226,8 +226,13 @@ class JsonParser
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
-            ->define('distance')
-            ->required()
+            ->define('distances')
+            ->default(
+                function(OptionsResolver $damagesResolver) {
+                    $this->configureDamagesResolver($damagesResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
             ->allowedTypes(AllowedTypeEnum::INTEGER->value)
             ->allowedValues(
                 Validation::createIsValidCallable(new Positive())
@@ -235,7 +240,6 @@ class JsonParser
 
         $resolver
             ->define('damages')
-            ->required()
             ->default(
                 function(OptionsResolver $damagesResolver) {
                     $this->configureDamagesResolver($damagesResolver);
