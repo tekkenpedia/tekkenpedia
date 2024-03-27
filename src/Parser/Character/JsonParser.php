@@ -12,6 +12,7 @@ use App\{
     Character\Move\Throw\BehaviorEnum,
     OptionsResolver\AllowedTypeEnum
 };
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\{
     Constraints\Positive,
@@ -226,16 +227,16 @@ class JsonParser
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
-            ->define('distance')
-            ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
-            ->allowedValues(
-                Validation::createIsValidCallable(new Positive())
-            );
+            ->define('distances')
+            ->default(
+                function(OptionsResolver $damagesResolver) {
+                    $this->configureDistancesResolver($damagesResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
             ->define('damages')
-            ->required()
             ->default(
                 function(OptionsResolver $damagesResolver) {
                     $this->configureDamagesResolver($damagesResolver);
@@ -286,17 +287,75 @@ class JsonParser
         $resolver
             ->define('startup')
             ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
+            ->allowedValues(
+                Validation::createIsValidCallable(new Positive())
+            );
 
         $resolver
             ->define('hit')
             ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
+            ->allowedValues(
+                Validation::createIsValidCallable(new Positive())
+            );
 
         $resolver
             ->define('escape')
             ->default(null)
-            ->allowedTypes(AllowedTypeEnum::NULL->value, AllowedTypeEnum::INTEGER->value);
+            ->allowedTypes(AllowedTypeEnum::NULL->value, AllowedTypeEnum::INTEGER->value)
+            ->allowedValues(
+                Validation::createIsValidCallable(new Positive())
+            );
+
+        return $this;
+    }
+
+    private function configureDistancesResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('startup')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
+            ->allowedValues(
+                Validation::createIsValidCallable(new Positive())
+            );
+
+        $this
+            ->defineMinMax($resolver, 'block')
+            ->defineMinMax($resolver, 'normal-hit')
+            ->defineMinMax($resolver, 'counter-hit');
+
+        return $this;
+    }
+
+    private function defineMinMax(OptionsResolver $resolver, string $option): static
+    {
+        $resolver
+            ->define($option)
+            ->default(
+                function(OptionsResolver $resolver): void {
+                    $this->configureMinMaxResolver($resolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        return $this;
+    }
+
+    private function configureMinMaxResolver(OptionsResolver $resolver): static
+    {
+        $resolver
+            ->define('min')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
+            ->allowedValues(Validation::createIsValidCallable(new Positive()));
+
+        $resolver
+            ->define('max')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
+            ->allowedValues(Validation::createIsValidCallable(new Positive()));
 
         return $this;
     }

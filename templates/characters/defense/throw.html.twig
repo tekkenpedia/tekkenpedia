@@ -1,19 +1,19 @@
 <div class="{{ throwClass }}">
     <div class="card text-center">
-        <img class="card-img-top" src="../../../images/characters/{{ character.slug }}/defense/{{ throw.name }}.gif" alt="{{ throw.name }}">
+        <div class="card-title move-card-title">
+            <div class="title">{{ throw.name }}</div>
+            <div class="links">
+                <a href="../../../characters/{{ character.slug }}/defense/{{ throw.slug }}.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
+                <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ throw.slug }}.html" title="Copy link"></i>
+            </div>
+        </div>
+        <br>
+        <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.name }}.gif" alt="{{ throw.name }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 <tr>
-                    <td class="move col-3">{{ throw.name }}</td>
-                    <td class="col-3">Throw</td>
-                    <td class="col-3 {{ throw.property|throw_property_bg_class }}">{{ throw.property|format_property }}</td>
-                    <td class="col-3">
-                        <a href="../../../characters/{{ character.slug }}/defense/{{ throw.slug }}.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
-                        <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ throw.slug }}.html" title="Copy link"></i>
-                    </td>
-                </tr>
-
-                <tr>
+                    <td class="col-3" title="Move type">Throw</td>
+                    <td class="col-3 {{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_property }}</td>
                     <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
                         {% if throw.escapes.count() > 0 %}
                             {{ throw.escapes.toArray()|join(' or ') }}
@@ -21,13 +21,15 @@
                             Can't
                         {% endif %}
                     </td>
-                    <td title="Damages">{{ throw.damage }}</td>
-                    <td>
+                    <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %} title="Behaviors">
                         {% for behavior in throw.behaviors.toArray() %}
                             {{ behavior|move_behavior_icon }}
                         {% endfor %}
                     </td>
-                    <td></td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">Frames</td>
                 </tr>
 
                 <tr>
@@ -49,17 +51,28 @@
                     {% endif %}
                 </tr>
 
+                <tr class="separator">
+                    <td>Damages</td>
+                    <td colspan="3">Distances</td>
+                </tr>
+
                 <tr>
-                    <td title="Max distance from opponent">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
+                    <td title="Damages">{{ throw.damage }}</td>
+                    <td title="Max distance from opponent to throw">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
                     <td title="Distance after hit">{{ (throw.distances.hit / 100)|number_format(2) }}</td>
-                    <td class="col-3" title="Distance after escape">
+                    <td title="Distance after escape">
                         {% if throw.distances.escape is not null %}
                             {{ (throw.distances.escape / 100)|number_format(2) }}
                         {% endif %}
                     </td>
                 </tr>
 
-                {% include 'characters/defense/index/comments.html.twig' with {comments: throw.comments} only %}
+                {% if throw.comments.count > 0 %}
+                    <tr class="separator">
+                        <td colspan="4">Other information</td>
+                    </tr>
+                    {% include 'characters/defense/index/comments.html.twig' with {comments: throw.comments} only %}
+                {% endif %}
             </tbody>
         </table>
     </div>

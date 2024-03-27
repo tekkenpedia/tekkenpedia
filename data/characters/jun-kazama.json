@@ -110,7 +110,21 @@
                         "counter-hit": 14,
                         "block": -12
                     },
-                    "distance": 300,
+                    "distances": {
+                        "startup": 290,
+                        "block": {
+                            "min": 159,
+                            "max": 196
+                        },
+                        "normal-hit": {
+                            "min": 156,
+                            "max": 214
+                        },
+                        "counter-hit": {
+                            "min": 184,
+                            "max": 234
+                        }
+                    },
                     "damages": {
                         "normal-hit": 15,
                         "counter-hit": 18
@@ -136,14 +150,28 @@
                         "counter-hit": 13,
                         "block": 3
                     },
-                    "distance": 250,
+                    "distances": {
+                        "startup": 250,
+                        "block": {
+                            "min": 126,
+                            "max": 137
+                        },
+                        "normal-hit": {
+                            "min": 151,
+                            "max": 174
+                        },
+                        "counter-hit": {
+                            "min": 151,
+                            "max": 174
+                        }
+                    },
                     "damages": {
                         "normal-hit": 21,
                         "counter-hit": 25
                     },
                     "comments": [
                         {
-                            "comment": "1+2 (heat engager) is guaranteed on NH or CH.",
+                            "comment": "1+2 (heat engager) is guaranteed on NH/CH.",
                             "type": "STRENGTH"
                         }
                     ]
@@ -167,7 +195,21 @@
                             "KNOCKDOWN"
                         ]
                     },
-                    "distance": 270,
+                    "distances": {
+                        "startup": 300,
+                        "block": {
+                            "min": 163,
+                            "max": 203
+                        },
+                        "normal-hit": {
+                            "min": 481,
+                            "max": 525
+                        },
+                        "counter-hit": {
+                            "min": 481,
+                            "max": 525
+                        }
+                    },
                     "damages": {
                         "normal-hit": 30,
                         "counter-hit": 36
@@ -188,16 +230,27 @@
                         "block": -9
                     },
                     "behaviors": {
-                        "normal-hit": [
-                            "WALL_SPLAT_BREAK_BOUND",
-                            "KNOCKDOWN"
-                        ],
+                        "normal-hit": ["WALL_SPLAT_BREAK_BOUND"],
                         "counter-hit": [
                             "WALL_SPLAT_BREAK_BOUND",
                             "KNOCKDOWN"
                         ]
                     },
-                    "distance": 220,
+                    "distances": {
+                        "startup": 220,
+                        "block": {
+                            "min": 170,
+                            "max": 213
+                        },
+                        "normal-hit": {
+                            "min": 393,
+                            "max": 434
+                        },
+                        "counter-hit": {
+                            "min": 254,
+                            "max": 296
+                        }
+                    },
                     "damages": {
                         "normal-hit": 27,
                         "counter-hit": 32
@@ -207,7 +260,13 @@
                         "swl": "EASY",
                         "ssr": "EASY",
                         "swr": "EASY"
-                    }
+                    },
+                    "comments": [
+                        {
+                            "comment": "f,f+1+2 is guaranteed on CH.",
+                            "type": "STRENGTH"
+                        }
+                    ]
                 }
             }
         },
@@ -220,11 +279,25 @@
                             "property": "HIGH",
                             "frames": {
                                 "startup": 16,
-                                "normal-hit": 11,
+                                "normal-hit": 6,
                                 "counter-hit": 20,
-                                "block": 11
+                                "block": 6
                             },
-                            "distance": 200,
+                            "distances": {
+                                "startup": 200,
+                                "block": {
+                                    "min": 101,
+                                    "max": 104
+                                },
+                                "normal-hit": {
+                                    "min": 94,
+                                    "max": 126
+                                },
+                                "counter-hit": {
+                                    "min": 92,
+                                    "max": 92
+                                }
+                            },
                             "damages": {
                                 "normal-hit": 17,
                                 "counter-hit": 20
@@ -252,7 +325,13 @@
                                 "normal-hit": ["AIR"],
                                 "counter-hit": ["AIR"]
                             },
-                            "distance": 350,
+                            "distances": {
+                                "startup": 350,
+                                "block": {
+                                    "min": 99,
+                                    "max": 165
+                                }
+                            },
                             "damages": {
                                 "normal-hit": 24,
                                 "counter-hit": 28
@@ -276,7 +355,21 @@
                                 "counter-hit": 4,
                                 "block": -7
                             },
-                            "distance": 260,
+                            "distances": {
+                                "startup": 260,
+                                "block": {
+                                    "min": 152,
+                                    "max": 180
+                                },
+                                "normal-hit": {
+                                    "min": 160,
+                                    "max": 190
+                                },
+                                "counter-hit": {
+                                    "min": 160,
+                                    "max": 190
+                                }
+                            },
                             "damages": {
                                 "normal-hit": 7,
                                 "counter-hit": 8
@@ -298,7 +391,7 @@
                             "frames": {
                                 "startup": 23,
                                 "normal-hit": 30,
-                                "counter-hit": 4,
+                                "counter-hit": 30,
                                 "block": -4
                             },
                             "behaviors": {
@@ -311,7 +404,21 @@
                                     "KNOCKDOWN"
                                 ]
                             },
-                            "distance": 270,
+                            "distances": {
+                                "startup": 270,
+                                "block": {
+                                    "min": 170,
+                                    "max": 208
+                                },
+                                "normal-hit": {
+                                    "min": 500,
+                                    "max": 510
+                                },
+                                "counter-hit": {
+                                    "min": 500,
+                                    "max": 510
+                                }
+                            },
                             "damages": {
                                 "normal-hit": 26,
                                 "counter-hit": 31

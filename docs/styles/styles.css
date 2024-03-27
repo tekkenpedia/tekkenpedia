@@ -1,0 +1,99 @@
+body {
+    cursor: default;
+}
+
+td.move {
+    font-weight: bold;
+}
+
+:root {
+    --bs-body-font-size: 0.9rem;
+}
+
+.table-sm {
+    > :not(caption) > * > * {
+        padding: 1px;
+    }
+}
+
+h1, h2 {
+    margin-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+h1 {
+    background-color: #818181;
+    color: white;
+}
+
+h2 {
+    background-color: #acacac;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.float-right {
+    float: right;
+}
+
+.icon-move-behavior {
+    max-width: 16px;
+}
+
+#tooltip {
+    position: fixed;
+    background-color: #333;
+    color: white;
+    padding: 0.2em 0.5em;
+    border-radius: 0.2em;
+    display: none;
+}
+
+tr.separator {
+    background-color: #d2d2d275;
+    font-size: 0.7rem;
+}
+
+tr.separator td {
+    border: solid 1px rgba(129, 129, 129, 0.73);
+}
+
+tr.separator td:first-child {
+    border-left: none;
+}
+
+tr.separator td:last-child {
+    border-right: none;
+}
+
+div.move-card-title {
+    margin-bottom: 0.2rem;
+}
+
+div.move-card-title div.title {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #818181;
+    color: white;
+}
+
+div.move-card-title div.links {
+    position: absolute;
+    right: 0;
+    margin-right: 0.2rem;
+    background-color: #818181;
+}
+
+div.move-card-title div.links i {
+    color: white;
+}
+
+i.vertical-symmetry:before {
+    transform: scaleX(-1);
+}

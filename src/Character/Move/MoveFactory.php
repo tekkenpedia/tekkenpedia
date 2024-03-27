@@ -11,7 +11,7 @@ use App\{
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
     Character\Move\Throw\BehaviorEnum,
-    Character\Move\Throw\Distances,
+    Character\Move\Throw\Distances as ThrowDistances,
     Character\Move\Throw\Frames as ThrowFrames,
     Character\Move\Throw\Throw_,
     Collection\Character\Move\CommentCollection,
@@ -47,7 +47,7 @@ class MoveFactory
                 $data['frames']['escape'],
                 $data['frames']['after-escape']
             ),
-            new Distances(
+            new ThrowDistances(
                 $data['distances']['startup'],
                 $data['distances']['hit'],
                 $data['distances']['escape']
@@ -65,7 +65,11 @@ class MoveFactory
             $name,
             $data['slug'],
             PropertyEnum::create($data['property']),
-            $data['distance'],
+            new Distances(
+                new MinMax($data['distances']['block']['min'], $data['distances']['block']['max']),
+                new MinMax($data['distances']['normal-hit']['min'], $data['distances']['normal-hit']['max']),
+                new MinMax($data['distances']['counter-hit']['min'], $data['distances']['counter-hit']['max'])
+            ),
             new Frames(
                 $data['frames']['startup'],
                 $data['frames']['normal-hit'],
