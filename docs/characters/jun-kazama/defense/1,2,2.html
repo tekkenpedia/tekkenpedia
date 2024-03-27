@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>TekkenPedia</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link href="../../../styles/override.css" rel="stylesheet">
+        <link href="../../../styles/styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="../../../images/favicon.png" />
     </head>
@@ -43,39 +43,61 @@
         <div class="row justify-content-md-center">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
     <div class="card text-center">
-        <img class="card-img-top" src="../../../images/characters/jun-kazama/defense/1,2,2.gif" alt="1,2,2">
+        <div class="card-title move-card-title">
+            <div class="title">1,2,2</div>
+            <div class="links">
+                <a href="../../../characters/jun-kazama/defense/1,2,2.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                <i class="bi bi-link cursor-pointer" data-copy-url="characters/jun-kazama/defense/1,2,2.html" title="Copy link"></i>
+            </div>
+        </div>
+        <br>
+        <img src="../../../images/characters/jun-kazama/defense/1,2,2.gif" alt="1,2,2">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 <tr>
-                    <td class="move col-3">1,2,2</td>
-                    <td class="col-3">Move</td>
-                    <td class="col-3">High</td>
-                    <td class="col-3">
-                        <a href="../../../characters/jun-kazama/defense/1,2,2.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
-                        <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/jun-kazama/defense/1,2,2.html" title="Copy link"></i>
+                    <td class="col-3" title="Move type">Attack</td>
+                    <td class="col-3" title="Property">High</td>
+                    <td class="col-3" title="Startup frames">16</td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">On block</td>
+                </tr>
+
+                <tr>
+                    <td class="text-white bg-danger" title="Frames">+6</td>
+                    <td title="Damages">
+                        0
                     </td>
+                    <td title="Min distance - max distance">1.01<i class="bi bi-arrows"></i>1.04</td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">On normal hit</td>
                 </tr>
 
                 <tr>
-                    <td class="col-3" title="Attack startup frames">16</td>
-                    <td class="text-white bg-danger" title="Frames on block">+11</td>
-                    <td class="col-3" title="Max distance from opponent">2.00</td>
-                </tr>
-
-                <tr>
-                    <td title="Normal hit informations on this row">NH <i class="bi bi-arrow-right"></i></td>
-                    <td class="text-white bg-danger" title="Frames on normal hit">+11</td>
-                    <td title="Damages on normal hit">17</td>
-                    <td title="Behaviors on normal hit">
+                    <td class="text-white bg-danger" title="Frames">+6</td>
+                    <td title="Damage">17</td>
+                    <td title="Min distance - max distance">0.94<i class="bi bi-arrows"></i>1.26</td>
+                    <td title="Behaviors">
                                             </td>
                 </tr>
 
+                <tr class="separator">
+                    <td colspan="4">On counter hit</td>
+                </tr>
+
                 <tr>
-                    <td title="Counter hit informations on this row">CH <i class="bi bi-arrow-right"></i></td>
-                    <td class="text-white bg-danger" title="Frames on counter hit">+20</td>
-                    <td title="Damages on counter hit">20</td>
-                    <td title="Behaviors on counter hit">
+                    <td class="text-white bg-danger" title="Frames">+20</td>
+                    <td title="Damages">20</td>
+                    <td title="Min distance - max distance">0.92<i class="bi bi-arrows"></i>0.92</td>
+                    <td title="Behaviors">
                                             </td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">Steps</td>
                 </tr>
 
                 <tr>
@@ -85,13 +107,17 @@
                     <td class="bg-danger text-white" title="Side walk right">SWR</td>
                 </tr>
 
-                            <tr>
+                                    <tr class="separator">
+                        <td colspan="4">Other information</td>
+                    </tr>
+
+                                <tr>
         <td class="bg-success text-white" colspan="4">2 can be ducked on block or NH.</td>
             </tr>
                 <tr>
         <td class="" colspan="4">Guaranteed if 1 or the first 2 is on CH.</td>
             </tr>
-                </tbody>
+                                </tbody>
         </table>
     </div>
 </div>

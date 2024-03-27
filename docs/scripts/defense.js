@@ -32,8 +32,10 @@ $(function() {
             let $tooltip = $("#tooltip");
             $tooltip.text('Link copied');
 
+            console.log(event.pageY);
+
             $tooltip.css({
-                top: event.pageY + 30,
+                top: event.pageY + 30 - window.scrollY,
                 left: event.pageX - ($tooltip.width() / 2)
             });
 

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>TekkenPedia</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link href="../../../styles/override.css" rel="stylesheet">
+        <link href="../../../styles/styles.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
         <link rel="icon" type="image/png" href="../../../images/favicon.png" />
     </head>
@@ -43,27 +43,29 @@
             <div class="row justify-content-md-center">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
     <div class="card text-center">
-        <img class="card-img-top" src="../../../images/characters/jun-kazama/defense/uf+1+2.gif" alt="uf+1+2">
+        <div class="card-title move-card-title">
+            <div class="title">uf+1+2</div>
+            <div class="links">
+                <a href="../../../characters/jun-kazama/defense/uf+1+2.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
+                <i class="bi bi-link cursor-pointer" data-copy-url="characters/jun-kazama/defense/uf+1+2.html" title="Copy link"></i>
+            </div>
+        </div>
+        <br>
+        <img src="../../../images/characters/jun-kazama/defense/uf+1+2.gif" alt="uf+1+2">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 <tr>
-                    <td class="move col-3">uf+1+2</td>
-                    <td class="col-3">Throw</td>
-                    <td class="col-3 ">High</td>
-                    <td class="col-3">
-                        <a href="../../../characters/jun-kazama/defense/uf+1+2.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
-                        <i class="bi bi-link-45deg cursor-pointer" data-copy-url="characters/jun-kazama/defense/uf+1+2.html" title="Copy link"></i>
-                    </td>
-                </tr>
-
-                <tr>
+                    <td class="col-3" title="Move type">Throw</td>
+                    <td class="col-3 " title="Property">High</td>
                     <td class="bg-success text-white col-3" title="Escape input">
                                                     1+2
                                             </td>
-                    <td title="Damages">40</td>
-                    <td>
+                    <td title="Behaviors">
                                             </td>
-                    <td></td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">Frames</td>
                 </tr>
 
                 <tr>
@@ -81,10 +83,16 @@
                         <td class="col-3 bg-success text-white" title="After escape frames">-6</td>
                                     </tr>
 
+                <tr class="separator">
+                    <td>Damages</td>
+                    <td colspan="3">Distances</td>
+                </tr>
+
                 <tr>
-                    <td title="Max distance from opponent">1.65</td>
+                    <td title="Damages">40</td>
+                    <td title="Max distance from opponent to throw">1.65</td>
                     <td title="Distance after hit">1.90</td>
-                    <td class="col-3" title="Distance after escape">
+                    <td title="Distance after escape">
                                                     1.80
                                             </td>
                 </tr>

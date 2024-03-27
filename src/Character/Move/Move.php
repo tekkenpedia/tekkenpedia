@@ -16,7 +16,7 @@ readonly class Move
         public string $name,
         public string $slug,
         public PropertyEnum $property,
-        public int $distance,
+        public Distances $distances,
         public Frames $frames,
         public Damages $damages,
         public BehaviorEnumCollection $normalHitBehaviors,

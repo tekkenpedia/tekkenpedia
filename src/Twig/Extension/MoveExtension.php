@@ -33,14 +33,14 @@ class MoveExtension extends AbstractExtension
                 $type = MoveBehaviorIconTypeEnum::I;
                 break;
             case BehaviorEnum::KNOCKDOWN:
-                $icon = 'bi-arrow-90deg-down';
+                $icon = 'bi-arrow-90deg-down vertical-symmetry';
                 $title = 'Knockdown';
                 $type = MoveBehaviorIconTypeEnum::I;
                 break;
             case BehaviorEnum::AIR:
-                $icon = 'air';
+                $icon = 'bi-arrow-up-right';
                 $title = 'Air';
-                $type = MoveBehaviorIconTypeEnum::PNG;
+                $type = MoveBehaviorIconTypeEnum::I;
                 break;
             case BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR:
                 $icon = 'delete-recoverable-life-bar';
