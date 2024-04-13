@@ -62,11 +62,11 @@ tr.separator td {
 }
 
 tr.separator td:first-child {
-    border-left: none;
+    border-left-color: #d2d2d275;
 }
 
 tr.separator td:last-child {
-    border-right: none;
+    border-right-color: #d2d2d275;
 }
 
 div.move-card-title {

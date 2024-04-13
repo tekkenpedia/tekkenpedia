@@ -35,9 +35,7 @@ readonly class DefenseGenerator
                 ->generateIndex($character, $filesystem, $output);
 
             foreach ($character->sections->toArray() as $section) {
-                $this
-                    ->generateThrows($character, $section, $filesystem, $output)
-                    ->generateMoves($character, $section, $filesystem, $output);
+                $this->generateMoves($character, $section, $filesystem, $output);
             }
         }
 
@@ -67,37 +65,6 @@ readonly class DefenseGenerator
                 ['character' => $character]
             )
         );
-
-        return $this;
-    }
-
-    private function generateThrows(
-        Character $character,
-        Section $section,
-        Filesystem $filesystem,
-        OutputInterface $output
-    ): static {
-        $rootPath = $this->getRootPath($character);
-
-        foreach ($section->throws->toArray() as $throw) {
-            $renderPathname = $rootPath . '/' . $throw->slug . '.html';
-            $output->writeln('Generating <info>' . $renderPathname . '</info>.');
-
-            $filesystem->dumpFile(
-                $renderPathname,
-                $this->twig->render(
-                    'characters/defense/throw/throw.html.twig',
-                    [
-                        'character' => $character,
-                        'throw' => $throw
-                    ]
-                )
-            );
-        }
-
-        foreach ($section->sections->toArray() as $subSection) {
-            $this->generateThrows($character, $subSection, $filesystem, $output);
-        }
 
         return $this;
     }

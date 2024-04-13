@@ -5,20 +5,25 @@ declare(strict_types=1);
 namespace App\Character\Move;
 
 use App\{
+    Character\Move\Attack\Attack,
+    Character\Move\Attack\Damages,
+    Character\Move\Attack\Distances as AttackDistances,
+    Character\Move\Attack\Frames as AttackFrames,
+    Character\Move\Attack\PropertyEnum,
     Character\Move\Comment\Comment,
     Character\Move\Comment\TypeEnum,
     Character\Move\Comment\WidthEnum,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
-    Character\Move\Throw\BehaviorEnum,
     Character\Move\Throw\Distances as ThrowDistances,
     Character\Move\Throw\Frames as ThrowFrames,
     Character\Move\Throw\Throw_,
+    Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
-    Collection\Character\Move\MoveCollection,
+    Collection\Character\Move\MoveInterfaceCollection,
     Collection\Character\Move\SectionCollection,
-    Collection\Character\Move\Throw\BehaviorEnumCollection,
-    Collection\Character\Move\Throw\ThrowCollection
+    Exception\AppException,
+    Parser\Character\MoveTypeEnum
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
@@ -33,6 +38,62 @@ class MoveFactory
         }
 
         return $sections->setReadOnly();
+    }
+
+    private static function createSection(string $name, array $data): Section
+    {
+        $moves = new MoveInterfaceCollection();
+        foreach ($data['moves'] as $moveName => $moveData) {
+            switch ($moveData['type']) {
+                case MoveTypeEnum::ATTACK->name:
+                    $moves->add(static::createAttack($moveName, $moveData));
+                    break;
+                case MoveTypeEnum::THROW->name:
+                    $moves->add(static::createThrow($moveName, $moveData));
+                    break;
+                default:
+                    throw new AppException('Attack type "' . $moveData['type'] . '" is not taken into account.');
+            }
+        }
+        $moves->setReadOnly();
+
+        $sections = new SectionCollection();
+        foreach ($data['sections'] as $subSectionName => $subSectionData) {
+            $sections->add(static::createSection($subSectionName, $subSectionData));
+        }
+        $sections->setReadOnly();
+
+        return new Section($name, $moves, $sections);
+    }
+
+    private static function createAttack(string $name, array $data): Attack
+    {
+        return new Attack(
+            $name,
+            $data['slug'],
+            PropertyEnum::create($data['property']),
+            new AttackDistances(
+                new MinMax($data['distances']['block']['min'], $data['distances']['block']['max']),
+                new MinMax($data['distances']['normal-hit']['min'], $data['distances']['normal-hit']['max']),
+                new MinMax($data['distances']['counter-hit']['min'], $data['distances']['counter-hit']['max'])
+            ),
+            new AttackFrames(
+                $data['frames']['startup'],
+                $data['frames']['normal-hit'],
+                $data['frames']['counter-hit'],
+                $data['frames']['block']
+            ),
+            new Damages($data['damages']['normal-hit'], $data['damages']['counter-hit']),
+            static::createBehaviors($data['behaviors']['normal-hit']),
+            static::createBehaviors($data['behaviors']['counter-hit']),
+            new Steps(
+                StepEnum::create($data['steps']['ssl']),
+                StepEnum::create($data['steps']['swl']),
+                StepEnum::create($data['steps']['ssr']),
+                StepEnum::create($data['steps']['swr'])
+            ),
+            static::createComments($data)
+        );
     }
 
     private static function createThrow(string $name, array $data): Throw_
@@ -55,36 +116,6 @@ class MoveFactory
             new StringCollection($data['escapes']),
             $data['damage'],
             static::createBehaviors($data['behaviors']),
-            static::createComments($data)
-        );
-    }
-
-    private static function createMove(string $name, array $data): Move
-    {
-        return new Move(
-            $name,
-            $data['slug'],
-            PropertyEnum::create($data['property']),
-            new Distances(
-                new MinMax($data['distances']['block']['min'], $data['distances']['block']['max']),
-                new MinMax($data['distances']['normal-hit']['min'], $data['distances']['normal-hit']['max']),
-                new MinMax($data['distances']['counter-hit']['min'], $data['distances']['counter-hit']['max'])
-            ),
-            new Frames(
-                $data['frames']['startup'],
-                $data['frames']['normal-hit'],
-                $data['frames']['counter-hit'],
-                $data['frames']['block']
-            ),
-            new Damages($data['damages']['normal-hit'], $data['damages']['counter-hit']),
-            static::createBehaviors($data['behaviors']['normal-hit']),
-            static::createBehaviors($data['behaviors']['counter-hit']),
-            new Steps(
-                StepEnum::create($data['steps']['ssl']),
-                StepEnum::create($data['steps']['swl']),
-                StepEnum::create($data['steps']['ssr']),
-                StepEnum::create($data['steps']['swr'])
-            ),
             static::createComments($data)
         );
     }
@@ -113,28 +144,5 @@ class MoveFactory
         }
 
         return $return;
-    }
-
-    private static function createSection(string $name, array $data): Section
-    {
-        $throws = new ThrowCollection();
-        foreach ($data['throws'] as $throwName => $throwData) {
-            $throws->add(static::createThrow($throwName, $throwData));
-        }
-        $throws->setReadOnly();
-
-        $moves = new MoveCollection();
-        foreach ($data['moves'] as $moveName => $moveData) {
-            $moves->add(static::createMove($moveName, $moveData));
-        }
-        $moves->setReadOnly();
-
-        $sections = new SectionCollection();
-        foreach ($data['sections'] as $subSectionName => $subSectionData) {
-            $sections->add(static::createSection($subSectionName, $subSectionData));
-        }
-        $sections->setReadOnly();
-
-        return new Section($name, $throws, $moves, $sections);
     }
 }

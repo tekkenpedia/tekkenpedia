@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Character\Move\Throw;
 
 use App\{
-    Character\Move\PropertyEnum,
-    Collection\Character\Move\CommentCollection,
-    Collection\Character\Move\Throw\BehaviorEnumCollection
+    Character\Move\Attack\PropertyEnum,
+    Character\Move\MoveInterface,
+    Collection\Character\Move\BehaviorEnumCollection,
+    Collection\Character\Move\CommentCollection
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
-readonly class Throw_
+readonly class Throw_ implements MoveInterface
 {
     public function __construct(
         public string $name,
@@ -24,5 +25,10 @@ readonly class Throw_
         public BehaviorEnumCollection $behaviors,
         public CommentCollection $comments
     ) {
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 }

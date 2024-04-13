@@ -10,38 +10,42 @@
         <link rel="icon" type="image/png" href="../../../images/favicon.png" />
     </head>
     <body>
-    <div class="container">
-        {% set breadcrumb = [
-            {
-                "href": "../../../",
-                "label": "TekkenPedia"
-            },
-            {
-                "href": "../../../",
-                "label": "Characters"
-            },
-            {
-                "href": "index.html",
-                "label": character.name
-            },
-            {
-                "href": "index.html",
-                "label": "Defense"
-            },
-            {
-                "label": move.slug
-            }
-        ] %}
-        {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
-        <div class="row justify-content-md-center">
-            {% include 'characters/defense/move.html.twig' with {move: move, character: character, moveClass: "col-12 col-sm-12 col-md-12 col-lg-6"} only %}
+        <div class="container">
+            {% set breadcrumb = [
+                {
+                    "href": "../../../",
+                    "label": "TekkenPedia"
+                },
+                {
+                    "href": "../../../",
+                    "label": "Characters"
+                },
+                {
+                    "href": "index.html",
+                    "label": character.name
+                },
+                {
+                    "href": "index.html",
+                    "label": "Defense"
+                },
+                {
+                    "label": move.getSlug()
+                }
+            ] %}
+            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
+            <div class="row justify-content-md-center">
+                {% if move is instanceof('\\App\\Character\\Move\\Attack\\Attack') %}
+                    {% include 'characters/defense/attack.html.twig' with {character: character, attack: move, containerClass: "col-12 col-sm-12 col-md-12 col-lg-6"} only %}
+                {% elseif move is instanceof('\\App\\Character\\Move\\Throw\\Throw_') %}
+                    {% include 'characters/defense/throw.html.twig' with {character: character, throw: move, containerClass: "col-12 col-sm-12 col-md-12 col-lg-6"} only %}
+                {% endif %}
+            </div>
         </div>
-    </div>
 
-    <div id="tooltip"></div>
+        <div id="tooltip"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../../../scripts/defense.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="../../../scripts/defense.js"></script>
     </body>
 </html>

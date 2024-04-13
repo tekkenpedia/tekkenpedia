@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
+    Character\Move\Attack\PropertyEnum,
+    Character\Move\BehaviorEnum,
     Character\Move\Comment\TypeEnum,
-    Character\Move\PropertyEnum,
     Character\Move\Step\StepEnum,
-    Character\Move\Throw\BehaviorEnum,
-    Collection\Character\Move\Throw\BehaviorEnumCollection
-};
+    Collection\Character\Move\BehaviorEnumCollection};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter
-};
+    TwigFilter};
 
 class BgClassExtension extends AbstractExtension
 {

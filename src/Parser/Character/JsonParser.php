@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Parser\Character;
 
 use App\{
+    Character\Move\Attack\PropertyEnum,
+    Character\Move\BehaviorEnum,
     Character\Move\Comment\TypeEnum,
     Character\Move\Comment\WidthEnum,
-    Character\Move\PropertyEnum,
     Character\Move\Step\StepEnum,
-    Character\Move\Throw\BehaviorEnum,
+    Exception\AppException,
     OptionsResolver\AllowedTypeEnum
 };
-use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\{
     Constraints\Positive,
@@ -76,36 +76,33 @@ class JsonParser
     private function configureSectionResolver(OptionsResolver $resolver, array $section): static
     {
         $resolver
-            ->define('throws')
-            ->default(
-                function (OptionsResolver $resolver) use ($section): void {
-                    foreach (array_keys($section['throws'] ?? []) as $throwName) {
-                        $resolver
-                            ->define($throwName)
-                            ->default(
-                                function(OptionsResolver $moveResolver): void {
-                                    $this->configureThrowResolver($moveResolver);
-                                }
-                            )
-                            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
-                    }
-                }
-            )
-            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
-
-        $resolver
             ->define('moves')
             ->default(
                 function (OptionsResolver $resolver) use ($section): void {
-                    foreach (array_keys($section['moves'] ?? []) as $moveName) {
-                        $resolver
-                            ->define($moveName)
-                            ->default(
-                                function(OptionsResolver $moveResolver): void {
-                                    $this->configureMoveResolver($moveResolver);
-                                }
-                            )
-                            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+                    foreach ($section['moves'] ?? [] as $name => $move) {
+                        $type = MoveTypeEnum::create($move['type'] ?? 'ATTACK');
+
+                        if ($type === MoveTypeEnum::ATTACK) {
+                            $resolver
+                                ->define($name)
+                                ->default(
+                                    function(OptionsResolver $moveResolver): void {
+                                        $this->configureMoveResolver($moveResolver);
+                                    }
+                                )
+                                ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+                        } elseif ($type === MoveTypeEnum::THROW) {
+                            $resolver
+                                ->define($name)
+                                ->default(
+                                    function(OptionsResolver $moveResolver): void {
+                                        $this->configureThrowResolver($moveResolver);
+                                    }
+                                )
+                                ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+                        } else {
+                            throw new AppException('Attack type "' . $type->name . '" is not taken into account.');
+                        }
                     }
                 }
             )
@@ -134,6 +131,12 @@ class JsonParser
 
     private function configureThrowResolver(OptionsResolver $resolver): static
     {
+        $resolver
+            ->define('type')
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::STRING->value)
+            ->allowedValues(MoveTypeEnum::THROW->name);
+
         $resolver
             ->define('slug')
             ->required()
@@ -206,6 +209,12 @@ class JsonParser
 
     private function configureMoveResolver(OptionsResolver $resolver): static
     {
+        $resolver
+            ->define('type')
+            ->default(MoveTypeEnum::ATTACK->name)
+            ->allowedTypes(AllowedTypeEnum::STRING->value)
+            ->allowedValues(MoveTypeEnum::ATTACK->name);
+
         $resolver
             ->define('slug')
             ->required()

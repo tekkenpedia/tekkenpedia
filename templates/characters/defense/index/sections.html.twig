@@ -8,10 +8,6 @@
     </h{{ level }}>
 
     <div data-toggle="{{ toggleId }}">
-        {% if section.throws.count() > 0 %}
-            {% include 'characters/defense/index/throws.html.twig' with {section: section, character: character} only %}
-        {% endif %}
-
         {% if section.moves.count() > 0 %}
             {% include 'characters/defense/index/moves.html.twig' with {section: section, character: character} only %}
         {% endif %}
