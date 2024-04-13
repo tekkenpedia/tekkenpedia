@@ -11,10 +11,17 @@
         <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.name }}.gif" alt="{{ attack.name }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
+                <tr class="separator">
+                    <td class="col-3">Type</td>
+                    <td class="col-3">Property</td>
+                    <td class="col-3">Frames</td>
+                    <td class="col-3"></td>
+                </tr>
+
                 <tr>
-                    <td class="col-3" title="Move type">Attack</td>
-                    <td class="col-3" title="Property">{{ attack.property|format_attack_property }}</td>
-                    <td class="col-3" title="Startup frames">{{ attack.frames.startup|format_frame(true) }}</td>
+                    <td title="Move type">Attack</td>
+                    <td title="Property">{{ attack.property|format_attack_property }}</td>
+                    <td title="Startup frames">{{ attack.frames.startup|format_frame(true) }}</td>
                 </tr>
 
                 <tr class="separator">
