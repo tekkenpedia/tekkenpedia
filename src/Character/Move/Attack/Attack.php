@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move;
+namespace App\Character\Move\Attack;
 
 use App\{
+    Character\Move\MoveInterface,
     Character\Move\Step\Steps,
-    Collection\Character\Move\CommentCollection,
-    Collection\Character\Move\Throw\BehaviorEnumCollection
+    Collection\Character\Move\BehaviorEnumCollection,
+    Collection\Character\Move\CommentCollection
 };
 
-readonly class Move
+readonly class Attack implements MoveInterface
 {
     public function __construct(
         public string $name,
@@ -24,5 +25,10 @@ readonly class Move
         public Steps $steps,
         public CommentCollection $comments
     ) {
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 }

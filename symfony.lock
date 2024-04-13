@@ -1,4 +1,7 @@
 {
+    "lelyfoto/twig-instanceof": {
+        "version": "v1.2"
+    },
     "symfony/console": {
         "version": "7.0",
         "recipe": {

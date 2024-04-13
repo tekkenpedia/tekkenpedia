@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Character\Move\Throw\BehaviorEnum;
+use App\Character\Move\BehaviorEnum;
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter
-};
+    TwigFilter};
 
 class MoveExtension extends AbstractExtension
 {

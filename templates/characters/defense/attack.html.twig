@@ -1,0 +1,83 @@
+<div class="{{ containerClass }}">
+    <div class="card text-center">
+        <div class="card-title move-card-title">
+            <div class="title">{{ attack.name }}</div>
+            <div class="links">
+                <a href="../../../characters/{{ character.slug }}/defense/{{ attack.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ attack.slug }}.html" title="Copy link"></i>
+            </div>
+        </div>
+        <br>
+        <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.name }}.gif" alt="{{ attack.name }}">
+        <table class="table table-bordered table-sm mb-0">
+            <tbody>
+                <tr>
+                    <td class="col-3" title="Move type">Attack</td>
+                    <td class="col-3" title="Property">{{ attack.property|format_property }}</td>
+                    <td class="col-3" title="Startup frames">{{ attack.frames.startup|format_frame(true) }}</td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">On block</td>
+                </tr>
+
+                <tr>
+                    <td class="{{ attack.frames.block|frame_bg_class }}" title="Frames">{{ attack.frames.block|format_frame }}</td>
+                    <td title="Damages">
+                        0
+                    </td>
+                    <td title="Min distance - max distance">{{ attack.distances.block|format_distances }}</td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">On normal hit</td>
+                </tr>
+
+                <tr>
+                    <td class="{{ attack.frames.normalHit|frame_bg_class }}" title="Frames">{{ attack.frames.normalHit|format_frame }}</td>
+                    <td title="Damage">{{ attack.damages.normalHit }}</td>
+                    <td title="Min distance - max distance">{{ attack.distances.normalHit|format_distances }}</td>
+                    <td title="Behaviors">
+                        {% for behavior in attack.normalHitBehaviors.toArray() %}
+                            {{ behavior|move_behavior_icon }}
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">On counter hit</td>
+                </tr>
+
+                <tr>
+                    <td class="{{ attack.frames.counterHit|frame_bg_class }}" title="Frames">{{ attack.frames.counterHit|format_frame }}</td>
+                    <td title="Damages">{{ attack.damages.counterHit }}</td>
+                    <td title="Min distance - max distance">{{ attack.distances.counterHit|format_distances }}</td>
+                    <td title="Behaviors">
+                        {% for behavior in attack.counterHitBehaviors.toArray() %}
+                            {{ behavior|move_behavior_icon }}
+                        {% endfor %}
+                    </td>
+                </tr>
+
+                <tr class="separator">
+                    <td colspan="4">Steps</td>
+                </tr>
+
+                <tr>
+                    <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left">SSL</td>
+                    <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left">SWL</td>
+                    <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right">SSR</td>
+                    <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right">SWR</td>
+                </tr>
+
+                {% if attack.comments.count > 0 %}
+                    <tr class="separator">
+                        <td colspan="4">Other information</td>
+                    </tr>
+
+                    {% include 'characters/defense/index/comments.html.twig' with {comments: attack.comments} only %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
-    Character\Move\MinMax,
-    Character\Move\PropertyEnum
-};
+    Character\Move\Attack\PropertyEnum,
+    Character\Move\MinMax};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter
-};
+    TwigFilter};
 
 class FormatExtension extends AbstractExtension
 {

@@ -2,8 +2,9 @@
     "name": "Jun Kazama",
     "moves": {
         "Throws": {
-            "throws": {
+            "moves": {
                 "1+3": {
+                    "type": "THROW",
                     "slug": "1+3",
                     "frames": {
                         "startup": 12,
@@ -23,6 +24,7 @@
                     "damage": 35
                 },
                 "2+4": {
+                    "type": "THROW",
                     "slug": "2+4",
                     "frames": {
                         "startup": 12,
@@ -42,6 +44,7 @@
                     "damage": 35
                 },
                 "df+2+3": {
+                    "type": "THROW",
                     "slug": "df+2+3",
                     "frames": {
                         "startup": 12,
@@ -61,6 +64,7 @@
                     "damage": 40
                 },
                 "uf+1+2": {
+                    "type": "THROW",
                     "slug": "uf+1+2",
                     "frames": {
                         "startup": 12,
@@ -79,6 +83,7 @@
                     "damage": 40
                 },
                 "FC,db+1+2": {
+                    "type": "THROW",
                     "slug": "FC,db+1+2",
                     "frames": {
                         "startup": 11,

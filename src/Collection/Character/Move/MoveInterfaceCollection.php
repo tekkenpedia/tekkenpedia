@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace App\Collection\Character\Move;
 
-use App\Character\Move\Move;
+use App\Character\Move\MoveInterface;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
-class MoveCollection extends AbstractObjectCollection
+class MoveInterfaceCollection extends AbstractObjectCollection
 {
     public function __construct()
     {
-        parent::__construct(Move::class);
+        parent::__construct(MoveInterface::class);
     }
 
-    public function add(Move $move): static
+    public function add(MoveInterface $move): static
     {
         return $this->doAdd($move);
     }
 
-    /** @return array<Move> */
+    /** @return array<MoveInterface> */
     public function toArray(): array
     {
         return parent::toArray();
