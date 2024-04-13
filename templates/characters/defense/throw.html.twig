@@ -11,10 +11,17 @@
         <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.name }}.gif" alt="{{ throw.name }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
+                <tr class="separator">
+                    <td class="col-3">Type</td>
+                    <td class="col-3">Property</td>
+                    <td class="col-3">Escape</td>
+                    <td class="col-3">Behaviors</td>
+                </tr>
+
                 <tr>
-                    <td class="col-3" title="Move type">Throw</td>
-                    <td class="col-3 {{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_throw_property }}</td>
-                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
+                    <td title="Move type">Throw</td>
+                    <td class="{{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_throw_property }}</td>
+                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white" title="Escape input">
                         {% if throw.escapes.count() > 0 %}
                             {{ throw.escapes.toArray()|join(' or ') }}
                         {% else %}
