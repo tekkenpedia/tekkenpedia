@@ -9,7 +9,7 @@ use App\{
     Character\Move\Attack\Damages,
     Character\Move\Attack\Distances as AttackDistances,
     Character\Move\Attack\Frames as AttackFrames,
-    Character\Move\Attack\PropertyEnum,
+    Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
     Character\Move\Comment\Comment,
     Character\Move\Comment\TypeEnum,
     Character\Move\Comment\WidthEnum,
@@ -17,6 +17,7 @@ use App\{
     Character\Move\Step\Steps,
     Character\Move\Throw\Distances as ThrowDistances,
     Character\Move\Throw\Frames as ThrowFrames,
+    Character\Move\Throw\PropertyEnum as ThrowPropertyEnum,
     Character\Move\Throw\Throw_,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
@@ -71,7 +72,7 @@ class MoveFactory
         return new Attack(
             $name,
             $data['slug'],
-            PropertyEnum::create($data['property']),
+            AttackPropertyEnum::create($data['property']),
             new AttackDistances(
                 new MinMax($data['distances']['block']['min'], $data['distances']['block']['max']),
                 new MinMax($data['distances']['normal-hit']['min'], $data['distances']['normal-hit']['max']),
@@ -101,7 +102,7 @@ class MoveFactory
         return new Throw_(
             $name,
             $data['slug'],
-            PropertyEnum::create($data['property']),
+            ThrowPropertyEnum::create($data['property']),
             new ThrowFrames(
                 $data['frames']['startup'],
                 $data['frames']['hit'],

@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
-    Character\Move\Attack\PropertyEnum,
-    Character\Move\MinMax};
+    Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
+    Character\Move\MinMax,
+    Character\Move\Throw\PropertyEnum as ThrowPropertyEnum
+};
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter};
@@ -17,12 +19,18 @@ class FormatExtension extends AbstractExtension
     {
         return [
             new TwigFilter('format_frame', [$this, 'formatFrame']),
-            new TwigFilter('format_property', [$this, 'formatProperty']),
+            new TwigFilter('format_attack_property', [$this, 'formatAttackProperty']),
+            new TwigFilter('format_throw_property', [$this, 'formatThrowProperty']),
             new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']])
         ];
     }
 
-    public function formatProperty(PropertyEnum $property): string
+    public function formatAttackProperty(AttackPropertyEnum $property): string
+    {
+        return ucfirst(strtolower($property->name));
+    }
+
+    public function formatThrowProperty(ThrowPropertyEnum $property): string
     {
         return ucfirst(strtolower($property->name));
     }

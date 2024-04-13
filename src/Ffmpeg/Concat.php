@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Ffmpeg;
 
-use App\Collection\Symfony\Component\Finder\SplFileInfoCollection;
+use App\{
+    Collection\Symfony\Component\Finder\SplFileInfoCollection,
+    Exception\AppException
+};
 use FFMpeg\{
     FFMpeg,
     Media\Video
@@ -38,7 +41,7 @@ class Concat
         $finder = $this->createFinder();
 
         if (count($finder) <= 0) {
-            throw new \Exception('No videos to concat found in ' . $this->path . '.');
+            throw new AppException('No videos to concat found in ' . $this->path . '.');
         }
 
         /** @var Video $video */
