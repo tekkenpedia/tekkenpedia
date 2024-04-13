@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Character\Move\Throw;
 
 use App\{
-    Character\Move\Attack\PropertyEnum,
     Character\Move\MoveInterface,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection

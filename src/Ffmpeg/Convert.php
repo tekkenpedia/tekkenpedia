@@ -6,6 +6,7 @@ namespace App\Ffmpeg;
 
 use App\{
     Collection\Symfony\Component\Finder\SplFileInfoCollection,
+    Exception\AppException,
     Ffmpeg\Filter\Gif30FpsFilter
 };
 use FFMpeg\{
@@ -38,7 +39,7 @@ class Convert
     {
         $videos = $this->findVideos();
         if ($videos->count() <= 0) {
-            throw new \Exception('No videos to convert found in ' . $this->getPath() . '.');
+            throw new AppException('No videos to convert found in ' . $this->getPath() . '.');
         }
 
         $dimensions = new Dimension(320, 180);

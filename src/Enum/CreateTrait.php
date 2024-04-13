@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
+use App\Exception\AppException;
+
 trait CreateTrait
 {
     public static function create(string $name): static
@@ -14,6 +16,6 @@ trait CreateTrait
             }
         }
 
-        throw new \Exception('Invalid value "' . $name . '" for enum ' . static::class . '.');
+        throw new AppException('Invalid value "' . $name . '" for enum ' . static::class . '.');
     }
 }

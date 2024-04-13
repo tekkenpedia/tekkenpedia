@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Attack;
+namespace App\Character\Move\Throw;
 
 use App\{
     Enum\CreateTrait,

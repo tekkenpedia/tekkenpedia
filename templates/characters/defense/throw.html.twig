@@ -13,7 +13,7 @@
             <tbody>
                 <tr>
                     <td class="col-3" title="Move type">Throw</td>
-                    <td class="col-3 {{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_property }}</td>
+                    <td class="col-3 {{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_throw_property }}</td>
                     <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white col-3" title="Escape input">
                         {% if throw.escapes.count() > 0 %}
                             {{ throw.escapes.toArray()|join(' or ') }}
