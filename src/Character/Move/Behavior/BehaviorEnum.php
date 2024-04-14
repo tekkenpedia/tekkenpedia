@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move;
+namespace App\Character\Move\Behavior;
 
 use App\{
     Enum\CreateTrait,

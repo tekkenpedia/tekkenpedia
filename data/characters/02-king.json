@@ -1,0 +1,89 @@
+{
+    "name": "King",
+    "slug": "king",
+    "moves": {
+        "Throws": {
+            "moves": {
+                "1+3": {
+                    "type": "THROW",
+                    "slug": "1+3",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": 21,
+                        "after-escape": -6
+                    },
+                    "distances": {
+                        "startup": 190,
+                        "hit": 195,
+                        "escape": 291
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
+                "2+4": {
+                    "type": "THROW",
+                    "slug": "2.4",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": 21,
+                        "after-escape": -3
+                    },
+                    "distances": {
+                        "startup": 195,
+                        "hit": 184,
+                        "escape": 174
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
+                "f,hcf+1": {
+                    "type": "THROW",
+                    "slug": "f,hcf+1",
+                    "frames": {
+                        "startup": {
+                            "min": 10
+                        },
+                        "hit": {
+                            "normal": 22,
+                            "ukemi": -30,
+                            "wall": -23
+                        },
+                        "escape": 23,
+                        "after-escape": -13
+                    },
+                    "distances": {
+                        "startup": 1,
+                        "hit": 1,
+                        "escape": 1
+                    },
+                    "escapes": ["1"],
+                    "damages": {
+                        "normal": 65,
+                        "ukemi": 45,
+                        "wall": 70
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 {
     "name": "Jun Kazama",
+    "slug": "jun-kazama",
     "moves": {
         "Throws": {
             "moves": {
@@ -7,8 +8,12 @@
                     "type": "THROW",
                     "slug": "1+3",
                     "frames": {
-                        "startup": 12,
-                        "hit": 0,
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
                         "escape": 21,
                         "after-escape": 0
                     },
@@ -21,14 +26,20 @@
                         "1",
                         "2"
                     ],
-                    "damage": 35
+                    "damages": {
+                        "normal": 35
+                    }
                 },
                 "2+4": {
                     "type": "THROW",
                     "slug": "2+4",
                     "frames": {
-                        "startup": 12,
-                        "hit": 0,
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
                         "escape": 21,
                         "after-escape": 0
                     },
@@ -41,14 +52,20 @@
                         "1",
                         "2"
                     ],
-                    "damage": 35
+                    "damages": {
+                        "normal": 35
+                    }
                 },
                 "df+2+3": {
                     "type": "THROW",
                     "slug": "df+2+3",
                     "frames": {
-                        "startup": 12,
-                        "hit": -6,
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": -6
+                        },
                         "escape": 21,
                         "after-escape": -6
                     },
@@ -61,14 +78,20 @@
                     "escapes": [
                         "2"
                     ],
-                    "damage": 40
+                    "damages": {
+                        "normal": 40
+                    }
                 },
                 "uf+1+2": {
                     "type": "THROW",
                     "slug": "uf+1+2",
                     "frames": {
-                        "startup": 12,
-                        "hit": 0,
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
                         "escape": 21,
                         "after-escape": -6
                     },
@@ -80,15 +103,21 @@
                     "escapes": [
                         "1+2"
                     ],
-                    "damage": 40
+                    "damages": {
+                        "normal": 40
+                    }
                 },
                 "FC,db+1+2": {
                     "type": "THROW",
                     "slug": "FC,db+1+2",
                     "frames": {
-                        "startup": 11,
+                        "startup": {
+                            "min": 11
+                        },
+                        "hit": {
+                            "normal": 56
+                        },
                         "escape": 21,
-                        "hit": 56,
                         "after-escape": -6
                     },
                     "behaviors": ["AIR"],
@@ -100,7 +129,9 @@
                     "escapes": [
                         "1+2"
                     ],
-                    "damage": 15
+                    "damages": {
+                        "normal": 15
+                    }
                 }
             }
         },

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Character\Move\BehaviorEnum;
+use App\Character\Move\Behavior\BehaviorEnum;
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter};

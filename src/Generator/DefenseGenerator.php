@@ -7,8 +7,7 @@ namespace App\Generator;
 use App\{
     Character\Character,
     Character\CharacterFactory,
-    Character\Move\Section
-};
+    Character\Section\Section};
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
