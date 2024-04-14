@@ -1,0 +1,492 @@
+{
+    "name": "Jun Kazama",
+    "slug": "jun-kazama",
+    "moves": {
+        "Throws": {
+            "moves": {
+                "1+3": {
+                    "type": "THROW",
+                    "slug": "1+3",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": 21,
+                        "after-escape": 0
+                    },
+                    "distances": {
+                        "startup": 175,
+                        "hit": {
+                            "normal": 310
+                        },
+                        "escape": 220
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
+                "2+4": {
+                    "type": "THROW",
+                    "slug": "2+4",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": 21,
+                        "after-escape": 0
+                    },
+                    "distances": {
+                        "startup": 175,
+                        "hit": {
+                            "normal": 130
+                        },
+                        "escape": 300
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
+                "df+2+3": {
+                    "type": "THROW",
+                    "slug": "df+2+3",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": -6
+                        },
+                        "escape": 21,
+                        "after-escape": -6
+                    },
+                    "behaviors": ["FLOOR_BREAK_BLAST"],
+                    "distances": {
+                        "startup": 175,
+                        "hit": {
+                            "normal": 230
+                        },
+                        "escape": 160
+                    },
+                    "escapes": [
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 40
+                    }
+                },
+                "uf+1+2": {
+                    "type": "THROW",
+                    "slug": "uf+1+2",
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": 21,
+                        "after-escape": -6
+                    },
+                    "distances": {
+                        "startup": 165,
+                        "hit": {
+                            "normal": 190
+                        },
+                        "escape": 180
+                    },
+                    "escapes": [
+                        "1+2"
+                    ],
+                    "damages": {
+                        "normal": 40
+                    }
+                },
+                "FC,db+1+2": {
+                    "type": "THROW",
+                    "slug": "FC,db+1+2",
+                    "frames": {
+                        "startup": {
+                            "min": 11
+                        },
+                        "hit": {
+                            "normal": 56
+                        },
+                        "escape": 21,
+                        "after-escape": -6
+                    },
+                    "behaviors": ["AIR"],
+                    "distances": {
+                        "startup": 170,
+                        "hit": {
+                            "normal": 190
+                        },
+                        "escape": 165
+                    },
+                    "escapes": [
+                        "1+2"
+                    ],
+                    "damages": {
+                        "normal": 15
+                    }
+                }
+            }
+        },
+        "Basics": {
+            "moves": {
+                "db+2": {
+                    "slug": "db+2",
+                    "property": "LOW",
+                    "frames": {
+                        "startup": 23,
+                        "normal-hit": 2,
+                        "counter-hit": 14,
+                        "block": -12
+                    },
+                    "distances": {
+                        "startup": 290,
+                        "block": {
+                            "min": 159,
+                            "max": 196
+                        },
+                        "normal-hit": {
+                            "min": 156,
+                            "max": 214
+                        },
+                        "counter-hit": {
+                            "min": 184,
+                            "max": 234
+                        }
+                    },
+                    "damages": {
+                        "normal-hit": 15,
+                        "counter-hit": 18
+                    },
+                    "steps": {
+                        "swl": "EASY",
+                        "ssr": "EASY",
+                        "swr": "EASY"
+                    },
+                    "comments": [
+                        {
+                            "comment": "High crush at the end.",
+                            "type": "STRENGTH"
+                        }
+                    ]
+                },
+                "f+4": {
+                    "slug": "f+4",
+                    "property": "HIGH",
+                    "frames": {
+                        "startup": 19,
+                        "normal-hit": 13,
+                        "counter-hit": 13,
+                        "block": 3
+                    },
+                    "distances": {
+                        "startup": 250,
+                        "block": {
+                            "min": 126,
+                            "max": 137
+                        },
+                        "normal-hit": {
+                            "min": 151,
+                            "max": 174
+                        },
+                        "counter-hit": {
+                            "min": 151,
+                            "max": 174
+                        }
+                    },
+                    "damages": {
+                        "normal-hit": 21,
+                        "counter-hit": 25
+                    },
+                    "comments": [
+                        {
+                            "comment": "1+2 (heat engager) is guaranteed on NH/CH.",
+                            "type": "STRENGTH"
+                        }
+                    ]
+                },
+                "f,f+1+2": {
+                    "slug": "f,f+1+2",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": 22,
+                        "normal-hit": 23,
+                        "counter-hit": 23,
+                        "block": 6
+                    },
+                    "behaviors": {
+                        "normal-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ],
+                        "counter-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ]
+                    },
+                    "distances": {
+                        "startup": 300,
+                        "block": {
+                            "min": 163,
+                            "max": 203
+                        },
+                        "normal-hit": {
+                            "min": 481,
+                            "max": 525
+                        },
+                        "counter-hit": {
+                            "min": 481,
+                            "max": 525
+                        }
+                    },
+                    "damages": {
+                        "normal-hit": 30,
+                        "counter-hit": 36
+                    },
+                    "steps": {
+                        "swl": "EASY",
+                        "ssr": "EASY",
+                        "swr": "EASY"
+                    }
+                },
+                "SS2": {
+                    "slug": "SS2",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": 16,
+                        "normal-hit": 14,
+                        "counter-hit": 34,
+                        "block": -9
+                    },
+                    "behaviors": {
+                        "normal-hit": ["WALL_SPLAT_BREAK_BOUND"],
+                        "counter-hit": [
+                            "WALL_SPLAT_BREAK_BOUND",
+                            "KNOCKDOWN"
+                        ]
+                    },
+                    "distances": {
+                        "startup": 220,
+                        "block": {
+                            "min": 170,
+                            "max": 213
+                        },
+                        "normal-hit": {
+                            "min": 393,
+                            "max": 434
+                        },
+                        "counter-hit": {
+                            "min": 254,
+                            "max": 296
+                        }
+                    },
+                    "damages": {
+                        "normal-hit": 27,
+                        "counter-hit": 32
+                    },
+                    "steps": {
+                        "ssl": "EASY",
+                        "swl": "EASY",
+                        "ssr": "EASY",
+                        "swr": "EASY"
+                    },
+                    "comments": [
+                        {
+                            "comment": "f,f+1+2 is guaranteed on CH.",
+                            "type": "STRENGTH"
+                        }
+                    ]
+                }
+            }
+        },
+        "1,2": {
+            "sections": {
+                "1,2,2": {
+                    "moves": {
+                        "1,2,2": {
+                            "slug": "1,2,2",
+                            "property": "HIGH",
+                            "frames": {
+                                "startup": 16,
+                                "normal-hit": 6,
+                                "counter-hit": 20,
+                                "block": 6
+                            },
+                            "distances": {
+                                "startup": 200,
+                                "block": {
+                                    "min": 101,
+                                    "max": 104
+                                },
+                                "normal-hit": {
+                                    "min": 94,
+                                    "max": 126
+                                },
+                                "counter-hit": {
+                                    "min": 92,
+                                    "max": 92
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 17,
+                                "counter-hit": 20
+                            },
+                            "comments": [
+                                {
+                                    "comment": "2 can be ducked on block or NH.",
+                                    "type": "DEFENSE"
+                                },
+                                {
+                                    "comment": "Guaranteed if 1 or the first 2 is on CH."
+                                }
+                            ]
+                        },
+                        "1,2,2,2": {
+                            "slug": "1,2,2,2",
+                            "property": "MIDDLE",
+                            "frames": {
+                                "startup": 23,
+                                "normal-hit": 34,
+                                "counter-hit": 34,
+                                "block": -13
+                            },
+                            "behaviors": {
+                                "normal-hit": ["AIR"],
+                                "counter-hit": ["AIR"]
+                            },
+                            "distances": {
+                                "startup": 350,
+                                "block": {
+                                    "min": 99,
+                                    "max": 165
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 24,
+                                "counter-hit": 28
+                            },
+                            "steps": {
+                                "swl": "EASY"
+                            },
+                            "comments": [
+                                {
+                                    "comment": "High crush most of the time.",
+                                    "type": "STRENGTH"
+                                }
+                            ]
+                        },
+                        "1,2,2,1": {
+                            "slug": "1,2,2,1",
+                            "property": "HIGH",
+                            "frames": {
+                                "startup": 13,
+                                "normal-hit": 4,
+                                "counter-hit": 4,
+                                "block": -7
+                            },
+                            "distances": {
+                                "startup": 260,
+                                "block": {
+                                    "min": 152,
+                                    "max": 180
+                                },
+                                "normal-hit": {
+                                    "min": 160,
+                                    "max": 190
+                                },
+                                "counter-hit": {
+                                    "min": 160,
+                                    "max": 190
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 7,
+                                "counter-hit": 8
+                            },
+                            "steps": {
+                                "ssr": "EASY",
+                                "swr": "EASY"
+                            },
+                            "comments": [
+                                {
+                                    "comment": "1 can be ducked on block, NH or CH.",
+                                    "type": "DEFENSE"
+                                }
+                            ]
+                        },
+                        "1,2,2,1,1": {
+                            "slug": "1,2,2,1,1",
+                            "property": "HIGH",
+                            "frames": {
+                                "startup": 23,
+                                "normal-hit": 30,
+                                "counter-hit": 30,
+                                "block": -4
+                            },
+                            "behaviors": {
+                                "normal-hit": [
+                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "KNOCKDOWN"
+                                ],
+                                "counter-hit": [
+                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "KNOCKDOWN"
+                                ]
+                            },
+                            "distances": {
+                                "startup": 270,
+                                "block": {
+                                    "min": 170,
+                                    "max": 208
+                                },
+                                "normal-hit": {
+                                    "min": 500,
+                                    "max": 510
+                                },
+                                "counter-hit": {
+                                    "min": 500,
+                                    "max": 510
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 26,
+                                "counter-hit": 31
+                            },
+                            "comments": [
+                                {
+                                    "comment": "1,1 can be ducked on block, NH or CH.",
+                                    "type": "DEFENSE"
+                                },
+                                {
+                                    "comment": "1 can be ducked on block.",
+                                    "type": "DEFENSE"
+                                },
+                                {
+                                    "comment": "SWR from the one before the last steps the last 1.",
+                                    "type": "DEFENSE"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -40,11 +40,27 @@
                 </tr>
 
                 <tr>
+
                     <td
-                        class="col-3{% if throw.frames.startup < 12 %} bg-danger text-white{% elseif throw.frames.startup > 12 %} bg-warning{% endif %}"
+                        class="col-3{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}"
                         title="Startup frames"
-                    >{{ throw.frames.startup|format_frame(true) }}</td>
-                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="After hit frames">{{ throw.frames.hit|format_frame(true) }}</td>
+                    >{{ throw.frames.startup|format_throw_startup_frames() }}</td>
+                    {% set title = 'Hit frames' %}
+                    {% if throw.frames.hit.ukemi is not null %}
+                        {% set title = title ~ ' - Hit frames when ukemi' %}
+                    {% endif %}
+                    {% if throw.frames.hit.wall is not null %}
+                        {% set title = title ~ ' - Hit frames with a wall' %}
+                    {% endif %}
+                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="{{ title }}">
+                        {{ throw.frames.hit.normal|format_frame(true) }}
+                        {% if throw.frames.hit.ukemi is not null %}
+                            {{ throw.frames.hit.ukemi|format_frame(true) }}
+                        {% endif %}
+                        {% if throw.frames.hit.wall is not null %}
+                            {{ throw.frames.hit.wall|format_frame(true) }}
+                        {% endif %}
+                    </td>
                     {% if throw.frames.escape is not null %}
                         <td
                             class="col-3{% if throw.frames.escape < 21 %} bg-danger text-white{% elseif throw.frames.escape > 21 %} bg-warning{% endif %}"
@@ -64,9 +80,33 @@
                 </tr>
 
                 <tr>
-                    <td title="Damages">{{ throw.damage }}</td>
+                    {% set title = 'Damages' %}
+                    {% if throw.damages.ukemi is not null %}
+                        {% set title = title ~ ' - Damages when ukemi' %}
+                    {% endif %}
+                    {% if throw.damages.wall is not null %}
+                        {% set title = title ~ ' - Damages with a wall' %}
+                    {% endif %}
+                    <td title="{{ title }}">
+                        {{ throw.damages.normal }}
+                        {% if throw.damages.ukemi is not null %}
+                            {{ throw.damages.ukemi }}
+                        {% endif %}
+                        {% if throw.damages.wall is not null %}
+                            {{ throw.damages.wall }}
+                        {% endif %}
+                    </td>
                     <td title="Max distance from opponent to throw">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
-                    <td title="Distance after hit">{{ (throw.distances.hit / 100)|number_format(2) }}</td>
+                    {% set title = 'Distance after hit' %}
+                    {% if throw.distances.hit.ukemi is not null %}
+                        {% set title = title ~ ' - Distance after ukemi' %}
+                    {% endif %}
+                    <td title="{{ title }}">
+                        {{ (throw.distances.hit.normal / 100)|number_format(2) }}
+                        {% if throw.distances.hit.ukemi is not null %}
+                            {{ (throw.distances.hit.ukemi / 100)|number_format(2) }}
+                        {% endif %}
+                    </td>
                     <td title="Distance after escape">
                         {% if throw.distances.escape is not null %}
                             {{ (throw.distances.escape / 100)|number_format(2) }}
