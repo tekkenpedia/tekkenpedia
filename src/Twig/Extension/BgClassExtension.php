@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
-    Character\Move\Throw\PropertyEnum,
-    Character\Move\BehaviorEnum,
+    Character\Move\Behavior\BehaviorEnum,
     Character\Move\Comment\TypeEnum,
     Character\Move\Step\StepEnum,
-    Collection\Character\Move\BehaviorEnumCollection
-};
+    Character\Move\Throw\Frames\Hit as ThrowFramesHit,
+    Character\Move\Throw\PropertyEnum,
+    Collection\Character\Move\BehaviorEnumCollection};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter
-};
+    TwigFilter};
 
 class BgClassExtension extends AbstractExtension
 {
@@ -49,11 +48,11 @@ class BgClassExtension extends AbstractExtension
         };
     }
 
-    public function throwHitBgClass(int $frame, BehaviorEnumCollection $behaviors): ?string
+    public function throwHitBgClass(ThrowFramesHit $framesHit, BehaviorEnumCollection $behaviors): ?string
     {
-        if ($frame === 0 || $behaviors->contains(BehaviorEnum::AIR)) {
+        if ($framesHit->normal === 0 || $behaviors->contains(BehaviorEnum::AIR)) {
             $return = null;
-        } elseif ($frame < 0) {
+        } elseif ($framesHit->normal < 0) {
             $return = 'bg-success text-white';
         } else {
             $return = 'bg-danger text-white';

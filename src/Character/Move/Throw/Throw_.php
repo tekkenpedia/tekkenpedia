@@ -6,9 +6,9 @@ namespace App\Character\Move\Throw;
 
 use App\{
     Character\Move\MoveInterface,
+    Character\Move\Throw\Frames\Frames,
     Collection\Character\Move\BehaviorEnumCollection,
-    Collection\Character\Move\CommentCollection
-};
+    Collection\Character\Move\CommentCollection};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 readonly class Throw_ implements MoveInterface
@@ -20,7 +20,7 @@ readonly class Throw_ implements MoveInterface
         public Frames $frames,
         public Distances $distances,
         public StringCollection $escapes,
-        public int $damage,
+        public Damages $damages,
         public BehaviorEnumCollection $behaviors,
         public CommentCollection $comments
     ) {

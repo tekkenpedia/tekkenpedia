@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Character\Move\Attack;
 
-use App\Character\Move\MinMax;
+use App\Character\Move\Distance\MinMax;
 
 readonly class Distances
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character;
+namespace App\Parser\Character\Move;
 
 use App\Enum\CreateTrait;
 

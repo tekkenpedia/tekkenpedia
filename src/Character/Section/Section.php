@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move;
+namespace App\Character\Section;
 
 use App\{
     Collection\Character\Move\MoveInterfaceCollection,
-    Collection\Character\Move\SectionCollection
-};
+    Collection\Character\Move\SectionCollection};
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
 readonly class Section

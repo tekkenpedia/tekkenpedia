@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Character;
 
 use App\{
-    Character\Move\MoveFactory,
+    Character\Move\MovesFactory,
     Collection\Character\CharacterCollection,
     Parser\Character\JsonParser
 };
@@ -21,25 +21,25 @@ readonly class CharacterFactory
         $this->charactersPath = $projectDir . '/data/characters';
     }
 
-    public function create(string $slug): Character
+    public function create(string $fileName): Character
     {
-        $jsonPathname = $this->charactersPath . '/' . $slug . '.json';
+        $jsonPathname = $this->charactersPath . '/' . $fileName . '.json';
         $data = $this->jsonParser->getData($jsonPathname);
 
-        return new Character($data['name'], $slug, MoveFactory::create($data));
+        return new Character($data['name'], $data['slug'], MovesFactory::create($data));
     }
 
     public function createAll(): CharacterCollection
     {
         $return = new CharacterCollection();
-        foreach ($this->getSlugs()->toArray() as $slug) {
-            $return->add($this->create($slug));
+        foreach ($this->getFileNames()->toArray() as $fileName) {
+            $return->add($this->create($fileName));
         }
 
         return $return->setReadOnly();
     }
 
-    private function getSlugs(): StringCollection
+    private function getFileNames(): StringCollection
     {
         $files = (new Finder())
             ->in($this->charactersPath)
