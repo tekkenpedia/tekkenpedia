@@ -34,7 +34,7 @@
                 },
                 "2+4": {
                     "type": "THROW",
-                    "slug": "2.4",
+                    "slug": "2+4",
                     "frames": {
                         "startup": {
                             "min": 12
@@ -68,7 +68,7 @@
                             "min": 10
                         },
                         "hit": {
-                            "normal": 22,
+                            "normal": -22,
                             "ukemi": -30,
                             "wall": -23
                         },
@@ -91,8 +91,52 @@
                     },
                     "comments": [
                         {
-                            "comment": "You have 6 frames to ukemi when you hit the ground to reduce the damages by 20.",
+                            "comment": "You have 8 frames to ukemi when you hit the ground to reduce the damages by 20.",
                             "type": "DEFENSE"
+                        }
+                    ]
+                },
+                "f,hcf+1 (blue)": {
+                    "type": "THROW",
+                    "slug": "f,hcf+1-blue",
+                    "frames": {
+                        "startup": {
+                            "min": 10
+                        },
+                        "hit": {
+                            "normal": -22,
+                            "ukemi": -30,
+                            "wall": -23
+                        },
+                        "escape": 19,
+                        "after-escape": -13
+                    },
+                    "distances": {
+                        "startup": 210,
+                        "hit": {
+                            "normal": 606,
+                            "ukemi": 547
+                        },
+                        "escape": 327
+                    },
+                    "escapes": ["1"],
+                    "damages": {
+                        "normal": 70,
+                        "ukemi": 50,
+                        "wall": 70
+                    },
+                    "comments": [
+                        {
+                            "comment": "You have 8 frames to ukemi when you hit the ground to reduce the damages by 20.",
+                            "type": "DEFENSE"
+                        },
+                        {
+                            "comment": "Blue version has 4 frames less to escape.",
+                            "type": "STRENGTH"
+                        },
+                        {
+                            "comment": "Blue version is +5 damages on normal and ukemi, same damages on wall.",
+                            "type": "STRENGTH"
                         }
                     ]
                 }
