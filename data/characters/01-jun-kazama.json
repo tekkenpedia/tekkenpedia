@@ -19,7 +19,9 @@
                     },
                     "distances": {
                         "startup": 175,
-                        "hit": 310,
+                        "hit": {
+                            "normal": 310
+                        },
                         "escape": 220
                     },
                     "escapes": [
@@ -45,7 +47,9 @@
                     },
                     "distances": {
                         "startup": 175,
-                        "hit": 130,
+                        "hit": {
+                            "normal": 130
+                        },
                         "escape": 300
                     },
                     "escapes": [
@@ -72,7 +76,9 @@
                     "behaviors": ["FLOOR_BREAK_BLAST"],
                     "distances": {
                         "startup": 175,
-                        "hit": 230,
+                        "hit": {
+                            "normal": 230
+                        },
                         "escape": 160
                     },
                     "escapes": [
@@ -97,7 +103,9 @@
                     },
                     "distances": {
                         "startup": 165,
-                        "hit": 190,
+                        "hit": {
+                            "normal": 190
+                        },
                         "escape": 180
                     },
                     "escapes": [
@@ -123,7 +131,9 @@
                     "behaviors": ["AIR"],
                     "distances": {
                         "startup": 170,
-                        "hit": 190,
+                        "hit": {
+                            "normal": 190
+                        },
                         "escape": 165
                     },
                     "escapes": [

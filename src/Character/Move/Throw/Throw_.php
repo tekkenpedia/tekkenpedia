@@ -6,7 +6,8 @@ namespace App\Character\Move\Throw;
 
 use App\{
     Character\Move\MoveInterface,
-    Character\Move\Throw\Frames\Frames,
+    Character\Move\Throw\Distance\Distances,
+    Character\Move\Throw\Frame\Frames,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;

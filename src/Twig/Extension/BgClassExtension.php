@@ -8,7 +8,7 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     Character\Move\Comment\TypeEnum,
     Character\Move\Step\StepEnum,
-    Character\Move\Throw\Frames\Hit as ThrowFramesHit,
+    Character\Move\Throw\Frame\Hit as ThrowFramesHit,
     Character\Move\Throw\PropertyEnum,
     Collection\Character\Move\BehaviorEnumCollection};
 use Twig\{

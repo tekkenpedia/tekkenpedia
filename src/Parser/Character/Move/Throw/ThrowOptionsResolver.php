@@ -10,8 +10,8 @@ use App\{
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
-    Parser\Character\Move\Throw\Frames\FramesOptionsResolver
-};
+    Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
+    Parser\Character\Move\Throw\Frame\FramesOptionsResolver};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ThrowOptionsResolver

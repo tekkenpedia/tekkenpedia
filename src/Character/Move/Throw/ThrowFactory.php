@@ -7,9 +7,11 @@ namespace App\Character\Move\Throw;
 use App\{
     Character\Move\Behavior\BehaviorsFactory,
     Character\Move\Comment\CommentsFactory,
-    Character\Move\Throw\Frames\Frames,
-    Character\Move\Throw\Frames\Hit,
-    Character\Move\Throw\Frames\Startup
+    Character\Move\Throw\Distance\Distances,
+    Character\Move\Throw\Distance\Hit as DistancesHit,
+    Character\Move\Throw\Frame\Frames,
+    Character\Move\Throw\Frame\Hit as FramesHit,
+    Character\Move\Throw\Frame\Startup
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
@@ -23,7 +25,7 @@ class ThrowFactory
             PropertyEnum::create($throw['property']),
             new Frames(
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),
-                new Hit(
+                new FramesHit(
                     $throw['frames']['hit']['normal'],
                     $throw['frames']['hit']['ukemi'],
                     $throw['frames']['hit']['wall']
@@ -33,7 +35,7 @@ class ThrowFactory
             ),
             new Distances(
                 $throw['distances']['startup'],
-                $throw['distances']['hit'],
+                new DistancesHit($throw['distances']['hit']['normal'], $throw['distances']['hit']['ukemi']),
                 $throw['distances']['escape']
             ),
             new StringCollection($throw['escapes']),

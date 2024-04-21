@@ -19,7 +19,9 @@
                     },
                     "distances": {
                         "startup": 190,
-                        "hit": 195,
+                        "hit": {
+                            "normal": 195
+                        },
                         "escape": 291
                     },
                     "escapes": [
@@ -45,7 +47,9 @@
                     },
                     "distances": {
                         "startup": 195,
-                        "hit": 184,
+                        "hit": {
+                            "normal": 184
+                        },
                         "escape": 174
                     },
                     "escapes": [
@@ -72,16 +76,25 @@
                         "after-escape": -13
                     },
                     "distances": {
-                        "startup": 1,
-                        "hit": 1,
-                        "escape": 1
+                        "startup": 210,
+                        "hit": {
+                            "normal": 606,
+                            "ukemi": 547
+                        },
+                        "escape": 327
                     },
                     "escapes": ["1"],
                     "damages": {
                         "normal": 65,
                         "ukemi": 45,
                         "wall": 70
-                    }
+                    },
+                    "comments": [
+                        {
+                            "comment": "You have 6 frames to ukemi when you hit the ground to reduce the damages by 20.",
+                            "type": "DEFENSE"
+                        }
+                    ]
                 }
             }
         }

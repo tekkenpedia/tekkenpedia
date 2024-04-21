@@ -97,7 +97,16 @@
                         {% endif %}
                     </td>
                     <td title="Max distance from opponent to throw">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
-                    <td title="Distance after hit">{{ (throw.distances.hit / 100)|number_format(2) }}</td>
+                    {% set title = 'Distance after hit' %}
+                    {% if throw.distances.hit.ukemi is not null %}
+                        {% set title = title ~ ' - Distance after ukemi' %}
+                    {% endif %}
+                    <td title="{{ title }}">
+                        {{ (throw.distances.hit.normal / 100)|number_format(2) }}
+                        {% if throw.distances.hit.ukemi is not null %}
+                            {{ (throw.distances.hit.ukemi / 100)|number_format(2) }}
+                        {% endif %}
+                    </td>
                     <td title="Distance after escape">
                         {% if throw.distances.escape is not null %}
                             {{ (throw.distances.escape / 100)|number_format(2) }}
