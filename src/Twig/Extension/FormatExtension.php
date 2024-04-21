@@ -7,7 +7,7 @@ namespace App\Twig\Extension;
 use App\{
     Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
     Character\Move\Distance\MinMax,
-    Character\Move\Throw\Frames\Startup as ThrowFramesStartup,
+    Character\Move\Throw\Frame\Startup as ThrowFramesStartup,
     Character\Move\Throw\PropertyEnum as ThrowPropertyEnum
 };
 use Twig\{
