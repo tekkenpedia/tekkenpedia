@@ -16,7 +16,7 @@ class MovesFactory
         $sections = new SectionCollection();
 
         foreach ($moves['moves'] as $sectionName => &$sectionData) {
-            $sections->add(SectionFactory::create($sectionName, $sectionData));
+            $sections->add(SectionFactory::create($sectionName, $sectionData, $moves));
         }
 
         return $sections->setReadOnly();

@@ -17,11 +17,12 @@ use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class ThrowFactory
 {
-    public static function create(string $name, array &$throw): Throw_
+    public static function create(string $id, array &$throw): Throw_
     {
         return new Throw_(
-            $name,
-            $throw['slug'],
+            $id,
+            $throw['name'],
+            $throw['slug'] ?? $throw['name'],
             PropertyEnum::create($throw['property']),
             new Frames(
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),

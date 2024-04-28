@@ -21,7 +21,7 @@
                 <tr>
                     <td title="Move type">Attack</td>
                     <td title="Property">{{ attack.property|format_attack_property }}</td>
-                    <td title="Startup frames">{{ attack.frames.startup|format_frame(true) }}</td>
+                    <td title="Startup frames">{{ attack.frames.startup|format_min_max_frames(true) }}</td>
                 </tr>
 
                 <tr class="separator">
@@ -71,10 +71,10 @@
                 </tr>
 
                 <tr>
-                    <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left">SSL</td>
-                    <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left">SWL</td>
-                    <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right">SSR</td>
-                    <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right">SWR</td>
+                    <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssl|step_difficulty }}">SSL</td>
+                    <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left - Difficulty: {{ attack.steps.swl|step_difficulty }}">SWL</td>
+                    <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right - Difficulty: {{ attack.steps.ssr|step_difficulty }}">SSR</td>
+                    <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right - Difficulty: {{ attack.steps.swr|step_difficulty }}">SWR</td>
                 </tr>
 
                 {% if attack.comments.count > 0 %}

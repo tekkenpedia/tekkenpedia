@@ -44,7 +44,7 @@
                     <td
                         class="col-3{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}"
                         title="Startup frames"
-                    >{{ throw.frames.startup|format_throw_startup_frames() }}</td>
+                    >{{ throw.frames.startup|format_min_max_frames() }}</td>
                     {% set title = 'Hit frames' %}
                     {% if throw.frames.hit.ukemi is not null %}
                         {% set title = title ~ ' - Hit frames when ukemi' %}

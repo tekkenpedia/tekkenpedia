@@ -4,12 +4,13 @@
     "moves": {
         "Throws": {
             "moves": {
-                "1+3": {
+                "7aea3568-b4e9-4825-b5d2-9af2c913d006": {
                     "type": "THROW",
-                    "slug": "1+3",
+                    "name": "1+3",
                     "frames": {
                         "startup": {
-                            "min": 12
+                            "min": 12,
+                            "max": 14
                         },
                         "hit": {
                             "normal": 0
@@ -32,12 +33,13 @@
                         "normal": 35
                     }
                 },
-                "2+4": {
+                "27d6c801-ba7c-45f3-a86f-a68c25cd0dd8": {
                     "type": "THROW",
-                    "slug": "2+4",
+                    "name": "2+4",
                     "frames": {
                         "startup": {
-                            "min": 12
+                            "min": 12,
+                            "max": 14
                         },
                         "hit": {
                             "normal": 0
@@ -60,9 +62,9 @@
                         "normal": 35
                     }
                 },
-                "df+2+3": {
+                "24314740-642c-4290-99e7-37b018591f08": {
                     "type": "THROW",
-                    "slug": "df+2+3",
+                    "name": "df+2+3",
                     "frames": {
                         "startup": {
                             "min": 12
@@ -88,9 +90,9 @@
                         "normal": 40
                     }
                 },
-                "uf+1+2": {
+                "1eb2c4e6-4cac-4815-a9f8-ee75c297a89c": {
                     "type": "THROW",
-                    "slug": "uf+1+2",
+                    "name": "uf+1+2",
                     "frames": {
                         "startup": {
                             "min": 12
@@ -115,12 +117,13 @@
                         "normal": 40
                     }
                 },
-                "FC,db+1+2": {
+                "adfa85be-7ae0-415e-9600-4f11544600d1": {
                     "type": "THROW",
-                    "slug": "FC,db+1+2",
+                    "name": "FC,db+1+2",
                     "frames": {
                         "startup": {
-                            "min": 11
+                            "min": 11,
+                            "max": 12
                         },
                         "hit": {
                             "normal": 56
@@ -147,11 +150,14 @@
         },
         "Basics": {
             "moves": {
-                "db+2": {
-                    "slug": "db+2",
+                "0c46b58c-a95a-4b0f-9a93-f868626f313b": {
+                    "name": "db+2",
                     "property": "LOW",
                     "frames": {
-                        "startup": 23,
+                        "startup": {
+                            "min": 23,
+                            "max": 24
+                        },
                         "normal-hit": 2,
                         "counter-hit": 14,
                         "block": -12
@@ -187,11 +193,14 @@
                         }
                     ]
                 },
-                "f+4": {
-                    "slug": "f+4",
+                "27fbfcbf-ebd9-4e15-92a0-dd92220c8e0b": {
+                    "name": "f+4",
                     "property": "HIGH",
                     "frames": {
-                        "startup": 19,
+                        "startup": {
+                            "min": 19,
+                            "max": 21
+                        },
                         "normal-hit": 13,
                         "counter-hit": 13,
                         "block": 3
@@ -222,11 +231,13 @@
                         }
                     ]
                 },
-                "f,f+1+2": {
-                    "slug": "f,f+1+2",
+                "02f6489f-f5b7-4194-beed-33784fedfceb": {
+                    "name": "f,f+1+2",
                     "property": "MIDDLE",
                     "frames": {
-                        "startup": 22,
+                        "startup": {
+                            "min": 22
+                        },
                         "normal-hit": 23,
                         "counter-hit": 23,
                         "block": 6
@@ -266,11 +277,13 @@
                         "swr": "EASY"
                     }
                 },
-                "SS2": {
-                    "slug": "SS2",
+                "0e60546c-fee2-41e9-bb59-e32dfa4c4dd4": {
+                    "name": "SS2",
                     "property": "MIDDLE",
                     "frames": {
-                        "startup": 16,
+                        "startup": {
+                            "min": 16
+                        },
                         "normal-hit": 14,
                         "counter-hit": 34,
                         "block": -9
@@ -320,11 +333,14 @@
             "sections": {
                 "1,2,2": {
                     "moves": {
-                        "1,2,2": {
-                            "slug": "1,2,2",
+                        "19764b90-b8ef-425d-8c52-5c0edcbda5e5": {
+                            "name": "1,2,2",
                             "property": "HIGH",
                             "frames": {
-                                "startup": 16,
+                                "startup": {
+                                    "min": 16,
+                                    "max": 17
+                                },
                                 "normal-hit": 6,
                                 "counter-hit": 20,
                                 "block": 6
@@ -358,11 +374,14 @@
                                 }
                             ]
                         },
-                        "1,2,2,2": {
-                            "slug": "1,2,2,2",
+                        "23274ec1-7778-4435-83d5-9f3f1064cdd0": {
+                            "name": "1,2,2,2",
                             "property": "MIDDLE",
                             "frames": {
-                                "startup": 23,
+                                "startup": {
+                                    "min": 23,
+                                    "max": 25
+                                },
                                 "normal-hit": 34,
                                 "counter-hit": 34,
                                 "block": -13
@@ -392,11 +411,14 @@
                                 }
                             ]
                         },
-                        "1,2,2,1": {
-                            "slug": "1,2,2,1",
+                        "9736f5d5-ffcb-473c-ab05-891439c58f57": {
+                            "name": "1,2,2,1",
                             "property": "HIGH",
                             "frames": {
-                                "startup": 13,
+                                "startup": {
+                                    "min": 13,
+                                    "max": 14
+                                },
                                 "normal-hit": 4,
                                 "counter-hit": 4,
                                 "block": -7
@@ -431,11 +453,14 @@
                                 }
                             ]
                         },
-                        "1,2,2,1,1": {
-                            "slug": "1,2,2,1,1",
+                        "e6f4b44b-21d8-44cc-9c77-3347adc6f4f2": {
+                            "name": "1,2,2,1,1",
                             "property": "HIGH",
                             "frames": {
-                                "startup": 23,
+                                "startup": {
+                                    "min": 23,
+                                    "max": 24
+                                },
                                 "normal-hit": 30,
                                 "counter-hit": 30,
                                 "block": -4

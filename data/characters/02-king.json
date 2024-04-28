@@ -4,9 +4,9 @@
     "moves": {
         "Throws": {
             "moves": {
-                "1+3": {
+                "3ef5450d-9b74-40f5-b519-29f1ccfa9d0f": {
                     "type": "THROW",
-                    "slug": "1+3",
+                    "name": "1+3",
                     "frames": {
                         "startup": {
                             "min": 12
@@ -32,9 +32,9 @@
                         "normal": 35
                     }
                 },
-                "2+4": {
+                "fbb44cf6-a7af-4d57-84da-dcf56fec729a": {
                     "type": "THROW",
-                    "slug": "2+4",
+                    "name": "2+4",
                     "frames": {
                         "startup": {
                             "min": 12
@@ -60,9 +60,9 @@
                         "normal": 35
                     }
                 },
-                "f,hcf+1": {
+                "d7416f9d-61ac-4af4-b68f-bf9a6e82e470": {
                     "type": "THROW",
-                    "slug": "f,hcf+1",
+                    "name": "f,hcf+1",
                     "frames": {
                         "startup": {
                             "min": 10
@@ -96,8 +96,9 @@
                         }
                     ]
                 },
-                "f,hcf+1 (blue)": {
+                "b0815c01-cf71-4d91-8383-2a9de83d35bb": {
                     "type": "THROW",
+                    "name": "f,hcf+1 (blue)",
                     "slug": "f,hcf+1-blue",
                     "frames": {
                         "startup": {
@@ -139,6 +140,46 @@
                             "type": "STRENGTH"
                         }
                     ]
+                }
+            }
+        },
+        "Basics": {
+            "moves": {
+                "4d90c341-836b-422c-84a3-fed8451573bc": {
+                    "name": "f+3",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 15,
+                            "max": 16
+                        },
+                        "normal-hit": 1,
+                        "counter-hit": 9,
+                        "block": -8
+                    },
+                    "damages": {
+                        "normal-hit": 18,
+                        "counter-hit": 21
+                    },
+                    "steps": {
+                        "ssl": "EASY",
+                        "swl": "EASY",
+                        "ssr": "MEDIUM",
+                        "swr": "MEDIUM"
+                    }
+                },
+                "11b65604-bcd5-45f6-b106-f80bb1a88dae": {
+                    "name": "f+3:1+2",
+                    "parent": "4d90c341-836b-422c-84a3-fed8451573bc",
+                    "frames": {
+                        "normal-hit": 1,
+                        "counter-hit": 1,
+                        "block": -8
+                    },
+                    "damages": {
+                        "normal-hit": 38,
+                        "counter-hit": 41
+                    }
                 }
             }
         }

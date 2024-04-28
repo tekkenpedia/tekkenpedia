@@ -8,7 +8,7 @@ use App\Collection\Character\Move\BehaviorEnumCollection;
 
 class BehaviorsFactory
 {
-    public static function create(array &$behaviors): BehaviorEnumCollection
+    public static function create(array $behaviors): BehaviorEnumCollection
     {
         $return = new BehaviorEnumCollection();
         foreach ($behaviors as $behavior) {

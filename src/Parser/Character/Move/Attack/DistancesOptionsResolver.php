@@ -17,8 +17,8 @@ class DistancesOptionsResolver
     {
         $resolver
             ->define('startup')
-            ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
             ->allowedValues(Validation::createIsValidCallable(new Positive()));
 
         static::defineMinMax($resolver, 'block');
