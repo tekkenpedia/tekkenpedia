@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Character\Move\Attack;
 
 use App\{
+    Character\Move\Attack\Frame\Frames,
     Character\Move\MoveInterface,
     Character\Move\Step\Steps,
     Collection\Character\Move\BehaviorEnumCollection,
@@ -14,6 +15,7 @@ use App\{
 readonly class Attack implements MoveInterface
 {
     public function __construct(
+        public string $id,
         public string $name,
         public string $slug,
         public PropertyEnum $property,

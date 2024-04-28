@@ -9,12 +9,14 @@ use App\{
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Frame\Frames,
     Collection\Character\Move\BehaviorEnumCollection,
-    Collection\Character\Move\CommentCollection};
+    Collection\Character\Move\CommentCollection
+};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 readonly class Throw_ implements MoveInterface
 {
     public function __construct(
+        public string $id,
         public string $name,
         public string $slug,
         public PropertyEnum $property,

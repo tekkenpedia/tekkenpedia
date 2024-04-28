@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Throw\Frame;
+namespace App\Character\Move\Attack\Frame;
 
 use App\Character\Move\MinMaxFramesInterface;
 

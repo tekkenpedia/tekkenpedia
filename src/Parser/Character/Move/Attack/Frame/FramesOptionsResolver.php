@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character\Move\Attack;
+namespace App\Parser\Character\Move\Attack\Frame;
 
 use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,8 +13,12 @@ class FramesOptionsResolver
     {
         $resolver
             ->define('startup')
-            ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+            ->default(
+                static function(OptionsResolver $resolver): void {
+                    StartupOptionsResolver::configure($resolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
             ->define('normal-hit')

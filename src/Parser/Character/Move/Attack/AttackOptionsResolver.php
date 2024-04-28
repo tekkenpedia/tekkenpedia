@@ -9,7 +9,9 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
-    Parser\Character\Move\MoveTypeEnum};
+    Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
+    Parser\Character\Move\MoveTypeEnum
+};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AttackOptionsResolver
@@ -18,23 +20,33 @@ class AttackOptionsResolver
     {
         $resolver
             ->define('type')
-            ->default(MoveTypeEnum::ATTACK->name)
-            ->allowedTypes(AllowedTypeEnum::STRING->value)
-            ->allowedValues(MoveTypeEnum::ATTACK->name);
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
+            ->allowedValues(MoveTypeEnum::ATTACK->name, null);
 
         $resolver
-            ->define('slug')
+            ->define('name')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
         $resolver
+            ->define('parent')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+
+        $resolver
+            ->define('slug')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+
+        $resolver
             ->define('property')
-            ->required()
-            ->allowedValues(...PropertyEnum::getNames()->toArray());
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
+            ->allowedValues(...[...PropertyEnum::getNames()->toArray(), null]);
 
         $resolver
             ->define('frames')
-            ->required()
             ->default(
                 static function(OptionsResolver $framesResolver): void {
                     FramesOptionsResolver::configure($framesResolver);

@@ -18,4 +18,13 @@ class SectionCollection extends AbstractObjectCollection
     {
         return $this->doAdd($section);
     }
+
+    /** @return array<Section> */
+    public function toArray(): array
+    {
+        /** @var array<Section> $return */
+        $return = parent::toArray();
+
+        return $return;
+    }
 }

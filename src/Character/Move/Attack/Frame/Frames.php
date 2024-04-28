@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Attack;
+namespace App\Character\Move\Attack\Frame;
 
 readonly class Frames
 {
     public function __construct(
-        public int $startup,
+        public Startup $startup,
         public int $normalHit,
         public int $counterHit,
         public int $block

@@ -13,22 +13,22 @@ class StepsOptionsResolver
     {
         $resolver
             ->define('ssl')
-            ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getNames()->toArray());
+            ->default(null)
+            ->allowedValues(...[...StepEnum::getNames()->toArray(), null]);
 
         $resolver
             ->define('swl')
-            ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getNames()->toArray());
+            ->default(null)
+            ->allowedValues(...[...StepEnum::getNames()->toArray(), null]);
 
         $resolver
             ->define('ssr')
-            ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getNames()->toArray());
+            ->default(null)
+            ->allowedValues(...[...StepEnum::getNames()->toArray(), null]);
 
         $resolver
             ->define('swr')
-            ->default(StepEnum::IMPOSSIBLE->name)
-            ->allowedValues(...StepEnum::getNames()->toArray());
+            ->default(null)
+            ->allowedValues(...[...StepEnum::getNames()->toArray(), null]);
     }
 }
