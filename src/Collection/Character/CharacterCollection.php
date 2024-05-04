@@ -19,6 +19,19 @@ class CharacterCollection extends AbstractObjectCollection
         return $this->doAdd($move);
     }
 
+    public function findForSelectScreen(int $line, int $position): ?Character
+    {
+        $return = null;
+        foreach ($this->toArray() as $character) {
+            if ($character->selectScreen->line === $line && $character->selectScreen->position === $position) {
+                $return = $character;
+                break;
+            }
+        }
+
+        return $return;
+    }
+
     /** @return array<Character> */
     public function toArray(): array
     {

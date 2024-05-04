@@ -12,6 +12,7 @@ use App\{
     Character\Move\Distance\MinMax,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
+    Character\Move\Visibility,
     Exception\AppException
 };
 
@@ -25,6 +26,7 @@ class AttackFactory
             $id,
             $attack['name'],
             $attack['slug'] ?? $attack['name'],
+            new Visibility($attack['visibility']['defense']),
             PropertyEnum::create(static::getData($attack, $parentAttack, 'property')),
             new Distances(
                 new MinMax(

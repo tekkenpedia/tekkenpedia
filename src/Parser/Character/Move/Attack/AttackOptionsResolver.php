@@ -10,7 +10,8 @@ use App\{
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
-    Parser\Character\Move\MoveTypeEnum
+    Parser\Character\Move\MoveTypeEnum,
+    Parser\Character\Move\VisibilityOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -38,6 +39,15 @@ class AttackOptionsResolver
             ->define('slug')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+
+        $resolver
+            ->define('visibility')
+            ->default(
+                static function(OptionsResolver $visibilityResolver): void {
+                    VisibilityOptionsResolver::configure($visibilityResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
             ->define('property')

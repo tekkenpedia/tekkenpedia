@@ -8,6 +8,7 @@ use App\{
     Character\Move\MoveInterface,
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Frame\Frames,
+    Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection
 };
@@ -19,6 +20,7 @@ readonly class Throw_ implements MoveInterface
         public string $id,
         public string $name,
         public string $slug,
+        public Visibility $visibility,
         public PropertyEnum $property,
         public Frames $frames,
         public Distances $distances,
@@ -32,5 +34,10 @@ readonly class Throw_ implements MoveInterface
     public function getSlug(): string
     {
         return $this->slug;
+    }
+
+    public function getVisibility(): Visibility
+    {
+        return $this->visibility;
     }
 }

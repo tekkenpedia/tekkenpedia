@@ -8,7 +8,11 @@ use App\Collection\Character\Move\SectionCollection;
 
 readonly class Character
 {
-    public function __construct(public string $name, public string $slug, public SectionCollection $sections)
-    {
+    public function __construct(
+        public string $name,
+        public string $slug,
+        public SelectScreen $selectScreen,
+        public SectionCollection $sections
+    ) {
     }
 }

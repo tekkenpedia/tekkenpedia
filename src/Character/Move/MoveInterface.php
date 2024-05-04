@@ -7,4 +7,6 @@ namespace App\Character\Move;
 interface MoveInterface
 {
     public function getSlug(): string;
+
+    public function getVisibility(): Visibility;
 }

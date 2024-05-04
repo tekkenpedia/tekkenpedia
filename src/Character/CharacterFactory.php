@@ -26,7 +26,12 @@ readonly class CharacterFactory
         $jsonPathname = $this->charactersPath . '/' . $fileName . '.json';
         $data = $this->jsonParser->getData($jsonPathname);
 
-        return new Character($data['name'], $data['slug'], MovesFactory::create($data));
+        return new Character(
+            $data['name'],
+            $data['slug'],
+            new SelectScreen($data['select-screen']['line'], $data['select-screen']['position']),
+            MovesFactory::create($data)
+        );
     }
 
     public function createAll(): CharacterCollection
