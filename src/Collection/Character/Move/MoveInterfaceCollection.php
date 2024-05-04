@@ -19,6 +19,19 @@ class MoveInterfaceCollection extends AbstractObjectCollection
         return $this->doAdd($move);
     }
 
+    public function hasDefenseMoves(): bool
+    {
+        $return = false;
+        foreach ($this->toArray() as $move) {
+            if ($move->getVisibility()->defense) {
+                $return = true;
+                break;
+            }
+        }
+
+        return $return;
+    }
+
     /** @return array<MoveInterface> */
     public function toArray(): array
     {

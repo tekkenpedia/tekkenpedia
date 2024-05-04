@@ -1,0 +1,9 @@
+{
+    "name": "Marshall Law",
+    "slug": "marshall-law",
+    "select-screen": {
+        "line": 2,
+        "position": 9
+    },
+    "moves": {}
+}

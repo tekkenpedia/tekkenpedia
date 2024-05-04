@@ -8,6 +8,7 @@ use App\{
     Character\Move\Attack\Frame\Frames,
     Character\Move\MoveInterface,
     Character\Move\Step\Steps,
+    Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection
 };
@@ -18,6 +19,7 @@ readonly class Attack implements MoveInterface
         public string $id,
         public string $name,
         public string $slug,
+        public Visibility $visibility,
         public PropertyEnum $property,
         public Distances $distances,
         public Frames $frames,
@@ -32,5 +34,10 @@ readonly class Attack implements MoveInterface
     public function getSlug(): string
     {
         return $this->slug;
+    }
+
+    public function getVisibility(): Visibility
+    {
+        return $this->visibility;
     }
 }

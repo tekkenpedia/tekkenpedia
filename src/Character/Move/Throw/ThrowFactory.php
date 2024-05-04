@@ -11,7 +11,8 @@ use App\{
     Character\Move\Throw\Distance\Hit as DistancesHit,
     Character\Move\Throw\Frame\Frames,
     Character\Move\Throw\Frame\Hit as FramesHit,
-    Character\Move\Throw\Frame\Startup
+    Character\Move\Throw\Frame\Startup,
+    Character\Move\Visibility
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
@@ -23,6 +24,7 @@ class ThrowFactory
             $id,
             $throw['name'],
             $throw['slug'] ?? $throw['name'],
+            new Visibility($throw['visibility']['defense']),
             PropertyEnum::create($throw['property']),
             new Frames(
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),

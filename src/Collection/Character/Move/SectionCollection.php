@@ -19,6 +19,20 @@ class SectionCollection extends AbstractObjectCollection
         return $this->doAdd($section);
     }
 
+    public function hasDefenseMoves(): bool
+    {
+        $return = false;
+
+        foreach ($this->toArray() as $section) {
+            if ($section->hasDefenseMoves()) {
+                $return = true;
+                break;
+            }
+        }
+
+        return $return;
+    }
+
     /** @return array<Section> */
     public function toArray(): array
     {

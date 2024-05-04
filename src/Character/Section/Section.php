@@ -6,7 +6,8 @@ namespace App\Character\Section;
 
 use App\{
     Collection\Character\Move\MoveInterfaceCollection,
-    Collection\Character\Move\SectionCollection};
+    Collection\Character\Move\SectionCollection
+};
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
 readonly class Section
@@ -19,5 +20,10 @@ readonly class Section
         public SectionCollection $sections
     ) {
         $this->slug = (new AsciiSlugger())->slug($this->name)->toString();
+    }
+
+    public function hasDefenseMoves(): bool
+    {
+        return $this->moves->hasDefenseMoves() || $this->sections->hasDefenseMoves();
     }
 }

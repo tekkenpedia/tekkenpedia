@@ -21,17 +21,25 @@
         ] %}
         {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
 
-        <div class="row">
-            {% for character in characters.toArray() %}
-                <div class="col-4 col-sm-2 col-md-2 col-lg-1">
-                    <div class="card text-center">
-                        <a href="characters/{{ character.slug }}/defense">
-                            <img class="card-img-top" src="images/characters/{{ character.slug }}/avatar.png" alt="{{ character.name }}" title="{{ character.name }}">
-                        </a>
+        {% for line in 1..4 %}
+            <div class="row">
+                {% for position in 1..11 %}
+                    <div class="col-4 col-sm-2 col-md-2 col-lg-1 pt-3">
+                        <div class="card no-border text-center">
+                            {% set character = characters.findForSelectScreen(line, position) %}
+                            {% if character is not null %}
+                                <img class="card-img-top" src="images/characters/{{ character.slug }}/avatar.png" alt="{{ character.name }}" title="{{ character.name }}">
+                                {% if character.sections.hasDefenseMoves() %}
+                                    <a href="characters/{{ character.slug }}/defense">Defense</a>
+                                {% else %}
+                                    Defense
+                                {% endif %}
+                            {% endif %}
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

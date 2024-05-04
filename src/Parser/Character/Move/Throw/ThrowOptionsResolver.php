@@ -11,7 +11,9 @@ use App\{
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
-    Parser\Character\Move\Throw\Frame\FramesOptionsResolver};
+    Parser\Character\Move\Throw\Frame\FramesOptionsResolver,
+    Parser\Character\Move\VisibilityOptionsResolver
+};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ThrowOptionsResolver
@@ -33,6 +35,15 @@ class ThrowOptionsResolver
             ->define('slug')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+
+        $resolver
+            ->define('visibility')
+            ->default(
+                static function(OptionsResolver $visibilityResolver): void {
+                    VisibilityOptionsResolver::configure($visibilityResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
             ->define('frames')

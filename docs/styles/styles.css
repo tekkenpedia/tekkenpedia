@@ -97,3 +97,11 @@ div.move-card-title div.links i {
 i.vertical-symmetry:before {
     transform: scaleX(-1);
 }
+
+.card-img-top {
+    border-radius: 0;
+}
+
+.no-border {
+    border: 0;
+}
