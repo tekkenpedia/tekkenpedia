@@ -7,6 +7,7 @@ namespace App\Character\Move\Throw;
 use App\{
     Character\Move\Behavior\BehaviorsFactory,
     Character\Move\Comment\CommentsFactory,
+    Character\Move\PatchNote\PatchNotesFactory,
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Distance\Hit as DistancesHit,
     Character\Move\Throw\Frame\Frames,
@@ -44,7 +45,8 @@ class ThrowFactory
             new StringCollection($throw['escapes']),
             new Damages($throw['damages']['normal'], $throw['damages']['ukemi'], $throw['damages']['wall']),
             BehaviorsFactory::create($throw['behaviors']),
-            CommentsFactory::create($throw['comments'])
+            CommentsFactory::create($throw['comments']),
+            PatchNotesFactory::create($throw['patch-notes'])
         );
     }
 }

@@ -102,6 +102,28 @@ i.vertical-symmetry:before {
     border-radius: 0;
 }
 
+.card {
+    border-radius: 0;
+}
+
 .no-border {
     border: 0;
+}
+
+.card-menu i {
+    font-size: 6rem;
+}
+
+.card-menu {
+    font-size: 2rem;
+    color: black;
+}
+
+.card-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+.card-menu a:hover {
+    color: black;
 }

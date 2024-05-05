@@ -10,6 +10,7 @@ use App\{
     Character\Move\Behavior\BehaviorsFactory,
     Character\Move\Comment\CommentsFactory,
     Character\Move\Distance\MinMax,
+    Character\Move\PatchNote\PatchNotesFactory,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
@@ -63,7 +64,8 @@ class AttackFactory
                 StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssr') ?? StepEnum::IMPOSSIBLE->name),
                 StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swr') ?? StepEnum::IMPOSSIBLE->name)
             ),
-            CommentsFactory::create($attack['comments'])
+            CommentsFactory::create($attack['comments']),
+            PatchNotesFactory::create($attack['patch-notes'])
         );
     }
 

@@ -10,6 +10,7 @@ use App\{
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
+    Parser\Character\Move\PatchNotesOptionsResolver,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
     Parser\Character\Move\Throw\Frame\FramesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver
@@ -18,7 +19,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ThrowOptionsResolver
 {
-    public static function configure(OptionsResolver $resolver): void
+    public static function configure(OptionsResolver $resolver, array &$throwData): void
     {
         $resolver
             ->define('type')
@@ -111,5 +112,7 @@ class ThrowOptionsResolver
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        PatchNotesOptionsResolver::configure($resolver, $throwData);
     }
 }

@@ -10,7 +10,8 @@ use App\{
     Character\Move\Throw\Frame\Frames,
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
-    Collection\Character\Move\CommentCollection
+    Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\PatchNote\PatchNoteCollection
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
@@ -27,7 +28,9 @@ readonly class Throw_ implements MoveInterface
         public StringCollection $escapes,
         public Damages $damages,
         public BehaviorEnumCollection $behaviors,
-        public CommentCollection $comments
+        public CommentCollection $comments,
+        /** @var array<PatchNoteCollection> $patchNotes */
+        public array $patchNotes
     ) {
     }
 

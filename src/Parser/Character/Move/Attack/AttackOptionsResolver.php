@@ -11,13 +11,14 @@ use App\{
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
+    Parser\Character\Move\PatchNotesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AttackOptionsResolver
 {
-    public static function configure(OptionsResolver $resolver): void
+    public static function configure(OptionsResolver $resolver, array &$attackData): void
     {
         $resolver
             ->define('type')
@@ -116,5 +117,7 @@ class AttackOptionsResolver
                     return true;
                 }
             );
+
+        PatchNotesOptionsResolver::configure($resolver, $attackData);
     }
 }

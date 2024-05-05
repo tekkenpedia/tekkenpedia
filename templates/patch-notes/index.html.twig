@@ -1,0 +1,32 @@
+{% set rootPath = '..' %}
+{% set breadcrumb = [
+    {
+        "label": "Patch notes"
+    }
+] %}
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-6 mx-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Release date</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patchNotes in patchNotes.toArray() %}
+                        <tr>
+                            <td>
+                                <a href="{{ rootPath }}/patch-notes/{{ patchNotes.name }}">{{ patchNotes.name }}</a>
+                            </td>
+                            <td>{{ patchNotes.releaseDates }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -5,5 +5,114 @@
         "line": 4,
         "position": 3
     },
-    "moves": {}
+    "moves": {
+        "Basics": {
+            "moves": {
+                "7e436c5a-ce67-4f93-b8fb-771febac180f": {
+                    "name": "df+1",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 13
+                        },
+                        "normal-hit": 5,
+                        "counter-hit": 8,
+                        "block": -6
+                    },
+                    "damages": {
+                        "normal-hit": 10,
+                        "counter-hit": 12
+                    },
+                    "patch-notes": {
+                        "49f81612-015c-4d74-bdd8-33f19ede40fd": [
+                            {
+                                "type": "UP",
+                                "category": "BEHAVIOR",
+                                "description": "The phenomenon where the opponent could crouch to evade subsequent high attacks after being hit by df+1 unnaturally quickly has been corrected."
+                            }
+                        ]
+                    }
+                },
+                "da75a96a-a3e5-4af1-90f4-6377823bd3ee": {
+                    "name": "db+2,2",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 19,
+                            "max": 20
+                        },
+                        "normal-hit": 5,
+                        "counter-hit": 5,
+                        "block": -9
+                    },
+                    "damages": {
+                        "normal-hit": 10,
+                        "counter-hit": 12
+                    },
+                    "patch-notes": {
+                        "49f81612-015c-4d74-bdd8-33f19ede40fd": [
+                            {
+                                "type": "NERF",
+                                "category": "BEHAVIOR",
+                                "summary": "Damages nerfed from 13 to 10.",
+                                "description": "The damage output for the input db+2,2,1+2 was inconsistent with expectations, so the damage has been adjusted from 13 to 10 to match the damage output of the input db+2,2."
+                            }
+                        ]
+                    }
+                },
+                "f26eac95-0aac-4b27-9761-932d79c2df1c": {
+                    "name": "b,b+2+3",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 75,
+                            "max": 76
+                        },
+                        "normal-hit": 44,
+                        "counter-hit": 44,
+                        "block": 0
+                    },
+                    "damages": {
+                        "normal-hit": 50,
+                        "counter-hit": 60
+                    },
+                    "patch-notes": {
+                        "49f81612-015c-4d74-bdd8-33f19ede40fd": [
+                            {
+                                "type": "CHANGE",
+                                "category": "BEHAVIOR",
+                                "description": "The issue where the positional relationship became strange when being attacked by the opponent during an attack animation has been fixed."
+                            }
+                        ]
+                    }
+                },
+                "eedca500-62b0-4ee9-92cd-b3b8f289ff69": {
+                    "name": "ws+4",
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 11,
+                            "max": 12
+                        },
+                        "normal-hit": 6,
+                        "counter-hit": 6,
+                        "block": -5
+                    },
+                    "damages": {
+                        "normal-hit": 15,
+                        "counter-hit": 18
+                    },
+                    "patch-notes": {
+                        "49f81612-015c-4d74-bdd8-33f19ede40fd": [
+                            {
+                                "type": "UP",
+                                "category": "BEHAVIOR",
+                                "description": "The hitbox has been expanded to mitigate whiffing for certain moves."
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
 }

@@ -17,14 +17,14 @@ class DamagesOptionsResolver
     {
         $resolver
             ->define('normal-hit')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
             ->allowedValues(Validation::createIsValidCallable(new Positive()));
 
         $resolver
             ->define('counter-hit')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value)
             ->allowedValues(Validation::createIsValidCallable(new Positive()));
     }
 }

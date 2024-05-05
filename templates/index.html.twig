@@ -1,0 +1,32 @@
+{% set rootPath = '' %}
+{% set breadcrumb = [] %}
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {% set menus = [
+        {
+            url: rootPath ~ '/patch-notes',
+            name: 'Patch notes',
+            icon: 'bi-arrow-down-up'
+        },
+        {
+            url: rootPath ~ '/characters',
+            name: 'Characters',
+            icon: 'bi-file-person'
+        }
+    ] %}
+
+    <div class="row">
+        {% for menu in menus %}
+            <div class="col-3">
+                <div class="card card-menu text-center">
+                    <a href="{{ menu.url }}">
+                        <i class="bi {{ menu.icon }}"></i>
+                        <br>
+                        {{ menu.name }}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
