@@ -33,7 +33,7 @@
                     <td title="Damages">
                         0
                     </td>
-                    <td title="Min distance - max distance">{{ attack.distances.block|format_distances }}</td>
+                    <td title="{{ attack.distances.block|format_distances_title }}">{{ attack.distances.block|format_distances }}</td>
                 </tr>
 
                 <tr class="separator">
@@ -43,7 +43,7 @@
                 <tr>
                     <td class="{{ attack.frames.normalHit|frame_bg_class }}" title="Frames">{{ attack.frames.normalHit|format_frame }}</td>
                     <td title="Damage">{{ attack.damages.normalHit }}</td>
-                    <td title="Min distance - max distance">{{ attack.distances.normalHit|format_distances }}</td>
+                    <td title="{{ attack.distances.normalHit|format_distances_title }}">{{ attack.distances.normalHit|format_distances }}</td>
                     <td title="Behaviors">{{ attack.normalHitBehaviors|move_behaviors_icons }}</td>
                 </tr>
 
@@ -54,7 +54,7 @@
                 <tr>
                     <td class="{{ attack.frames.counterHit|frame_bg_class }}" title="Frames">{{ attack.frames.counterHit|format_frame }}</td>
                     <td title="Damages">{{ attack.damages.counterHit }}</td>
-                    <td title="Min distance - max distance">{{ attack.distances.counterHit|format_distances }}</td>
+                    <td title="{{ attack.distances.counterHit|format_distances_title }}">{{ attack.distances.counterHit|format_distances }}</td>
                     <td title="Behaviors">{{ attack.counterHitBehaviors|move_behaviors_icons }}</td>
                 </tr>
 

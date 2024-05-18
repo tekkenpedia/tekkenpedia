@@ -302,6 +302,55 @@
         },
         "Heat": {
             "sections": {
+                "Activation": {
+                    "moves": {
+                        "d29905fc-c7c6-4ea5-a42c-b9c64160ab5d": {
+                            "name": "2+3 (heat burst)",
+                            "slug": "2+3_heat-burst",
+                            "visibility": {
+                                "defense": true
+                            },
+                            "property": "MIDDLE",
+                            "frames": {
+                                "startup": {
+                                    "min": 16
+                                },
+                                "normal-hit": 2,
+                                "counter-hit": 2,
+                                "block": 1
+                            },
+                            "behaviors": {
+                                "normal-hit": [
+                                    "POWER_CRUSH",
+                                    "HEAT_BURST"
+                                ],
+                                "counter-hit": [
+                                    "POWER_CRUSH",
+                                    "HEAT_BURST"
+                                ]
+                            },
+                            "distances": {
+                                "startup": 300,
+                                "block": {
+                                    "min": 259,
+                                    "max": 334
+                                },
+                                "normal-hit": {
+                                    "min": 231,
+                                    "max":297
+                                },
+                                "counter-hit": {
+                                    "min": 231,
+                                    "max":297
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 12,
+                                "counter-hit": 14
+                            }
+                        }
+                    }
+                },
                 "Smash": {
                     "moves": {
                         "43b53f07-653a-4107-a77f-e0cb563a4616": {
@@ -366,6 +415,52 @@
                                     "type": "DEFENSE"
                                 }
                             ]
+                        },
+                        "bc9a71fb-a9fa-4356-8295-d0db97ed98ca": {
+                            "name": "2+3 (first move whiff)",
+                            "slug": "2+3_first-move-whiff",
+                            "visibility": {
+                                "defense": true
+                            },
+                            "property": "MIDDLE",
+                            "frames": {
+                                "startup": {
+                                    "min": 26,
+                                    "max": 27
+                                },
+                                "normal-hit": 66,
+                                "counter-hit": 66,
+                                "block": -8
+                            },
+                            "behaviors": {
+                                "normal-hit": [
+                                    "AIR",
+                                    "WALL_SPLAT"
+                                ],
+                                "counter-hit": [
+                                    "AIR",
+                                    "WALL_SPLAT"
+                                ]
+                            },
+                            "distances": {
+                                "startup": 260,
+                                "block": {
+                                    "min": 250,
+                                    "max": 330
+                                },
+                                "normal-hit": {
+                                    "min": 217,
+                                    "max": 304
+                                },
+                                "counter-hit": {
+                                    "min": 217,
+                                    "max": 304
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 23,
+                                "counter-hit": 27
+                            }
                         }
                     }
                 }

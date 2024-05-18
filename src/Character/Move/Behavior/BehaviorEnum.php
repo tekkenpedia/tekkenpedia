@@ -25,6 +25,7 @@ enum BehaviorEnum
     case KNOCKDOWN;
     case AIR;
     case DELETE_RECOVERABLE_LIFE_BAR;
+    case HEAT_BURST;
     case HEAT_ENGAGER;
     case POWER_CRUSH;
 

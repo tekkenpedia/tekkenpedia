@@ -24,7 +24,8 @@ class FormatExtension extends AbstractExtension
             new TwigFilter('format_attack_property', [$this, 'formatAttackProperty']),
             new TwigFilter('format_min_max_frames', [$this, 'formatMinMaxFrames'], ['is_safe' => ['html']]),
             new TwigFilter('format_throw_property', [$this, 'formatThrowProperty']),
-            new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']])
+            new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']]),
+            new TwigFilter('format_distances_title', [$this, 'formatDistancesTitle'], ['is_safe' => ['html']])
         ];
     }
 
@@ -83,5 +84,12 @@ class FormatExtension extends AbstractExtension
         }
 
         return $return;
+    }
+
+    public function formatDistancesTitle(MinMax $distance): ?string
+    {
+        return is_int($distance->min) && is_int($distance->max)
+            ? 'Min distance - max distance'
+            : 'Distance';
     }
 }
