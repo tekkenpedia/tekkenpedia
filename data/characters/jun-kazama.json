@@ -291,15 +291,15 @@
                         "normal-hit": [
                             "WALL_SPLAT",
                             "WALL_BREAK",
-                            "WALL_BOUND",
                             "WALL_BLAST",
+                            "WALL_BOUND",
                             "KNOCKDOWN"
                         ],
                         "counter-hit": [
                             "WALL_SPLAT",
                             "WALL_BREAK",
-                            "WALL_BOUND",
                             "WALL_BLAST",
+                            "WALL_BOUND",
                             "KNOCKDOWN"
                         ]
                     },
@@ -346,14 +346,14 @@
                         "normal-hit": [
                             "WALL_SPLAT",
                             "WALL_BREAK",
-                            "WALL_BOUND",
-                            "WALL_BLAST"
+                            "WALL_BLAST",
+                            "WALL_BOUND"
                         ],
                         "counter-hit": [
                             "WALL_SPLAT",
                             "WALL_BREAK",
-                            "WALL_BOUND",
                             "WALL_BLAST",
+                            "WALL_BOUND",
                             "KNOCKDOWN"
                         ]
                     },
@@ -543,15 +543,15 @@
                                 "normal-hit": [
                                     "WALL_SPLAT",
                                     "WALL_BREAK",
-                                    "WALL_BOUND",
                                     "WALL_BLAST",
+                                    "WALL_BOUND",
                                     "KNOCKDOWN"
                                 ],
                                 "counter-hit": [
                                     "WALL_SPLAT",
                                     "WALL_BREAK",
-                                    "WALL_BOUND",
                                     "WALL_BLAST",
+                                    "WALL_BOUND",
                                     "KNOCKDOWN"
                                 ]
                             },

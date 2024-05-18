@@ -17,6 +17,7 @@ enum BehaviorEnum
 
     case WALL_SPLAT;
     case WALL_BREAK;
+    case HARD_WALL_BREAK;
     case WALL_BOUND;
     case WALL_BLAST;
     case FLOOR_BREAK;
@@ -33,6 +34,7 @@ enum BehaviorEnum
             [
                 static::WALL_SPLAT,
                 static::WALL_BREAK,
+                static::HARD_WALL_BREAK,
                 static::WALL_BOUND,
                 static::WALL_BLAST,
             ]

@@ -10,32 +10,32 @@
         <link rel="icon" type="image/png" href="../../../images/favicon.png" />
     </head>
     <body>
-    <div class="container">
-        {% set breadcrumb = [
-            {
-                "href": "../../../",
-                "label": "TekkenPedia"
-            },
-            {
-                "href": "../../../",
-                "label": "Characters"
-            },
-            {
-                "href": ".",
-                "label": character.name
-            },
-            {
-                "label": "Defense"
-            }
-        ] %}
-        {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
-        {% include 'characters/defense/index/sections.html.twig' with {sections: character.sections, character: character, level: 1} only %}
-    </div>
+        <div class="container mb-3">
+            {% set breadcrumb = [
+                {
+                    "href": "../../../",
+                    "label": "TekkenPedia"
+                },
+                {
+                    "href": "../../../",
+                    "label": "Characters"
+                },
+                {
+                    "href": ".",
+                    "label": character.name
+                },
+                {
+                    "label": "Defense"
+                }
+            ] %}
+            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
+            {% include 'characters/defense/index/sections.html.twig' with {sections: character.sections, character: character, level: 1} only %}
+        </div>
 
-    <div id="tooltip"></div>
+        <div id="tooltip"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../../../scripts/defense.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="../../../scripts/defense.js"></script>
     </body>
 </html>
