@@ -187,9 +187,72 @@
                         },
                         "escape": 155
                     },
-                    "escapes": ["1"],
+                    "escapes": ["1+2"],
                     "damages": {
                         "normal": 35
+                    }
+                },
+                "c937d598-3149-4d9d-8ccb-2d34777264b6": {
+                    "type": "THROW",
+                    "name": "uf+1+2,1,2,1+2",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": -6
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -6
+                    },
+                    "distances": {
+                        "startup": 202,
+                        "hit": {
+                            "normal": 131
+                        },
+                        "escape": 155
+                    },
+                    "escapes": ["1+2"],
+                    "damages": {
+                        "normal": 40
+                    }
+                },
+                "b166b22b-6115-4565-8397-6f8f82630bd4": {
+                    "type": "THROW",
+                    "name": "f,f+3+4",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 14
+                        },
+                        "hit": {
+                            "normal": 55
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -3
+                    },
+                    "behaviors": ["AIR"],
+                    "distances": {
+                        "startup": 191,
+                        "hit": {
+                            "normal": 109
+                        },
+                        "escape": 185
+                    },
+                    "escapes": ["1+2"],
+                    "damages": {
+                        "normal": 10
                     }
                 }
             }
