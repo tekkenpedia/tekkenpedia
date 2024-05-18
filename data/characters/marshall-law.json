@@ -49,7 +49,8 @@
                         "2"
                     ],
                     "damages": {
-                        "normal": 35
+                        "normal": 35,
+                        "wall": 35
                     }
                 },
                 "770eb25c-822f-4f55-8121-634f4fd4e6ac": {

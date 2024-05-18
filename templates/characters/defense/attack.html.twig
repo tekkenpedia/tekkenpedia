@@ -14,7 +14,7 @@
                 <tr class="separator">
                     <td class="col-3">Type</td>
                     <td class="col-3">Property</td>
-                    <td class="col-3">Frames</td>
+                    <td class="col-3">Startup frames</td>
                     <td class="col-3"></td>
                 </tr>
 
@@ -24,38 +24,55 @@
                     <td title="Startup frames">{{ attack.frames.startup|format_min_max_frames(true) }}</td>
                 </tr>
 
-                <tr class="separator">
+                <tr class="separator separator-top">
                     <td colspan="4">On block</td>
                 </tr>
-
-                <tr>
-                    <td class="{{ attack.frames.block|frame_bg_class }}" title="Frames">{{ attack.frames.block|format_frame }}</td>
-                    <td title="Damages">
-                        0
-                    </td>
-                    <td title="{{ attack.distances.block|format_distances_title }}">{{ attack.distances.block|format_distances }}</td>
+                <tr class="separator separator-bottom">
+                    <td>Frames</td>
+                    <td></td>
+                    <td>Distance</td>
+                    <td></td>
                 </tr>
 
-                <tr class="separator">
+                <tr>
+                    <td class="{{ attack.frames.block|frame_bg_class }}">{{ attack.frames.block|format_frame }}</td>
+                    <td></td>
+                    <td>{{ attack.distances.block|format_distances }}</td>
+                    <td></td>
+                </tr>
+
+                <tr class="separator separator-top">
                     <td colspan="4">On normal hit</td>
                 </tr>
-
-                <tr>
-                    <td class="{{ attack.frames.normalHit|frame_bg_class }}" title="Frames">{{ attack.frames.normalHit|format_frame }}</td>
-                    <td title="Damage">{{ attack.damages.normalHit }}</td>
-                    <td title="{{ attack.distances.normalHit|format_distances_title }}">{{ attack.distances.normalHit|format_distances }}</td>
-                    <td title="Behaviors">{{ attack.normalHitBehaviors|move_behaviors_icons }}</td>
+                <tr class="separator separator-bottom">
+                    <td>Frames</td>
+                    <td>Damages</td>
+                    <td>Distance</td>
+                    <td>Behaviors</td>
                 </tr>
 
-                <tr class="separator">
+                <tr>
+                    <td class="{{ attack.frames.normalHit|frame_bg_class }}">{{ attack.frames.normalHit|format_frame }}</td>
+                    <td>{{ attack.damages.normalHit }}</td>
+                    <td>{{ attack.distances.normalHit|format_distances }}</td>
+                    <td>{{ attack.normalHitBehaviors|move_behaviors_icons }}</td>
+                </tr>
+
+                <tr class="separator separator-top">
                     <td colspan="4">On counter hit</td>
                 </tr>
+                <tr class="separator separator-bottom">
+                    <td>Frames</td>
+                    <td>Damages</td>
+                    <td>Distance</td>
+                    <td>Behaviors</td>
+                </tr>
 
                 <tr>
-                    <td class="{{ attack.frames.counterHit|frame_bg_class }}" title="Frames">{{ attack.frames.counterHit|format_frame }}</td>
-                    <td title="Damages">{{ attack.damages.counterHit }}</td>
-                    <td title="{{ attack.distances.counterHit|format_distances_title }}">{{ attack.distances.counterHit|format_distances }}</td>
-                    <td title="Behaviors">{{ attack.counterHitBehaviors|move_behaviors_icons }}</td>
+                    <td class="{{ attack.frames.counterHit|frame_bg_class }}">{{ attack.frames.counterHit|format_frame }}</td>
+                    <td>{{ attack.damages.counterHit }}</td>
+                    <td>{{ attack.distances.counterHit|format_distances }}</td>
+                    <td>{{ attack.counterHitBehaviors|move_behaviors_icons }}</td>
                 </tr>
 
                 <tr class="separator">

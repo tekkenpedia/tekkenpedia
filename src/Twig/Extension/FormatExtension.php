@@ -24,8 +24,8 @@ class FormatExtension extends AbstractExtension
             new TwigFilter('format_attack_property', [$this, 'formatAttackProperty']),
             new TwigFilter('format_min_max_frames', [$this, 'formatMinMaxFrames'], ['is_safe' => ['html']]),
             new TwigFilter('format_throw_property', [$this, 'formatThrowProperty']),
-            new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']]),
-            new TwigFilter('format_distances_title', [$this, 'formatDistancesTitle'], ['is_safe' => ['html']])
+            new TwigFilter('format_distance', [$this, 'formatDistance'], ['is_safe' => ['html']]),
+            new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']])
         ];
     }
 
@@ -68,28 +68,26 @@ class FormatExtension extends AbstractExtension
         return $return;
     }
 
+    public function formatDistance(int $distance): string
+    {
+        return number_format($distance / 100, 2);
+    }
+
     public function formatDistances(MinMax $distance): ?string
     {
         $return = null;
 
         if (is_int($distance->min)) {
-            $return .= number_format($distance->min / 100, 2);
+            $return .= $this->formatDistance($distance->min);
         }
 
         if (is_int($distance->max)) {
             if (is_string($return)) {
                 $return .= '<i class="bi bi-arrows"></i>';
             }
-            $return .= number_format($distance->max / 100, 2);
+            $return .= $this->formatDistance($distance->max);
         }
 
         return $return;
-    }
-
-    public function formatDistancesTitle(MinMax $distance): ?string
-    {
-        return is_int($distance->min) && is_int($distance->max)
-            ? 'Min distance - max distance'
-            : 'Distance';
     }
 }

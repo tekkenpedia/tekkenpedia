@@ -69,6 +69,16 @@ tr.separator td:last-child {
     border-right-color: #d2d2d275;
 }
 
+tr.separator-top,
+tr.separator-top td {
+    border-bottom: none;
+}
+
+tr.separator-bottom,
+tr.separator-bottom td {
+    border-top: none;
+}
+
 div.move-card-title {
     margin-bottom: 0.2rem;
 }
