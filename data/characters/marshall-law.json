@@ -51,6 +51,45 @@
                     "damages": {
                         "normal": 35
                     }
+                },
+                "770eb25c-822f-4f55-8121-634f4fd4e6ac": {
+                    "type": "THROW",
+                    "name": "2+4",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12,
+                            "max": 14
+                        },
+                        "hit": {
+                            "normal": 0
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -6
+                    },
+                    "behaviors": [
+                        "FLOOR_BREAK",
+                        "FLOOR_BLAST"
+                    ],
+                    "distances": {
+                        "startup": 210,
+                        "hit": {
+                            "normal": 146
+                        },
+                        "escape": 312
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
                 }
             }
         }
