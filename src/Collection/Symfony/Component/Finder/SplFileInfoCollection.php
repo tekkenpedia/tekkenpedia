@@ -6,19 +6,16 @@ namespace App\Collection\Symfony\Component\Finder;
 
 use Steevanb\PhpCollection\{
     ObjectCollection\AbstractObjectCollection,
-    ScalarCollection\StringCollection};
+    ScalarCollection\StringCollection
+};
 use Symfony\Component\Finder\SplFileInfo;
 
+/** @extends AbstractObjectCollection<SplFileInfo> */
 class SplFileInfoCollection extends AbstractObjectCollection
 {
-    public function __construct()
+    public static function getValueFqcn(): string
     {
-        parent::__construct(SplFileInfo::class);
-    }
-
-    public function add(SplFileInfo $splFileInfo): static
-    {
-        return $this->doAdd($splFileInfo);
+        return SplFileInfo::class;
     }
 
     public function getPathnames(): StringCollection
@@ -29,11 +26,5 @@ class SplFileInfoCollection extends AbstractObjectCollection
         }
 
         return $return;
-    }
-
-    /** @return array<SplFileInfo> */
-    public function toArray(): array
-    {
-        return parent::toArray();
     }
 }

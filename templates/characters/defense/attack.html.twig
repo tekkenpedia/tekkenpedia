@@ -19,8 +19,8 @@
                 </tr>
 
                 <tr>
-                    <td title="Move type">Attack</td>
-                    <td title="Property">{{ attack.property|format_attack_property }}</td>
+                    <td>Attack</td>
+                    <td>{{ attack.property|format_attack_property }}</td>
                     <td title="Startup frames">{{ attack.frames.startup|format_min_max_frames(true) }}</td>
                 </tr>
 
@@ -44,11 +44,7 @@
                     <td class="{{ attack.frames.normalHit|frame_bg_class }}" title="Frames">{{ attack.frames.normalHit|format_frame }}</td>
                     <td title="Damage">{{ attack.damages.normalHit }}</td>
                     <td title="Min distance - max distance">{{ attack.distances.normalHit|format_distances }}</td>
-                    <td title="Behaviors">
-                        {% for behavior in attack.normalHitBehaviors.toArray() %}
-                            {{ behavior|move_behavior_icon }}
-                        {% endfor %}
-                    </td>
+                    <td title="Behaviors">{{ attack.normalHitBehaviors|move_behaviors_icons }}</td>
                 </tr>
 
                 <tr class="separator">
@@ -59,11 +55,7 @@
                     <td class="{{ attack.frames.counterHit|frame_bg_class }}" title="Frames">{{ attack.frames.counterHit|format_frame }}</td>
                     <td title="Damages">{{ attack.damages.counterHit }}</td>
                     <td title="Min distance - max distance">{{ attack.distances.counterHit|format_distances }}</td>
-                    <td title="Behaviors">
-                        {% for behavior in attack.counterHitBehaviors.toArray() %}
-                            {{ behavior|move_behavior_icon }}
-                        {% endfor %}
-                    </td>
+                    <td title="Behaviors">{{ attack.counterHitBehaviors|move_behaviors_icons }}</td>
                 </tr>
 
                 <tr class="separator">

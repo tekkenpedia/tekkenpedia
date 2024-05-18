@@ -21,7 +21,10 @@
                         "hit": {
                             "normal": 0
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": -6
                     },
                     "distances": {
@@ -52,7 +55,10 @@
                         "hit": {
                             "normal": 0
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": -3
                     },
                     "distances": {
@@ -83,9 +89,13 @@
                         "hit": {
                             "normal": -22,
                             "ukemi": -30,
-                            "wall": -23
+                            "wall": {
+                                "normal": -23
+                            }
                         },
-                        "escape": 23,
+                        "escape": {
+                            "normal-hit": 23
+                        },
                         "after-escape": -13
                     },
                     "distances": {
@@ -123,9 +133,13 @@
                         "hit": {
                             "normal": -22,
                             "ukemi": -30,
-                            "wall": -23
+                            "wall": {
+                                "normal": -23
+                            }
                         },
-                        "escape": 19,
+                        "escape": {
+                            "normal-hit": 19
+                        },
                         "after-escape": -13
                     },
                     "distances": {

@@ -22,7 +22,10 @@
                         "hit": {
                             "normal": 0
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": 0
                     },
                     "distances": {
@@ -54,7 +57,10 @@
                         "hit": {
                             "normal": 0
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": 0
                     },
                     "distances": {
@@ -85,10 +91,16 @@
                         "hit": {
                             "normal": -6
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": -6
                     },
-                    "behaviors": ["FLOOR_BREAK_BLAST"],
+                    "behaviors": [
+                        "FLOOR_BREAK",
+                        "FLOOR_BLAST"
+                    ],
                     "distances": {
                         "startup": 175,
                         "hit": {
@@ -116,7 +128,10 @@
                         "hit": {
                             "normal": 0
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
                         "after-escape": -6
                     },
                     "distances": {
@@ -147,7 +162,9 @@
                         "hit": {
                             "normal": 56
                         },
-                        "escape": 21,
+                        "escape": {
+                            "normal-hit": 21
+                        },
                         "after-escape": -6
                     },
                     "behaviors": ["AIR"],
@@ -272,11 +289,17 @@
                     },
                     "behaviors": {
                         "normal-hit": [
-                            "WALL_SPLAT_BREAK_BOUND",
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST",
                             "KNOCKDOWN"
                         ],
                         "counter-hit": [
-                            "WALL_SPLAT_BREAK_BOUND",
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST",
                             "KNOCKDOWN"
                         ]
                     },
@@ -320,9 +343,17 @@
                         "block": -9
                     },
                     "behaviors": {
-                        "normal-hit": ["WALL_SPLAT_BREAK_BOUND"],
+                        "normal-hit": [
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST"
+                        ],
                         "counter-hit": [
-                            "WALL_SPLAT_BREAK_BOUND",
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST",
                             "KNOCKDOWN"
                         ]
                     },
@@ -510,11 +541,17 @@
                             },
                             "behaviors": {
                                 "normal-hit": [
-                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "WALL_SPLAT",
+                                    "WALL_BREAK",
+                                    "WALL_BOUND",
+                                    "WALL_BLAST",
                                     "KNOCKDOWN"
                                 ],
                                 "counter-hit": [
-                                    "WALL_SPLAT_BREAK_BOUND",
+                                    "WALL_SPLAT",
+                                    "WALL_BREAK",
+                                    "WALL_BOUND",
+                                    "WALL_BLAST",
                                     "KNOCKDOWN"
                                 ]
                             },

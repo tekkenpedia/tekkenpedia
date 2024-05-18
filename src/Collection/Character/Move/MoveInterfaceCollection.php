@@ -7,16 +7,12 @@ namespace App\Collection\Character\Move;
 use App\Character\Move\MoveInterface;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
+/** @extends AbstractObjectCollection<MoveInterface> */
 class MoveInterfaceCollection extends AbstractObjectCollection
 {
-    public function __construct()
+    public static function getValueFqcn(): string
     {
-        parent::__construct(MoveInterface::class);
-    }
-
-    public function add(MoveInterface $move): static
-    {
-        return $this->doAdd($move);
+        return MoveInterface::class;
     }
 
     public function hasDefenseMoves(): bool
@@ -30,11 +26,5 @@ class MoveInterfaceCollection extends AbstractObjectCollection
         }
 
         return $return;
-    }
-
-    /** @return array<MoveInterface> */
-    public function toArray(): array
-    {
-        return parent::toArray();
     }
 }

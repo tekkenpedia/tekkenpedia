@@ -9,8 +9,10 @@ use App\{
     Character\Move\Comment\CommentsFactory,
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Distance\Hit as DistancesHit,
+    Character\Move\Throw\Frame\Escape,
     Character\Move\Throw\Frame\Frames,
-    Character\Move\Throw\Frame\Hit as FramesHit,
+    Character\Move\Throw\Frame\Hit\Hit as FramesHit,
+    Character\Move\Throw\Frame\Hit\Wall,
     Character\Move\Throw\Frame\Startup,
     Character\Move\Visibility
 };
@@ -30,10 +32,17 @@ class ThrowFactory
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),
                 new FramesHit(
                     $throw['frames']['hit']['normal'],
+                    new Wall(
+                        $throw['frames']['hit']['wall']['normal'],
+                        $throw['frames']['hit']['wall']['splat'],
+                        $throw['frames']['hit']['wall']['break']
+                    ),
                     $throw['frames']['hit']['ukemi'],
-                    $throw['frames']['hit']['wall']
                 ),
-                $throw['frames']['escape'],
+                new Escape(
+                    $throw['frames']['escape']['normal-hit'],
+                    $throw['frames']['escape']['counter-hit']
+                ),
                 $throw['frames']['after-escape']
             ),
             new Distances(

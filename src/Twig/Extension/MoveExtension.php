@@ -4,63 +4,114 @@ declare(strict_types=1);
 
 namespace App\Twig\Extension;
 
-use App\Character\Move\Behavior\BehaviorEnum;
+use App\{
+    Character\Move\Behavior\BehaviorEnum,
+    Collection\Character\Move\BehaviorEnumCollection,
+    Exception\AppException
+};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter};
+    TwigFilter
+};
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class MoveExtension extends AbstractExtension
 {
     public function getFilters(): array
     {
         return [
-            new TwigFilter('move_behavior_icon', [$this, 'moveBehaviorIcon'], ['is_safe' => ['html']])
+            new TwigFilter('move_behaviors_icons', [$this, 'moveBehaviorsIcons'], ['is_safe' => ['html']])
         ];
     }
 
-    public function moveBehaviorIcon(BehaviorEnum $behavior): string
+    public function moveBehaviorsIcons(BehaviorEnumCollection $behaviors): string
     {
-        switch ($behavior) {
-            case BehaviorEnum::WALL_SPLAT_BREAK_BOUND:
-                $icon = 'bi-box-arrow-in-right';
-                $title = 'Wall splat - wall break - wall bound';
-                $type = MoveBehaviorIconTypeEnum::I;
-                break;
-            case BehaviorEnum::FLOOR_BREAK_BLAST:
-                $icon = 'bi-download';
-                $title = 'Floor break - floor blast';
-                $type = MoveBehaviorIconTypeEnum::I;
-                break;
-            case BehaviorEnum::KNOCKDOWN:
-                $icon = 'bi-arrow-90deg-down vertical-symmetry';
-                $title = 'Knockdown';
-                $type = MoveBehaviorIconTypeEnum::I;
-                break;
-            case BehaviorEnum::AIR:
-                $icon = 'bi-arrow-up-right';
-                $title = 'Air';
-                $type = MoveBehaviorIconTypeEnum::I;
-                break;
-            case BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR:
-                $icon = 'delete-recoverable-life-bar';
-                $title = 'Delete recoverable life bar';
-                $type = MoveBehaviorIconTypeEnum::PNG;
-                break;
-            case BehaviorEnum::HEAT_ENGAGER:
-                $icon = 'heat-engager';
-                $title = 'Heat engager';
-                $type = MoveBehaviorIconTypeEnum::PNG;
-                break;
-            case BehaviorEnum::POWER_CRUSH:
-                $icon = 'power-crush';
-                $title = 'Power crush';
-                $type = MoveBehaviorIconTypeEnum::PNG;
-                break;
+        $wallBehaviors = BehaviorEnum::getWallBehaviors();
+        $wallBehaviorsTitleParts = new StringCollection();
+
+        $floorBehaviors = BehaviorEnum::getFloorBehaviors();
+        $floorBehaviorsTitleParts = new StringCollection();
+
+        $returnParts = new StringCollection();
+
+        foreach ($behaviors->toArray() as $behavior) {
+            if ($wallBehaviors->contains($behavior)) {
+                $this->addWallBehaviorTitlePart($wallBehaviorsTitleParts, $behavior);
+            } elseif ($floorBehaviors->contains($behavior)) {
+                $this->addFloorBehaviorTitlePart($floorBehaviorsTitleParts, $behavior);
+            } elseif ($behavior === BehaviorEnum::KNOCKDOWN) {
+                $returnParts->add($this->createItalicIcon('bi-arrow-90deg-down vertical-symmetry', 'Knockdown'));
+            } elseif ($behavior === BehaviorEnum::AIR) {
+                $returnParts->add($this->createItalicIcon('bi-arrow-up-right', 'Air'));
+            } elseif ($behavior === BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR) {
+                $returnParts->add($this->createPngIcon('delete-recoverable-life-bar', 'Delete recoverable life bar'));
+            } elseif ($behavior === BehaviorEnum::HEAT_ENGAGER) {
+                $returnParts->add($this->createPngIcon('heat-engager', 'Heat engager'));
+            } elseif ($behavior === BehaviorEnum::POWER_CRUSH) {
+                $returnParts->add($this->createPngIcon('power-crush', 'Power crush'));
+            } else {
+                throw new AppException('Unknown behavior ' . $behavior->name . '.');
+            }
         }
 
-        return $type === MoveBehaviorIconTypeEnum::I
-            ? '<i class="icon-move-behavior bi ' . $icon . '" title="' . $title . '"></i>'
-            : '<img class="icon-move-behavior" src="../../../images/properties/' . $icon . '.png" title="' . $title . '">';
+        if ($wallBehaviorsTitleParts->count() > 0) {
+            $returnParts->add($this->createItalicIcon('bi-box-arrow-in-right', $wallBehaviorsTitleParts));
+        }
 
+        if ($floorBehaviorsTitleParts->count() > 0) {
+            $returnParts->add($this->createItalicIcon('bi-download', $floorBehaviorsTitleParts));
+        }
+
+        return implode(' ', $returnParts->toArray());
+    }
+
+    private function addWallBehaviorTitlePart(StringCollection $wallBehaviorsTitleParts, BehaviorEnum $behavior): static
+    {
+        switch ($behavior) {
+            case BehaviorEnum::WALL_SPLAT:
+                $wallBehaviorsTitleParts->add('wall splat');
+                break;
+            case BehaviorEnum::WALL_BREAK:
+                $wallBehaviorsTitleParts->add('wall break');
+                break;
+            case BehaviorEnum::WALL_BOUND:
+                $wallBehaviorsTitleParts->add('wall bound');
+                break;
+            case BehaviorEnum::WALL_BLAST:
+                $wallBehaviorsTitleParts->add('wall blast');
+                break;
+            default:
+                throw new AppException('Unknown wall behavior ' . $behavior->name . '.');
+        }
+
+        return $this;
+    }
+
+    private function addFloorBehaviorTitlePart(StringCollection $floorBehaviorsTitleParts, BehaviorEnum $behavior): static
+    {
+        switch ($behavior) {
+            case BehaviorEnum::FLOOR_BREAK:
+                $floorBehaviorsTitleParts->add('floor break');
+                break;
+            case BehaviorEnum::FLOOR_BLAST:
+                $floorBehaviorsTitleParts->add('floor blast');
+                break;
+            default:
+                throw new AppException('Unknown floor behavior ' . $behavior->name . '.');
+        }
+
+        return $this;
+    }
+
+    private function createItalicIcon(string $icon, StringCollection|string $title): string
+    {
+        $titleHtml = is_string($title) ? $title : ucfirst(implode(', ', $title->toArray()));
+
+        return '<i class="icon-move-behavior bi ' . $icon . '" title="' . $titleHtml . '"></i>';
+    }
+
+    private function createPngIcon(string $icon, string $title): string
+    {
+        return '<img class="icon-move-behavior" src="../../../images/properties/' . $icon . '.png" title="' . $title . '">';
     }
 }

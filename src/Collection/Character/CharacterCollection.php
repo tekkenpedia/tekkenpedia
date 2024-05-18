@@ -7,16 +7,12 @@ namespace App\Collection\Character;
 use App\Character\Character;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
+/** @extends AbstractObjectCollection<Character> */
 class CharacterCollection extends AbstractObjectCollection
 {
-    public function __construct()
+    public static function getValueFqcn(): string
     {
-        parent::__construct(Character::class);
-    }
-
-    public function add(Character $move): static
-    {
-        return $this->doAdd($move);
+        return Character::class;
     }
 
     public function findForSelectScreen(int $line, int $position): ?Character
@@ -30,11 +26,5 @@ class CharacterCollection extends AbstractObjectCollection
         }
 
         return $return;
-    }
-
-    /** @return array<Character> */
-    public function toArray(): array
-    {
-        return parent::toArray();
     }
 }
