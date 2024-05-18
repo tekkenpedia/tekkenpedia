@@ -23,8 +23,8 @@ readonly class CharacterFactory
 
     public function create(string $fileName): Character
     {
-        $jsonPathname = $this->charactersPath . '/' . $fileName . '.json';
-        $data = $this->jsonParser->getData($jsonPathname);
+        $jsonPathname = $this->charactersPath . '/' . $fileName;
+        $data = $this->jsonParser->parse($jsonPathname);
 
         return new Character(
             $data['name'],
@@ -53,7 +53,7 @@ readonly class CharacterFactory
 
         $return = new StringCollection();
         foreach ($files as $file) {
-            $return->add($file->getBasename('.json'));
+            $return->add($file->getBasename());
         }
 
         return $return;

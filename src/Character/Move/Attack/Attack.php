@@ -10,7 +10,8 @@ use App\{
     Character\Move\Step\Steps,
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
-    Collection\Character\Move\CommentCollection
+    Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\PatchNote\PatchNoteCollection
 };
 
 readonly class Attack implements MoveInterface
@@ -27,7 +28,9 @@ readonly class Attack implements MoveInterface
         public BehaviorEnumCollection $normalHitBehaviors,
         public BehaviorEnumCollection $counterHitBehaviors,
         public Steps $steps,
-        public CommentCollection $comments
+        public CommentCollection $comments,
+        /** @var array<PatchNoteCollection> $patchNotes */
+        public array $patchNotes
     ) {
     }
 
