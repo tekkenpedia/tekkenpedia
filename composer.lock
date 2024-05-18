@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dde731f01443cb74dd9ec7adf7786056",
+    "content-hash": "f5430602da47b1a314be18fd50e1eb1f",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -455,16 +455,16 @@
         },
         {
             "name": "steevanb/php-collection",
-            "version": "5.0.1",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/steevanb/php-collection.git",
-                "reference": "3e3316f536d07901dfa804455c55e0d75d6f6deb"
+                "reference": "39acb86a6dd11ee7d07d3dddf85330c8ca312347"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/steevanb/php-collection/zipball/3e3316f536d07901dfa804455c55e0d75d6f6deb",
-                "reference": "3e3316f536d07901dfa804455c55e0d75d6f6deb",
+                "url": "https://api.github.com/repos/steevanb/php-collection/zipball/39acb86a6dd11ee7d07d3dddf85330c8ca312347",
+                "reference": "39acb86a6dd11ee7d07d3dddf85330c8ca312347",
                 "shasum": ""
             },
             "require": {
@@ -500,9 +500,9 @@
             "description": "Add IntCollection, StringCollection, ObjectCollection etc.",
             "support": {
                 "issues": "https://github.com/steevanb/php-collection/issues",
-                "source": "https://github.com/steevanb/php-collection/tree/5.0.1"
+                "source": "https://github.com/steevanb/php-collection/tree/6.0.1"
             },
-            "time": "2023-03-14T10:47:54+00:00"
+            "time": "2024-05-15T11:42:26+00:00"
         },
         {
             "name": "symfony/cache",

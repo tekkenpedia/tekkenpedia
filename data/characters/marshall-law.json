@@ -5,5 +5,54 @@
         "line": 2,
         "position": 9
     },
-    "moves": {}
+    "moves": {
+        "Throws": {
+            "moves": {
+                "4fdd3ccf-fe3e-4677-b411-a1e5b36de6bc": {
+                    "type": "THROW",
+                    "name": "1+3",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12,
+                            "max": 14
+                        },
+                        "hit": {
+                            "normal": 0,
+                            "wall": {
+                                "normal": -24,
+                                "break": -11
+                            }
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -3
+                    },
+                    "behaviors": [
+                        "WALL_BREAK",
+                        "WALL_BOUND",
+                        "WALL_BLAST"
+                    ],
+                    "distances": {
+                        "startup": 205,
+                        "hit": {
+                            "normal": 489
+                        },
+                        "escape": 191
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                }
+            }
+        }
+    }
 }

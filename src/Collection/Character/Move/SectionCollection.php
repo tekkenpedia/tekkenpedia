@@ -7,16 +7,12 @@ namespace App\Collection\Character\Move;
 use App\Character\Section\Section;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
+/** @extends AbstractObjectCollection<Section> */
 class SectionCollection extends AbstractObjectCollection
 {
-    public function __construct()
+    public static function getValueFqcn(): string
     {
-        parent::__construct(Section::class);
-    }
-
-    public function add(Section $section): static
-    {
-        return $this->doAdd($section);
+        return Section::class;
     }
 
     public function hasDefenseMoves(): bool
@@ -29,15 +25,6 @@ class SectionCollection extends AbstractObjectCollection
                 break;
             }
         }
-
-        return $return;
-    }
-
-    /** @return array<Section> */
-    public function toArray(): array
-    {
-        /** @var array<Section> $return */
-        $return = parent::toArray();
 
         return $return;
     }

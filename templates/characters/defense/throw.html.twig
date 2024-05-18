@@ -19,19 +19,17 @@
                 </tr>
 
                 <tr>
-                    <td title="Move type">Throw</td>
-                    <td class="{{ throw.property|throw_property_bg_class }}" title="Property">{{ throw.property|format_throw_property }}</td>
-                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white" title="Escape input">
+                    <td>Throw</td>
+                    <td class="{{ throw.property|throw_property_bg_class }}">{{ throw.property|format_throw_property }}</td>
+                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white">
                         {% if throw.escapes.count() > 0 %}
                             {{ throw.escapes.toArray()|join(' or ') }}
                         {% else %}
                             Can't
                         {% endif %}
                     </td>
-                    <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %} title="Behaviors">
-                        {% for behavior in throw.behaviors.toArray() %}
-                            {{ behavior|move_behavior_icon }}
-                        {% endfor %}
+                    <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %}>
+                        {{ throw.behaviors|move_behaviors_icons }}
                     </td>
                 </tr>
 
@@ -40,33 +38,59 @@
                 </tr>
 
                 <tr>
-
                     <td
                         class="col-3{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}"
                         title="Startup frames"
                     >{{ throw.frames.startup|format_min_max_frames() }}</td>
-                    {% set title = 'Hit frames' %}
+
+                    {% set titleParts = ['Hit frames'] %}
                     {% if throw.frames.hit.ukemi is not null %}
-                        {% set title = title ~ ' - Hit frames when ukemi' %}
+                        {% set titleParts = titleParts|merge(['hit frames when ukemi']) %}
                     {% endif %}
-                    {% if throw.frames.hit.wall is not null %}
-                        {% set title = title ~ ' - Hit frames with a wall' %}
+                    {% if throw.frames.hit.wall.normal is not null %}
+                        {% set titleParts = titleParts|merge(['hit frames with a wall']) %}
                     {% endif %}
-                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="{{ title }}">
+                    {% if throw.frames.hit.wall.splat is not null %}
+                        {% set titleParts = titleParts|merge(['hit frames with a wall splat']) %}
+                    {% endif %}
+                    {% if throw.frames.hit.wall.break is not null %}
+                        {% set titleParts = titleParts|merge(['hit frames with a wall break']) %}
+                    {% endif %}
+
+                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="{{ titleParts|join(', ')|capitalize }}">
                         {{ throw.frames.hit.normal|format_frame(true) }}
                         {% if throw.frames.hit.ukemi is not null %}
                             {{ throw.frames.hit.ukemi|format_frame(true) }}
                         {% endif %}
-                        {% if throw.frames.hit.wall is not null %}
-                            {{ throw.frames.hit.wall|format_frame(true) }}
+                        {% if throw.frames.hit.wall.normal is not null %}
+                            {{ throw.frames.hit.wall.normal|format_frame(true) }}
+                        {% endif %}
+                        {% if throw.frames.hit.wall.splat is not null %}
+                            {{ throw.frames.hit.wall.splat|format_frame(true) }}
+                        {% endif %}
+                        {% if throw.frames.hit.wall.break is not null %}
+                            {{ throw.frames.hit.wall.break|format_frame(true) }}
                         {% endif %}
                     </td>
+
                     {% if throw.frames.escape is not null %}
+                        {% set titleParts = [] %}
+                        {% if throw.frames.escape.normalHit is not null %}
+                            {% set titleParts = titleParts|merge(['escape frames on normal hit']) %}
+                        {% endif %}
+                        {% if throw.frames.escape.counterHit is not null %}
+                            {% set titleParts = titleParts|merge(['escape frames on counter hit']) %}
+                        {% endif %}
                         <td
-                            class="col-3{% if throw.frames.escape < 21 %} bg-danger text-white{% elseif throw.frames.escape > 21 %} bg-warning{% endif %}"
-                            title="Escape frames"
+                            class="col-3{% if throw.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif throw.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
+                            title="{{ titleParts|join(', ')|capitalize }}"
                         >
-                            {{ throw.frames.escape|format_frame(true) }}
+                            {% if throw.frames.escape.normalHit %}
+                                {{ throw.frames.escape.normalHit|format_frame(true) }}
+                            {% endif %}
+                            {% if throw.frames.escape.counterHit %}
+                                {{ throw.frames.escape.counterHit|format_frame(true) }}
+                            {% endif %}
                         </td>
                         <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="After escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
                     {% else %}

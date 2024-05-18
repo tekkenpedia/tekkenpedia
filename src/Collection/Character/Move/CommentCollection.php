@@ -7,15 +7,11 @@ namespace App\Collection\Character\Move;
 use App\Character\Move\Comment\Comment;
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
+/** @extends AbstractObjectCollection<Comment> */
 class CommentCollection extends AbstractObjectCollection
 {
-    public function __construct()
+    public static function getValueFqcn(): string
     {
-        parent::__construct(Comment::class);
-    }
-
-    public function add(Comment $move): static
-    {
-        return $this->doAdd($move);
+        return Comment::class;
     }
 }
