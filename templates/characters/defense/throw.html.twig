@@ -1,3 +1,164 @@
+{% macro firstLines(throw) %}
+    <tr class="separator">
+        <td class="col-3">Type</td>
+        <td class="col-3">Property</td>
+        <td class="col-3">Startup frames</td>
+        <td class="col-3">Distance</td>
+    </tr>
+
+    <tr>
+        <td>Throw</td>
+        <td class="{{ throw.property|throw_property_bg_class }}">{{ throw.property|format_throw_property }}</td>
+        <td class="{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}">
+            {{ throw.frames.startup|format_min_max_frames() }}
+        </td>
+        <td>{{ throw.distances.startup|format_distance }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro escapeLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Escape</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Input{% if throw.escapes.count() > 1 %}s{% endif %}</td>
+        <td>Frames</td>
+        <td>After escape</td>
+        <td>Distance</td>
+    </tr>
+
+    <tr>
+        <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white">
+            {% if throw.escapes.count() > 0 %}
+                {{ throw.escapes.toArray()|join(' or ') }}
+            {% else %}
+                Can't
+            {% endif %}
+        </td>
+
+        {% set titleParts = [] %}
+        {% if throw.frames.escape.normalHit is not null %}
+            {% set titleParts = titleParts|merge(['frames to escape on normal hit']) %}
+        {% endif %}
+        {% if throw.frames.escape.counterHit is not null %}
+            {% set titleParts = titleParts|merge(['frames to escape on counter hit']) %}
+        {% endif %}
+
+        <td
+            class="{% if throw.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif throw.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
+            title="{{ titleParts|join(', ')|capitalize }}"
+        >
+            {% if throw.frames.escape.normalHit %}
+                {{ throw.frames.escape.normalHit|format_frame(true) }}
+            {% endif %}
+            {% if throw.frames.escape.counterHit %}
+                {{ throw.frames.escape.counterHit|format_frame(true) }}
+            {% endif %}
+        </td>
+        <td class="{{ throw.frames.afterEscape|throw_escape_bg_class }}">{{ throw.frames.afterEscape|format_frame(true) }}</td>
+        <td>{{ throw.distances.escape|format_distance }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro hitLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Hit</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Damages</td>
+        <td>Frames</td>
+        <td>Distance</td>
+        <td>Behaviors</td>
+    </tr>
+
+    <tr>
+        <td>{{ throw.damages.normal }}</td>
+        <td>{{ throw.frames.hit.normal|format_frame(true) }}</td>
+        <td>{{ throw.distances.hit.normal|format_distance }}</td>
+        <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %}>
+            {{ throw.behaviors|move_behaviors_icons }}
+        </td>
+    </tr>
+{% endmacro %}
+
+{% macro hitWithUkemiLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Hit (with ukemi)</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Damages</td>
+        <td>Frames</td>
+        <td>Distance</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>{{ throw.damages.ukemi }}</td>
+        <td>{{ throw.frames.hit.ukemi|format_frame(true) }}</td>
+        <td>{{ throw.distances.hit.ukemi|format_distance }}</td>
+        <td></td>
+    </tr>
+{% endmacro %}
+
+{% macro hitWithWallLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Hit (with wall)</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Damages</td>
+        <td>Frames</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>{{ throw.damages.wall }}</td>
+        <td>{{ throw.frames.hit.wall.normal|format_frame(true) }}</td>
+        <td></td>
+        <td></td>
+    </tr>
+{% endmacro %}
+
+{% macro hitWithWallSplatLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Hit (with wall splat)</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Damages</td>
+        <td>Frames</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>{{ throw.damages.wall }}</td>
+        <td>{{ throw.frames.hit.wall.splat|format_frame(true) }}</td>
+        <td></td>
+        <td></td>
+    </tr>
+{% endmacro %}
+
+{% macro hitWithWallBreakLines(throw) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Hit (with wall break)</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Damages</td>
+        <td>Frames</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>{{ throw.damages.wall }}</td>
+        <td>{{ throw.frames.hit.wall.break|format_frame(true) }}</td>
+        <td></td>
+        <td></td>
+    </tr>
+{% endmacro %}
+
+{% import _self as macros %}
+
 <div class="{{ containerClass }}">
     <div class="card text-center">
         <div class="card-title move-card-title">
@@ -11,132 +172,25 @@
         <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.slug }}.gif" alt="{{ throw.name }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
-                <tr class="separator">
-                    <td class="col-3">Type</td>
-                    <td class="col-3">Property</td>
-                    <td class="col-3">Escape</td>
-                    <td class="col-3">Behaviors</td>
-                </tr>
+                {{ macros.firstLines(throw) }}
+                {{ macros.escapeLines(throw) }}
+                {{ macros.hitLines(throw) }}
 
-                <tr>
-                    <td>Throw</td>
-                    <td class="{{ throw.property|throw_property_bg_class }}">{{ throw.property|format_throw_property }}</td>
-                    <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white">
-                        {% if throw.escapes.count() > 0 %}
-                            {{ throw.escapes.toArray()|join(' or ') }}
-                        {% else %}
-                            Can't
-                        {% endif %}
-                    </td>
-                    <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %}>
-                        {{ throw.behaviors|move_behaviors_icons }}
-                    </td>
-                </tr>
+                {% if throw.frames.hit.ukemi is not null %}
+                    {{ macros.hitWithUkemiLines(throw) }}
+                {% endif %}
 
-                <tr class="separator">
-                    <td colspan="4">Frames</td>
-                </tr>
+                {% if throw.frames.hit.wall.normal is not null %}
+                    {{ macros.hitWithWallLines(throw) }}
+                {% endif %}
 
-                <tr>
-                    <td
-                        class="col-3{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}"
-                        title="Startup frames"
-                    >{{ throw.frames.startup|format_min_max_frames() }}</td>
+                {% if throw.frames.hit.wall.splat is not null %}
+                    {{ macros.hitWithWallSplatLines(throw) }}
+                {% endif %}
 
-                    {% set titleParts = ['Hit frames'] %}
-                    {% if throw.frames.hit.ukemi is not null %}
-                        {% set titleParts = titleParts|merge(['hit frames when ukemi']) %}
-                    {% endif %}
-                    {% if throw.frames.hit.wall.normal is not null %}
-                        {% set titleParts = titleParts|merge(['hit frames with a wall']) %}
-                    {% endif %}
-                    {% if throw.frames.hit.wall.splat is not null %}
-                        {% set titleParts = titleParts|merge(['hit frames with a wall splat']) %}
-                    {% endif %}
-                    {% if throw.frames.hit.wall.break is not null %}
-                        {% set titleParts = titleParts|merge(['hit frames with a wall break']) %}
-                    {% endif %}
-
-                    <td class="col-3 {{ throw.frames.hit|throw_hit_bg_class(throw.behaviors) }}" title="{{ titleParts|join(', ')|capitalize }}">
-                        {{ throw.frames.hit.normal|format_frame(true) }}
-                        {% if throw.frames.hit.ukemi is not null %}
-                            {{ throw.frames.hit.ukemi|format_frame(true) }}
-                        {% endif %}
-                        {% if throw.frames.hit.wall.normal is not null %}
-                            {{ throw.frames.hit.wall.normal|format_frame(true) }}
-                        {% endif %}
-                        {% if throw.frames.hit.wall.splat is not null %}
-                            {{ throw.frames.hit.wall.splat|format_frame(true) }}
-                        {% endif %}
-                        {% if throw.frames.hit.wall.break is not null %}
-                            {{ throw.frames.hit.wall.break|format_frame(true) }}
-                        {% endif %}
-                    </td>
-
-                    {% if throw.frames.escape is not null %}
-                        {% set titleParts = [] %}
-                        {% if throw.frames.escape.normalHit is not null %}
-                            {% set titleParts = titleParts|merge(['escape frames on normal hit']) %}
-                        {% endif %}
-                        {% if throw.frames.escape.counterHit is not null %}
-                            {% set titleParts = titleParts|merge(['escape frames on counter hit']) %}
-                        {% endif %}
-                        <td
-                            class="col-3{% if throw.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif throw.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
-                            title="{{ titleParts|join(', ')|capitalize }}"
-                        >
-                            {% if throw.frames.escape.normalHit %}
-                                {{ throw.frames.escape.normalHit|format_frame(true) }}
-                            {% endif %}
-                            {% if throw.frames.escape.counterHit %}
-                                {{ throw.frames.escape.counterHit|format_frame(true) }}
-                            {% endif %}
-                        </td>
-                        <td class="col-3 {{ throw.frames.afterEscape|throw_escape_bg_class }}" title="After escape frames">{{ throw.frames.afterEscape|format_frame(true) }}</td>
-                    {% else %}
-                        <td class="col-6" colspan="2"></td>
-                    {% endif %}
-                </tr>
-
-                <tr class="separator">
-                    <td>Damages</td>
-                    <td colspan="3">Distances</td>
-                </tr>
-
-                <tr>
-                    {% set title = 'Damages' %}
-                    {% if throw.damages.ukemi is not null %}
-                        {% set title = title ~ ' - Damages when ukemi' %}
-                    {% endif %}
-                    {% if throw.damages.wall is not null %}
-                        {% set title = title ~ ' - Damages with a wall' %}
-                    {% endif %}
-                    <td title="{{ title }}">
-                        {{ throw.damages.normal }}
-                        {% if throw.damages.ukemi is not null %}
-                            {{ throw.damages.ukemi }}
-                        {% endif %}
-                        {% if throw.damages.wall is not null %}
-                            {{ throw.damages.wall }}
-                        {% endif %}
-                    </td>
-                    <td title="Max distance from opponent to throw">{{ (throw.distances.startup / 100)|number_format(2) }}</td>
-                    {% set title = 'Distance after hit' %}
-                    {% if throw.distances.hit.ukemi is not null %}
-                        {% set title = title ~ ' - Distance after ukemi' %}
-                    {% endif %}
-                    <td title="{{ title }}">
-                        {{ (throw.distances.hit.normal / 100)|number_format(2) }}
-                        {% if throw.distances.hit.ukemi is not null %}
-                            {{ (throw.distances.hit.ukemi / 100)|number_format(2) }}
-                        {% endif %}
-                    </td>
-                    <td title="Distance after escape">
-                        {% if throw.distances.escape is not null %}
-                            {{ (throw.distances.escape / 100)|number_format(2) }}
-                        {% endif %}
-                    </td>
-                </tr>
+                {% if throw.frames.hit.wall.break is not null %}
+                    {{ macros.hitWithWallBreakLines(throw) }}
+                {% endif %}
 
                 {% if throw.comments.count > 0 %}
                     <tr class="separator">
