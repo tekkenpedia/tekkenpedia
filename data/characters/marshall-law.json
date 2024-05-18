@@ -156,7 +156,9 @@
                         },
                         "escape": 172
                     },
-                    "escapes": ["1"],
+                    "escapes": [
+                        "1"
+                    ],
                     "damages": {
                         "normal": 35
                     }
@@ -187,7 +189,9 @@
                         },
                         "escape": 155
                     },
-                    "escapes": ["1+2"],
+                    "escapes": [
+                        "1+2"
+                    ],
                     "damages": {
                         "normal": 35
                     }
@@ -218,7 +222,9 @@
                         },
                         "escape": 155
                     },
-                    "escapes": ["1+2"],
+                    "escapes": [
+                        "1+2"
+                    ],
                     "damages": {
                         "normal": 40
                     }
@@ -242,7 +248,9 @@
                         },
                         "after-escape": -3
                     },
-                    "behaviors": ["AIR"],
+                    "behaviors": [
+                        "AIR"
+                    ],
                     "distances": {
                         "startup": 191,
                         "hit": {
@@ -250,7 +258,9 @@
                         },
                         "escape": 185
                     },
-                    "escapes": ["1+2"],
+                    "escapes": [
+                        "1+2"
+                    ],
                     "damages": {
                         "normal": 10
                     }
@@ -281,9 +291,82 @@
                         },
                         "escape": 184
                     },
-                    "escapes": ["1+2"],
+                    "escapes": [
+                        "1+2"
+                    ],
                     "damages": {
                         "normal": 35
+                    }
+                }
+            }
+        },
+        "Heat": {
+            "sections": {
+                "Smash": {
+                    "moves": {
+                        "43b53f07-653a-4107-a77f-e0cb563a4616": {
+                            "name": "2+3",
+                            "visibility": {
+                                "defense": true
+                            },
+                            "property": "MIDDLE",
+                            "frames": {
+                                "startup": {
+                                    "min": 14,
+                                    "max": 15
+                                },
+                                "normal-hit": 5,
+                                "counter-hit": 5,
+                                "block": 11
+                            },
+                            "behaviors": {
+                                "normal-hit": [
+                                    "WALL_SPLAT",
+                                    "HARD_WALL_BREAK",
+                                    "WALL_BLAST",
+                                    "WALL_BOUND",
+                                    "KNOCKDOWN"
+                                ],
+                                "counter-hit": [
+                                    "WALL_SPLAT",
+                                    "HARD_WALL_BREAK",
+                                    "WALL_BLAST",
+                                    "WALL_BOUND",
+                                    "KNOCKDOWN"
+                                ]
+                            },
+                            "distances": {
+                                "startup": 270,
+                                "block": {
+                                    "min": 161,
+                                    "max": 163
+                                },
+                                "normal-hit": {
+                                    "min": 674
+                                },
+                                "counter-hit": {
+                                    "min": 674
+                                }
+                            },
+                            "damages": {
+                                "normal-hit": 50,
+                                "counter-hit": 54
+                            },
+                            "steps": {
+                                "ssr": "EASY",
+                                "swr": "EASY"
+                            },
+                            "comments": [
+                                {
+                                    "comment": "Law goes into DSS on block.",
+                                    "type": "STRENGTH"
+                                },
+                                {
+                                    "comment": "Double SSR or SWR to step the 2nd hit.",
+                                    "type": "DEFENSE"
+                                }
+                            ]
+                        }
                     }
                 }
             }

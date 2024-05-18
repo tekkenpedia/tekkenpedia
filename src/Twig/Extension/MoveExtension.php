@@ -74,6 +74,9 @@ class MoveExtension extends AbstractExtension
             case BehaviorEnum::WALL_BREAK:
                 $wallBehaviorsTitleParts->add('wall break');
                 break;
+            case BehaviorEnum::HARD_WALL_BREAK:
+                $wallBehaviorsTitleParts->add('hard wall break');
+                break;
             case BehaviorEnum::WALL_BOUND:
                 $wallBehaviorsTitleParts->add('wall bound');
                 break;
