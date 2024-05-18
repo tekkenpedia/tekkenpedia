@@ -91,6 +91,45 @@
                         "normal": 35
                     }
                 },
+                "20fb9338-be09-408e-8ade-3ddf395f4a31": {
+                    "type": "THROW",
+                    "name": "2+4,d",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12,
+                            "max": 14
+                        },
+                        "hit": {
+                            "normal": 5
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -6
+                    },
+                    "behaviors": [
+                        "FLOOR_BREAK",
+                        "FLOOR_BLAST"
+                    ],
+                    "distances": {
+                        "startup": 210,
+                        "hit": {
+                            "normal": 145
+                        },
+                        "escape": 312
+                    },
+                    "escapes": [
+                        "1",
+                        "2"
+                    ],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
                 "2bb7ed58-8c37-42f0-8126-ac7f1f661129": {
                     "type": "THROW",
                     "name": "f+2+3",
@@ -116,6 +155,37 @@
                             "normal": 190
                         },
                         "escape": 172
+                    },
+                    "escapes": ["1"],
+                    "damages": {
+                        "normal": 35
+                    }
+                },
+                "adff3e5f-4d25-40cd-aef4-e68653b00b98": {
+                    "type": "THROW",
+                    "name": "uf+1+2",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": 3
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -6
+                    },
+                    "distances": {
+                        "startup": 202,
+                        "hit": {
+                            "normal": 226
+                        },
+                        "escape": 155
                     },
                     "escapes": ["1"],
                     "damages": {
