@@ -90,6 +90,37 @@
                     "damages": {
                         "normal": 35
                     }
+                },
+                "2bb7ed58-8c37-42f0-8126-ac7f1f661129": {
+                    "type": "THROW",
+                    "name": "f+2+3",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 12
+                        },
+                        "hit": {
+                            "normal": -6
+                        },
+                        "escape": {
+                            "normal-hit": 21,
+                            "counter-hit": 14
+                        },
+                        "after-escape": -2
+                    },
+                    "distances": {
+                        "startup": 150,
+                        "hit": {
+                            "normal": 190
+                        },
+                        "escape": 172
+                    },
+                    "escapes": ["1"],
+                    "damages": {
+                        "normal": 35
+                    }
                 }
             }
         }
