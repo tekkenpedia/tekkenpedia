@@ -45,6 +45,8 @@ class MoveExtension extends AbstractExtension
                 $returnParts->add($this->createItalicIcon('bi-arrow-up-right', 'Air'));
             } elseif ($behavior === BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR) {
                 $returnParts->add($this->createPngIcon('delete-recoverable-life-bar', 'Delete recoverable life bar'));
+            } elseif ($behavior === BehaviorEnum::HEAT_BURST) {
+                $returnParts->add($this->createItalicIcon('bi-person-plus', 'Heat burst'));
             } elseif ($behavior === BehaviorEnum::HEAT_ENGAGER) {
                 $returnParts->add($this->createPngIcon('heat-engager', 'Heat engager'));
             } elseif ($behavior === BehaviorEnum::POWER_CRUSH) {
