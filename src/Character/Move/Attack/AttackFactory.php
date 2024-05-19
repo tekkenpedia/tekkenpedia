@@ -28,6 +28,7 @@ class AttackFactory
         }
 
         return new Attack(
+            $attack['master-id'],
             $id,
             $attack['name'],
             $slug,

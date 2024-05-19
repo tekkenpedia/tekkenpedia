@@ -20,6 +20,11 @@ class AttackOptionsResolver
     public static function configure(OptionsResolver $resolver): void
     {
         $resolver
+            ->define('master-id')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+
+        $resolver
             ->define('type')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)

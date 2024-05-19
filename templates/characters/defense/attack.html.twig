@@ -7,10 +7,13 @@
                 </div>
             {% endif  %}
             <div class="title">{{ attack.name }}</div>
-            <div class="links">
-                <a href="../../../characters/{{ character.slug }}/defense/{{ attack.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
-                <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ attack.slug }}.html" title="Copy link"></i>
-            </div>
+            {% if showLinks is not defined or showLinks %}
+                {% set linkSlug = attack.getMaster() is not null ? attack.getMaster().slug : attack.slug %}
+                <div class="links">
+                    <a href="../../../characters/{{ character.slug }}/defense/{{ linkSlug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                    <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ linkSlug }}.html" title="Copy link"></i>
+                </div>
+            {% endif %}
         </div>
         <br>
         <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.slug }}.gif" alt="{{ attack.name }}">
