@@ -12,11 +12,13 @@ use App\{
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
 
-readonly class CharacterFactory
+class CharacterFactory
 {
     private string $charactersPath;
 
-    public function __construct(string $projectDir, private JsonParser $jsonParser)
+    private ?CharacterCollection $characters = null;
+
+    public function __construct(string $projectDir, private readonly JsonParser $jsonParser)
     {
         $this->charactersPath = $projectDir . '/data/characters';
     }
@@ -36,12 +38,16 @@ readonly class CharacterFactory
 
     public function createAll(): CharacterCollection
     {
-        $return = new CharacterCollection();
-        foreach ($this->getFileNames()->toArray() as $fileName) {
-            $return->add($this->create($fileName));
+        if ($this->characters instanceof CharacterCollection === false) {
+            $this->characters = new CharacterCollection();
+            foreach ($this->getFileNames()->toArray() as $fileName) {
+                $this->characters->add($this->create($fileName));
+            }
+
+            $this->characters->setReadOnly();
         }
 
-        return $return->setReadOnly();
+        return $this->characters;
     }
 
     private function getFileNames(): StringCollection

@@ -7,6 +7,7 @@ namespace App\Generator;
 use App\{
     Character\Character,
     Character\CharacterFactory,
+    Character\Move\Attack\Attack,
     Character\Section\Section};
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -77,6 +78,10 @@ readonly class DefenseGenerator
         $rootPath = $this->getRootPath($character);
 
         foreach ($section->moves->toArray() as $move) {
+            if ($move instanceof Attack && is_string($move->masterId)) {
+                continue;
+            }
+
             $renderPathname = $rootPath . '/' . $move->slug . '.html';
             $output->writeln('Generating <info>' . $renderPathname . '</info>.');
 
