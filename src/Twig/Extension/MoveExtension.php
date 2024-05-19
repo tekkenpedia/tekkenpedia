@@ -46,11 +46,11 @@ class MoveExtension extends AbstractExtension
             } elseif ($behavior === BehaviorEnum::DELETE_RECOVERABLE_LIFE_BAR) {
                 $returnParts->add($this->createPngIcon('delete-recoverable-life-bar', 'Delete recoverable life bar'));
             } elseif ($behavior === BehaviorEnum::HEAT_BURST) {
-                $returnParts->add($this->createItalicIcon('bi-person-plus', 'Heat burst'));
+                $returnParts->add($this->createPngIcon('heat-engager', 'Heat burst'));
             } elseif ($behavior === BehaviorEnum::HEAT_ENGAGER) {
                 $returnParts->add($this->createPngIcon('heat-engager', 'Heat engager'));
-            } elseif ($behavior === BehaviorEnum::POWER_CRUSH) {
-                $returnParts->add($this->createPngIcon('power-crush', 'Power crush'));
+            } elseif ($behavior === BehaviorEnum::OPPONENT_CROUCH) {
+                $returnParts->add($this->createPngIcon('opponent-crouch', 'Opponent is crouch'));
             } else {
                 throw new AppException('Unknown behavior ' . $behavior->name . '.');
             }
@@ -117,6 +117,6 @@ class MoveExtension extends AbstractExtension
 
     private function createPngIcon(string $icon, string $title): string
     {
-        return '<img class="icon-move-behavior" src="../../../images/properties/' . $icon . '.png" title="' . $title . '">';
+        return '<img class="icon-move-behavior" src="../../../images/behaviors/' . $icon . '.png" title="' . $title . '">';
     }
 }

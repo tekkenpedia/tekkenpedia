@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character\Move\Attack\Frame;
+namespace App\Parser\Character\Move;
 
 use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\{
     Validation
 };
 
-class StartupOptionsResolver
+class MinMaxFramesOptionsResolver
 {
     public static function configure(OptionsResolver $resolver): void
     {

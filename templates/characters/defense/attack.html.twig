@@ -1,9 +1,129 @@
+{% macro firstLines(attack) %}
+    <tr class="separator">
+        <td class="col-3">Type</td>
+        <td class="col-3">Property</td>
+        <td class="col-3">Startup frames</td>
+        <td class="col-3">Range</td>
+    </tr>
+
+    <tr>
+        <td>Attack</td>
+        <td>{{ attack.property|format_attack_property }}</td>
+        <td>{{ attack.frames.startup|format_min_max_frames(true) }}</td>
+        <td>
+            {% if attack.distances.startup is not null %}
+                {{ attack.distances.startup|format_distance }}
+            {% endif %}
+        </td>
+    </tr>
+{% endmacro %}
+
+{% macro powerCrushLines(attack) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Power crush</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Frames</td>
+        <td>On block</td>
+        <td>Dam. reduce</td>
+        <td>Behaviors</td>
+    </tr>
+
+    <tr>
+        <td>{{ attack.frames.absorption|format_min_max_frames }}</td>
+        <td
+            class="{{ attack.frames.afterAbsorption.block|frame_bg_class }}"
+            title="Frames on block after absorbed damages"
+        >
+            {{ attack.frames.afterAbsorption.block|format_frame }}
+        </td>
+        <td>
+            {% if attack.powerCrush.damageReduction is not null %}
+                {{ attack.powerCrush.damageReduction }}%
+            {% endif %}
+        </td>
+        <td><img class="icon-move-behavior" src="../../../images/behaviors/power-crush.png" title="Power crush"></td>
+    </tr>
+{% endmacro %}
+
+{% macro onBlockLines(attack) %}
+    <tr class="separator separator-top">
+        <td colspan="4">On block</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Frames</td>
+        <td></td>
+        <td>Distance</td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td class="{{ attack.frames.block|frame_bg_class }}">{{ attack.frames.block|format_frame }}</td>
+        <td></td>
+        <td>{{ attack.distances.block|format_distances }}</td>
+        <td>{{ attack.behaviors.block|move_behaviors_icons }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro onNormalHitLines(attack) %}
+    <tr class="separator separator-top">
+        <td colspan="4">On normal hit</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Frames</td>
+        <td>Damages</td>
+        <td>Distance</td>
+        <td>Behaviors</td>
+    </tr>
+
+    <tr>
+        <td class="{{ attack.frames.normalHit|frame_bg_class }}">{{ attack.frames.normalHit|format_frame }}</td>
+        <td>{{ attack.damages.normalHit }}</td>
+        <td>{{ attack.distances.normalHit|format_distances }}</td>
+        <td>{{ attack.behaviors.normalHit|move_behaviors_icons }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro onCounterHitLines(attack) %}
+    <tr class="separator separator-top">
+        <td colspan="4">On counter hit</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Frames</td>
+        <td>Damages</td>
+        <td>Distance</td>
+        <td>Behaviors</td>
+    </tr>
+
+    <tr>
+        <td class="{{ attack.frames.counterHit|frame_bg_class }}">{{ attack.frames.counterHit|format_frame }}</td>
+        <td>{{ attack.damages.counterHit }}</td>
+        <td>{{ attack.distances.counterHit|format_distances }}</td>
+        <td>{{ attack.behaviors.counterHit|move_behaviors_icons }}</td>
+    </tr>
+{% endmacro %}
+
+{% macro stepsLines(attack) %}
+    <tr class="separator">
+        <td colspan="4">Steps</td>
+    </tr>
+
+    <tr>
+        <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssl|step_difficulty }}">SSL</td>
+        <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left - Difficulty: {{ attack.steps.swl|step_difficulty }}">SWL</td>
+        <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right - Difficulty: {{ attack.steps.ssr|step_difficulty }}">SSR</td>
+        <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right - Difficulty: {{ attack.steps.swr|step_difficulty }}">SWR</td>
+    </tr>
+{% endmacro %}
+
+{% import _self as macros %}
+
 <div class="{{ containerClass }}">
     <div class="card text-center">
         <div class="card-title move-card-title">
             {% if attack.heat %}
                 <div class="heat">
-                    <img class="icon-move-behavior" src="../../../images/properties/heat-engager.png" title="Heat activated">
+                    <img class="icon-move-behavior" src="../../../images/behaviors/heat-engager.png" title="Heat activated">
                 </div>
             {% endif  %}
             <div class="title">{{ attack.name }}</div>
@@ -19,80 +139,14 @@
         <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.slug }}.gif" alt="{{ attack.name }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
-                <tr class="separator">
-                    <td class="col-3">Type</td>
-                    <td class="col-3">Property</td>
-                    <td class="col-3">Startup frames</td>
-                    <td class="col-3"></td>
-                </tr>
-
-                <tr>
-                    <td>Attack</td>
-                    <td>{{ attack.property|format_attack_property }}</td>
-                    <td title="Startup frames">{{ attack.frames.startup|format_min_max_frames(true) }}</td>
-                </tr>
-
-                <tr class="separator separator-top">
-                    <td colspan="4">On block</td>
-                </tr>
-                <tr class="separator separator-bottom">
-                    <td>Frames</td>
-                    <td></td>
-                    <td>Distance</td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                    <td class="{{ attack.frames.block|frame_bg_class }}">{{ attack.frames.block|format_frame }}</td>
-                    <td></td>
-                    <td>{{ attack.distances.block|format_distances }}</td>
-                    <td></td>
-                </tr>
-
-                <tr class="separator separator-top">
-                    <td colspan="4">On normal hit</td>
-                </tr>
-                <tr class="separator separator-bottom">
-                    <td>Frames</td>
-                    <td>Damages</td>
-                    <td>Distance</td>
-                    <td>Behaviors</td>
-                </tr>
-
-                <tr>
-                    <td class="{{ attack.frames.normalHit|frame_bg_class }}">{{ attack.frames.normalHit|format_frame }}</td>
-                    <td>{{ attack.damages.normalHit }}</td>
-                    <td>{{ attack.distances.normalHit|format_distances }}</td>
-                    <td>{{ attack.normalHitBehaviors|move_behaviors_icons }}</td>
-                </tr>
-
-                <tr class="separator separator-top">
-                    <td colspan="4">On counter hit</td>
-                </tr>
-                <tr class="separator separator-bottom">
-                    <td>Frames</td>
-                    <td>Damages</td>
-                    <td>Distance</td>
-                    <td>Behaviors</td>
-                </tr>
-
-                <tr>
-                    <td class="{{ attack.frames.counterHit|frame_bg_class }}">{{ attack.frames.counterHit|format_frame }}</td>
-                    <td>{{ attack.damages.counterHit }}</td>
-                    <td>{{ attack.distances.counterHit|format_distances }}</td>
-                    <td>{{ attack.counterHitBehaviors|move_behaviors_icons }}</td>
-                </tr>
-
-                <tr class="separator">
-                    <td colspan="4">Steps</td>
-                </tr>
-
-                <tr>
-                    <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssl|step_difficulty }}">SSL</td>
-                    <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left - Difficulty: {{ attack.steps.swl|step_difficulty }}">SWL</td>
-                    <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right - Difficulty: {{ attack.steps.ssr|step_difficulty }}">SSR</td>
-                    <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right - Difficulty: {{ attack.steps.swr|step_difficulty }}">SWR</td>
-                </tr>
+                {{ macros.firstLines(attack) }}
+                {% if attack.powerCrush.damageReduction is not null %}
+                    {{ macros.powerCrushLines(attack) }}
+                {% endif %}
+                {{ macros.onBlockLines(attack) }}
+                {{ macros.onNormalHitLines(attack) }}
+                {{ macros.onCounterHitLines(attack) }}
+                {{ macros.stepsLines(attack) }}
 
                 {% if attack.comments.count > 0 %}
                     <tr class="separator">

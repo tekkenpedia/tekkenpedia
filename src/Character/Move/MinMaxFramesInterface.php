@@ -6,7 +6,7 @@ namespace App\Character\Move;
 
 interface MinMaxFramesInterface
 {
-    public function getMin(): int;
+    public function getMin(): ?int;
 
     public function getMax(): ?int;
 }
