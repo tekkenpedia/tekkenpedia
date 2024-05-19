@@ -88,9 +88,21 @@ div.move-card-title div.title {
     text-align: center;
     width: 100%;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     background-color: #818181;
     color: white;
+}
+
+div.move-card-title div.heat {
+    position: absolute;
+    left: 0;
+    margin-left: 0.4rem;
+    background-color: #818181;
+    z-index: 1;
+}
+
+div.move-card-title div.heat img {
+    vertical-align: bottom;
 }
 
 div.move-card-title div.links {
@@ -98,6 +110,7 @@ div.move-card-title div.links {
     right: 0;
     margin-right: 0.4rem;
     background-color: #818181;
+    font-size: 1.1rem;
 }
 
 div.move-card-title div.links i {

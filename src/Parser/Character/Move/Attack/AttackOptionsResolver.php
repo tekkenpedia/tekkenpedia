@@ -31,6 +31,11 @@ class AttackOptionsResolver
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
         $resolver
+            ->define('heat')
+            ->default(false)
+            ->allowedTypes(AllowedTypeEnum::BOOLEAN->value);
+
+        $resolver
             ->define('parent')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);

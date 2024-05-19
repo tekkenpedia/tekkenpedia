@@ -22,10 +22,16 @@ class AttackFactory
     {
         $parentAttack = is_string($attack['parent']) ? static::getParent($attack['parent'], $moves) : null;
 
+        $slug = $attack['slug'] ?? $attack['name'];
+        if ($attack['heat']) {
+            $slug .= '_heat-activated';
+        }
+
         return new Attack(
             $id,
             $attack['name'],
-            $attack['slug'] ?? $attack['name'],
+            $slug,
+            $attack['heat'],
             new Visibility($attack['visibility']['defense']),
             PropertyEnum::create(static::getData($attack, $parentAttack, 'property')),
             new Distances(
