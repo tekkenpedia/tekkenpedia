@@ -306,8 +306,7 @@
                 "Activation": {
                     "moves": {
                         "d29905fc-c7c6-4ea5-a42c-b9c64160ab5d": {
-                            "name": "2+3 (heat burst)",
-                            "slug": "2+3_heat-burst",
+                            "name": "2+3",
                             "visibility": {
                                 "defense": true
                             },
@@ -352,10 +351,11 @@
                         }
                     }
                 },
-                "Smash": {
+                "Heat smash": {
                     "moves": {
                         "43b53f07-653a-4107-a77f-e0cb563a4616": {
                             "name": "2+3",
+                            "heat": true,
                             "visibility": {
                                 "defense": true
                             },
@@ -420,6 +420,7 @@
                         "bc9a71fb-a9fa-4356-8295-d0db97ed98ca": {
                             "name": "2+3 (first move whiff)",
                             "slug": "2+3_first-move-whiff",
+                            "heat": true,
                             "visibility": {
                                 "defense": true
                             },

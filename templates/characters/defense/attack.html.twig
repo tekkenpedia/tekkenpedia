@@ -1,6 +1,11 @@
 <div class="{{ containerClass }}">
     <div class="card text-center">
         <div class="card-title move-card-title">
+            {% if attack.heat %}
+                <div class="heat">
+                    <img class="icon-move-behavior" src="../../../images/properties/heat-engager.png" title="Heat activated">
+                </div>
+            {% endif  %}
             <div class="title">{{ attack.name }}</div>
             <div class="links">
                 <a href="../../../characters/{{ character.slug }}/defense/{{ attack.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>

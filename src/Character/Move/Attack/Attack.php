@@ -19,6 +19,7 @@ readonly class Attack implements MoveInterface
         public string $id,
         public string $name,
         public string $slug,
+        public bool $heat,
         public Visibility $visibility,
         public PropertyEnum $property,
         public Distances $distances,

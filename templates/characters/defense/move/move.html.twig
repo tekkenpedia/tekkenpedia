@@ -29,7 +29,7 @@
                     "label": "Defense"
                 },
                 {
-                    "label": move.getSlug()
+                    "label": move.name ~ (move.heat|default ? ' (heat activated)' : null)
                 }
             ] %}
             {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
