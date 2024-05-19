@@ -311,22 +311,31 @@
                                 "defense": true
                             },
                             "property": "MIDDLE",
+                            "power-crush": {
+                                "damage-reduction": 0
+                            },
                             "frames": {
                                 "startup": {
                                     "min": 16
                                 },
+                                "after-absorption": {
+                                    "block": 2
+                                },
+                                "block": 1,
                                 "normal-hit": 2,
-                                "counter-hit": 2,
-                                "block": 1
+                                "counter-hit": 2
                             },
                             "behaviors": {
-                                "normal-hit": [
-                                    "POWER_CRUSH",
+                                "block": [
                                     "HEAT_BURST"
                                 ],
+                                "normal-hit": [
+                                    "HEAT_BURST",
+                                    "OPPONENT_CROUCH"
+                                ],
                                 "counter-hit": [
-                                    "POWER_CRUSH",
-                                    "HEAT_BURST"
+                                    "HEAT_BURST",
+                                    "OPPONENT_CROUCH"
                                 ]
                             },
                             "distances": {

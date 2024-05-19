@@ -6,6 +6,7 @@ namespace App\Parser\Character\Move\Throw\Frame;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
+    Parser\Character\Move\MinMaxFramesOptionsResolver,
     Parser\Character\Move\Throw\Frame\Hit\HitOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,7 @@ class FramesOptionsResolver
             ->define('startup')
             ->default(
                 static function(OptionsResolver $resolver): void {
-                    StartupOptionsResolver::configure($resolver);
+                    MinMaxFramesOptionsResolver::configure($resolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);

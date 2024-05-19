@@ -8,7 +8,11 @@ use App\Character\Move\Distance\MinMax;
 
 readonly class Distances
 {
-    public function __construct(public MinMax $block, public MinMax $normalHit, public MinMax $counterHit)
-    {
+    public function __construct(
+        public ?int $startup,
+        public MinMax $block,
+        public MinMax $normalHit,
+        public MinMax $counterHit
+    ) {
     }
 }

@@ -10,7 +10,6 @@ use App\{
     Character\Move\Step\Steps,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\AttackCollection,
-    Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
     Exception\AppException
 };
@@ -31,11 +30,11 @@ class Attack implements MoveInterface
         public readonly bool $heat,
         public readonly Visibility $visibility,
         public readonly PropertyEnum $property,
+        public readonly PowerCrush $powerCrush,
         public readonly Distances $distances,
         public readonly Frames $frames,
         public readonly Damages $damages,
-        public readonly BehaviorEnumCollection $normalHitBehaviors,
-        public readonly BehaviorEnumCollection $counterHitBehaviors,
+        public readonly Behaviors $behaviors,
         public readonly Steps $steps,
         public readonly CommentCollection $comments
     ) {

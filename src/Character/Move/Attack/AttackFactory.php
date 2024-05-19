@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Character\Move\Attack;
 
 use App\{
+    Character\Move\Attack\Frame\Absorption,
+    Character\Move\Attack\Frame\AfterAbsorption,
     Character\Move\Attack\Frame\Frames,
     Character\Move\Attack\Frame\Startup,
     Character\Move\Behavior\BehaviorsFactory,
@@ -35,7 +37,9 @@ class AttackFactory
             $attack['heat'],
             new Visibility($attack['visibility']['defense']),
             PropertyEnum::create(static::getData($attack, $parentAttack, 'property')),
+            new PowerCrush(static::getData($attack, $parentAttack, 'power-crush', 'damage-reduction')),
             new Distances(
+                $attack['distances']['startup'],
                 new MinMax(
                     static::getData($attack, $parentAttack, 'distances', 'block', 'min'),
                     static::getData($attack, $parentAttack, 'distances', 'block', 'max')
@@ -54,16 +58,24 @@ class AttackFactory
                     static::getData($attack, $parentAttack, 'frames', 'startup', 'min'),
                     static::getData($attack, $parentAttack, 'frames', 'startup', 'max')
                 ),
+                new Absorption(
+                    static::getData($attack, $parentAttack, 'frames', 'absorption', 'min'),
+                    static::getData($attack, $parentAttack, 'frames', 'absorption', 'max')
+                ),
+                new AfterAbsorption(static::getData($attack, $parentAttack, 'frames', 'after-absorption', 'block')),
+                $attack['frames']['block'],
                 $attack['frames']['normal-hit'],
-                $attack['frames']['counter-hit'],
-                $attack['frames']['block']
+                $attack['frames']['counter-hit']
             ),
             new Damages(
                 static::getData($attack, $parentAttack, 'damages', 'normal-hit'),
                 static::getData($attack, $parentAttack, 'damages', 'counter-hit')
             ),
-            BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'normal-hit')),
-            BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'counter-hit')),
+            new Behaviors(
+                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'block')),
+                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'normal-hit')),
+                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'counter-hit'))
+            ),
             new Steps(
                 StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssl') ?? StepEnum::IMPOSSIBLE->name),
                 StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swl') ?? StepEnum::IMPOSSIBLE->name),

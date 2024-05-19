@@ -6,7 +6,6 @@ namespace App\Parser\Character\Move\Attack;
 
 use App\{
     Character\Move\Attack\PropertyEnum,
-    Character\Move\Behavior\BehaviorEnum,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
@@ -55,6 +54,15 @@ class AttackOptionsResolver
             ->default(
                 static function(OptionsResolver $visibilityResolver): void {
                     VisibilityOptionsResolver::configure($visibilityResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('power-crush')
+            ->default(
+                static function(OptionsResolver $powerCrushResolver): void {
+                    PowerCrushOptionsResolver::configure($powerCrushResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -113,18 +121,11 @@ class AttackOptionsResolver
 
         $resolver
             ->define('behaviors')
-            ->default(['normal-hit' => [], 'counter-hit' => []])
-            ->allowedValues(
-                static function(array $behaviors): bool {
-                    $allowedBehaviors = BehaviorEnum::getNames();
-                    foreach (array_merge($behaviors['normal-hit'], $behaviors['counter-hit']) as $behavior) {
-                        if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
-                            return false;
-                        }
-                    }
-
-                    return true;
+            ->default(
+                static function(OptionsResolver $behaviorsResolver): void {
+                    BehaviorsOptionsResolver::configure($behaviorsResolver);
                 }
-            );
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
     }
 }

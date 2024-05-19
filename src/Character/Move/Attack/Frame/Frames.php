@@ -8,9 +8,11 @@ readonly class Frames
 {
     public function __construct(
         public Startup $startup,
+        public Absorption $absorption,
+        public AfterAbsorption $afterAbsorption,
+        public int $block,
         public int $normalHit,
-        public int $counterHit,
-        public int $block
+        public int $counterHit
     ) {
     }
 }
