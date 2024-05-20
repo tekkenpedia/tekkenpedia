@@ -188,7 +188,9 @@
                         },
                         "normal-hit": 1,
                         "counter-hit": 9,
-                        "block": -8
+                        "block": {
+                            "max": -8
+                        }
                     },
                     "damages": {
                         "normal-hit": 18,
@@ -210,7 +212,9 @@
                     "frames": {
                         "normal-hit": 1,
                         "counter-hit": 1,
-                        "block": -8
+                        "block": {
+                            "max": -8
+                        }
                     },
                     "damages": {
                         "normal-hit": 38,

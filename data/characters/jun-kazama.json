@@ -199,7 +199,9 @@
                         },
                         "normal-hit": 2,
                         "counter-hit": 14,
-                        "block": -12
+                        "block": {
+                            "max": -12
+                        }
                     },
                     "distances": {
                         "startup": 290,
@@ -245,7 +247,9 @@
                         },
                         "normal-hit": 13,
                         "counter-hit": 13,
-                        "block": 3
+                        "block": {
+                            "max": 3
+                        }
                     },
                     "distances": {
                         "startup": 250,
@@ -285,7 +289,9 @@
                         },
                         "normal-hit": 23,
                         "counter-hit": 23,
-                        "block": 6
+                        "block": {
+                            "max": 6
+                        }
                     },
                     "behaviors": {
                         "normal-hit": [
@@ -340,7 +346,9 @@
                         },
                         "normal-hit": 14,
                         "counter-hit": 34,
-                        "block": -9
+                        "block": {
+                            "max": -9
+                        }
                     },
                     "behaviors": {
                         "normal-hit": [
@@ -408,7 +416,9 @@
                                 },
                                 "normal-hit": 6,
                                 "counter-hit": 20,
-                                "block": 6
+                                "block": {
+                                    "max": 6
+                                }
                             },
                             "distances": {
                                 "startup": 200,
@@ -452,7 +462,9 @@
                                 },
                                 "normal-hit": 34,
                                 "counter-hit": 34,
-                                "block": -13
+                                "block": {
+                                    "max": -13
+                                }
                             },
                             "behaviors": {
                                 "normal-hit": ["AIR"],
@@ -492,7 +504,9 @@
                                 },
                                 "normal-hit": 4,
                                 "counter-hit": 4,
-                                "block": -7
+                                "block": {
+                                    "max": -7
+                                }
                             },
                             "distances": {
                                 "startup": 260,
@@ -537,7 +551,9 @@
                                 },
                                 "normal-hit": 30,
                                 "counter-hit": 30,
-                                "block": -4
+                                "block": {
+                                    "max": -4
+                                }
                             },
                             "behaviors": {
                                 "normal-hit": [

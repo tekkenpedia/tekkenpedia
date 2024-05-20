@@ -39,19 +39,22 @@ class FormatExtension extends AbstractExtension
         return ucfirst(strtolower($property->name));
     }
 
-    public function formatMinMaxFrames(MinMaxFramesInterface $minMaxFrames): ?string
+    public function formatMinMaxFrames(MinMaxFramesInterface $minMaxFrames, bool $invert = false): ?string
     {
         $return = null;
 
-        if (is_int($minMaxFrames->getMin())) {
-            $return .= $this->formatFrame($minMaxFrames->getMin(), true);
+        $first = $invert ? $minMaxFrames->getMax() : $minMaxFrames->getMin();
+        $second = $invert ? $minMaxFrames->getMin() : $minMaxFrames->getMax();
+
+        if (is_int($first)) {
+            $return .= $this->formatFrame($first, true);
         }
 
-        if (is_int($minMaxFrames->getMax())) {
+        if (is_int($second)) {
             if (is_string($return)) {
                 $return .= '<i class="bi bi-arrows"></i>';
             }
-            $return .= $this->formatFrame($minMaxFrames->getMax(), true);
+            $return .= $this->formatFrame($second, true);
         }
 
         return $return;

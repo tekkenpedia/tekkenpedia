@@ -58,7 +58,7 @@
     </tr>
 
     <tr>
-        <td class="{{ attack.frames.block|frame_bg_class }}">{{ attack.frames.block|format_frame }}</td>
+        <td class="{{ attack.frames.block.max|frame_bg_class }}">{{ attack.frames.block|format_min_max_frames(true) }}</td>
         <td></td>
         <td>{{ attack.distances.block|format_distances }}</td>
         <td>{{ attack.behaviors.block|move_behaviors_icons }}</td>

@@ -301,6 +301,60 @@
                 }
             }
         },
+        "Power crush": {
+            "moves": {
+                "ce4c5100-e0c5-4614-a42b-d10f60ddbac2": {
+                    "name": "f,f+3",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "property": "MIDDLE",
+                    "power-crush": {
+                        "damage-reduction": 0
+                    },
+                    "frames": {
+                        "startup": {
+                            "min": 20,
+                            "max": 23
+                        },
+                        "after-absorption": {
+                            "block": -7
+                        },
+                        "block": {
+                            "min": -12,
+                            "max": -13
+                        },
+                        "normal-hit": 17,
+                        "counter-hit": 17
+                    },
+                    "behaviors": {
+                        "normal-hit": [
+                            "HEAT_ENGAGER"
+                        ],
+                        "counter-hit": [
+                            "HEAT_ENGAGER"
+                        ]
+                    },
+                    "distances": {
+                        "startup": 330,
+                        "block": {
+                            "min": 175,
+                            "max": 263
+                        },
+                        "normal-hit": {
+                            "min": 174
+                        },
+                        "counter-hit": {
+                            "min": 174
+                        }
+                    },
+                    "damages": {
+                        "normal-hit": 30,
+                        "counter-hit": 36
+                    }
+                }
+            }
+        },
         "Heat": {
             "sections": {
                 "Activation": {
@@ -321,7 +375,9 @@
                                 "after-absorption": {
                                     "block": 2
                                 },
-                                "block": 1,
+                                "block": {
+                                    "max": 1
+                                },
                                 "normal-hit": 2,
                                 "counter-hit": 2
                             },
@@ -376,7 +432,9 @@
                                 },
                                 "normal-hit": 5,
                                 "counter-hit": 5,
-                                "block": 11
+                                "block": {
+                                    "max": 11
+                                }
                             },
                             "behaviors": {
                                 "normal-hit": [
@@ -442,7 +500,9 @@
                                 },
                                 "normal-hit": 66,
                                 "counter-hit": 66,
-                                "block": -8
+                                "block": {
+                                    "max": -8
+                                }
                             },
                             "behaviors": {
                                 "normal-hit": [

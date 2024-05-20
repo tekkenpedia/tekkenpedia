@@ -43,8 +43,12 @@ class FramesOptionsResolver
 
         $resolver
             ->define('block')
-            ->required()
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value);
+            ->default(
+                static function(OptionsResolver $resolver): void {
+                    MinMaxFramesOptionsResolver::configure($resolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
         $resolver
             ->define('normal-hit')

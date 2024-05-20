@@ -6,10 +6,6 @@ namespace App\Parser\Character\Move;
 
 use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\{
-    Constraints\Positive,
-    Validation
-};
 
 class MinMaxFramesOptionsResolver
 {
@@ -18,13 +14,11 @@ class MinMaxFramesOptionsResolver
         $resolver
             ->define('min')
             ->default(null)
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
-            ->allowedValues(Validation::createIsValidCallable(new Positive()));
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value);
 
         $resolver
             ->define('max')
             ->default(null)
-            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
-            ->allowedValues(Validation::createIsValidCallable(new Positive()));
+            ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value);
     }
 }

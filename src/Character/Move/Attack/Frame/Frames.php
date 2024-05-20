@@ -10,7 +10,7 @@ readonly class Frames
         public Startup $startup,
         public Absorption $absorption,
         public AfterAbsorption $afterAbsorption,
-        public int $block,
+        public Block $block,
         public int $normalHit,
         public int $counterHit
     ) {
