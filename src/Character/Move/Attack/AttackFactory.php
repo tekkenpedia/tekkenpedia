@@ -7,6 +7,7 @@ namespace App\Character\Move\Attack;
 use App\{
     Character\Move\Attack\Frame\Absorption,
     Character\Move\Attack\Frame\AfterAbsorption,
+    Character\Move\Attack\Frame\Block,
     Character\Move\Attack\Frame\Frames,
     Character\Move\Attack\Frame\Startup,
     Character\Move\Behavior\BehaviorsFactory,
@@ -15,8 +16,7 @@ use App\{
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
-    Exception\AppException
-};
+    Exception\AppException};
 
 class AttackFactory
 {
@@ -63,7 +63,7 @@ class AttackFactory
                     static::getData($attack, $parentAttack, 'frames', 'absorption', 'max')
                 ),
                 new AfterAbsorption(static::getData($attack, $parentAttack, 'frames', 'after-absorption', 'block')),
-                $attack['frames']['block'],
+                new Block($attack['frames']['block']['min'], $attack['frames']['block']['max']),
                 $attack['frames']['normal-hit'],
                 $attack['frames']['counter-hit']
             ),
