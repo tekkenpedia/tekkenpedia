@@ -7,10 +7,10 @@ namespace App\Character\Move\Step;
 readonly class Steps
 {
     public function __construct(
-        public StepEnum $ssl,
-        public StepEnum $swl,
-        public StepEnum $ssr,
-        public StepEnum $swr
+        public ?StepEnum $ssl,
+        public ?StepEnum $swl,
+        public ?StepEnum $ssr,
+        public ?StepEnum $swr
     ) {
     }
 }

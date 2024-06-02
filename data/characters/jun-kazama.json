@@ -223,6 +223,7 @@
                         "counter-hit": 18
                     },
                     "steps": {
+                        "ssl": "IMPOSSIBLE",
                         "swl": "EASY",
                         "ssr": "EASY",
                         "swr": "EASY"
@@ -269,6 +270,12 @@
                     "damages": {
                         "normal-hit": 21,
                         "counter-hit": 25
+                    },
+                    "steps": {
+                        "ssl": "IMPOSSIBLE",
+                        "swl": "IMPOSSIBLE",
+                        "ssr": "IMPOSSIBLE",
+                        "swr": "IMPOSSIBLE"
                     },
                     "comments": [
                         {
@@ -329,6 +336,7 @@
                         "counter-hit": 36
                     },
                     "steps": {
+                        "ssl": "IMPOSSIBLE",
                         "swl": "EASY",
                         "ssr": "EASY",
                         "swr": "EASY"
@@ -439,6 +447,12 @@
                                 "normal-hit": 17,
                                 "counter-hit": 20
                             },
+                            "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
+                            },
                             "comments": [
                                 {
                                     "comment": "2 can be ducked on block or NH.",
@@ -482,7 +496,10 @@
                                 "counter-hit": 28
                             },
                             "steps": {
-                                "swl": "EASY"
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "EASY",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
                             },
                             "comments": [
                                 {
@@ -528,6 +545,8 @@
                                 "counter-hit": 8
                             },
                             "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
                                 "ssr": "EASY",
                                 "swr": "EASY"
                             },
@@ -589,6 +608,12 @@
                             "damages": {
                                 "normal-hit": 26,
                                 "counter-hit": 31
+                            },
+                            "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
                             },
                             "comments": [
                                 {
