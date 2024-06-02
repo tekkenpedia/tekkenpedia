@@ -18,7 +18,8 @@ readonly class Throw_ implements MoveInterface
 {
     public function __construct(
         public string $id,
-        public string $name,
+        public string $inputs,
+        public ?string $situation,
         public string $slug,
         public Visibility $visibility,
         public PropertyEnum $property,

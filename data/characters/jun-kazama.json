@@ -10,7 +10,7 @@
             "moves": {
                 "7aea3568-b4e9-4825-b5d2-9af2c913d006": {
                     "type": "THROW",
-                    "name": "1+3",
+                    "inputs": "1+3",
                     "visibility": {
                         "defense": true
                     },
@@ -45,7 +45,7 @@
                 },
                 "27d6c801-ba7c-45f3-a86f-a68c25cd0dd8": {
                     "type": "THROW",
-                    "name": "2+4",
+                    "inputs": "2+4",
                     "visibility": {
                         "defense": true
                     },
@@ -80,7 +80,7 @@
                 },
                 "24314740-642c-4290-99e7-37b018591f08": {
                     "type": "THROW",
-                    "name": "df+2+3",
+                    "inputs": "df+2+3",
                     "visibility": {
                         "defense": true
                     },
@@ -117,7 +117,7 @@
                 },
                 "1eb2c4e6-4cac-4815-a9f8-ee75c297a89c": {
                     "type": "THROW",
-                    "name": "uf+1+2",
+                    "inputs": "uf+1+2",
                     "visibility": {
                         "defense": true
                     },
@@ -150,7 +150,7 @@
                 },
                 "adfa85be-7ae0-415e-9600-4f11544600d1": {
                     "type": "THROW",
-                    "name": "FC,db+1+2",
+                    "inputs": "FC,db+1+2",
                     "visibility": {
                         "defense": true
                     },
@@ -187,7 +187,7 @@
         "Basics": {
             "moves": {
                 "0c46b58c-a95a-4b0f-9a93-f868626f313b": {
-                    "name": "db+2",
+                    "inputs": "db+2",
                     "visibility": {
                         "defense": true
                     },
@@ -236,7 +236,7 @@
                     ]
                 },
                 "27fbfcbf-ebd9-4e15-92a0-dd92220c8e0b": {
-                    "name": "f+4",
+                    "inputs": "f+4",
                     "visibility": {
                         "defense": true
                     },
@@ -285,7 +285,7 @@
                     ]
                 },
                 "02f6489f-f5b7-4194-beed-33784fedfceb": {
-                    "name": "f,f+1+2",
+                    "inputs": "f,f+1+2",
                     "visibility": {
                         "defense": true
                     },
@@ -343,7 +343,7 @@
                     }
                 },
                 "0e60546c-fee2-41e9-bb59-e32dfa4c4dd4": {
-                    "name": "SS2",
+                    "inputs": "SS2",
                     "visibility": {
                         "defense": true
                     },
@@ -412,7 +412,7 @@
                 "1,2,2": {
                     "moves": {
                         "19764b90-b8ef-425d-8c52-5c0edcbda5e5": {
-                            "name": "1,2,2",
+                            "inputs": "1,2,2",
                             "visibility": {
                                 "defense": true
                             },
@@ -464,7 +464,7 @@
                             ]
                         },
                         "23274ec1-7778-4435-83d5-9f3f1064cdd0": {
-                            "name": "1,2,2,2",
+                            "inputs": "1,2,2,2",
                             "visibility": {
                                 "defense": true
                             },
@@ -509,7 +509,7 @@
                             ]
                         },
                         "9736f5d5-ffcb-473c-ab05-891439c58f57": {
-                            "name": "1,2,2,1",
+                            "inputs": "1,2,2,1",
                             "visibility": {
                                 "defense": true
                             },
@@ -558,7 +558,7 @@
                             ]
                         },
                         "e6f4b44b-21d8-44cc-9c77-3347adc6f4f2": {
-                            "name": "1,2,2,1,1",
+                            "inputs": "1,2,2,1,1",
                             "visibility": {
                                 "defense": true
                             },

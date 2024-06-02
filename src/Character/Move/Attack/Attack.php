@@ -25,7 +25,8 @@ class Attack implements MoveInterface
     public function __construct(
         public readonly ?string $masterId,
         public readonly string $id,
-        public readonly string $name,
+        public readonly string $inputs,
+        public readonly ?string $situation,
         public readonly string $slug,
         public readonly bool $heat,
         public readonly Visibility $visibility,

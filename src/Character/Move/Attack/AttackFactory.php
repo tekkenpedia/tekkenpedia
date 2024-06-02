@@ -24,15 +24,16 @@ class AttackFactory
     {
         $extends = is_string($attack['extends']) ? static::getExtends($attack['extends'], $moves) : null;
 
-        $slug = $attack['slug'] ?? $attack['name'];
+        $slug = $attack['slug'] ?? $attack['inputs'];
         if ($attack['heat']) {
             $slug .= '_heat-activated';
         }
 
         return new Attack(
-            $attack['master-id'],
+            $attack['master'],
             $id,
-            $attack['name'],
+            $attack['inputs'],
+            $attack['situation'],
             $slug,
             $attack['heat'],
             new Visibility($attack['visibility']['defense']),

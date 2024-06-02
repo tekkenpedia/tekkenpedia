@@ -29,7 +29,7 @@
                     "label": "Defense"
                 },
                 {
-                    "label": move.name ~ (move.heat|default(false) ? ' (heat activated)' : null)
+                    "label": move.inputs ~ (move.heat|default(false) ? ' (heat activated)' : null)
                 }
             ] %}
             {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
