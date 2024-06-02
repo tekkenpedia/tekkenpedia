@@ -22,7 +22,7 @@ class AttackFactory
 {
     public static function create(string $id, array &$attack, array &$moves): Attack
     {
-        $parentAttack = is_string($attack['parent']) ? static::getParent($attack['parent'], $moves) : null;
+        $extends = is_string($attack['extends']) ? static::getExtends($attack['extends'], $moves) : null;
 
         $slug = $attack['slug'] ?? $attack['name'];
         if ($attack['heat']) {
@@ -36,82 +36,82 @@ class AttackFactory
             $slug,
             $attack['heat'],
             new Visibility($attack['visibility']['defense']),
-            PropertyEnum::create(static::getData($attack, $parentAttack, 'property')),
-            new PowerCrush(static::getData($attack, $parentAttack, 'power-crush', 'damage-reduction')),
+            PropertyEnum::create(static::getData($attack, $extends, 'property')),
+            new PowerCrush(static::getData($attack, $extends, 'power-crush', 'damage-reduction')),
             new Distances(
                 $attack['distances']['range'],
                 new MinMax(
-                    static::getData($attack, $parentAttack, 'distances', 'block', 'min'),
-                    static::getData($attack, $parentAttack, 'distances', 'block', 'max')
+                    static::getData($attack, $extends, 'distances', 'block', 'min'),
+                    static::getData($attack, $extends, 'distances', 'block', 'max')
                 ),
                 new MinMax(
-                    static::getData($attack, $parentAttack, 'distances', 'normal-hit', 'min'),
-                    static::getData($attack, $parentAttack, 'distances', 'normal-hit', 'max')
+                    static::getData($attack, $extends, 'distances', 'normal-hit', 'min'),
+                    static::getData($attack, $extends, 'distances', 'normal-hit', 'max')
                 ),
                 new MinMax(
-                    static::getData($attack, $parentAttack, 'distances', 'counter-hit', 'min'),
-                    static::getData($attack, $parentAttack, 'distances', 'counter-hit', 'max')
+                    static::getData($attack, $extends, 'distances', 'counter-hit', 'min'),
+                    static::getData($attack, $extends, 'distances', 'counter-hit', 'max')
                 )
             ),
             new Frames(
                 new Startup(
-                    static::getData($attack, $parentAttack, 'frames', 'startup', 'min'),
-                    static::getData($attack, $parentAttack, 'frames', 'startup', 'max')
+                    static::getData($attack, $extends, 'frames', 'startup', 'min'),
+                    static::getData($attack, $extends, 'frames', 'startup', 'max')
                 ),
                 new Absorption(
-                    static::getData($attack, $parentAttack, 'frames', 'absorption', 'min'),
-                    static::getData($attack, $parentAttack, 'frames', 'absorption', 'max')
+                    static::getData($attack, $extends, 'frames', 'absorption', 'min'),
+                    static::getData($attack, $extends, 'frames', 'absorption', 'max')
                 ),
-                new AfterAbsorption(static::getData($attack, $parentAttack, 'frames', 'after-absorption', 'block')),
+                new AfterAbsorption(static::getData($attack, $extends, 'frames', 'after-absorption', 'block')),
                 new Block($attack['frames']['block']['min'], $attack['frames']['block']['max']),
                 $attack['frames']['normal-hit'],
                 $attack['frames']['counter-hit']
             ),
             new Damages(
-                static::getData($attack, $parentAttack, 'damages', 'normal-hit'),
-                static::getData($attack, $parentAttack, 'damages', 'counter-hit')
+                static::getData($attack, $extends, 'damages', 'normal-hit'),
+                static::getData($attack, $extends, 'damages', 'counter-hit')
             ),
             new Behaviors(
-                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'block')),
-                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'normal-hit')),
-                BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'counter-hit'))
+                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'block')),
+                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'normal-hit')),
+                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'counter-hit'))
             ),
             new Steps(
-                is_string(static::getData($attack, $parentAttack, 'steps', 'ssl'))
-                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssl'))
+                is_string(static::getData($attack, $extends, 'steps', 'ssl'))
+                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'ssl'))
                     : null,
-                is_string(static::getData($attack, $parentAttack, 'steps', 'swl'))
-                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swl'))
+                is_string(static::getData($attack, $extends, 'steps', 'swl'))
+                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'swl'))
                     : null,
-                is_string(static::getData($attack, $parentAttack, 'steps', 'ssr'))
-                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssr'))
+                is_string(static::getData($attack, $extends, 'steps', 'ssr'))
+                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'ssr'))
                     : null,
-                is_string(static::getData($attack, $parentAttack, 'steps', 'swr'))
-                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swr'))
+                is_string(static::getData($attack, $extends, 'steps', 'swr'))
+                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'swr'))
                     : null,
             ),
             CommentsFactory::create($attack['comments'])
         );
     }
 
-    private static function getData(array &$attack, ?array &$parentAttack, string ...$keys): mixed
+    private static function getData(array &$attack, ?array &$extends, string ...$keys): mixed
     {
         $attackDepth = $attack;
         foreach ($keys as $key) {
             $attackDepth = $attackDepth[$key] ?? null;
         }
 
-        $parentDepth = $parentAttack;
-        if (is_null($attackDepth) && is_array($parentAttack)) {
+        $extendsDepth = $extends;
+        if (is_null($attackDepth) && is_array($extends)) {
             foreach ($keys as $key) {
-                $parentDepth = $parentDepth[$key] ?? null;
+                $extendsDepth = $extendsDepth[$key] ?? null;
             }
         }
 
-        return $attackDepth ?? $parentDepth;
+        return $attackDepth ?? $extendsDepth;
     }
 
-    private static function getParent(string $id, array &$moves): array
+    private static function getExtends(string $id, array &$moves): array
     {
         $return = null;
 
