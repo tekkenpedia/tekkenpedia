@@ -38,7 +38,7 @@
                         "WALL_BLAST"
                     ],
                     "distances": {
-                        "startup": 205,
+                        "range": 205,
                         "hit": {
                             "normal": 489
                         },
@@ -78,7 +78,7 @@
                         "FLOOR_BLAST"
                     ],
                     "distances": {
-                        "startup": 210,
+                        "range": 210,
                         "hit": {
                             "normal": 146
                         },
@@ -117,7 +117,7 @@
                         "FLOOR_BLAST"
                     ],
                     "distances": {
-                        "startup": 210,
+                        "range": 210,
                         "hit": {
                             "normal": 145
                         },
@@ -151,7 +151,7 @@
                         "after-escape": -2
                     },
                     "distances": {
-                        "startup": 150,
+                        "range": 150,
                         "hit": {
                             "normal": 190
                         },
@@ -184,7 +184,7 @@
                         "after-escape": -6
                     },
                     "distances": {
-                        "startup": 202,
+                        "range": 202,
                         "hit": {
                             "normal": 226
                         },
@@ -217,7 +217,7 @@
                         "after-escape": -6
                     },
                     "distances": {
-                        "startup": 202,
+                        "range": 202,
                         "hit": {
                             "normal": 131
                         },
@@ -253,7 +253,7 @@
                         "AIR"
                     ],
                     "distances": {
-                        "startup": 191,
+                        "range": 191,
                         "hit": {
                             "normal": 109
                         },
@@ -286,7 +286,7 @@
                         "after-escape": -2
                     },
                     "distances": {
-                        "startup": 193,
+                        "range": 193,
                         "hit": {
                             "normal": 292
                         },
@@ -336,7 +336,7 @@
                         ]
                     },
                     "distances": {
-                        "startup": 330,
+                        "range": 330,
                         "block": {
                             "min": 175,
                             "max": 263
@@ -395,7 +395,7 @@
                                 ]
                             },
                             "distances": {
-                                "startup": 300,
+                                "range": 300,
                                 "block": {
                                     "min": 259,
                                     "max": 334
@@ -453,7 +453,7 @@
                                 ]
                             },
                             "distances": {
-                                "startup": 270,
+                                "range": 270,
                                 "block": {
                                     "min": 161,
                                     "max": 163
@@ -515,7 +515,7 @@
                                 ]
                             },
                             "distances": {
-                                "startup": 260,
+                                "range": 260,
                                 "block": {
                                     "min": 250,
                                     "max": 330

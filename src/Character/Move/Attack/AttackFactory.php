@@ -39,7 +39,7 @@ class AttackFactory
             PropertyEnum::create(static::getData($attack, $parentAttack, 'property')),
             new PowerCrush(static::getData($attack, $parentAttack, 'power-crush', 'damage-reduction')),
             new Distances(
-                $attack['distances']['startup'],
+                $attack['distances']['range'],
                 new MinMax(
                     static::getData($attack, $parentAttack, 'distances', 'block', 'min'),
                     static::getData($attack, $parentAttack, 'distances', 'block', 'max')

@@ -29,7 +29,7 @@
                         "after-escape": 0
                     },
                     "distances": {
-                        "startup": 175,
+                        "range": 175,
                         "hit": {
                             "normal": 310
                         },
@@ -64,7 +64,7 @@
                         "after-escape": 0
                     },
                     "distances": {
-                        "startup": 175,
+                        "range": 175,
                         "hit": {
                             "normal": 130
                         },
@@ -102,7 +102,7 @@
                         "FLOOR_BLAST"
                     ],
                     "distances": {
-                        "startup": 175,
+                        "range": 175,
                         "hit": {
                             "normal": 230
                         },
@@ -135,7 +135,7 @@
                         "after-escape": -6
                     },
                     "distances": {
-                        "startup": 165,
+                        "range": 165,
                         "hit": {
                             "normal": 190
                         },
@@ -169,7 +169,7 @@
                     },
                     "behaviors": ["AIR"],
                     "distances": {
-                        "startup": 170,
+                        "range": 170,
                         "hit": {
                             "normal": 190
                         },
@@ -204,7 +204,7 @@
                         }
                     },
                     "distances": {
-                        "startup": 290,
+                        "range": 290,
                         "block": {
                             "min": 159,
                             "max": 196
@@ -252,7 +252,7 @@
                         }
                     },
                     "distances": {
-                        "startup": 250,
+                        "range": 250,
                         "block": {
                             "min": 126,
                             "max": 137
@@ -310,7 +310,7 @@
                         ]
                     },
                     "distances": {
-                        "startup": 300,
+                        "range": 300,
                         "block": {
                             "min": 163,
                             "max": 203
@@ -366,7 +366,7 @@
                         ]
                     },
                     "distances": {
-                        "startup": 220,
+                        "range": 220,
                         "block": {
                             "min": 170,
                             "max": 213
@@ -421,7 +421,7 @@
                                 }
                             },
                             "distances": {
-                                "startup": 200,
+                                "range": 200,
                                 "block": {
                                     "min": 101,
                                     "max": 104
@@ -471,7 +471,7 @@
                                 "counter-hit": ["AIR"]
                             },
                             "distances": {
-                                "startup": 350,
+                                "range": 350,
                                 "block": {
                                     "min": 99,
                                     "max": 165
@@ -509,7 +509,7 @@
                                 }
                             },
                             "distances": {
-                                "startup": 260,
+                                "range": 260,
                                 "block": {
                                     "min": 152,
                                     "max": 180
@@ -572,7 +572,7 @@
                                 ]
                             },
                             "distances": {
-                                "startup": 270,
+                                "range": 270,
                                 "block": {
                                     "min": 170,
                                     "max": 208

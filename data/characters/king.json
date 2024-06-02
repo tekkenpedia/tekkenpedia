@@ -28,7 +28,7 @@
                         "after-escape": -6
                     },
                     "distances": {
-                        "startup": 190,
+                        "range": 190,
                         "hit": {
                             "normal": 195
                         },
@@ -62,7 +62,7 @@
                         "after-escape": -3
                     },
                     "distances": {
-                        "startup": 195,
+                        "range": 195,
                         "hit": {
                             "normal": 184
                         },
@@ -99,7 +99,7 @@
                         "after-escape": -13
                     },
                     "distances": {
-                        "startup": 210,
+                        "range": 210,
                         "hit": {
                             "normal": 606,
                             "ukemi": 547
@@ -143,7 +143,7 @@
                         "after-escape": -13
                     },
                     "distances": {
-                        "startup": 210,
+                        "range": 210,
                         "hit": {
                             "normal": 606,
                             "ukemi": 547

@@ -46,7 +46,7 @@ class ThrowFactory
                 $throw['frames']['after-escape']
             ),
             new Distances(
-                $throw['distances']['startup'],
+                $throw['distances']['range'],
                 new DistancesHit($throw['distances']['hit']['normal'], $throw['distances']['hit']['ukemi']),
                 $throw['distances']['escape']
             ),

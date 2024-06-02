@@ -11,8 +11,8 @@
         <td>{{ attack.property|format_attack_property }}</td>
         <td>{{ attack.frames.startup|format_min_max_frames(true) }}</td>
         <td>
-            {% if attack.distances.startup is not null %}
-                {{ attack.distances.startup|format_distance }}
+            {% if attack.distances.range is not null %}
+                {{ attack.distances.range|format_distance }}
             {% endif %}
         </td>
     </tr>

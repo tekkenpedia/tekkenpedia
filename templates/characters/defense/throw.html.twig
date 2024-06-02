@@ -3,7 +3,7 @@
         <td class="col-3">Type</td>
         <td class="col-3">Property</td>
         <td class="col-3">Startup frames</td>
-        <td class="col-3">Distance</td>
+        <td class="col-3">Range</td>
     </tr>
 
     <tr>
@@ -12,7 +12,7 @@
         <td class="{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}">
             {{ throw.frames.startup|format_min_max_frames() }}
         </td>
-        <td>{{ throw.distances.startup|format_distance }}</td>
+        <td>{{ throw.distances.range|format_distance }}</td>
     </tr>
 {% endmacro %}
 
