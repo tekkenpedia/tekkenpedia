@@ -77,10 +77,18 @@ class AttackFactory
                 BehaviorsFactory::create(static::getData($attack, $parentAttack, 'behaviors', 'counter-hit'))
             ),
             new Steps(
-                StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssl') ?? StepEnum::IMPOSSIBLE->name),
-                StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swl') ?? StepEnum::IMPOSSIBLE->name),
-                StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssr') ?? StepEnum::IMPOSSIBLE->name),
-                StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swr') ?? StepEnum::IMPOSSIBLE->name)
+                is_string(static::getData($attack, $parentAttack, 'steps', 'ssl'))
+                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssl'))
+                    : null,
+                is_string(static::getData($attack, $parentAttack, 'steps', 'swl'))
+                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swl'))
+                    : null,
+                is_string(static::getData($attack, $parentAttack, 'steps', 'ssr'))
+                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'ssr'))
+                    : null,
+                is_string(static::getData($attack, $parentAttack, 'steps', 'swr'))
+                    ? StepEnum::create(static::getData($attack, $parentAttack, 'steps', 'swr'))
+                    : null,
             ),
             CommentsFactory::create($attack['comments'])
         );

@@ -348,6 +348,12 @@
                             "min": 174
                         }
                     },
+                    "steps": {
+                        "ssl": "IMPOSSIBLE",
+                        "swl": "IMPOSSIBLE",
+                        "ssr": "IMPOSSIBLE",
+                        "swr": "IMPOSSIBLE"
+                    },
                     "damages": {
                         "normal-hit": 30,
                         "counter-hit": 36
@@ -408,6 +414,12 @@
                                     "min": 231,
                                     "max":297
                                 }
+                            },
+                            "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
                             },
                             "damages": {
                                 "normal-hit": 12,
@@ -470,6 +482,8 @@
                                 "counter-hit": 54
                             },
                             "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
                                 "ssr": "EASY",
                                 "swr": "EASY"
                             },
@@ -532,6 +546,12 @@
                             "damages": {
                                 "normal-hit": 23,
                                 "counter-hit": 27
+                            },
+                            "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
                             }
                         }
                     }

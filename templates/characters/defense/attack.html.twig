@@ -104,16 +104,37 @@
 {% endmacro %}
 
 {% macro stepsLines(attack) %}
-    <tr class="separator">
-        <td colspan="4">Steps</td>
-    </tr>
+    {% if attack.steps.ssl is not null or attack.steps.swl is not null or attack.steps.ssr is not null or attack.steps.swr is not null  %}
+        <tr class="separator">
+            <td colspan="4">Steps</td>
+        </tr>
 
-    <tr>
-        <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssl|step_difficulty }}">SSL</td>
-        <td class="{{ attack.steps.swl|step_bg_class }}" title="Side walk left - Difficulty: {{ attack.steps.swl|step_difficulty }}">SWL</td>
-        <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step right - Difficulty: {{ attack.steps.ssr|step_difficulty }}">SSR</td>
-        <td class="{{ attack.steps.swr|step_bg_class }}" title="Side walk right - Difficulty: {{ attack.steps.swr|step_difficulty }}">SWR</td>
-    </tr>
+        <tr>
+            {% if attack.steps.ssl is not null %}
+                <td class="{{ attack.steps.ssl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssl|step_difficulty }}">SSL</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+            {% if attack.steps.swl is not null %}
+                <td class="{{ attack.steps.swl|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.swl|step_difficulty }}">SWL</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+            {% if attack.steps.ssr is not null %}
+                <td class="{{ attack.steps.ssr|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.ssr|step_difficulty }}">SSR</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+
+            {% if attack.steps.swr is not null %}
+                <td class="{{ attack.steps.swr|step_bg_class }}" title="Side step left - Difficulty: {{ attack.steps.swr|step_difficulty }}">SWR</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+        </tr>
+    {% endif %}
 {% endmacro %}
 
 {% import _self as macros %}
