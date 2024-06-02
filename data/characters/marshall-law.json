@@ -379,7 +379,7 @@
                                     "min": 16
                                 },
                                 "after-absorption": {
-                                    "block": 2
+                                    "block": 1
                                 },
                                 "block": {
                                     "max": 1
@@ -408,11 +408,11 @@
                                 },
                                 "normal-hit": {
                                     "min": 231,
-                                    "max":297
+                                    "max": 297
                                 },
                                 "counter-hit": {
                                     "min": 231,
-                                    "max":297
+                                    "max": 297
                                 }
                             },
                             "steps": {
