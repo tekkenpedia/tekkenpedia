@@ -16,7 +16,7 @@ class DistancesOptionsResolver
     public static function configure(OptionsResolver $resolver): void
     {
         $resolver
-            ->define('startup')
+            ->define('range')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value)
             ->allowedValues(Validation::createIsValidCallable(new Positive()));
