@@ -24,8 +24,9 @@ class ThrowFactory
     {
         return new Throw_(
             $id,
-            $throw['name'],
-            $throw['slug'] ?? $throw['name'],
+            $throw['inputs'],
+            $throw['situation'],
+            $throw['slug'] ?? $throw['inputs'],
             new Visibility($throw['visibility']['defense']),
             PropertyEnum::create($throw['property']),
             new Frames(

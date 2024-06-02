@@ -162,14 +162,19 @@
 <div class="{{ containerClass }}">
     <div class="card text-center">
         <div class="card-title move-card-title">
-            <div class="title">{{ throw.name }}</div>
+            <div class="title">
+                {{ throw.inputs }}
+                {% if throw.situation is not null %}
+                    ({{ throw.situation }})
+                {% endif %}
+            </div>
             <div class="links">
                 <a href="../../../characters/{{ character.slug }}/defense/{{ throw.slug }}.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
                 <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ throw.slug }}.html" title="Copy link"></i>
             </div>
         </div>
         <br>
-        <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.slug }}.gif" alt="{{ throw.name }}">
+        <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.slug }}.gif" alt="{{ throw.inputs }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 {{ macros.firstLines(throw) }}

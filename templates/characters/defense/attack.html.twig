@@ -147,7 +147,12 @@
                     <img class="icon-move-behavior" src="../../../images/behaviors/heat-engager.png" title="Heat activated">
                 </div>
             {% endif  %}
-            <div class="title">{{ attack.name }}</div>
+            <div class="title">
+                {{ attack.inputs }}
+                {% if attack.situation is not null %}
+                    ({{ attack.situation }})
+                {% endif %}
+            </div>
             {% if showLinks is not defined or showLinks %}
                 {% set linkSlug = attack.getMaster() is not null ? attack.getMaster().slug : attack.slug %}
                 <div class="links">
@@ -157,7 +162,7 @@
             {% endif %}
         </div>
         <br>
-        <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.slug }}.gif" alt="{{ attack.name }}">
+        <img src="../../../images/characters/{{ character.slug }}/defense/{{ attack.slug }}.gif" alt="{{ attack.inputs }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 {{ macros.firstLines(attack) }}

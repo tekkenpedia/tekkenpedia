@@ -19,7 +19,7 @@ class AttackOptionsResolver
     public static function configure(OptionsResolver $resolver): void
     {
         $resolver
-            ->define('master-id')
+            ->define('master')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
@@ -30,9 +30,14 @@ class AttackOptionsResolver
             ->allowedValues(MoveTypeEnum::ATTACK->name, null);
 
         $resolver
-            ->define('name')
+            ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $resolver
+            ->define('situation')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
         $resolver
             ->define('heat')

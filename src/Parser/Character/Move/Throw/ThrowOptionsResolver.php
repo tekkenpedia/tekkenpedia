@@ -27,9 +27,14 @@ class ThrowOptionsResolver
             ->allowedValues(MoveTypeEnum::THROW->name);
 
         $resolver
-            ->define('name')
+            ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $resolver
+            ->define('situation')
+            ->default(null)
+            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
         $resolver
             ->define('slug')
