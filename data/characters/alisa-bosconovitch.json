@@ -150,6 +150,76 @@
                     }
                 }
             }
+        },
+        "Heat": {
+            "sections": {
+                "Activation": {
+                    "moves": {
+                        "4767958b-2f82-4d86-b07e-af15db3bfa71": {
+                            "inputs": "2+3",
+                            "visibility": {
+                                "defense": true
+                            },
+                            "property": "MIDDLE",
+                            "power-crush": {
+                                "damage-reduction": 0
+                            },
+                            "frames": {
+                                "startup": {
+                                    "min": 16,
+                                    "max": 18
+                                },
+                                "after-absorption": {
+                                    "block": 1
+                                },
+                                "block": {
+                                    "max": 1
+                                },
+                                "normal-hit": 2,
+                                "counter-hit": 2
+                            },
+                            "behaviors": {
+                                "block": [
+                                    "HEAT_BURST"
+                                ],
+                                "normal-hit": [
+                                    "HEAT_BURST",
+                                    "OPPONENT_CROUCH"
+                                ],
+                                "counter-hit": [
+                                    "HEAT_BURST",
+                                    "OPPONENT_CROUCH"
+                                ]
+                            },
+                            "distances": {
+                                "range": 270,
+                                "block": {
+                                    "min": 243,
+                                    "max": 264
+                                },
+                                "normal-hit": {
+                                    "min": 214,
+                                    "max": 240
+                                },
+                                "counter-hit": {
+                                    "min": 214,
+                                    "max": 240
+                                }
+                            },
+                            "steps": {
+                                "ssl": "IMPOSSIBLE",
+                                "swl": "IMPOSSIBLE",
+                                "ssr": "IMPOSSIBLE",
+                                "swr": "IMPOSSIBLE"
+                            },
+                            "damages": {
+                                "normal-hit": 12,
+                                "counter-hit": 14
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

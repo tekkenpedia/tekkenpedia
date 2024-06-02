@@ -9,7 +9,7 @@
     <tr>
         <td>Attack</td>
         <td>{{ attack.property|format_attack_property }}</td>
-        <td>{{ attack.frames.startup|format_min_max_frames(true) }}</td>
+        <td>{{ attack.frames.startup|format_min_max_frames }}</td>
         <td>
             {% if attack.distances.range is not null %}
                 {{ attack.distances.range|format_distance }}
@@ -58,7 +58,7 @@
     </tr>
 
     <tr>
-        <td class="{{ attack.frames.block.max|frame_bg_class }}">{{ attack.frames.block|format_min_max_frames(true) }}</td>
+        <td class="{{ attack.frames.block.max|frame_bg_class }}">{{ attack.frames.block|format_min_max_frames(true, false) }}</td>
         <td></td>
         <td>{{ attack.distances.block|format_distances }}</td>
         <td>{{ attack.behaviors.block|move_behaviors_icons }}</td>

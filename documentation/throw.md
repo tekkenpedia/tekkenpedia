@@ -3,7 +3,9 @@
 ```json
 {
     "type": "THROW",
-    "inputs": "1+3",
+    "inputs": string,
+    "situation": string,
+    "slug": string,
     "visibility": {
         "defense": bool
     },
@@ -57,7 +59,14 @@
         "normal": int,
         "wall": int,
         "ukemi": int
-    }
+    },
+   "comments": [
+      {
+         "comment": string,
+         "type": "NORMAL|DEFENSE|STRENGTH",
+         "width": "ONE|TWO|THREE|FOUR"
+      }
+   ]
 }
 ```
 
