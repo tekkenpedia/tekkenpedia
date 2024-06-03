@@ -8,7 +8,8 @@ use App\{
     Character\Character,
     Character\CharacterFactory,
     Character\Move\Attack\Attack,
-    Character\Section\Section};
+    Character\Section\Section,
+    Tidy\Tidy};
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
@@ -66,6 +67,8 @@ readonly class DefenseGenerator
             )
         );
 
+        Tidy::format($renderPathname);
+
         return $this;
     }
 
@@ -95,6 +98,8 @@ readonly class DefenseGenerator
                     ]
                 )
             );
+
+            Tidy::format($renderPathname);
         }
 
         foreach ($section->sections->toArray() as $subSection) {
