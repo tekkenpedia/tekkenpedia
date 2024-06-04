@@ -219,8 +219,18 @@
                         }
                     },
                     "damages": {
-                        "normal-hit": 15,
-                        "counter-hit": 18
+                        "block": {
+                            "damage": 0,
+                            "recoverable-damage": 0
+                        },
+                        "normal-hit": {
+                            "damage": 15,
+                            "recoverable-damage": 0
+                        },
+                        "counter-hit": {
+                            "damage": 18,
+                            "recoverable-damage": 0
+                        }
                     },
                     "steps": {
                         "ssl": "IMPOSSIBLE",
@@ -268,8 +278,18 @@
                         }
                     },
                     "damages": {
-                        "normal-hit": 21,
-                        "counter-hit": 25
+                        "block": {
+                            "damage": 0,
+                            "recoverable-damage": 0
+                        },
+                        "normal-hit": {
+                            "damage": 21,
+                            "recoverable-damage": 0
+                        },
+                        "counter-hit": {
+                            "damage": 25,
+                            "recoverable-damage": 0
+                        }
                     },
                     "steps": {
                         "ssl": "IMPOSSIBLE",
@@ -332,8 +352,18 @@
                         }
                     },
                     "damages": {
-                        "normal-hit": 30,
-                        "counter-hit": 36
+                        "block": {
+                            "damage": 6,
+                            "recoverable-damage": 6
+                        },
+                        "normal-hit": {
+                            "damage": 30,
+                            "recoverable-damage": 0
+                        },
+                        "counter-hit": {
+                            "damage": 36,
+                            "recoverable-damage": 0
+                        }
                     },
                     "steps": {
                         "ssl": "IMPOSSIBLE",
@@ -389,8 +419,18 @@
                         }
                     },
                     "damages": {
-                        "normal-hit": 27,
-                        "counter-hit": 32
+                        "block": {
+                            "damage": 0,
+                            "recoverable-damage": 0
+                        },
+                        "normal-hit": {
+                            "damage": 27,
+                            "recoverable-damage": 0
+                        },
+                        "counter-hit": {
+                            "damage": 32,
+                            "recoverable-damage": 0
+                        }
                     },
                     "steps": {
                         "ssl": "EASY",
@@ -444,8 +484,18 @@
                                 }
                             },
                             "damages": {
-                                "normal-hit": 17,
-                                "counter-hit": 20
+                                "block": {
+                                    "damage": 0,
+                                    "recoverable-damage": 0
+                                },
+                                "normal-hit": {
+                                    "damage": 17,
+                                    "recoverable-damage": 0
+                                },
+                                "counter-hit": {
+                                    "damage": 20,
+                                    "recoverable-damage": 0
+                                }
                             },
                             "steps": {
                                 "ssl": "IMPOSSIBLE",
@@ -492,8 +542,18 @@
                                 }
                             },
                             "damages": {
-                                "normal-hit": 24,
-                                "counter-hit": 28
+                                "block": {
+                                    "damage": 9,
+                                    "recoverable-damage": 9
+                                },
+                                "normal-hit": {
+                                    "damage": 24,
+                                    "recoverable-damage": 0
+                                },
+                                "counter-hit": {
+                                    "damage": 28,
+                                    "recoverable-damage": 0
+                                }
                             },
                             "steps": {
                                 "ssl": "IMPOSSIBLE",
@@ -541,8 +601,18 @@
                                 }
                             },
                             "damages": {
-                                "normal-hit": 7,
-                                "counter-hit": 8
+                                "block": {
+                                    "damage": 0,
+                                    "recoverable-damage": 0
+                                },
+                                "normal-hit": {
+                                    "damage": 7,
+                                    "recoverable-damage": 0
+                                },
+                                "counter-hit": {
+                                    "damage": 8,
+                                    "recoverable-damage": 0
+                                }
                             },
                             "steps": {
                                 "ssl": "IMPOSSIBLE",
@@ -606,8 +676,18 @@
                                 }
                             },
                             "damages": {
-                                "normal-hit": 26,
-                                "counter-hit": 31
+                                "block": {
+                                    "damage": 7,
+                                    "recoverable-damage": 7
+                                },
+                                "normal-hit": {
+                                    "damage": 26,
+                                    "recoverable-damage": 0
+                                },
+                                "counter-hit": {
+                                    "damage": 31,
+                                    "recoverable-damage": 0
+                                }
                             },
                             "steps": {
                                 "ssl": "IMPOSSIBLE",

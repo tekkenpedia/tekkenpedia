@@ -22,10 +22,10 @@ class SectionFactory
         foreach ($section['moves'] as $moveId => $moveData) {
             switch ($moveData['type'] ?? MoveTypeEnum::ATTACK->name) {
                 case MoveTypeEnum::ATTACK->name:
-                    $sectionMoves->add(AttackFactory::create($moveId, $moveData, $moves));
+                    $sectionMoves->add(AttackFactory::create($moveId, $moveData));
                     break;
                 case MoveTypeEnum::POWER_CRUSH->name:
-                    $sectionMoves->add(PowerCrushFactory::create($moveId, $moveData, $moves));
+                    $sectionMoves->add(PowerCrushFactory::create($moveId, $moveData));
                     break;
                 case MoveTypeEnum::THROW->name:
                     $sectionMoves->add(ThrowFactory::create($moveId, $moveData));

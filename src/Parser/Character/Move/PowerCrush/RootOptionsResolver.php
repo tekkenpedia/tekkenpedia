@@ -45,11 +45,6 @@ class RootOptionsResolver
             ->allowedTypes(AllowedTypeEnum::BOOLEAN->value);
 
         $resolver
-            ->define('extends')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
-
-        $resolver
             ->define('slug')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Character\Move\PowerCrush;
 
 use App\{
+    Character\Move\Damages as DamagesData,
     Character\Move\PowerCrush\Frame\Absorption,
     Character\Move\PowerCrush\Frame\AfterAbsorption,
     Character\Move\PowerCrush\Frame\Block,
@@ -15,16 +16,13 @@ use App\{
     Character\Move\Distance\MinMax,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
-    Character\Move\Visibility,
-    Exception\AppException
+    Character\Move\Visibility
 };
 
 class PowerCrushFactory
 {
-    public static function create(string $id, array &$powerCrush, array &$moves): PowerCrush
+    public static function create(string $id, array &$powerCrush): PowerCrush
     {
-        $extends = is_string($powerCrush['extends']) ? static::getExtends($powerCrush['extends'], $moves) : null;
-
         $slug = $powerCrush['slug'] ?? $powerCrush['inputs'];
         if ($powerCrush['heat']) {
             $slug .= '_heat-activated';
@@ -38,98 +36,93 @@ class PowerCrushFactory
             $slug,
             $powerCrush['heat'],
             new Visibility($powerCrush['visibility']['defense']),
-            PropertyEnum::create(static::getData($powerCrush, $extends, 'property')),
-            static::getData($powerCrush, $extends, 'damage-reduction'),
-            new Distances(
-                $powerCrush['distances']['range'],
-                new MinMax(
-                    static::getData($powerCrush, $extends, 'distances', 'block', 'min'),
-                    static::getData($powerCrush, $extends, 'distances', 'block', 'max')
-                ),
-                new MinMax(
-                    static::getData($powerCrush, $extends, 'distances', 'normal-hit', 'min'),
-                    static::getData($powerCrush, $extends, 'distances', 'normal-hit', 'max')
-                ),
-                new MinMax(
-                    static::getData($powerCrush, $extends, 'distances', 'counter-hit', 'min'),
-                    static::getData($powerCrush, $extends, 'distances', 'counter-hit', 'max')
-                )
-            ),
-            new Frames(
-                new Startup(
-                    static::getData($powerCrush, $extends, 'frames', 'startup', 'min'),
-                    static::getData($powerCrush, $extends, 'frames', 'startup', 'max')
-                ),
-                new Absorption(
-                    static::getData($powerCrush, $extends, 'frames', 'absorption', 'min'),
-                    static::getData($powerCrush, $extends, 'frames', 'absorption', 'max')
-                ),
-                new AfterAbsorption(static::getData($powerCrush, $extends, 'frames', 'after-absorption', 'block')),
-                new Block($powerCrush['frames']['block']['min'], $powerCrush['frames']['block']['max']),
-                $powerCrush['frames']['normal-hit'],
-                $powerCrush['frames']['counter-hit']
-            ),
-            new Damages(
-                static::getData($powerCrush, $extends, 'damages', 'normal-hit'),
-                static::getData($powerCrush, $extends, 'damages', 'counter-hit')
-            ),
-            new Behaviors(
-                BehaviorsFactory::create(static::getData($powerCrush, $extends, 'behaviors', 'block')),
-                BehaviorsFactory::create(static::getData($powerCrush, $extends, 'behaviors', 'normal-hit')),
-                BehaviorsFactory::create(static::getData($powerCrush, $extends, 'behaviors', 'counter-hit'))
-            ),
-            new Steps(
-                is_string(static::getData($powerCrush, $extends, 'steps', 'ssl'))
-                    ? StepEnum::create(static::getData($powerCrush, $extends, 'steps', 'ssl'))
-                    : null,
-                is_string(static::getData($powerCrush, $extends, 'steps', 'swl'))
-                    ? StepEnum::create(static::getData($powerCrush, $extends, 'steps', 'swl'))
-                    : null,
-                is_string(static::getData($powerCrush, $extends, 'steps', 'ssr'))
-                    ? StepEnum::create(static::getData($powerCrush, $extends, 'steps', 'ssr'))
-                    : null,
-                is_string(static::getData($powerCrush, $extends, 'steps', 'swr'))
-                    ? StepEnum::create(static::getData($powerCrush, $extends, 'steps', 'swr'))
-                    : null,
-            ),
+            PropertyEnum::create($powerCrush['property']),
+            $powerCrush['damage-reduction'],
+            static::createDistances($powerCrush),
+            static::createFrames($powerCrush),
+            static::createDamages($powerCrush),
+            static::createBehaviors($powerCrush),
+            static::createSteps($powerCrush),
             CommentsFactory::create($powerCrush['comments'])
         );
     }
 
-    private static function getData(array &$powerCrush, ?array &$extends, string ...$keys): mixed
+    private static function createDistances(array &$powerCrush): Distances
     {
-        $powerCrushDepth = $powerCrush;
-        foreach ($keys as $key) {
-            $powerCrushDepth = $powerCrushDepth[$key] ?? null;
-        }
-
-        $extendsDepth = $extends;
-        if (is_null($powerCrushDepth) && is_array($extends)) {
-            foreach ($keys as $key) {
-                $extendsDepth = $extendsDepth[$key] ?? null;
-            }
-        }
-
-        return $powerCrushDepth ?? $extendsDepth;
+        return new Distances(
+            $powerCrush['distances']['range'],
+            new MinMax(
+                $powerCrush['distances']['block']['min'],
+                $powerCrush['distances']['block']['max']
+            ),
+            new MinMax(
+                $powerCrush['distances']['normal-hit']['min'],
+                $powerCrush['distances']['normal-hit']['max']
+            ),
+            new MinMax(
+                $powerCrush['distances']['counter-hit']['min'],
+                $powerCrush['distances']['counter-hit']['max']
+            )
+        );
     }
 
-    private static function getExtends(string $id, array &$moves): array
+    private static function createFrames(array &$powerCrush): Frames
     {
-        $return = null;
+        return new Frames(
+            new Startup(
+                $powerCrush['frames']['startup']['min'],
+                $powerCrush['frames']['startup']['max']
+            ),
+            new Absorption(
+                $powerCrush['frames']['absorption']['min'],
+                $powerCrush['frames']['absorption']['max']
+            ),
+            new AfterAbsorption($powerCrush['frames']['after-absorption']['block']),
+            new Block($powerCrush['frames']['block']['min'], $powerCrush['frames']['block']['max']),
+            $powerCrush['frames']['normal-hit'],
+            $powerCrush['frames']['counter-hit']
+        );
+    }
 
-        foreach ($moves['moves'] as &$section) {
-            foreach ($section['moves'] as $moveId => &$move) {
-                if ($moveId === $id) {
-                    $return = &$move;
-                    break 2;
-                }
-            }
-        }
+    private static function createDamages(array &$powerCrush): Damages
+    {
+        return new Damages(
+            new DamagesData(
+                $powerCrush['damages']['block']['damage'] ?? null,
+                $powerCrush['damages']['block']['recoverable-damage'] ?? null
+            ),
+            new DamagesData(
+                $powerCrush['damages']['normal-hit']['damage'] ?? null,
+                $powerCrush['damages']['normal-hit']['recoverable-damage'] ?? null
+            ),
+            new DamagesData(
+                $powerCrush['damages']['counter-hit']['damage'] ?? null,
+                $powerCrush['damages']['counter-hit']['recoverable-damage'] ?? null
+            ),
+        );
+    }
 
-        if (is_array($return) === false) {
-            throw new AppException('Move "' . $id . '" not found.');
-        }
+    private static function createBehaviors(array &$powerCrush): Behaviors
+    {
+        return new Behaviors(
+            BehaviorsFactory::create($powerCrush['behaviors']['block']),
+            BehaviorsFactory::create($powerCrush['behaviors']['normal-hit']),
+            BehaviorsFactory::create($powerCrush['behaviors']['counter-hit'])
+        );
+    }
 
-        return $return;
+    private static function createSteps(array &$powerCrush): Steps
+    {
+        $ssl = $powerCrush['steps']['ssl'];
+        $swl = $powerCrush['steps']['swl'];
+        $ssr = $powerCrush['steps']['ssr'];
+        $swr = $powerCrush['steps']['swr'];
+
+        return new Steps(
+            is_string($ssl) ? StepEnum::create($ssl) : null,
+            is_string($swl) ? StepEnum::create($swl) : null,
+            is_string($ssr) ? StepEnum::create($ssr) : null,
+            is_string($swr) ? StepEnum::create($swr) : null
+        );
     }
 }

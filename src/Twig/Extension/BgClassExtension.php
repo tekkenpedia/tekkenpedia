@@ -82,8 +82,12 @@ class BgClassExtension extends AbstractExtension
         };
     }
 
-    public function frameBgClass(int $frame): string
+    public function frameBgClass(?int $frame): ?string
     {
+        if (is_int($frame) === false) {
+            return null;
+        }
+
         $return = 'text-white';
         if ($frame > 0) {
             $return .= ' bg-danger';

@@ -48,12 +48,15 @@
             class="{% if move.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif move.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
             title="{{ titleParts|join(', ')|capitalize }}"
         >
-            {% if move.frames.escape.normalHit %}
-                {{ move.frames.escape.normalHit|format_frame(true) }}
-            {% endif %}
-            {% if move.frames.escape.counterHit %}
-                {{ move.frames.escape.counterHit|format_frame(true) }}
-            {% endif %}
+            {%- if move.frames.escape.normalHit is not null -%}
+                {{- move.frames.escape.normalHit|format_frame(true) -}}
+            {%- endif -%}
+            {%- if move.frames.escape.counterHit is not null -%}
+                {%- if move.frames.escape.normalHit is not null -%}
+                    <i class="bi bi-dot"></i>
+                {%- endif -%}
+                {{- move.frames.escape.counterHit|format_frame(true) -}}
+            {%- endif -%}
         </td>
         <td class="{{ move.frames.afterEscape|throw_escape_bg_class }}">{{ move.frames.afterEscape|format_frame(true) }}</td>
         <td>{{ move.distances.escape|format_distance }}</td>

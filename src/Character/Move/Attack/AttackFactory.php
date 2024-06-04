@@ -10,18 +10,17 @@ use App\{
     Character\Move\Attack\Frame\Startup,
     Character\Move\Behavior\BehaviorsFactory,
     Character\Move\Comment\CommentsFactory,
+    Character\Move\Damages as DamagesData,
     Character\Move\Distance\MinMax,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
-    Character\Move\Visibility,
-    Exception\AppException};
+    Character\Move\Visibility
+};
 
 class AttackFactory
 {
-    public static function create(string $id, array &$attack, array &$moves): Attack
+    public static function create(string $id, array &$attack): Attack
     {
-        $extends = is_string($attack['extends']) ? static::getExtends($attack['extends'], $moves) : null;
-
         $slug = $attack['slug'] ?? $attack['inputs'];
         if ($attack['heat']) {
             $slug .= '_heat-activated';
@@ -35,92 +34,87 @@ class AttackFactory
             $slug,
             $attack['heat'],
             new Visibility($attack['visibility']['defense']),
-            PropertyEnum::create(static::getData($attack, $extends, 'property')),
-            new Distances(
-                $attack['distances']['range'],
-                new MinMax(
-                    static::getData($attack, $extends, 'distances', 'block', 'min'),
-                    static::getData($attack, $extends, 'distances', 'block', 'max')
-                ),
-                new MinMax(
-                    static::getData($attack, $extends, 'distances', 'normal-hit', 'min'),
-                    static::getData($attack, $extends, 'distances', 'normal-hit', 'max')
-                ),
-                new MinMax(
-                    static::getData($attack, $extends, 'distances', 'counter-hit', 'min'),
-                    static::getData($attack, $extends, 'distances', 'counter-hit', 'max')
-                )
-            ),
-            new Frames(
-                new Startup(
-                    static::getData($attack, $extends, 'frames', 'startup', 'min'),
-                    static::getData($attack, $extends, 'frames', 'startup', 'max')
-                ),
-                new Block($attack['frames']['block']['min'], $attack['frames']['block']['max']),
-                $attack['frames']['normal-hit'],
-                $attack['frames']['counter-hit']
-            ),
-            new Damages(
-                static::getData($attack, $extends, 'damages', 'normal-hit'),
-                static::getData($attack, $extends, 'damages', 'counter-hit')
-            ),
-            new Behaviors(
-                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'block')),
-                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'normal-hit')),
-                BehaviorsFactory::create(static::getData($attack, $extends, 'behaviors', 'counter-hit'))
-            ),
-            new Steps(
-                is_string(static::getData($attack, $extends, 'steps', 'ssl'))
-                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'ssl'))
-                    : null,
-                is_string(static::getData($attack, $extends, 'steps', 'swl'))
-                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'swl'))
-                    : null,
-                is_string(static::getData($attack, $extends, 'steps', 'ssr'))
-                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'ssr'))
-                    : null,
-                is_string(static::getData($attack, $extends, 'steps', 'swr'))
-                    ? StepEnum::create(static::getData($attack, $extends, 'steps', 'swr'))
-                    : null,
-            ),
+            PropertyEnum::create($attack['property']),
+            static::createDistances($attack),
+            static::createFrames($attack),
+            static::createDamages($attack),
+            static::createBehaviors($attack),
+            static::createSteps($attack),
             CommentsFactory::create($attack['comments'])
         );
     }
 
-    private static function getData(array &$attack, ?array &$extends, string ...$keys): mixed
+    private static function createDistances(array &$attack): Distances
     {
-        $attackDepth = $attack;
-        foreach ($keys as $key) {
-            $attackDepth = $attackDepth[$key] ?? null;
-        }
-
-        $extendsDepth = $extends;
-        if (is_null($attackDepth) && is_array($extends)) {
-            foreach ($keys as $key) {
-                $extendsDepth = $extendsDepth[$key] ?? null;
-            }
-        }
-
-        return $attackDepth ?? $extendsDepth;
+        return new Distances(
+            $attack['distances']['range'],
+            new MinMax(
+                $attack['distances']['block']['min'],
+                $attack['distances']['block']['max']
+            ),
+            new MinMax(
+                $attack['distances']['normal-hit']['min'],
+                $attack['distances']['normal-hit']['max']
+            ),
+            new MinMax(
+                $attack['distances']['counter-hit']['min'],
+                $attack['distances']['counter-hit']['max']
+            )
+        );
     }
 
-    private static function getExtends(string $id, array &$moves): array
+    private static function createFrames(array &$attack): Frames
     {
-        $return = null;
+        return new Frames(
+            new Startup(
+                $attack['frames']['startup']['min'],
+                $attack['frames']['startup']['max']
+            ),
+            new Block($attack['frames']['block']['min'], $attack['frames']['block']['max']),
+            $attack['frames']['normal-hit'],
+            $attack['frames']['counter-hit']
+        );
+    }
 
-        foreach ($moves['moves'] as &$section) {
-            foreach ($section['moves'] as $moveId => &$move) {
-                if ($moveId === $id) {
-                    $return = &$move;
-                    break 2;
-                }
-            }
-        }
+    private static function createDamages(array &$attack): Damages
+    {
+        return new Damages(
+            new DamagesData(
+                $attack['damages']['block']['damage'] ?? null,
+                $attack['damages']['block']['recoverable-damage'] ?? null
+            ),
+            new DamagesData(
+                $attack['damages']['normal-hit']['damage'] ?? null,
+                $attack['damages']['normal-hit']['recoverable-damage'] ?? null
+            ),
+            new DamagesData(
+                $attack['damages']['counter-hit']['damage'] ?? null,
+                $attack['damages']['counter-hit']['recoverable-damage'] ?? null
+            ),
+        );
+    }
 
-        if (is_array($return) === false) {
-            throw new AppException('Attack "' . $id . '" not found.');
-        }
+    private static function createBehaviors(array &$attack): Behaviors
+    {
+        return new Behaviors(
+            BehaviorsFactory::create($attack['behaviors']['block']),
+            BehaviorsFactory::create($attack['behaviors']['normal-hit']),
+            BehaviorsFactory::create($attack['behaviors']['counter-hit'])
+        );
+    }
 
-        return $return;
+    private static function createSteps(array &$attack): Steps
+    {
+        $ssl = $attack['steps']['ssl'];
+        $swl = $attack['steps']['swl'];
+        $ssr = $attack['steps']['ssr'];
+        $swr = $attack['steps']['swr'];
+
+        return new Steps(
+            is_string($ssl) ? StepEnum::create($ssl) : null,
+            is_string($swl) ? StepEnum::create($swl) : null,
+            is_string($ssr) ? StepEnum::create($ssr) : null,
+            is_string($swr) ? StepEnum::create($swr) : null
+        );
     }
 }
