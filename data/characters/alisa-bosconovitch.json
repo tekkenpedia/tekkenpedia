@@ -212,8 +212,18 @@
                                 "swr": "IMPOSSIBLE"
                             },
                             "damages": {
-                                "normal-hit": 12,
-                                "counter-hit": 14
+                                "block": {
+                                    "damage": 3,
+                                    "recoverable-damage": 3
+                                },
+                                "normal-hit": {
+                                    "damage": 12,
+                                    "recoverable-damage": 12
+                                },
+                                "counter-hit": {
+                                    "damage": 14,
+                                    "recoverable-damage": 14
+                                }
                             }
                         }
                     }

@@ -101,8 +101,18 @@
         "swr": "EASY|MEDIUM|HARD|IMPOSSIBLE"
     },
     "damages": {
-        "normal-hit": int,
-        "counter-hit": int
+        "block": {
+            "damage": int,
+            "recoverable-damage": int
+        },
+        "normal-hit": {
+            "damage": int,
+            "recoverable-damage": int
+        },
+        "counter-hit": {
+            "damage": int,
+            "recoverable-damage": int
+        }
     },
     "comments": [
         {

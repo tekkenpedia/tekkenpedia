@@ -24,14 +24,14 @@
     </tr>
     <tr class="separator separator-bottom">
         <td>Frames</td>
-        <td></td>
+        <td>Damages</td>
         <td>Distance</td>
         <td>Behaviors</td>
     </tr>
 
     <tr>
         <td class="{{ move.frames.block.max|frame_bg_class }}">{{ move.frames.block|format_min_max_frames(true, false) }}</td>
-        <td></td>
+        <td title="Damage - Recoverable damage">{{ move.damages.block.damage }}<i class="bi bi-dot"></i>{{ move.damages.block.recoverableDamage }}</td>
         <td>{{ move.distances.block|format_distances }}</td>
         <td>{{ move.behaviors.block|move_behaviors_icons }}</td>
     </tr>
@@ -50,7 +50,7 @@
 
     <tr>
         <td class="{{ move.frames.normalHit|frame_bg_class }}">{{ move.frames.normalHit|format_frame }}</td>
-        <td>{{ move.damages.normalHit }}</td>
+        <td title="Damage - Recoverable damage">{{ move.damages.normalHit.damage }}<i class="bi bi-dot"></i>{{ move.damages.normalHit.recoverableDamage }}</td>
         <td>{{ move.distances.normalHit|format_distances }}</td>
         <td>{{ move.behaviors.normalHit|move_behaviors_icons }}</td>
     </tr>
@@ -69,7 +69,7 @@
 
     <tr>
         <td class="{{ move.frames.counterHit|frame_bg_class }}">{{ move.frames.counterHit|format_frame }}</td>
-        <td>{{ move.damages.counterHit }}</td>
+        <td title="Damage - Recoverable damage">{{ move.damages.counterHit.damage }}<i class="bi bi-dot"></i>{{ move.damages.counterHit.recoverableDamage }}</td>
         <td>{{ move.distances.counterHit|format_distances }}</td>
         <td>{{ move.behaviors.counterHit|move_behaviors_icons }}</td>
     </tr>
