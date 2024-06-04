@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character\Move\Attack;
+namespace App\Parser\Character\Move\PowerCrush\Frame;
 
 use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PowerCrushOptionsResolver
+class AfterAbsorptionOptionsResolver
 {
     public static function configure(OptionsResolver $resolver): void
     {
         $resolver
-            ->define('damage-reduction')
+            ->define('block')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value);
     }

@@ -7,21 +7,37 @@ namespace App\Twig\Extension;
 use App\{
     Character\Move\Behavior\BehaviorEnum,
     Collection\Character\Move\BehaviorEnumCollection,
-    Exception\AppException
-};
+    Exception\AppException,
+    Parser\Character\Move\MoveTypeEnum};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter
-};
+    TwigFilter,
+    TwigFunction};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class MoveExtension extends AbstractExtension
 {
+    public function getFunctions()
+    {
+        return [
+            new TwigFunction('getMoveTemplateName', [$this, 'getMoveTemplateName'])
+        ];
+    }
+
     public function getFilters(): array
     {
         return [
             new TwigFilter('move_behaviors_icons', [$this, 'moveBehaviorsIcons'], ['is_safe' => ['html']])
         ];
+    }
+
+    public function getMoveTemplateName(MoveTypeEnum $moveType): string
+    {
+        return match ($moveType) {
+            MoveTypeEnum::ATTACK => 'attack',
+            MoveTypeEnum::POWER_CRUSH => 'power-crush',
+            MoveTypeEnum::THROW => 'throw'
+        };
     }
 
     public function moveBehaviorsIcons(BehaviorEnumCollection $behaviors): string

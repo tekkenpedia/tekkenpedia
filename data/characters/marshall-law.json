@@ -305,13 +305,12 @@
             "moves": {
                 "ce4c5100-e0c5-4614-a42b-d10f60ddbac2": {
                     "inputs": "f,f+3",
+                    "type": "POWER_CRUSH",
                     "visibility": {
                         "defense": true
                     },
                     "property": "MIDDLE",
-                    "power-crush": {
-                        "damage-reduction": 0
-                    },
+                    "damage-reduction": 0,
                     "frames": {
                         "startup": {
                             "min": 20,
@@ -367,13 +366,12 @@
                     "moves": {
                         "d29905fc-c7c6-4ea5-a42c-b9c64160ab5d": {
                             "inputs": "2+3",
+                            "type": "POWER_CRUSH",
                             "visibility": {
                                 "defense": true
                             },
                             "property": "MIDDLE",
-                            "power-crush": {
-                                "damage-reduction": 0
-                            },
+                            "damage-reduction": 0,
                             "frames": {
                                 "startup": {
                                     "min": 16

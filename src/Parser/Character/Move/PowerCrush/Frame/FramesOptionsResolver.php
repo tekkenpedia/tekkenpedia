@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character\Move\Attack\Frame;
+namespace App\Parser\Character\Move\PowerCrush\Frame;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
@@ -19,6 +19,24 @@ class FramesOptionsResolver
             ->default(
                 static function(OptionsResolver $resolver): void {
                     MinMaxFramesOptionsResolver::configure($resolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('absorption')
+            ->default(
+                static function(OptionsResolver $resolver): void {
+                    MinMaxFramesOptionsResolver::configure($resolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
+        $resolver
+            ->define('after-absorption')
+            ->default(
+                static function(OptionsResolver $resolver): void {
+                    AfterAbsorptionOptionsResolver::configure($resolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);

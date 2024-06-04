@@ -10,7 +10,8 @@ use App\{
     Character\Move\Throw\Frame\Frames,
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
-    Collection\Character\Move\CommentCollection
+    Collection\Character\Move\CommentCollection,
+    Parser\Character\Move\MoveTypeEnum
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
@@ -40,5 +41,10 @@ readonly class Throw_ implements MoveInterface
     public function getVisibility(): Visibility
     {
         return $this->visibility;
+    }
+
+    public function getType(): MoveTypeEnum
+    {
+        return MoveTypeEnum::THROW;
     }
 }

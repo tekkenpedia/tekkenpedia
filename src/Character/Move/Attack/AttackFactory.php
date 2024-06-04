@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Character\Move\Attack;
 
 use App\{
-    Character\Move\Attack\Frame\Absorption,
-    Character\Move\Attack\Frame\AfterAbsorption,
     Character\Move\Attack\Frame\Block,
     Character\Move\Attack\Frame\Frames,
     Character\Move\Attack\Frame\Startup,
@@ -38,7 +36,6 @@ class AttackFactory
             $attack['heat'],
             new Visibility($attack['visibility']['defense']),
             PropertyEnum::create(static::getData($attack, $extends, 'property')),
-            new PowerCrush(static::getData($attack, $extends, 'power-crush', 'damage-reduction')),
             new Distances(
                 $attack['distances']['range'],
                 new MinMax(
@@ -59,11 +56,6 @@ class AttackFactory
                     static::getData($attack, $extends, 'frames', 'startup', 'min'),
                     static::getData($attack, $extends, 'frames', 'startup', 'max')
                 ),
-                new Absorption(
-                    static::getData($attack, $extends, 'frames', 'absorption', 'min'),
-                    static::getData($attack, $extends, 'frames', 'absorption', 'max')
-                ),
-                new AfterAbsorption(static::getData($attack, $extends, 'frames', 'after-absorption', 'block')),
                 new Block($attack['frames']['block']['min'], $attack['frames']['block']['max']),
                 $attack['frames']['normal-hit'],
                 $attack['frames']['counter-hit']

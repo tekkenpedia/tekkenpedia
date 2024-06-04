@@ -7,7 +7,7 @@
     </tr>
 
     <tr>
-        <td>Attack</td>
+        <td>Power cr.</td>
         <td>{{ move.property|format_move_property }}</td>
         <td>{{ move.frames.startup|format_min_max_frames }}</td>
         <td>
@@ -15,6 +15,34 @@
                 {{ move.distances.range|format_distance }}
             {% endif %}
         </td>
+    </tr>
+{% endmacro %}
+
+{% macro powerCrushLines(move) %}
+    <tr class="separator separator-top">
+        <td colspan="4">Power crush</td>
+    </tr>
+    <tr class="separator separator-bottom">
+        <td>Frames</td>
+        <td>On block</td>
+        <td>Dam. reduce</td>
+        <td>Behaviors</td>
+    </tr>
+
+    <tr>
+        <td>{{ move.frames.absorption|format_min_max_frames }}</td>
+        <td
+            class="{{ move.frames.afterAbsorption.block|frame_bg_class }}"
+            title="Frames on block after absorbed damages"
+        >
+            {{ move.frames.afterAbsorption.block|format_frame }}
+        </td>
+        <td>
+            {% if move.damageReduction is not null %}
+                {{ move.damageReduction }}%
+            {% endif %}
+        </td>
+        <td><img class="icon-move-behavior" src="../../../images/behaviors/power-crush.png" title="Power crush"></td>
     </tr>
 {% endmacro %}
 
@@ -138,6 +166,7 @@
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 {{ macros.firstLines(move) }}
+                {{ macros.powerCrushLines(move) }}
                 {{ macros.onBlockLines(move) }}
                 {{ macros.onNormalHitLines(move) }}
                 {{ macros.onCounterHitLines(move) }}

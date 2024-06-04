@@ -1,11 +1,12 @@
+{% set containerClass = "col-12 col-sm-6 col-md-6 col-lg-3 mt-3" %}
 <div class="row">
     {% for move in section.moves.toArray() -%}
         {% if move.visibility.defense %}
-            {% if move is instanceof('\\App\\Character\\Move\\Attack\\Attack') %}
-                {% include 'characters/defense/attack.html.twig' with {character: character, attack: move, containerClass: "col-12 col-sm-6 col-md-6 col-lg-3 mt-3"} only %}
-            {% elseif move is instanceof('\\App\\Character\\Move\\Throw\\Throw_') %}
-                {% include 'characters/defense/throw.html.twig' with {character: character, throw: move, containerClass: "col-12 col-sm-6 col-md-6 col-lg-3 mt-3"} only %}
-            {% endif %}
+            {% include 'characters/defense/' ~ getMoveTemplateName(move.getType()) ~ '.html.twig' with {
+                character: character,
+                move: move,
+                containerClass: containerClass
+            } only %}
         {% endif %}
     {% endfor %}
 </div>

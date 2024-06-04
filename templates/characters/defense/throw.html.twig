@@ -1,4 +1,4 @@
-{% macro firstLines(throw) %}
+{% macro firstLines(move) %}
     <tr class="separator">
         <td class="col-3">Type</td>
         <td class="col-3">Property</td>
@@ -8,59 +8,59 @@
 
     <tr>
         <td>Throw</td>
-        <td class="{{ throw.property|throw_property_bg_class }}">{{ throw.property|format_throw_property }}</td>
-        <td class="{% if throw.frames.startup.min < 12 %} bg-danger text-white{% elseif throw.frames.startup.min > 12 %} bg-warning{% endif %}">
-            {{ throw.frames.startup|format_min_max_frames }}
+        <td class="{{ move.property|throw_property_bg_class }}">{{ move.property|format_move_property }}</td>
+        <td class="{% if move.frames.startup.min < 12 %} bg-danger text-white{% elseif move.frames.startup.min > 12 %} bg-warning{% endif %}">
+            {{ move.frames.startup|format_min_max_frames }}
         </td>
-        <td>{{ throw.distances.range|format_distance }}</td>
+        <td>{{ move.distances.range|format_distance }}</td>
     </tr>
 {% endmacro %}
 
-{% macro escapeLines(throw) %}
+{% macro escapeLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Escape</td>
     </tr>
     <tr class="separator separator-bottom">
-        <td>Input{% if throw.escapes.count() > 1 %}s{% endif %}</td>
+        <td>Input{% if move.escapes.count() > 1 %}s{% endif %}</td>
         <td>Frames</td>
         <td>After escape</td>
         <td>Distance</td>
     </tr>
 
     <tr>
-        <td class="{% if throw.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white">
-            {% if throw.escapes.count() > 0 %}
-                {{ throw.escapes.toArray()|join(' or ') }}
+        <td class="{% if move.escapes.count() > 0 %}bg-success{% else %}bg-danger{% endif%} text-white">
+            {% if move.escapes.count() > 0 %}
+                {{ move.escapes.toArray()|join(' or ') }}
             {% else %}
                 Can't
             {% endif %}
         </td>
 
         {% set titleParts = [] %}
-        {% if throw.frames.escape.normalHit is not null %}
+        {% if move.frames.escape.normalHit is not null %}
             {% set titleParts = titleParts|merge(['frames to escape on normal hit']) %}
         {% endif %}
-        {% if throw.frames.escape.counterHit is not null %}
+        {% if move.frames.escape.counterHit is not null %}
             {% set titleParts = titleParts|merge(['frames to escape on counter hit']) %}
         {% endif %}
 
         <td
-            class="{% if throw.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif throw.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
+            class="{% if move.frames.escape.normalHit < 21 %} bg-danger text-white{% elseif move.frames.escape.normalHit > 21 %} bg-warning{% endif %}"
             title="{{ titleParts|join(', ')|capitalize }}"
         >
-            {% if throw.frames.escape.normalHit %}
-                {{ throw.frames.escape.normalHit|format_frame(true) }}
+            {% if move.frames.escape.normalHit %}
+                {{ move.frames.escape.normalHit|format_frame(true) }}
             {% endif %}
-            {% if throw.frames.escape.counterHit %}
-                {{ throw.frames.escape.counterHit|format_frame(true) }}
+            {% if move.frames.escape.counterHit %}
+                {{ move.frames.escape.counterHit|format_frame(true) }}
             {% endif %}
         </td>
-        <td class="{{ throw.frames.afterEscape|throw_escape_bg_class }}">{{ throw.frames.afterEscape|format_frame(true) }}</td>
-        <td>{{ throw.distances.escape|format_distance }}</td>
+        <td class="{{ move.frames.afterEscape|throw_escape_bg_class }}">{{ move.frames.afterEscape|format_frame(true) }}</td>
+        <td>{{ move.distances.escape|format_distance }}</td>
     </tr>
 {% endmacro %}
 
-{% macro hitLines(throw) %}
+{% macro hitLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Hit</td>
     </tr>
@@ -72,16 +72,16 @@
     </tr>
 
     <tr>
-        <td>{{ throw.damages.normal }}</td>
-        <td>{{ throw.frames.hit.normal|format_frame(true) }}</td>
-        <td>{{ throw.distances.hit.normal|format_distance }}</td>
-        <td{% if throw.behaviors.count() > 0 %} class="bg-danger text-white"{% endif %}>
-            {{ throw.behaviors|move_behaviors_icons }}
+        <td>{{ move.damages.normal }}</td>
+        <td>{{ move.frames.hit.normal|format_frame(true) }}</td>
+        <td>{{ move.distances.hit.normal|format_distance }}</td>
+        <td{% if move.behaviors.count() > 0 %} class="bg-danger text-white"{% endif %}>
+            {{ move.behaviors|move_behaviors_icons }}
         </td>
     </tr>
 {% endmacro %}
 
-{% macro hitWithUkemiLines(throw) %}
+{% macro hitWithUkemiLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Hit (with ukemi)</td>
     </tr>
@@ -93,14 +93,14 @@
     </tr>
 
     <tr>
-        <td>{{ throw.damages.ukemi }}</td>
-        <td>{{ throw.frames.hit.ukemi|format_frame(true) }}</td>
-        <td>{{ throw.distances.hit.ukemi|format_distance }}</td>
+        <td>{{ move.damages.ukemi }}</td>
+        <td>{{ move.frames.hit.ukemi|format_frame(true) }}</td>
+        <td>{{ move.distances.hit.ukemi|format_distance }}</td>
         <td></td>
     </tr>
 {% endmacro %}
 
-{% macro hitWithWallLines(throw) %}
+{% macro hitWithWallLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Hit (with wall)</td>
     </tr>
@@ -112,14 +112,14 @@
     </tr>
 
     <tr>
-        <td>{{ throw.damages.wall }}</td>
-        <td>{{ throw.frames.hit.wall.normal|format_frame(true) }}</td>
+        <td>{{ move.damages.wall }}</td>
+        <td>{{ move.frames.hit.wall.normal|format_frame(true) }}</td>
         <td></td>
         <td></td>
     </tr>
 {% endmacro %}
 
-{% macro hitWithWallSplatLines(throw) %}
+{% macro hitWithWallSplatLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Hit (with wall splat)</td>
     </tr>
@@ -131,14 +131,14 @@
     </tr>
 
     <tr>
-        <td>{{ throw.damages.wall }}</td>
-        <td>{{ throw.frames.hit.wall.splat|format_frame(true) }}</td>
+        <td>{{ move.damages.wall }}</td>
+        <td>{{ move.frames.hit.wall.splat|format_frame(true) }}</td>
         <td></td>
         <td></td>
     </tr>
 {% endmacro %}
 
-{% macro hitWithWallBreakLines(throw) %}
+{% macro hitWithWallBreakLines(move) %}
     <tr class="separator separator-top">
         <td colspan="4">Hit (with wall break)</td>
     </tr>
@@ -150,8 +150,8 @@
     </tr>
 
     <tr>
-        <td>{{ throw.damages.wall }}</td>
-        <td>{{ throw.frames.hit.wall.break|format_frame(true) }}</td>
+        <td>{{ move.damages.wall }}</td>
+        <td>{{ move.frames.hit.wall.break|format_frame(true) }}</td>
         <td></td>
         <td></td>
     </tr>
@@ -163,45 +163,45 @@
     <div class="card text-center">
         <div class="card-title move-card-title">
             <div class="title">
-                {{ throw.inputs }}
-                {% if throw.situation is not null %}
-                    ({{ throw.situation }})
+                {{ move.inputs }}
+                {% if move.situation is not null %}
+                    ({{ move.situation }})
                 {% endif %}
             </div>
             <div class="links">
-                <a href="../../../characters/{{ character.slug }}/defense/{{ throw.slug }}.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
-                <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ throw.slug }}.html" title="Copy link"></i>
+                <a href="../../../characters/{{ character.slug }}/defense/{{ move.slug }}.html" class="text-black" title="Show only this throw"><i class="bi bi-eye"></i></a>
+                <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ move.slug }}.html" title="Copy link"></i>
             </div>
         </div>
         <br>
-        <img src="../../../images/characters/{{ character.slug }}/defense/{{ throw.slug }}.gif" alt="{{ throw.inputs }}">
+        <img src="../../../images/characters/{{ character.slug }}/defense/{{ move.slug }}.gif" alt="{{ move.inputs }}">
         <table class="table table-bordered table-sm mb-0">
             <tbody>
-                {{ macros.firstLines(throw) }}
-                {{ macros.escapeLines(throw) }}
-                {{ macros.hitLines(throw) }}
+                {{ macros.firstLines(move) }}
+                {{ macros.escapeLines(move) }}
+                {{ macros.hitLines(move) }}
 
-                {% if throw.frames.hit.ukemi is not null %}
-                    {{ macros.hitWithUkemiLines(throw) }}
+                {% if move.frames.hit.ukemi is not null %}
+                    {{ macros.hitWithUkemiLines(move) }}
                 {% endif %}
 
-                {% if throw.frames.hit.wall.normal is not null %}
-                    {{ macros.hitWithWallLines(throw) }}
+                {% if move.frames.hit.wall.normal is not null %}
+                    {{ macros.hitWithWallLines(move) }}
                 {% endif %}
 
-                {% if throw.frames.hit.wall.splat is not null %}
-                    {{ macros.hitWithWallSplatLines(throw) }}
+                {% if move.frames.hit.wall.splat is not null %}
+                    {{ macros.hitWithWallSplatLines(move) }}
                 {% endif %}
 
-                {% if throw.frames.hit.wall.break is not null %}
-                    {{ macros.hitWithWallBreakLines(throw) }}
+                {% if move.frames.hit.wall.break is not null %}
+                    {{ macros.hitWithWallBreakLines(move) }}
                 {% endif %}
 
-                {% if throw.comments.count > 0 %}
+                {% if move.comments.count > 0 %}
                     <tr class="separator">
                         <td colspan="4">Other information</td>
                     </tr>
-                    {% include 'characters/defense/index/comments.html.twig' with {comments: throw.comments} only %}
+                    {% include 'characters/defense/index/comments.html.twig' with {comments: move.comments} only %}
                 {% endif %}
             </tbody>
         </table>
