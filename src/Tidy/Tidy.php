@@ -22,6 +22,8 @@ class Tidy
                 '1000',
                 '--tidy-mark',
                 'no',
+                '--drop-empty-elements',
+                'no',
                 $htmlPathname
             ]
         );

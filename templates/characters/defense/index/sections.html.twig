@@ -3,9 +3,7 @@
         {% set toggleId = character.slug ~ '_' ~ section.slug %}
         <h{{ level }} class="cursor-pointer{% if level > 1 or not loop.first %} mt-4{% endif %}" data-toggle data-toggle-id="{{ toggleId }}">
             {{ section.name }}
-            <div class="float-right">
-                <i class="bi bi-toggle-on" data-toggle-icon="{{ toggleId }}"></i>
-            </div>
+            <i class="bi bi-toggle-on float-right" data-toggle-icon="{{ toggleId }}"></i>
         </h{{ level }}>
 
         <div data-toggle="{{ toggleId }}">

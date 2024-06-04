@@ -75,7 +75,7 @@
         <td>{{ throw.damages.normal }}</td>
         <td>{{ throw.frames.hit.normal|format_frame(true) }}</td>
         <td>{{ throw.distances.hit.normal|format_distance }}</td>
-        <td{% if throw.behaviors.count > 0 %} class="bg-danger text-white"{% endif %}>
+        <td{% if throw.behaviors.count() > 0 %} class="bg-danger text-white"{% endif %}>
             {{ throw.behaviors|move_behaviors_icons }}
         </td>
     </tr>

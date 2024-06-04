@@ -118,7 +118,7 @@
                 },
                 "3c3fa71f-9900-424f-b898-03a1382ac6a6": {
                     "type": "THROW",
-                    "inputs": "fc,db+1+2",
+                    "inputs": "FC,db+1+2",
                     "visibility": {
                         "defense": true
                     },
