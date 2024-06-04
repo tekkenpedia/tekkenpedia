@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Attack\Frame;
+namespace App\Character\Move\PowerCrush\Frame;
 
 readonly class AfterAbsorption
 {

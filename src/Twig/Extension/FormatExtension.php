@@ -6,6 +6,7 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
+    Character\Move\PowerCrush\PropertyEnum as PowerCrushPropertyEnum,
     Character\Move\Distance\MinMax,
     Character\Move\MinMaxFramesInterface,
     Character\Move\Throw\PropertyEnum as ThrowPropertyEnum
@@ -21,20 +22,14 @@ class FormatExtension extends AbstractExtension
     {
         return [
             new TwigFilter('format_frame', [$this, 'formatFrame']),
-            new TwigFilter('format_attack_property', [$this, 'formatAttackProperty']),
+            new TwigFilter('format_move_property', [$this, 'formatMoveProperty']),
             new TwigFilter('format_min_max_frames', [$this, 'formatMinMaxFrames'], ['is_safe' => ['html']]),
-            new TwigFilter('format_throw_property', [$this, 'formatThrowProperty']),
             new TwigFilter('format_distance', [$this, 'formatDistance'], ['is_safe' => ['html']]),
             new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']])
         ];
     }
 
-    public function formatAttackProperty(AttackPropertyEnum $property): string
-    {
-        return ucfirst(strtolower($property->name));
-    }
-
-    public function formatThrowProperty(ThrowPropertyEnum $property): string
+    public function formatMoveProperty(AttackPropertyEnum|PowerCrushPropertyEnum|ThrowPropertyEnum $property): string
     {
         return ucfirst(strtolower($property->name));
     }

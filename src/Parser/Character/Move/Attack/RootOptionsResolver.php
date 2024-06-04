@@ -14,7 +14,7 @@ use App\{
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AttackOptionsResolver
+class RootOptionsResolver
 {
     public static function configure(OptionsResolver $resolver): void
     {
@@ -59,15 +59,6 @@ class AttackOptionsResolver
             ->default(
                 static function(OptionsResolver $visibilityResolver): void {
                     VisibilityOptionsResolver::configure($visibilityResolver);
-                }
-            )
-            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
-
-        $resolver
-            ->define('power-crush')
-            ->default(
-                static function(OptionsResolver $powerCrushResolver): void {
-                    PowerCrushOptionsResolver::configure($powerCrushResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);

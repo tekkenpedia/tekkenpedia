@@ -11,11 +11,19 @@
     "visibility": {
         "defense": bool
     },
-    "property": "HIGH|MIDDLE|LOW",
+    "property": "HIGH|MIDDLE",
+    "damage-reduction": int,
     "frames": {
         "startup": {
             "min": int,
             "max": int
+        },
+        "absorption": {
+            "min": int,
+            "max": int
+        },
+        "after-absorption": {
+            "block": int
         },
         "block": {
             "min": int,

@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Attack;
+namespace App\Character\Move\PowerCrush;
 
 use App\{
-    Character\Move\Attack\Frame\Frames,
+    Character\Move\PowerCrush\Frame\Frames,
     Character\Move\MoveInterface,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
-    Collection\Character\Move\Attack\AttackCollection,
+    Collection\Character\Move\PowerCrush\PowerCrushCollection,
     Collection\Character\Move\CommentCollection,
     Exception\AppException,
     Parser\Character\Move\MoveTypeEnum};
 
-class Attack implements MoveInterface
+class PowerCrush implements MoveInterface
 {
-    public AttackCollection $slaves;
+    public PowerCrushCollection $slaves;
 
     private bool $masterIsDefined = false;
 
-    private ?Attack $master = null;
+    private ?PowerCrush $master = null;
 
     public function __construct(
         public readonly ?string $masterId,
@@ -31,6 +31,7 @@ class Attack implements MoveInterface
         public readonly bool $heat,
         public readonly Visibility $visibility,
         public readonly PropertyEnum $property,
+        public readonly int $damageReduction,
         public readonly Distances $distances,
         public readonly Frames $frames,
         public readonly Damages $damages,
@@ -38,7 +39,7 @@ class Attack implements MoveInterface
         public readonly Steps $steps,
         public readonly CommentCollection $comments
     ) {
-        $this->slaves = new AttackCollection();
+        $this->slaves = new PowerCrushCollection();
     }
 
     public function getSlug(): string
@@ -51,7 +52,7 @@ class Attack implements MoveInterface
         return $this->visibility;
     }
 
-    public function setMaster(?Attack $master): static
+    public function setMaster(?PowerCrush $master): static
     {
         if ($this->masterIsDefined) {
             throw new AppException('Master has already been defined.');
@@ -63,13 +64,13 @@ class Attack implements MoveInterface
         return $this;
     }
 
-    public function getMaster(): ?Attack
+    public function getMaster(): ?PowerCrush
     {
         return $this->master;
     }
 
     public function getType(): MoveTypeEnum
     {
-        return MoveTypeEnum::ATTACK;
+        return MoveTypeEnum::POWER_CRUSH;
     }
 }

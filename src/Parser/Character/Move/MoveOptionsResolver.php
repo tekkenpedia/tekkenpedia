@@ -7,8 +7,10 @@ namespace App\Parser\Character\Move;
 use App\{
     Exception\AppException,
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\Attack\AttackOptionsResolver,
-    Parser\Character\Move\Throw\ThrowOptionsResolver};
+    Parser\Character\Move\Attack\RootOptionsResolver as AttackRootOptionsResolver,
+    Parser\Character\Move\PowerCrush\RootOptionsResolver as PowerCrushRootOptionsResolver,
+    Parser\Character\Move\Throw\RootOptionsResolver as ThrowRootOptionsResolver
+};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MoveOptionsResolver
@@ -19,6 +21,8 @@ class MoveOptionsResolver
 
         if ($type === MoveTypeEnum::ATTACK) {
             static::configureAttack($resolver, $name);
+        } elseif ($type === MoveTypeEnum::POWER_CRUSH) {
+                static::configurePowerCrush($resolver, $name);
         } elseif ($type === MoveTypeEnum::THROW) {
             static::configureThrow($resolver, $name);
         } else {
@@ -32,7 +36,19 @@ class MoveOptionsResolver
             ->define($name)
             ->default(
                 static function(OptionsResolver $moveResolver): void {
-                    AttackOptionsResolver::configure($moveResolver);
+                    AttackRootOptionsResolver::configure($moveResolver);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+    }
+
+    private static function configurePowerCrush(OptionsResolver $resolver, string $name): void
+    {
+        $resolver
+            ->define($name)
+            ->default(
+                static function(OptionsResolver $moveResolver): void {
+                    PowerCrushRootOptionsResolver::configure($moveResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -44,7 +60,7 @@ class MoveOptionsResolver
             ->define($name)
             ->default(
                 static function(OptionsResolver $moveResolver): void {
-                    ThrowOptionsResolver::configure($moveResolver);
+                    ThrowRootOptionsResolver::configure($moveResolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);

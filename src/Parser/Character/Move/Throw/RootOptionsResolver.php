@@ -16,7 +16,7 @@ use App\{
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ThrowOptionsResolver
+class RootOptionsResolver
 {
     public static function configure(OptionsResolver $resolver): void
     {

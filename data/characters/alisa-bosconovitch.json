@@ -157,13 +157,12 @@
                     "moves": {
                         "4767958b-2f82-4d86-b07e-af15db3bfa71": {
                             "inputs": "2+3",
+                            "type": "POWER_CRUSH",
                             "visibility": {
                                 "defense": true
                             },
                             "property": "MIDDLE",
-                            "power-crush": {
-                                "damage-reduction": 0
-                            },
+                            "damage-reduction": 0,
                             "frames": {
                                 "startup": {
                                     "min": 16,

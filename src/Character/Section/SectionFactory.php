@@ -6,6 +6,7 @@ namespace App\Character\Section;
 
 use App\{
     Character\Move\Attack\AttackFactory,
+    Character\Move\PowerCrush\PowerCrushFactory,
     Character\Move\Throw\ThrowFactory,
     Collection\Character\Move\MoveInterfaceCollection,
     Collection\Character\Move\SectionCollection,
@@ -22,6 +23,9 @@ class SectionFactory
             switch ($moveData['type'] ?? MoveTypeEnum::ATTACK->name) {
                 case MoveTypeEnum::ATTACK->name:
                     $sectionMoves->add(AttackFactory::create($moveId, $moveData, $moves));
+                    break;
+                case MoveTypeEnum::POWER_CRUSH->name:
+                    $sectionMoves->add(PowerCrushFactory::create($moveId, $moveData, $moves));
                     break;
                 case MoveTypeEnum::THROW->name:
                     $sectionMoves->add(ThrowFactory::create($moveId, $moveData));

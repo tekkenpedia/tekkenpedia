@@ -11,5 +11,6 @@ enum MoveTypeEnum
     use CreateTrait;
 
     case ATTACK;
+    case POWER_CRUSH;
     case THROW;
 }
