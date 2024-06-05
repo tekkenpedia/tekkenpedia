@@ -64,14 +64,12 @@ class Concat
 
     private function findFiles(Finder $finder, OutputInterface $output): SplFileInfoCollection
     {
-        $iterator = $finder->getIterator();
         $return = new SplFileInfoCollection();
-        while ($iterator->current() instanceof SplFileInfo) {
-            if ($iterator->current()->getFilename() !== 'concat.mp4') {
-                $return->add($iterator->current());
-                $output->writeln('File: <info>' . $iterator->current()->getBasename() . '</info>.');
+        foreach ($finder as $file) {
+            if ($file->getFilename() !== 'concat.mp4') {
+                $return->add($file);
+                $output->writeln('File: <info>' . $file->getBasename() . '</info>.');
             }
-            $iterator->next();
         }
 
         return $return;

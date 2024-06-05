@@ -20,6 +20,7 @@ use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class ThrowFactory
 {
+    /** @param TThrow $throw */
     public static function create(string $id, array &$throw): Throw_
     {
         return new Throw_(

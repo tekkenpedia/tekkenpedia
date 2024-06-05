@@ -15,9 +15,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MoveOptionsResolver
 {
+    /** @param array{type: string|null} $data */
     public static function configure(OptionsResolver $resolver, string $name, array &$data): void
     {
-        $type = MoveTypeEnum::create($data['type'] ?? 'ATTACK');
+        $type = MoveTypeEnum::create($data['type'] ?? MoveTypeEnum::ATTACK->name);
 
         if ($type === MoveTypeEnum::ATTACK) {
             static::configureAttack($resolver, $name);
@@ -35,7 +36,7 @@ class MoveOptionsResolver
         $resolver
             ->define($name)
             ->default(
-                static function(OptionsResolver $moveResolver): void {
+                static function (OptionsResolver $moveResolver): void {
                     AttackRootOptionsResolver::configure($moveResolver);
                 }
             )
@@ -47,7 +48,7 @@ class MoveOptionsResolver
         $resolver
             ->define($name)
             ->default(
-                static function(OptionsResolver $moveResolver): void {
+                static function (OptionsResolver $moveResolver): void {
                     PowerCrushRootOptionsResolver::configure($moveResolver);
                 }
             )
@@ -59,7 +60,7 @@ class MoveOptionsResolver
         $resolver
             ->define($name)
             ->default(
-                static function(OptionsResolver $moveResolver): void {
+                static function (OptionsResolver $moveResolver): void {
                     ThrowRootOptionsResolver::configure($moveResolver);
                 }
             )

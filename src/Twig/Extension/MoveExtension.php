@@ -8,11 +8,13 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     Collection\Character\Move\BehaviorEnumCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum};
+    Parser\Character\Move\MoveTypeEnum
+};
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter,
-    TwigFunction};
+    TwigFunction
+};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class MoveExtension extends AbstractExtension
@@ -108,8 +110,10 @@ class MoveExtension extends AbstractExtension
         return $this;
     }
 
-    private function addFloorBehaviorTitlePart(StringCollection $floorBehaviorsTitleParts, BehaviorEnum $behavior): static
-    {
+    private function addFloorBehaviorTitlePart(
+        StringCollection $floorBehaviorsTitleParts,
+        BehaviorEnum $behavior
+    ): static {
         switch ($behavior) {
             case BehaviorEnum::FLOOR_BREAK:
                 $floorBehaviorsTitleParts->add('floor break');
@@ -133,6 +137,7 @@ class MoveExtension extends AbstractExtension
 
     private function createPngIcon(string $icon, string $title): string
     {
-        return '<img class="icon-move-behavior" src="../../../images/behaviors/' . $icon . '.png" title="' . $title . '">';
+        return
+            '<img class="icon-move-behavior" src="../../../images/behaviors/' . $icon . '.png" title="' . $title . '">';
     }
 }

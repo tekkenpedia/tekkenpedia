@@ -58,7 +58,7 @@
     </tr>
 
     <tr>
-        <td class="{{ move.frames.block.max|frame_bg_class }}">{{ move.frames.block|format_min_max_frames(true, false) }}</td>
+        <td class="{{ move.frames.block.min|frame_bg_class }}">{{ move.frames.block|format_min_max_frames(false) }}</td>
         <td title="Damage - Recoverable damage">{{ move.damages.block.damage }}<i class="bi bi-dot"></i>{{ move.damages.block.recoverableDamage }}</td>
         <td>{{ move.distances.block|format_distances }}</td>
         <td>{{ move.behaviors.block|move_behaviors_icons }}</td>

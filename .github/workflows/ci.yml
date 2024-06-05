@@ -1,0 +1,9 @@
+name: CI
+on: [push]
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: bin/ci/start
+            - run: bin/ci/validate --theme=summary

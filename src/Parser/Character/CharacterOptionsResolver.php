@@ -6,25 +6,26 @@ namespace App\Parser\Character;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\MovesOptionsResolver
+    Parser\Character\Move\SectionsOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CharacterOptionsResolver
+class CharacterOptionsResolver extends OptionsResolver
 {
-    public static function configure(OptionsResolver $resolver, array &$data): void
+    /** @param array<mixed> $data */
+    public function __construct(array &$data)
     {
-        $resolver
+        $this
             ->define('name')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $resolver
+        $this
             ->define('slug')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $resolver
+        $this
             ->define('select-screen')
             ->default(
                 static function (OptionsResolver $selectScreenResolver): void {
@@ -33,6 +34,18 @@ class CharacterOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        MovesOptionsResolver::configure($resolver, $data);
+        SectionsOptionsResolver::configure($this, $data);
+    }
+
+    /**
+     * @param array<mixed> $options
+     * @return TCharacter
+     */
+    public function resolve(array $options = []): array
+    {
+        /** @var TCharacter $return */
+        $return = parent::resolve($options);
+
+        return $return;
     }
 }

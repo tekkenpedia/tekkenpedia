@@ -9,7 +9,8 @@ use App\{
     Character\CharacterFactory,
     Character\Move\Attack\Attack,
     Character\Section\Section,
-    Tidy\Tidy};
+    Tidy\Tidy
+};
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
@@ -85,7 +86,7 @@ readonly class DefenseGenerator
                 continue;
             }
 
-            $renderPathname = $rootPath . '/' . $move->slug . '.html';
+            $renderPathname = $rootPath . '/' . $move->getSlug() . '.html';
             $output->writeln('Generating <info>' . $renderPathname . '</info>.');
 
             $filesystem->dumpFile(

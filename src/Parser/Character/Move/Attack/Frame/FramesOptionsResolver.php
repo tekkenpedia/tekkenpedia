@@ -6,7 +6,7 @@ namespace App\Parser\Character\Move\Attack\Frame;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\MinMaxFramesOptionsResolver
+    Parser\Character\MinMaxOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,8 +17,8 @@ class FramesOptionsResolver
         $resolver
             ->define('startup')
             ->default(
-                static function(OptionsResolver $resolver): void {
-                    MinMaxFramesOptionsResolver::configure($resolver);
+                static function (OptionsResolver $resolver): void {
+                    MinMaxOptionsResolver::configure($resolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -26,8 +26,8 @@ class FramesOptionsResolver
         $resolver
             ->define('block')
             ->default(
-                static function(OptionsResolver $resolver): void {
-                    MinMaxFramesOptionsResolver::configure($resolver);
+                static function (OptionsResolver $resolver): void {
+                    MinMaxOptionsResolver::configure($resolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);

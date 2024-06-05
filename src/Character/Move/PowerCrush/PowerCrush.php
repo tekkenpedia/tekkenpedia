@@ -12,7 +12,8 @@ use App\{
     Collection\Character\Move\PowerCrush\PowerCrushCollection,
     Collection\Character\Move\CommentCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum};
+    Parser\Character\Move\MoveTypeEnum
+};
 
 class PowerCrush implements MoveInterface
 {
@@ -30,8 +31,8 @@ class PowerCrush implements MoveInterface
         public readonly string $slug,
         public readonly bool $heat,
         public readonly Visibility $visibility,
-        public readonly PropertyEnum $property,
-        public readonly int $damageReduction,
+        public readonly ?PropertyEnum $property,
+        public readonly ?int $damageReduction,
         public readonly Distances $distances,
         public readonly Frames $frames,
         public readonly Damages $damages,

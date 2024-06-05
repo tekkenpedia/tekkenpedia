@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Generator\CharactersListGenerator;
-use App\Generator\DefenseGenerator;
+use App\{
+    Generator\CharactersListGenerator,
+    Generator\DefenseGenerator
+};
 use Symfony\Component\Console\{
     Command\Command,
     Input\InputInterface,

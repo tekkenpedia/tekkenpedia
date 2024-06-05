@@ -14,6 +14,7 @@ class Gif30FpsFilter implements GifFilterInterface
         return 1;
     }
 
+    /** @return array<string> */
     public function apply(Gif $gif): array
     {
         return ['-r', '30'];

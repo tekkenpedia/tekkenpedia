@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
+
+"${ROOT_PATH}"/bin/ci/composer install
+"${ROOT_PATH}"/bin/ci/console cache:warmup

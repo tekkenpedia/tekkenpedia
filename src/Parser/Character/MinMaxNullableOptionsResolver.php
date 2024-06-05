@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Parser\Character\Move;
+namespace App\Parser\Character;
 
 use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MinMaxFramesOptionsResolver
+class MinMaxNullableOptionsResolver
 {
     public static function configure(OptionsResolver $resolver): void
     {

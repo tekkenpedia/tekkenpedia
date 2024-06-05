@@ -5,7 +5,7 @@
         "line": 4,
         "position": 5
     },
-    "moves": {
+    "sections": {
         "Throws": {
             "moves": {
                 "7aea3568-b4e9-4825-b5d2-9af2c913d006": {
@@ -200,7 +200,7 @@
                         "normal-hit": 2,
                         "counter-hit": 14,
                         "block": {
-                            "max": -12
+                            "min": -12
                         }
                     },
                     "distances": {
@@ -259,7 +259,7 @@
                         "normal-hit": 13,
                         "counter-hit": 13,
                         "block": {
-                            "max": 3
+                            "min": 3
                         }
                     },
                     "distances": {
@@ -317,7 +317,7 @@
                         "normal-hit": 23,
                         "counter-hit": 23,
                         "block": {
-                            "max": 6
+                            "min": 6
                         }
                     },
                     "behaviors": {
@@ -385,7 +385,7 @@
                         "normal-hit": 14,
                         "counter-hit": 34,
                         "block": {
-                            "max": -9
+                            "min": -9
                         }
                     },
                     "behaviors": {
@@ -465,7 +465,7 @@
                                 "normal-hit": 6,
                                 "counter-hit": 20,
                                 "block": {
-                                    "max": 6
+                                    "min": 6
                                 }
                             },
                             "distances": {
@@ -527,7 +527,7 @@
                                 "normal-hit": 34,
                                 "counter-hit": 34,
                                 "block": {
-                                    "max": -13
+                                    "min": -13
                                 }
                             },
                             "behaviors": {
@@ -582,7 +582,7 @@
                                 "normal-hit": 4,
                                 "counter-hit": 4,
                                 "block": {
-                                    "max": -7
+                                    "min": -7
                                 }
                             },
                             "distances": {
@@ -641,7 +641,7 @@
                                 "normal-hit": 30,
                                 "counter-hit": 30,
                                 "block": {
-                                    "max": -4
+                                    "min": -4
                                 }
                             },
                             "behaviors": {

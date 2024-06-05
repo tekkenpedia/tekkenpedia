@@ -22,7 +22,7 @@ class RootOptionsResolver
     {
         $resolver
             ->define('type')
-            ->required()
+            ->default(MoveTypeEnum::THROW->name)
             ->allowedTypes(AllowedTypeEnum::STRING->value)
             ->allowedValues(MoveTypeEnum::THROW->name);
 
@@ -44,7 +44,7 @@ class RootOptionsResolver
         $resolver
             ->define('visibility')
             ->default(
-                static function(OptionsResolver $visibilityResolver): void {
+                static function (OptionsResolver $visibilityResolver): void {
                     VisibilityOptionsResolver::configure($visibilityResolver);
                 }
             )
@@ -54,7 +54,7 @@ class RootOptionsResolver
             ->define('frames')
             ->required()
             ->default(
-                static function(OptionsResolver $framesResolver): void {
+                static function (OptionsResolver $framesResolver): void {
                     FramesOptionsResolver::configure($framesResolver);
                 }
             )
@@ -64,7 +64,7 @@ class RootOptionsResolver
             ->define('distances')
             ->required()
             ->default(
-                static function(OptionsResolver $distancesResolver): void {
+                static function (OptionsResolver $distancesResolver): void {
                     DistancesOptionsResolver::configure($distancesResolver);
                 }
             )
@@ -79,7 +79,7 @@ class RootOptionsResolver
             ->define('damages')
             ->required()
             ->default(
-                static function(OptionsResolver $damagesResolver): void {
+                static function (OptionsResolver $damagesResolver): void {
                     DamagesOptionsResolver::configure($damagesResolver);
                 }
             )
@@ -94,7 +94,7 @@ class RootOptionsResolver
             ->define('behaviors')
             ->default([])
             ->allowedValues(
-                static function(array $behaviors): bool {
+                static function (array $behaviors): bool {
                     $allowedBehaviors = BehaviorEnum::getNames();
                     foreach ($behaviors as $behavior) {
                         if (in_array($behavior, $allowedBehaviors->toArray(), true) === false) {
@@ -111,7 +111,8 @@ class RootOptionsResolver
             ->define('comments')
             ->default([])
             ->allowedValues(
-                static function(array &$comments): bool {
+                /** @param array<mixed> $comments */
+                static function (array &$comments): bool {
                     return CommentOptionsResolver::resolve($comments);
                 }
             )

@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -eu
+
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
+
+source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+
+filesToCheck=()
+files=$(find "${ROOT_PATH}"/bin)
+for file in ${files}; do
+    if [ -f "${file}" ] && [ "${file:(-4)}" != ".php" ]; then
+        filesToCheck+=("${file}")
+    fi
+done
+
+exitCode=0
+for fileToCheck in "${filesToCheck[@]}"; do
+    set +e
+    # SC1090: Can't follow non-constant source. Use a directive to specify location.
+    # SC1091 (info): Not following: ./../global-vars.inc.bash was not specified as input (see shellcheck -x).
+    # SC2034 (warning): OUTPUT_REDIRECT_PATHNAME appears unused. Verify use (or export if used externally).
+    # SC2086 (info): Double quote to prevent globbing and word splitting.
+    # SC2015 (info): Note that A && B || C is not if-then-else. C may run when A is true.
+    # SC2068 (error): Double quote array expansions to avoid re-splitting elements.
+    # SC2181 (style): Check exit code directly with e.g. 'if ! mycmd;', not indirectly with $?.
+    # SC2155 (warning): Declare and assign separately to avoid masking return values.
+    shellcheck --color=always --exclude SC1090,SC1091,SC2034,SC2086,SC2015,SC2068,SC2181,SC2155 "${fileToCheck}"
+    if [ ${?} != 0 ]; then
+        exitCode=1
+    fi
+    set -e
+done
+
+if [ "${exitCode}" == 0 ]; then
+    printf "\e[42m %s files contains valid syntax. \e[0m\n" "${#filesToCheck[@]}"
+fi
+exit ${exitCode}

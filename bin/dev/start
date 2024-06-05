@@ -2,13 +2,18 @@
 
 set -eu
 
-readonly ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/..")"
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 readonly DOCKER_CONTAINER_NAME=tekkenpedia_nginx
+
+source "${ROOT_PATH}"/bin/docker.inc.bash
 
 readonly containers=$(docker ps -q --filter name="${DOCKER_CONTAINER_NAME}")
 if [ "${containers}" != "" ]; then
     docker stop ${containers}
 fi
+
+docker pull "${DOCKER_PHP_DEV_IMAGE_NAME}"
+docker pull "${DOCKER_PHP_CI_IMAGE_NAME}"
 
 docker \
     run \
@@ -21,4 +26,5 @@ docker \
         -p 80:80 \
         nginx:1.25.4
 
-"${ROOT_PATH}"/bin/composer install
+"${ROOT_PATH}"/bin/dev/composer install
+"${ROOT_PATH}"/bin/dev/console cache:warmup

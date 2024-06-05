@@ -31,7 +31,7 @@ class DistancesOptionsResolver
         $resolver
             ->define($option)
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     static::configureMinMaxResolver($resolver);
                 }
             )

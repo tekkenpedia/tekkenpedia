@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -eu
+
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
+
+source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+
+# Petit bug : cette commande n'accepte pas un paramètre vide ("${@:-}" si on n'a rien passé)
+# Composer could not find the config file:
+#  To initialize a project, please create a composer.json file. See https://getcomposer.org/basic-usage
+if [ "${#}" == 0 ]; then
+    composer normalize --ansi
+else
+    composer normalize --ansi "${@:-}"
+fi

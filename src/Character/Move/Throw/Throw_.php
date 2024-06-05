@@ -15,6 +15,7 @@ use App\{
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
+// @phpcs:ignores Squiz.Classes.ValidClassName.NotCamelCaps
 readonly class Throw_ implements MoveInterface
 {
     public function __construct(

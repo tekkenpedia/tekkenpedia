@@ -13,8 +13,11 @@ readonly class CharactersListGenerator
 {
     private string $renderPath;
 
-    public function __construct(string $projectDir, private CharacterFactory $characterFactory, private Environment $twig)
-    {
+    public function __construct(
+        string $projectDir,
+        private CharacterFactory $characterFactory,
+        private Environment $twig
+    ) {
         $this->renderPath = $projectDir . '/docs';
     }
 

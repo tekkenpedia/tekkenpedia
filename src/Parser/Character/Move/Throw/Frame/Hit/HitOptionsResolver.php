@@ -19,7 +19,7 @@ class HitOptionsResolver
         $resolver
             ->define('wall')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     WallOptionsResolver::configure($resolver);
                 }
             )
