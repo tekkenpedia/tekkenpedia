@@ -19,6 +19,7 @@ use App\{
 
 class AttackFactory
 {
+    /** @param TAttack $attack */
     public static function create(string $id, array &$attack): Attack
     {
         $slug = $attack['slug'] ?? $attack['inputs'];
@@ -44,6 +45,7 @@ class AttackFactory
         );
     }
 
+    /** @param TAttack $attack */
     private static function createDistances(array &$attack): Distances
     {
         return new Distances(
@@ -63,6 +65,7 @@ class AttackFactory
         );
     }
 
+    /** @param TAttack $attack */
     private static function createFrames(array &$attack): Frames
     {
         return new Frames(
@@ -76,6 +79,7 @@ class AttackFactory
         );
     }
 
+    /** @param TAttack $attack */
     private static function createDamages(array &$attack): Damages
     {
         return new Damages(
@@ -94,6 +98,7 @@ class AttackFactory
         );
     }
 
+    /** @param TAttack $attack */
     private static function createBehaviors(array &$attack): Behaviors
     {
         return new Behaviors(
@@ -103,6 +108,7 @@ class AttackFactory
         );
     }
 
+    /** @param TAttack $attack */
     private static function createSteps(array &$attack): Steps
     {
         $ssl = $attack['steps']['ssl'];

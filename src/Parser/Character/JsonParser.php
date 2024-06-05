@@ -5,20 +5,18 @@ declare(strict_types=1);
 namespace App\Parser\Character;
 
 use App\Exception\AppException;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class JsonParser
 {
+    /** @return TCharacter */
     public function getData(string $pathname): array
     {
         $data = $this->decodeJson($pathname);
-        $resolver = new OptionsResolver();
 
-        CharacterOptionsResolver::configure($resolver, $data);
-
-        return $resolver->resolve($data);
+        return (new CharacterOptionsResolver($data))->resolve($data);
     }
 
+    /** @return array<mixed> */
     private function decodeJson(string $pathname): array
     {
         if (is_readable($pathname) === false) {
@@ -30,6 +28,11 @@ class JsonParser
             throw new AppException('File "' . $pathname . '" could not be read.');
         }
 
-        return json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        $return = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+        if (is_array($return) === false) {
+            throw new AppException('Invalid json format for ' . $pathname . '.');
+        }
+
+        return $return;
     }
 }

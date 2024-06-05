@@ -16,11 +16,13 @@ use App\{
 
 class SectionFactory
 {
-    public static function create(string $name, array &$section, array &$moves): Section
+    /** @param TSection $section */
+    public static function create(string $name, array &$section): Section
     {
         $sectionMoves = new MoveInterfaceCollection();
+        /** @var string $moveId */
         foreach ($section['moves'] as $moveId => $moveData) {
-            switch ($moveData['type'] ?? MoveTypeEnum::ATTACK->name) {
+            switch ($moveData['type']) {
                 case MoveTypeEnum::ATTACK->name:
                     $sectionMoves->add(AttackFactory::create($moveId, $moveData));
                     break;
@@ -38,7 +40,7 @@ class SectionFactory
 
         $sections = new SectionCollection();
         foreach ($section['sections'] as $subSectionName => $subSectionData) {
-            $sections->add(static::create($subSectionName, $subSectionData, $moves));
+            $sections->add(static::create($subSectionName, $subSectionData));
         }
         $sections->setReadOnly();
 

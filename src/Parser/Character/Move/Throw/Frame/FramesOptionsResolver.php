@@ -6,7 +6,7 @@ namespace App\Parser\Character\Move\Throw\Frame;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\MinMaxFramesOptionsResolver,
+    Parser\Character\MinMaxOptionsResolver,
     Parser\Character\Move\Throw\Frame\Hit\HitOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,8 +18,8 @@ class FramesOptionsResolver
         $resolver
             ->define('startup')
             ->default(
-                static function(OptionsResolver $resolver): void {
-                    MinMaxFramesOptionsResolver::configure($resolver);
+                static function (OptionsResolver $resolver): void {
+                    MinMaxOptionsResolver::configure($resolver);
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
@@ -27,7 +27,7 @@ class FramesOptionsResolver
         $resolver
             ->define('hit')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     HitOptionsResolver::configure($resolver);
                 }
             )
@@ -36,7 +36,7 @@ class FramesOptionsResolver
         $resolver
             ->define('escape')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     EscapeOptionsResolver::configure($resolver);
                 }
             )

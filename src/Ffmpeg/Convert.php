@@ -12,7 +12,8 @@ use App\{
 use FFMpeg\{
     Coordinate\Dimension,
     Coordinate\TimeCode,
-    FFMpeg
+    FFMpeg,
+    Media\Video
 };
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -55,6 +56,7 @@ class Convert
             }
 
             $ffmepg = FFMpeg::create();
+            /** @var Video $ffmpegVideo */
             $ffmpegVideo = $ffmepg->open($video->getPathname());
             $ffmpegVideo
                 ->gif($timeCode, $dimensions)

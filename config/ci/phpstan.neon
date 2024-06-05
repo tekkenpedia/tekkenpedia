@@ -1,0 +1,30 @@
+includes:
+    - /composer/vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - /composer/vendor/phpstan/phpstan-strict-rules/rules.neon
+    - /composer/vendor/phpstan/phpstan-symfony/extension.neon
+    - /composer/vendor/phpstan/phpstan-symfony/rules.neon
+    - /composer/vendor/spaze/phpstan-disallowed-calls/extension.neon
+    - /composer/vendor/spaze/phpstan-disallowed-calls/disallowed-dangerous-calls.neon
+    - /composer/vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+    - /composer/vendor/spaze/phpstan-disallowed-calls/disallowed-insecure-calls.neon
+    - /composer/vendor/spaze/phpstan-disallowed-calls/disallowed-loose-calls.neon
+    - phpstan.types.neon
+parameters:
+    level: 9
+    tipsOfTheDay: false
+    checkUninitializedProperties: true
+    paths:
+        - ../../config
+        - ../../src
+    tmpDir: ../../var/ci/phpstan
+    symfony:
+        container_xml_path: ../../var/cache/dev/App_KernelDevDebugContainer.xml
+    excludePaths:
+        - ../../config/bundles.php
+    ignoreErrors:
+        # C'est vrai, mais pour rester dans l'optique de n'utiliser que static, on la supprime
+        - '/^Unsafe call to private method (.*) through static::.$/'
+rules:
+    - Ergebnis\PHPStan\Rules\Expressions\NoErrorSuppressionRule
+    - Ergebnis\PHPStan\Rules\Expressions\NoIssetRule
+    - Ergebnis\PHPStan\Rules\Files\DeclareStrictTypesRule

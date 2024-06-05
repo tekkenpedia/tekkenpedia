@@ -2,7 +2,7 @@
 
 set -eu
 
-readonly ROOT_PATH="$(realpath "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/../..")"
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
 source "${ROOT_PATH}"/bin/docker.inc.bash
 
@@ -10,4 +10,24 @@ docker \
     build \
         "${ROOT_PATH}" \
         --file "${ROOT_PATH}"/docker/php/Dockerfile \
-        --tag "${DOCKER_PHP_IMAGE_NAME}"
+        --target dev \
+        --tag "${DOCKER_PHP_DEV_IMAGE_NAME}"
+
+docker \
+    build \
+        "${ROOT_PATH}" \
+        --file "${ROOT_PATH}"/docker/php/Dockerfile \
+        --target ci \
+        --tag "${DOCKER_PHP_CI_IMAGE_NAME}"
+
+PUSH=false
+for parameter in "${@:-}"; do
+    if [ "${parameter}" == "--push" ]; then
+        PUSH=true
+    fi
+done
+
+if [ "${PUSH}" == true ]; then
+    docker push "${DOCKER_PHP_DEV_IMAGE_NAME}"
+    docker push "${DOCKER_PHP_CI_IMAGE_NAME}"
+fi

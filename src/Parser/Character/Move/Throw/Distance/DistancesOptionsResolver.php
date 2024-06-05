@@ -8,7 +8,8 @@ use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\{
     Constraints\Positive,
-    Validation};
+    Validation
+};
 
 class DistancesOptionsResolver
 {
@@ -24,7 +25,7 @@ class DistancesOptionsResolver
             ->define('hit')
             ->required()
             ->default(
-                static function(OptionsResolver $hitResolver): void {
+                static function (OptionsResolver $hitResolver): void {
                     HitOptionsResolver::configure($hitResolver);
                 }
             )

@@ -17,7 +17,7 @@ class DamagesOptionsResolver
         $resolver
             ->define('block')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     DamagesDataOptionsResolver::configure($resolver);
                 }
             )
@@ -26,7 +26,7 @@ class DamagesOptionsResolver
         $resolver
             ->define('normal-hit')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     DamagesDataOptionsResolver::configure($resolver);
                 }
             )
@@ -35,7 +35,7 @@ class DamagesOptionsResolver
         $resolver
             ->define('counter-hit')
             ->default(
-                static function(OptionsResolver $resolver): void {
+                static function (OptionsResolver $resolver): void {
                     DamagesDataOptionsResolver::configure($resolver);
                 }
             )

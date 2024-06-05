@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eu
+
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
+
+"${ROOT_PATH}"/bin/ci/console lint:yaml config

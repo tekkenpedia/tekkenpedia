@@ -21,6 +21,7 @@ use App\{
 
 class PowerCrushFactory
 {
+    /** @param TPowerCrush $powerCrush */
     public static function create(string $id, array &$powerCrush): PowerCrush
     {
         $slug = $powerCrush['slug'] ?? $powerCrush['inputs'];
@@ -36,7 +37,7 @@ class PowerCrushFactory
             $slug,
             $powerCrush['heat'],
             new Visibility($powerCrush['visibility']['defense']),
-            PropertyEnum::create($powerCrush['property']),
+            is_string($powerCrush['property']) ? PropertyEnum::create($powerCrush['property']) : null,
             $powerCrush['damage-reduction'],
             static::createDistances($powerCrush),
             static::createFrames($powerCrush),
@@ -47,6 +48,7 @@ class PowerCrushFactory
         );
     }
 
+    /** @param TPowerCrush $powerCrush */
     private static function createDistances(array &$powerCrush): Distances
     {
         return new Distances(
@@ -66,6 +68,7 @@ class PowerCrushFactory
         );
     }
 
+    /** @param TPowerCrush $powerCrush */
     private static function createFrames(array &$powerCrush): Frames
     {
         return new Frames(
@@ -84,6 +87,7 @@ class PowerCrushFactory
         );
     }
 
+    /** @param TPowerCrush $powerCrush */
     private static function createDamages(array &$powerCrush): Damages
     {
         return new Damages(
@@ -102,6 +106,7 @@ class PowerCrushFactory
         );
     }
 
+    /** @param TPowerCrush $powerCrush */
     private static function createBehaviors(array &$powerCrush): Behaviors
     {
         return new Behaviors(
@@ -111,6 +116,7 @@ class PowerCrushFactory
         );
     }
 
+    /** @param TPowerCrush $powerCrush */
     private static function createSteps(array &$powerCrush): Steps
     {
         $ssl = $powerCrush['steps']['ssl'];

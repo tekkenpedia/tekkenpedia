@@ -8,15 +8,16 @@ use App\Collection\Character\Move\CommentCollection;
 
 class CommentsFactory
 {
-    public static function create(array &$data): CommentCollection
+    /** @param array<TComment> $comments */
+    public static function create(array &$comments): CommentCollection
     {
         $return = new CommentCollection();
-        foreach ($data as $commentData) {
+        foreach ($comments as $comment) {
             $return->add(
                 new Comment(
-                    $commentData['comment'],
-                    TypeEnum::create($commentData['type']),
-                    WidthEnum::from($commentData['width'])
+                    $comment['comment'],
+                    TypeEnum::create($comment['type']),
+                    WidthEnum::from($comment['width'])
                 )
             );
         }

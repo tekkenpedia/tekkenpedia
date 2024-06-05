@@ -25,9 +25,9 @@ class RootOptionsResolver
 
         $resolver
             ->define('type')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
-            ->allowedValues(MoveTypeEnum::ATTACK->name, null);
+            ->default(MoveTypeEnum::ATTACK->name)
+            ->allowedTypes(AllowedTypeEnum::STRING->value)
+            ->allowedValues(MoveTypeEnum::ATTACK->name);
 
         $resolver
             ->define('inputs')
@@ -52,7 +52,7 @@ class RootOptionsResolver
         $resolver
             ->define('visibility')
             ->default(
-                static function(OptionsResolver $visibilityResolver): void {
+                static function (OptionsResolver $visibilityResolver): void {
                     VisibilityOptionsResolver::configure($visibilityResolver);
                 }
             )
@@ -60,14 +60,14 @@ class RootOptionsResolver
 
         $resolver
             ->define('property')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
-            ->allowedValues(...[...PropertyEnum::getNames()->toArray(), null]);
+            ->required()
+            ->allowedTypes(AllowedTypeEnum::STRING->value)
+            ->allowedValues(...PropertyEnum::getNames()->toArray());
 
         $resolver
             ->define('frames')
             ->default(
-                static function(OptionsResolver $framesResolver): void {
+                static function (OptionsResolver $framesResolver): void {
                     FramesOptionsResolver::configure($framesResolver);
                 }
             )
@@ -76,7 +76,7 @@ class RootOptionsResolver
         $resolver
             ->define('distances')
             ->default(
-                static function(OptionsResolver $damagesResolver): void {
+                static function (OptionsResolver $damagesResolver): void {
                     DistancesOptionsResolver::configure($damagesResolver);
                 }
             )
@@ -85,7 +85,7 @@ class RootOptionsResolver
         $resolver
             ->define('damages')
             ->default(
-                static function(OptionsResolver $damagesResolver): void {
+                static function (OptionsResolver $damagesResolver): void {
                     DamagesOptionsResolver::configure($damagesResolver);
                 }
             )
@@ -94,7 +94,7 @@ class RootOptionsResolver
         $resolver
             ->define('steps')
             ->default(
-                static function(OptionsResolver $stepsResolver): void {
+                static function (OptionsResolver $stepsResolver): void {
                     StepsOptionsResolver::configure($stepsResolver);
                 }
             )
@@ -104,7 +104,8 @@ class RootOptionsResolver
             ->define('comments')
             ->default([])
             ->allowedValues(
-                static function(array &$comments): bool {
+                /** @param array<mixed> $comments */
+                static function (array &$comments): bool {
                     return CommentOptionsResolver::resolve($comments);
                 }
             )
@@ -113,7 +114,7 @@ class RootOptionsResolver
         $resolver
             ->define('behaviors')
             ->default(
-                static function(OptionsResolver $behaviorsResolver): void {
+                static function (OptionsResolver $behaviorsResolver): void {
                     BehaviorsOptionsResolver::configure($behaviorsResolver);
                 }
             )

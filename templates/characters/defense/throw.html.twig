@@ -78,9 +78,7 @@
         <td>{{ move.damages.normal }}</td>
         <td>{{ move.frames.hit.normal|format_frame(true) }}</td>
         <td>{{ move.distances.hit.normal|format_distance }}</td>
-        <td{% if move.behaviors.count() > 0 %} class="bg-danger text-white"{% endif %}>
-            {{ move.behaviors|move_behaviors_icons }}
-        </td>
+        <td>{{ move.behaviors|move_behaviors_icons }}</td>
     </tr>
 {% endmacro %}
 

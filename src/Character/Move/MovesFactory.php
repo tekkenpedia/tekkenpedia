@@ -8,17 +8,19 @@ use App\{
     Character\Move\Attack\Attack,
     Character\Section\SectionFactory,
     Collection\Character\Move\Attack\AttackCollection,
-    Collection\Character\Move\SectionCollection
+    Collection\Character\Move\SectionCollection,
+    Exception\ShouldNotHappenException
 };
 
 class MovesFactory
 {
-    public static function create(array &$moves): SectionCollection
+    /** @param TCharacter $character */
+    public static function create(array &$character): SectionCollection
     {
         $sections = new SectionCollection();
 
-        foreach ($moves['moves'] as $sectionName => &$sectionData) {
-            $sections->add(SectionFactory::create($sectionName, $sectionData, $moves));
+        foreach ($character['sections'] as $sectionName => &$sectionData) {
+            $sections->add(SectionFactory::create($sectionName, $sectionData));
         }
 
         static::configureSlavesAttacks($sections);
@@ -33,6 +35,10 @@ class MovesFactory
 
         $masterAttacks = new AttackCollection();
         foreach ($slaveAttacks->toArray() as $slaveAttack) {
+            if (is_string($slaveAttack->masterId) === false) {
+                throw new ShouldNotHappenException();
+            }
+
             $attack = $sections->getAttack($slaveAttack->masterId);
             $attack->slaves->add($slaveAttack);
             $slaveAttack->setMaster($attack);

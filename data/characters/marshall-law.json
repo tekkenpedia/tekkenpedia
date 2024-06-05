@@ -5,7 +5,7 @@
         "line": 2,
         "position": 9
     },
-    "moves": {
+    "sections": {
         "Throws": {
             "moves": {
                 "4fdd3ccf-fe3e-4677-b411-a1e5b36de6bc": {
@@ -398,7 +398,7 @@
                                     "block": 1
                                 },
                                 "block": {
-                                    "max": 1
+                                    "min": 1
                                 },
                                 "normal-hit": 2,
                                 "counter-hit": 2
@@ -471,7 +471,7 @@
                                 "normal-hit": 5,
                                 "counter-hit": 5,
                                 "block": {
-                                    "max": 11
+                                    "min": 11
                                 }
                             },
                             "behaviors": {
@@ -552,7 +552,7 @@
                                 "normal-hit": 66,
                                 "counter-hit": 66,
                                 "block": {
-                                    "max": -8
+                                    "min": -8
                                 }
                             },
                             "behaviors": {

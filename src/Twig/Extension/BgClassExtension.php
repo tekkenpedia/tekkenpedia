@@ -10,10 +10,12 @@ use App\{
     Character\Move\Step\StepEnum,
     Character\Move\Throw\Frame\Hit\Hit as ThrowFramesHit,
     Character\Move\Throw\PropertyEnum,
-    Collection\Character\Move\BehaviorEnumCollection};
+    Collection\Character\Move\BehaviorEnumCollection
+};
 use Twig\{
     Extension\AbstractExtension,
-    TwigFilter};
+    TwigFilter
+};
 
 class BgClassExtension extends AbstractExtension
 {
