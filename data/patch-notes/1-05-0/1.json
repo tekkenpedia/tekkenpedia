@@ -1,0 +1,122 @@
+[
+    {
+        "character": "Common",
+        "command": "Triggering before balance adjustments for the v1.05.0 updates, and direction of future updates.",
+        "category": "Other",
+        "changes": "Among the updates in v1.04 released in May, the upcoming v1.05 update will address the following situations:\n- Character's skill and strategy differences will be given due consideration.\n- In-game rewards and penalties will be adjusted to balance gameplay experience."
+    },
+    {
+        "character": "Common",
+        "command": "Move List",
+        "category": "Other",
+        "changes": "The move list has been adjusted to reflect the new balance changes and improve the accuracy of move descriptions."
+    },
+    {
+        "character": "Common",
+        "command": "Reversal Break effect",
+        "category": "Other",
+        "changes": "Fixed an issue where certain reversal moves would not trigger the break effect under specific conditions."
+    },
+    {
+        "character": "Common",
+        "command": "Stage Breakables",
+        "category": "Balance",
+        "changes": "Fixed an issue where, in certain situations, choosing a specific recovery action after a floor break would allow characters to avoid intended follow-up attacks."
+    },
+    {
+        "character": "Common",
+        "command": "Floor Breakables",
+        "category": "Balance",
+        "changes": "Fixed an issue where the following throws would not trigger a floor break in certain situations:\n- (list of specific throws)."
+    },
+    {
+        "character": "Common",
+        "command": "Destruction type stage gimmicks",
+        "category": "Balance",
+        "changes": "The following Destruction Type stage gimmicks have an effect that reduces the amount of damage from attacks by 50%. The amount of this damage reduction has been adjusted as follows:\n- (list of specific adjustments)."
+    },
+    {
+        "character": "Common",
+        "command": "Explosion type stage gimmicks",
+        "category": "Balance",
+        "changes": "The following Explosion Type stage gimmicks, which inflict recoverable damage, have had their damage reduced by 50%:\n- (list of specific adjustments)."
+    },
+    {
+        "character": "Common",
+        "command": "Stage gimmicks including walls",
+        "category": "Balance",
+        "changes": "The distance enemies fly on hit has been increased by 20% for the following stage gimmicks:\n- (list of specific adjustments)."
+    },
+    {
+        "character": "Common",
+        "command": "Rage Art",
+        "category": "Balance",
+        "changes": "The amount of recoverable gauge restored when hitting with a Rage Art has been reduced by 30%. This change is to address the balance issue where Rage Arts were providing too much recovery."
+    },
+    {
+        "character": "Common",
+        "command": "Heat Burst",
+        "category": "Balance",
+        "changes": "Adjusted the behavior so that Heat Burst does not power up when it is used as a Rage Attack."
+    },
+    {
+        "character": "Common",
+        "command": "Heat Dash",
+        "category": "Behavior",
+        "changes": "The collision detection for the opponent and the wall have been adjusted to address an issue where Heat Dash would sometimes result in unintended side switch."
+    },
+    {
+        "character": "Common",
+        "command": "Heat Death",
+        "category": "Balance",
+        "changes": "Adjusted the hitbox and hurtbox of Heat Death to better match its visual effect."
+    },
+    {
+        "character": "Common",
+        "command": "Incollision behavior induced by Heat Engagers",
+        "category": "Behavior",
+        "changes": "Fixed an issue where the opponent's behavior when hit by Heat Engagers would not correctly transition to the intended state."
+    },
+    {
+        "character": "Common",
+        "command": "Heat Engagers",
+        "category": "Balance",
+        "changes": "Fixed an issue where the effects of Heat Engagers were inconsistent with other similar moves, causing imbalance."
+    },
+    {
+        "character": "Common",
+        "command": "Throws",
+        "category": "Balance",
+        "changes": "Fixed an issue where certain throws did not transition into the correct follow-up state under certain conditions."
+    },
+    {
+        "character": "Common",
+        "command": "Throws that can trigger stage gimmicks",
+        "category": "Balance",
+        "changes": "The following throws can now trigger stage gimmicks as intended:\n- (list of specific throws)."
+    },
+    {
+        "character": "Common",
+        "command": "Well Stagger",
+        "category": "Balance",
+        "changes": "Fixed an issue where certain attacks would not trigger the intended well stagger effect."
+    },
+    {
+        "character": "Common",
+        "command": "Jump Related",
+        "category": "Behavior",
+        "changes": "Adjusted the behavior of characters when jumping to better match the visual representation."
+    },
+    {
+        "character": "Common",
+        "command": "St., Vicons, Effects, etc.",
+        "category": "Other",
+        "changes": "Various visual and sound effects have been updated to improve overall game clarity and user experience."
+    },
+    {
+        "character": "Common",
+        "command": "Move List",
+        "category": "Other",
+        "changes": "Fixed issues with the move list descriptions to ensure accuracy and clarity."
+    }
+]

@@ -1,0 +1,128 @@
+[
+    {
+        "character": "Common",
+        "command": "Special Style",
+        "category": "Behavior",
+        "changes": "(During Special Style) Fixed the issue where the startup of certain moves would be delayed by 1 frame when buffering an attack input while still in recovery."
+    },
+    {
+        "character": "Common",
+        "command": "Balcony Break",
+        "category": "Behavior",
+        "changes": "Due to an issue where using a specific move caused the Balcony Break to occur and the characters went outside the battle area, adjustments were made to the pushback collision detection."
+    },
+    {
+        "character": "Alisa",
+        "command": "During Destructive Form",
+        "category": "Other",
+        "changes": "In Practice Mode, corrected the issue where frame advantage was not shown accurately. Originally, it was displaying \"+8F\" on block, but the correct value is \"+5F\"."
+    },
+    {
+        "character": "Devil Jin",
+        "command": "\u21984 on hit",
+        "category": "Balance",
+        "changes": "Changed the damage distribution from \"10,20\" to \"7,14.\" Reduced the forward movement of the first hit to shorten its reach. Corrected an issue where the distance between the character and the opponent increased only when also inputting the second hit. These adjustments were made to address the high total damage output of the combo, which significantly exceeded the level of other low attacks."
+    },
+    {
+        "character": "Devil Jin",
+        "command": "During Mourning Crow",
+        "category": "Balance",
+        "changes": "Reduced the duration of the attack by 1F to make it less likely to hit against sidestepping opponents. Changed the damage from \"25\" to \"20.\" Modified the chip damage on block from \"10\" to \"6.\" These adjustments take into account the fact that despite offensive capabilities after being blocked were exceptionally strong, it was also strong against sidestepping."
+    },
+    {
+        "character": "Dragunov",
+        "command": "\u21981,3",
+        "category": "Behavior",
+        "changes": "The recovery frames have been increased by 2F. (Guard: \"-6F\" \u2192 \"-8F\", Hit: \"+8F\" \u2192 \"+6F\") This adjustment was made considering that in specific combos, more damage than anticipated could be dealt."
+    },
+    {
+        "character": "Dragunov",
+        "command": "\u21982,4 (or \u21983 or \u21981+2)",
+        "category": "Balance",
+        "changes": "The character now turns towards the opponent upon hitting. This change makes follow-up attacks more stable when hitting in an off-axis state. The opponent now transitions to a downed state 6 frames earlier. Adjustments have been made to address the situation where, despite being a jump status move that isn\u2019t punishable when blocked, unintended high-damage combos could be performed regardless of whether the move hit or was blocked."
+    },
+    {
+        "character": "Dragunov",
+        "command": "During Sneak",
+        "category": "Balance",
+        "changes": "The distance between the player and the opponent on block has been increased. The chip damage during block has been changed from \"8\" to \"5.\" Adjustments have been made to address the difficulty in countering a specific combination that was proving more challenging than intended."
+    },
+    {
+        "character": "Jack-8",
+        "command": "f+1,2",
+        "category": "Behavior",
+        "changes": "Fixed an issue where the opponent couldn\u2019t perform a backwards ukemi after an aerial hit."
+    },
+    {
+        "character": "Jun",
+        "command": "\u21981+2",
+        "category": "Balance",
+        "changes": "Increased the recovery time by 5F. Increased the opponent\u2019s recovery time when blocked by 5F. These changes were made to address the situation where unintended follow-up attacks were landing after hitting the opponent with this move as the last hit of an aerial combo, resulting in significantly higher combo damage than intended. The frame advantage on block remains unchanged at \"+3F.\""
+    },
+    {
+        "character": "Jun",
+        "command": "2,3",
+        "category": "Balance",
+        "changes": "Changed the reaction upon hit. This adjustment was made considering that unintended follow-up attacks were occurring, allowing for damage output significantly exceeding expectations."
+    },
+    {
+        "character": "Leo",
+        "command": "b+3+4 during Lightning Glare (b+1+2)",
+        "category": "Balance",
+        "changes": "Increased the recovery time by 3 frames only when the move is blocked, resulting in a change from a frame advantage of \"-7F\" to \"-10F\" on block. This adjustment is made to ensure that the intended mind games are in place, addressing the situation where the return was significant with relatively low risk."
+    },
+    {
+        "character": "Leo",
+        "command": "b+1+2",
+        "category": "Balance",
+        "changes": "Reduced the recovery time inflicted on the opponent by 3 frames only when the move is blocked, resulting in a change from a frame advantage of \"-9F\" to \"-12F\" on block. This adjustment is made to ensure that the intended mind games are in place, addressing the situation where the return was significant with relatively low risk."
+    },
+    {
+        "character": "Leroy",
+        "command": "1+2",
+        "category": "Balance",
+        "changes": "Reduced the knockback distance when the attack is blocked, making it easier for the opponent\u2019s counterattacks to connect. This adjustment is made considering the move\u2019s long reach, ease of connecting against lateral movement, and the difficulty some characters faced in punishing, leading to a strength beyond expectations."
+    },
+    {
+        "character": "Lili",
+        "command": "f+1+2 (transition to throw on hit)",
+        "category": "Behavior",
+        "changes": "The collision detection against the opponent has been extended downwards to make it more difficult to slip under a floating opponent."
+    },
+    {
+        "character": "Raven",
+        "command": "Back facing opponent 1,2,4 during Soulzone",
+        "category": "Behavior",
+        "changes": "The recovery frames after crouching guard against the doppelganger attack have been adjusted to match the standing block, fixing the inconsistency."
+    },
+    {
+        "character": "Reina",
+        "command": "b+1+2,1+2 during Heat",
+        "category": "Balance",
+        "changes": "Reduced the knockback distance when the attack is blocked. Removed the crouching status during the first half of the attack animation. Increased the damage hurtbox. Made it possible to defend against it with a reversal move. This adjustment was made considering that the attack, with its excellent startup, reach, and ease of hitting sidesteps, was overly restricting the opponent\u2019s actions."
+    },
+    {
+        "character": "Reina",
+        "command": "During Sentai",
+        "category": "Behavior",
+        "changes": "Changed the reaction when hitting a downed opponent. This modification was made to prevent the possibility of repeatedly hitting Kuma or Panda in a face-up position."
+    },
+    {
+        "character": "Nina",
+        "command": "b+3+4, 1+2",
+        "category": "Behavior",
+        "changes": "Adjusted the timing for the opponent to be able to block by 2 frames when hit from the front and side. This move boasts excellent performance as it has long reach and serves as an excellent offensive starting point. However, the latter half of the duration of the attack guaranteed a powerful follow-up upon hit, leading to damage output significantly exceeding expectations. This change was implemented to address this issue."
+    },
+    {
+        "character": "Steve",
+        "command": "During Ducking",
+        "category": "Behavior",
+        "changes": "The distance to the opponent upon the first hit has been reduced. This adjustment is made to alleviate cases where combos using this technique did not consistently land consecutive hits on larger characters."
+    },
+    {
+        "character": "Yoshimitsu",
+        "command": "During Manji Dragonfly (3+4)",
+        "category": "Behavior",
+        "changes": "Corrected an issue where, upon transitioning to \"Muto no Kiwami,\" the airborne state persisted longer than intended, leading to opponents\u2019 punish attacks hitting while still airborne."
+    }
+]
