@@ -36,20 +36,29 @@ class Convert
         return $this->path;
     }
 
-    public function convert(OutputInterface $output): static
+    public function convert(\SplFileInfo $video, OutputInterface $output): static
     {
-        $videos = $this->findVideos();
-        if ($videos->count() <= 0) {
-            throw new AppException('No videos to convert found in ' . $this->getPath() . '.');
-        }
+//        $videos = $this->findVideos();
+//        if ($videos->count() <= 0) {
+//            throw new AppException('No videos to convert found in ' . $this->getPath() . '.');
+//        }
 
-        $dimensions = new Dimension(320, 180);
+        $dimensions = [
+            'tekkenpedia' => new Dimension(320, 180),
+            '360p' => new Dimension(640, 360),
+            '480p' => new Dimension(852, 480),
+            '720p' => new Dimension(1280, 720),
+            '1080p' => new Dimension(1920, 1080),
+            '1440p' => new Dimension(2560, 1440),
+            '2160p' => new Dimension(3840, 2160),
+        ];
         $timeCode = TimeCode::fromSeconds(0);
 
-        foreach ($videos->toArray() as $video) {
+        foreach ($dimensions as $name => $dimension) {
+//        foreach ($videos->toArray() as $video) {
             $output->writeln('Converting <info>' . $video->getFilename() . '</info>.');
 
-            $outputPathname = $this->getPath() . '/' . $video->getBasename('.' . $video->getExtension()) . '.gif';
+            $outputPathname = $this->getPath() . '/' . $video->getBasename('.' . $video->getExtension()) . '-' . $name . '.gif';
             if (file_exists($outputPathname)) {
                 $output->writeln('  Removing <comment>' . basename($outputPathname) . '</comment>.');
                 (new Filesystem())->remove($outputPathname);
@@ -59,7 +68,7 @@ class Convert
             /** @var Video $ffmpegVideo */
             $ffmpegVideo = $ffmepg->open($video->getPathname());
             $ffmpegVideo
-                ->gif($timeCode, $dimensions)
+                ->gif($timeCode, $dimension)
                 ->addFilter(new Gif30FpsFilter())
                 ->save($outputPathname);
 

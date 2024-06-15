@@ -14,6 +14,7 @@ use Symfony\Component\Console\{
     Output\OutputInterface
 };
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 
 class VideosToGifCommand extends Command
 {
@@ -34,16 +35,26 @@ class VideosToGifCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $concatPathname = $this->concat->concat($output);
 
-        $filesystem = new Filesystem();
-        $convertPathname = $this->convert->getPath() . '/convert.mp4';
-        $filesystem->copy($concatPathname, $convertPathname);
-        $filesystem->remove($concatPathname);
+        $finder = (new Finder())
+            ->in(__DIR__ . '/../../var/test')
+            ->files()
+            ->sortByName();
 
-        $this->convert->convert($output);
+//        $concatPathname = $this->concat->concat($output);
 
-        $filesystem->remove($convertPathname);
+        foreach ($finder as $file) {
+            $this->convert->convert($file, $output);
+        }
+
+//        $filesystem = new Filesystem();
+//        $convertPathname = $this->convert->getPath() . '/convert.mp4';
+////        $filesystem->copy($concatPathname, $convertPathname);
+////        $filesystem->remove($concatPathname);
+//
+//        $this->convert->convert($output);
+//
+//        $filesystem->remove($convertPathname);
 
         return static::SUCCESS;
     }
