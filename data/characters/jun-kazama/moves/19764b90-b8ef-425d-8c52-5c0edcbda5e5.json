@@ -1,0 +1,62 @@
+{
+    "inputs": "1,2,2",
+    "visibility": {
+        "defense": true
+    },
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 16,
+            "max": 17
+        },
+        "normal-hit": 6,
+        "counter-hit": 20,
+        "block": {
+            "min": 6
+        }
+    },
+    "distances": {
+        "range": 200,
+        "block": {
+            "min": 101,
+            "max": 104
+        },
+        "normal-hit": {
+            "min": 94,
+            "max": 126
+        },
+        "counter-hit": {
+            "min": 92,
+            "max": 92
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 17,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 20,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    },
+    "comments": [
+        {
+            "comment": "2 can be ducked on block or NH.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "Guaranteed if 1 or the first 2 is on CH."
+        }
+    ]
+}

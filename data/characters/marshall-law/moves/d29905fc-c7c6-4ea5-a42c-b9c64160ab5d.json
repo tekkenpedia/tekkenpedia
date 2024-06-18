@@ -1,0 +1,70 @@
+{
+    "inputs": "2+3",
+    "type": "POWER_CRUSH",
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "damage-reduction": 0,
+    "frames": {
+        "startup": {
+            "min": 16
+        },
+        "after-absorption": {
+            "block": 1
+        },
+        "block": {
+            "min": 1
+        },
+        "normal-hit": 2,
+        "counter-hit": 2
+    },
+    "behaviors": {
+        "block": [
+            "HEAT_BURST"
+        ],
+        "normal-hit": [
+            "HEAT_BURST",
+            "OPPONENT_CROUCH"
+        ],
+        "counter-hit": [
+            "HEAT_BURST",
+            "OPPONENT_CROUCH"
+        ]
+    },
+    "distances": {
+        "range": 300,
+        "block": {
+            "min": 259,
+            "max": 334
+        },
+        "normal-hit": {
+            "min": 231,
+            "max": 297
+        },
+        "counter-hit": {
+            "min": 231,
+            "max": 297
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    },
+    "damages": {
+        "block": {
+            "damage": 3,
+            "recoverable-damage": 3
+        },
+        "normal-hit": {
+            "damage": 12,
+            "recoverable-damage": 12
+        },
+        "counter-hit": {
+            "damage": 14,
+            "recoverable-damage": 14
+        }
+    }
+}

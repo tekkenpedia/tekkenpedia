@@ -1,0 +1,59 @@
+{
+    "inputs": "db+2",
+    "visibility": {
+        "defense": true
+    },
+    "property": "LOW",
+    "frames": {
+        "startup": {
+            "min": 23,
+            "max": 24
+        },
+        "normal-hit": 2,
+        "counter-hit": 14,
+        "block": {
+            "min": -12
+        }
+    },
+    "distances": {
+        "range": 290,
+        "block": {
+            "min": 159,
+            "max": 196
+        },
+        "normal-hit": {
+            "min": 156,
+            "max": 214
+        },
+        "counter-hit": {
+            "min": 184,
+            "max": 234
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 15,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 18,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "EASY",
+        "ssr": "EASY",
+        "swr": "EASY"
+    },
+    "comments": [
+        {
+            "comment": "High crush at the end.",
+            "type": "STRENGTH"
+        }
+    ]
+}

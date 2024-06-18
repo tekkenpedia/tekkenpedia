@@ -1,0 +1,83 @@
+{
+    "inputs": "1,2,2,1,1",
+    "visibility": {
+        "defense": true
+    },
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 23,
+            "max": 24
+        },
+        "normal-hit": 30,
+        "counter-hit": 30,
+        "block": {
+            "min": -4
+        }
+    },
+    "behaviors": {
+        "normal-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BLAST",
+            "WALL_BOUND",
+            "KNOCKDOWN"
+        ],
+        "counter-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BLAST",
+            "WALL_BOUND",
+            "KNOCKDOWN"
+        ]
+    },
+    "distances": {
+        "range": 270,
+        "block": {
+            "min": 170,
+            "max": 208
+        },
+        "normal-hit": {
+            "min": 500,
+            "max": 510
+        },
+        "counter-hit": {
+            "min": 500,
+            "max": 510
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 7,
+            "recoverable-damage": 7
+        },
+        "normal-hit": {
+            "damage": 26,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 31,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    },
+    "comments": [
+        {
+            "comment": "1,1 can be ducked on block, NH or CH.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "1 can be ducked on block.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "SWR from the one before the last steps the last 1.",
+            "type": "DEFENSE"
+        }
+    ]
+}

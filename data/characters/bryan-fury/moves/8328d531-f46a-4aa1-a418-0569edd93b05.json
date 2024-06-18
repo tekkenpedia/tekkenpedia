@@ -1,0 +1,18 @@
+{
+    "inputs": "sway,3",
+    "visibility": {
+        "punish": true
+    },
+    "property": "LOW",
+    "frames": {
+        "startup": {
+            "min": 19,
+            "max": 20
+        },
+        "block": {
+            "min": -13
+        },
+        "normal-hit": 5,
+        "counter-hit": 25
+    }
+}

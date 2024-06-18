@@ -8,6 +8,8 @@ use App\Parser\Character\Move\MoveTypeEnum;
 
 interface MoveInterface
 {
+    public function getId(): string;
+
     public function getSlug(): string;
 
     public function getVisibility(): Visibility;

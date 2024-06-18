@@ -1,0 +1,70 @@
+{
+    "master": "91cf1915-3f58-424f-952c-0cd12f728637",
+    "inputs": "BT d+3",
+    "situation": "long range",
+    "slug": "back-turn_d+3_long-range",
+    "visibility": {
+        "defense": true
+    },
+    "property": "LOW",
+    "frames": {
+        "startup": {
+            "min": 25,
+            "max": 27
+        },
+        "block": {
+            "min": -26
+        },
+        "normal-hit": 0,
+        "counter-hit": 1
+    },
+    "distances": {
+        "range": 275,
+        "block": {
+            "min": 186,
+            "max": 221
+        },
+        "normal-hit": {
+            "min": 247,
+            "max": 276
+        },
+        "counter-hit": {
+            "min": 247,
+            "max": 276
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "MEDIUM",
+        "ssr": "IMPOSSIBLE",
+        "swr": "HARD"
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 16,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 19,
+            "recoverable-damage": 0
+        }
+    },
+    "comments": [
+        {
+            "comment": "High crush from the 5th frame.",
+            "type": "STRENGTH"
+        },
+        {
+            "comment": "Throw crush from the 5th frame.",
+            "type": "STRENGTH"
+        },
+        {
+            "comment": "Crush some middles.",
+            "type": "STRENGTH"
+        }
+    ]
+}

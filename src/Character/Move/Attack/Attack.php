@@ -42,6 +42,11 @@ class Attack implements MoveInterface
         $this->slaves = new AttackCollection();
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function getSlug(): string
     {
         return $this->slug;
