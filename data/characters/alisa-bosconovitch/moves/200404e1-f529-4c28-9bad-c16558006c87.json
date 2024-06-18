@@ -1,0 +1,40 @@
+{
+    "id": "200404e1-f529-4c28-9bad-c16558006c87",
+    "type": "THROW",
+    "inputs": "2+4",
+    "visibility": {
+        "defense": true
+    },
+    "frames": {
+        "startup": {
+            "min": 12,
+            "max": 14
+        },
+        "hit": {
+            "normal": 0
+        },
+        "escape": {
+            "normal-hit": 21,
+            "counter-hit": 14
+        },
+        "after-escape": -5
+    },
+    "behaviors": [
+        "FLOOR_BREAK",
+        "FLOOR_BLAST"
+    ],
+    "distances": {
+        "range": 192,
+        "hit": {
+            "normal": 336
+        },
+        "escape": 214
+    },
+    "escapes": [
+        "1",
+        "2"
+    ],
+    "damages": {
+        "normal": 35
+    }
+}
