@@ -6,7 +6,7 @@ namespace App\Parser\Character;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\SectionsOptionsResolver
+    Parser\Character\Section\SectionsOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

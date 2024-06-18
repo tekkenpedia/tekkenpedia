@@ -1,0 +1,33 @@
+{
+    "type": "THROW",
+    "inputs": "f+2+3",
+    "visibility": {
+        "defense": true
+    },
+    "frames": {
+        "startup": {
+            "min": 12
+        },
+        "hit": {
+            "normal": -6
+        },
+        "escape": {
+            "normal-hit": 21,
+            "counter-hit": 14
+        },
+        "after-escape": -2
+    },
+    "distances": {
+        "range": 150,
+        "hit": {
+            "normal": 190
+        },
+        "escape": 172
+    },
+    "escapes": [
+        "1"
+    ],
+    "damages": {
+        "normal": 35
+    }
+}

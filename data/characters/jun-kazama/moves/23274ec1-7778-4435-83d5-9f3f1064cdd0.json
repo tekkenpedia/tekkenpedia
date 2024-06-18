@@ -1,0 +1,59 @@
+{
+    "inputs": "1,2,2,2",
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 23,
+            "max": 25
+        },
+        "normal-hit": 34,
+        "counter-hit": 34,
+        "block": {
+            "min": -13
+        }
+    },
+    "behaviors": {
+        "normal-hit": [
+            "AIR"
+        ],
+        "counter-hit": [
+            "AIR"
+        ]
+    },
+    "distances": {
+        "range": 350,
+        "block": {
+            "min": 99,
+            "max": 165
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 9,
+            "recoverable-damage": 9
+        },
+        "normal-hit": {
+            "damage": 24,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 28,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "EASY",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    },
+    "comments": [
+        {
+            "comment": "High crush most of the time.",
+            "type": "STRENGTH"
+        }
+    ]
+}

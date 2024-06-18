@@ -1,16 +1,19 @@
 parameters:
     typeAliases:
         TCharacter: 'array{name: string, slug: string, select-screen: TSelectScreen, sections: TSections}'
+        # J'aurai bien voulu mettre TSections au lieu de mixed, mais ça fait une référence circulaire dans phpstan
+        TSections: 'array{sections: array<mixed>, moves: array<string>}'
+        TSection: 'array{sections: TSections, moves: array<string>}'
+
         TComment: 'array{comment: string, type: string, width: integer}'
         TMinMax: 'array{min: integer, max: integer|null}'
         TMinMaxNullable: 'array{min: integer|null, max: integer|null}'
         TVisibility: 'array{defense: bool}'
         TDamage: 'array{damage: integer|null, recoverable-damage: integer|null}'
         TSteps: 'array{ssl: string|null, swl: string|null, ssr: string|null, swr: string|null}'
-        # J'aurai bien voulu mettre TSections au lieu de mixed, mais ça fait une référence circulaire dans phpstan
-        TSections: 'array{sections: array<mixed>, moves: array{TThrow|TAttack|TPowerCrush}}'
-        TSection: 'array{sections: TSections, moves: array{TThrow|TAttack|TPowerCrush}}'
+
         TSelectScreen: 'array{line: integer, position: integer}'
+
         TThrow: 'array{type: string, inputs: string, situation: string|null, slug: string|null, visibility: TVisibility, frames: TThrowFrames, distances: TThrowDistances, escapes: array<string>, damages: TThrowDamages, property: string, behaviors: array<string>, comments: array<TComment>}'
         TThrowDamages: 'array{normal: integer, wall: integer, ukemi: integer}'
         TThrowDistances: 'array{range: integer, hit: TThrowDistanceHit, escape: integer|null}'
@@ -19,12 +22,14 @@ parameters:
         TThrowFramesHit: 'array{normal: integer, wall: TThrowFramesHitWall, ukemi: integer|null}'
         TThrowFramesHitWall: 'array{normal: integer|null, splat: integer|null, break: integer|null}'
         TThrowFramesEscape: 'array{normal-hit: integer|null, counter-hit: integer|null}'
+
         TAttack: 'array{master: string|null, type: string, inputs: string, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, property: string, frames: TAttackFrames, distances: TAttackDistances, damages: TAttackDamages, steps: TSteps, behaviors: TAttackBehaviors, comments: array<TComment>}'
         TAttackFrames: 'array{startup: TMinMax, block: TMinMax, normal-hit: integer, counter-hit: integer}'
         TAttackDistances: 'array{range: integer|null, block: TAttackDistancesMinMax, normal-hit: TAttackDistancesMinMax, counter-hit: TAttackDistancesMinMax}'
         TAttackDistancesMinMax: 'array{min: integer|null, max: integer|null}'
         TAttackDamages: 'array{block: TDamage, normal-hit: TDamage, counter-hit: TDamage}'
         TAttackBehaviors: 'array{block: array<string>, normal-hit: array<string>, counter-hit: array<string>}'
+
         TPowerCrush: 'array{master: string|null, type: string, inputs: string, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, damage-reduction: integer|null, property: string|null, frames: TPowerCrushFrames, distances: TPowerCrushDistances, damages: TPowerCrushDamages, steps: TSteps, behaviors: TPowerCrushBehaviors, comments: array<TComment>}'
         TPowerCrushFrames: 'array{startup: TMinMax, absorption: TMinMaxNullable, after-absorption: TPowerCrushFramesAfterAbsorption, block: TMinMaxNullable, normal-hit: integer, counter-hit: integer}'
         TPowerCrushFramesAfterAbsorption: 'array{block: integer|null}'

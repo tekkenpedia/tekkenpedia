@@ -16,32 +16,32 @@ use App\{
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RootOptionsResolver
+class RootOptionsResolver extends OptionsResolver
 {
-    public static function configure(OptionsResolver $resolver): void
+    public function __construct()
     {
-        $resolver
+        $this
             ->define('type')
             ->default(MoveTypeEnum::THROW->name)
             ->allowedTypes(AllowedTypeEnum::STRING->value)
             ->allowedValues(MoveTypeEnum::THROW->name);
 
-        $resolver
+        $this
             ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $resolver
+        $this
             ->define('situation')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('slug')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('visibility')
             ->default(
                 static function (OptionsResolver $visibilityResolver): void {
@@ -50,7 +50,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('frames')
             ->required()
             ->default(
@@ -60,7 +60,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('distances')
             ->required()
             ->default(
@@ -70,12 +70,12 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('escapes')
             ->default([])
             ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
 
-        $resolver
+        $this
             ->define('damages')
             ->required()
             ->default(
@@ -85,12 +85,12 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('property')
             ->default(PropertyEnum::HIGH->name)
             ->allowedValues(...PropertyEnum::getNames()->toArray());
 
-        $resolver
+        $this
             ->define('behaviors')
             ->default([])
             ->allowedValues(
@@ -107,7 +107,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
 
-        $resolver
+        $this
             ->define('comments')
             ->default([])
             ->allowedValues(
@@ -117,5 +117,17 @@ class RootOptionsResolver
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+    }
+
+    /**
+     * @param array<mixed> $options
+     * @return TThrow
+     */
+    public function resolve(array $options = []): array
+    {
+        /** @var TThrow $return */
+        $return = parent::resolve($options);
+
+        return $return;
     }
 }

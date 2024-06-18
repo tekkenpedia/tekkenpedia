@@ -7,8 +7,7 @@ namespace App\Parser\Character\Move\PowerCrush\Frame;
 use App\{
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\MinMaxNullableOptionsResolver,
-    Parser\Character\MinMaxOptionsResolver
-};
+    Parser\Character\MinMaxOptionsResolver};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FramesOptionsResolver

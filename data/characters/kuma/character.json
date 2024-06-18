@@ -1,0 +1,9 @@
+{
+    "name": "Kuma",
+    "slug": "kuma",
+    "select-screen": {
+        "line": 4,
+        "position": 1
+    },
+    "sections": []
+}

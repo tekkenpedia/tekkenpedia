@@ -1,0 +1,59 @@
+{
+    "inputs": "f+4",
+    "visibility": {
+        "defense": true
+    },
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 19,
+            "max": 21
+        },
+        "normal-hit": 13,
+        "counter-hit": 13,
+        "block": {
+            "min": 3
+        }
+    },
+    "distances": {
+        "range": 250,
+        "block": {
+            "min": 126,
+            "max": 137
+        },
+        "normal-hit": {
+            "min": 151,
+            "max": 174
+        },
+        "counter-hit": {
+            "min": 151,
+            "max": 174
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 21,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 25,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    },
+    "comments": [
+        {
+            "comment": "1+2 (heat engager) is guaranteed on NH\/CH.",
+            "type": "STRENGTH"
+        }
+    ]
+}

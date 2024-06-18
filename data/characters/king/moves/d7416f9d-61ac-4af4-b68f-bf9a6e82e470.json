@@ -1,0 +1,45 @@
+{
+    "type": "THROW",
+    "inputs": "f,hcf+1",
+    "visibility": {
+        "defense": true
+    },
+    "frames": {
+        "startup": {
+            "min": 10
+        },
+        "hit": {
+            "normal": -22,
+            "ukemi": -30,
+            "wall": {
+                "normal": -23
+            }
+        },
+        "escape": {
+            "normal-hit": 23
+        },
+        "after-escape": -13
+    },
+    "distances": {
+        "range": 210,
+        "hit": {
+            "normal": 606,
+            "ukemi": 547
+        },
+        "escape": 327
+    },
+    "escapes": [
+        "1"
+    ],
+    "damages": {
+        "normal": 65,
+        "ukemi": 45,
+        "wall": 70
+    },
+    "comments": [
+        {
+            "comment": "You have 8 frames to ukemi when you hit the ground to reduce the damages by 20.",
+            "type": "DEFENSE"
+        }
+    ]
+}

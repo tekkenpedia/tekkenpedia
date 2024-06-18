@@ -11,8 +11,7 @@ use App\{
     Collection\Character\Move\MoveInterfaceCollection,
     Collection\Character\Move\SectionCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum
-};
+    Parser\Character\Move\MoveTypeEnum};
 
 class SectionFactory
 {
@@ -21,7 +20,7 @@ class SectionFactory
     {
         $sectionMoves = new MoveInterfaceCollection();
         /** @var string $moveId */
-        foreach ($section['moves'] as $moveId => $moveData) {
+        foreach ($section['moves'] as $moveId) {
             switch ($moveData['type']) {
                 case MoveTypeEnum::ATTACK->name:
                     $sectionMoves->add(AttackFactory::create($moveId, $moveData));

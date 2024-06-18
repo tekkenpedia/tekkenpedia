@@ -8,14 +8,12 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     Collection\Character\Move\BehaviorEnumCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum
-};
+    Parser\Character\Move\MoveTypeEnum};
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter,
-    TwigFunction
-};
-use Steevanb\PhpCollection\ScalarCollection\StringCollection;
+    TwigFunction};
 
 class MoveExtension extends AbstractExtension
 {

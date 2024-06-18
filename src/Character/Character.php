@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Character;
 
+use App\Collection\Character\Move\MoveInterfaceCollection;
 use App\Collection\Character\Move\SectionCollection;
 
 readonly class Character
@@ -12,7 +13,8 @@ readonly class Character
         public string $name,
         public string $slug,
         public SelectScreen $selectScreen,
-        public SectionCollection $sections
+        public SectionCollection $sections,
+        public MoveInterfaceCollection $moves
     ) {
     }
 }

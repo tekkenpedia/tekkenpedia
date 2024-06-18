@@ -6,8 +6,7 @@ namespace App\Parser\Character\Move\Attack\Frame;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\MinMaxOptionsResolver
-};
+    Parser\Character\MinMaxOptionsResolver};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FramesOptionsResolver

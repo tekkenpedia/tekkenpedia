@@ -1,0 +1,9 @@
+{
+    "name": "Devil Jin",
+    "slug": "devil-jin",
+    "select-screen": {
+        "line": 4,
+        "position": 6
+    },
+    "sections": []
+}

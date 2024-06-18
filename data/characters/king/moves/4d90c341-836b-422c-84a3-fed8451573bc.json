@@ -1,0 +1,54 @@
+{
+    "inputs": "f+3",
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 15,
+            "max": 16
+        },
+        "normal-hit": 1,
+        "counter-hit": 9,
+        "block": {
+            "min": -7,
+            "max": -8
+        }
+    },
+    "distances": {
+        "range": 210,
+        "block": {
+            "min": 158,
+            "max": 210
+        },
+        "normal-hit": {
+            "min": 125,
+            "max": 196
+        },
+        "counter-hit": {
+            "min": 199,
+            "max": 213
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 18,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 21,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "EASY",
+        "swl": "EASY",
+        "ssr": "MEDIUM",
+        "swr": "MEDIUM"
+    }
+}
