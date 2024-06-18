@@ -1,0 +1,39 @@
+{
+    "type": "THROW",
+    "inputs": "2+4",
+    "visibility": {
+        "defense": true
+    },
+    "frames": {
+        "startup": {
+            "min": 12,
+            "max": 14
+        },
+        "hit": {
+            "normal": 0
+        },
+        "escape": {
+            "normal-hit": 21,
+            "counter-hit": 14
+        },
+        "after-escape": -6
+    },
+    "behaviors": [
+        "FLOOR_BREAK",
+        "FLOOR_BLAST"
+    ],
+    "distances": {
+        "range": 210,
+        "hit": {
+            "normal": 146
+        },
+        "escape": 312
+    },
+    "escapes": [
+        "1",
+        "2"
+    ],
+    "damages": {
+        "normal": 35
+    }
+}

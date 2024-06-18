@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace App\Parser\Character;
 
-use App\{
-    OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\SectionsOptionsResolver
-};
+use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SelectScreenOptionsResolver

@@ -1,0 +1,18 @@
+{
+    "inputs": "sway,4",
+    "visibility": {
+        "punish": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 17,
+            "max": 18
+        },
+        "block": {
+            "min": -12
+        },
+        "normal-hit": 31,
+        "counter-hit": 31
+    }
+}

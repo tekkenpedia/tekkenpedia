@@ -1,0 +1,59 @@
+{
+    "inputs": "1,2,2,1",
+    "visibility": {
+        "defense": true
+    },
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 13,
+            "max": 14
+        },
+        "normal-hit": 4,
+        "counter-hit": 4,
+        "block": {
+            "min": -7
+        }
+    },
+    "distances": {
+        "range": 260,
+        "block": {
+            "min": 152,
+            "max": 180
+        },
+        "normal-hit": {
+            "min": 160,
+            "max": 190
+        },
+        "counter-hit": {
+            "min": 160,
+            "max": 190
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 7,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 8,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "EASY",
+        "swr": "EASY"
+    },
+    "comments": [
+        {
+            "comment": "1 can be ducked on block, NH or CH.",
+            "type": "DEFENSE"
+        }
+    ]
+}

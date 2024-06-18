@@ -34,6 +34,11 @@ readonly class Throw_ implements MoveInterface
     ) {
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     public function getSlug(): string
     {
         return $this->slug;

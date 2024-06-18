@@ -1,0 +1,42 @@
+{
+    "name": "Marshall Law",
+    "slug": "marshall-law",
+    "select-screen": {
+        "line": 2,
+        "position": 9
+    },
+    "sections": {
+        "Throws": {
+            "moves": [
+                "4fdd3ccf-fe3e-4677-b411-a1e5b36de6bc",
+                "770eb25c-822f-4f55-8121-634f4fd4e6ac",
+                "20fb9338-be09-408e-8ade-3ddf395f4a31",
+                "2bb7ed58-8c37-42f0-8126-ac7f1f661129",
+                "adff3e5f-4d25-40cd-aef4-e68653b00b98",
+                "c937d598-3149-4d9d-8ccb-2d34777264b6",
+                "b166b22b-6115-4565-8397-6f8f82630bd4",
+                "c08f4dbc-8fc4-45d0-b0f8-fca403928629"
+            ]
+        },
+        "Power crush": {
+            "moves": [
+                "ce4c5100-e0c5-4614-a42b-d10f60ddbac2"
+            ]
+        },
+        "Heat": {
+            "sections": {
+                "Activation": {
+                    "moves": [
+                        "d29905fc-c7c6-4ea5-a42c-b9c64160ab5d"
+                    ]
+                },
+                "Heat smash": {
+                    "moves": [
+                        "43b53f07-653a-4107-a77f-e0cb563a4616",
+                        "bc9a71fb-a9fa-4356-8295-d0db97ed98ca"
+                    ]
+                }
+            }
+        }
+    }
+}

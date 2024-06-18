@@ -8,6 +8,7 @@ use App\{
     Character\Move\Attack\Attack,
     Character\Section\SectionFactory,
     Collection\Character\Move\Attack\AttackCollection,
+    Collection\Character\Move\MoveInterfaceCollection,
     Collection\Character\Move\SectionCollection,
     Exception\ShouldNotHappenException
 };
@@ -15,12 +16,12 @@ use App\{
 class MovesFactory
 {
     /** @param TCharacter $character */
-    public static function create(array &$character): SectionCollection
+    public static function create(array &$character, MoveInterfaceCollection $moves): SectionCollection
     {
         $sections = new SectionCollection();
 
         foreach ($character['sections'] as $sectionName => &$sectionData) {
-            $sections->add(SectionFactory::create($sectionName, $sectionData));
+            $sections->add(SectionFactory::create($sectionName, $sectionData, $moves));
         }
 
         static::configureSlavesAttacks($sections);

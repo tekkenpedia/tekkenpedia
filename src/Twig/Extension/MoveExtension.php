@@ -11,12 +11,12 @@ use App\{
     Exception\AppException,
     Parser\Character\Move\MoveTypeEnum
 };
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter,
     TwigFunction
 };
-use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class MoveExtension extends AbstractExtension
 {

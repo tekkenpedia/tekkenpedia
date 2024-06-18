@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Collection\Character\Move;
 
-use App\Character\Move\MoveInterface;
+use App\{
+    Character\Move\MoveInterface,
+    Exception\AppException
+};
 use Steevanb\PhpCollection\ObjectCollection\AbstractObjectCollection;
 
 /** @extends AbstractObjectCollection<MoveInterface> */
@@ -39,5 +42,16 @@ class MoveInterfaceCollection extends AbstractObjectCollection
         }
 
         return $return;
+    }
+
+    public function getById(string $id): MoveInterface
+    {
+        foreach ($this->toArray() as $move) {
+            if ($move->getId() === $id) {
+                return $move;
+            }
+        }
+
+        throw new AppException('Move ' . $id . ' not found.');
     }
 }

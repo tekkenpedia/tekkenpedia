@@ -1,0 +1,17 @@
+{
+    "name": "Raven",
+    "slug": "raven",
+    "select-screen": {
+        "line": 2,
+        "position": 4
+    },
+    "sections": {
+        "Back turn (BT)": {
+            "moves": [
+                "58feceaa-92d8-4d3e-8549-fdfd5f6a4142",
+                "91cf1915-3f58-424f-952c-0cd12f728637",
+                "13077626-da36-48cc-9bea-f8925a840488"
+            ]
+        }
+    }
+}
