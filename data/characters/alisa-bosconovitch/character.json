@@ -1,0 +1,27 @@
+{
+    "name": "Alisa Bosconovitch",
+    "slug": "alisa-bosconovitch",
+    "select-screen": {
+        "line": 4,
+        "position": 3
+    },
+    "sections": {
+        "Throws": {
+            "moves": [
+                "4dbbc769-9206-4767-8a00-43c8355b7fe0",
+                "200404e1-f529-4c28-9bad-c16558006c87",
+                "ce6521f9-0586-4089-89ad-c894841969e3",
+                "3c3fa71f-9900-424f-b898-03a1382ac6a6"
+            ]
+        },
+        "Heat": {
+            "sections": {
+                "Activation": {
+                    "moves": [
+                        "4767958b-2f82-4d86-b07e-af15db3bfa71"
+                    ]
+                }
+            }
+        }
+    }
+}

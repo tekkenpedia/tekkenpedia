@@ -11,8 +11,7 @@ use App\{
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
-    Parser\Character\Move\MoveTypeEnum
-};
+    Parser\Character\Move\MoveTypeEnum};
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 // @phpcs:ignores Squiz.Classes.ValidClassName.NotCamelCaps

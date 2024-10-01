@@ -8,8 +8,7 @@ use App\OptionsResolver\AllowedTypeEnum;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\{
     Constraints\Positive,
-    Validation
-};
+    Validation};
 
 class DistancesOptionsResolver
 {

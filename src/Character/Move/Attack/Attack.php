@@ -12,8 +12,7 @@ use App\{
     Collection\Character\Move\Attack\AttackCollection,
     Collection\Character\Move\CommentCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum
-};
+    Parser\Character\Move\MoveTypeEnum};
 
 class Attack implements MoveInterface
 {

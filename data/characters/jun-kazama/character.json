@@ -1,0 +1,39 @@
+{
+    "name": "Jun Kazama",
+    "slug": "jun-kazama",
+    "select-screen": {
+        "line": 4,
+        "position": 5
+    },
+    "sections": {
+        "Throws": {
+            "moves": [
+                "7aea3568-b4e9-4825-b5d2-9af2c913d006",
+                "27d6c801-ba7c-45f3-a86f-a68c25cd0dd8",
+                "24314740-642c-4290-99e7-37b018591f08",
+                "1eb2c4e6-4cac-4815-a9f8-ee75c297a89c",
+                "adfa85be-7ae0-415e-9600-4f11544600d1"
+            ]
+        },
+        "Basics": {
+            "moves": [
+                "0c46b58c-a95a-4b0f-9a93-f868626f313b",
+                "27fbfcbf-ebd9-4e15-92a0-dd92220c8e0b",
+                "02f6489f-f5b7-4194-beed-33784fedfceb",
+                "0e60546c-fee2-41e9-bb59-e32dfa4c4dd4"
+            ]
+        },
+        "1,2": {
+            "sections": {
+                "1,2,2": {
+                    "moves": [
+                        "19764b90-b8ef-425d-8c52-5c0edcbda5e5",
+                        "23274ec1-7778-4435-83d5-9f3f1064cdd0",
+                        "9736f5d5-ffcb-473c-ab05-891439c58f57",
+                        "e6f4b44b-21d8-44cc-9c77-3347adc6f4f2"
+                    ]
+                }
+            }
+        }
+    }
+}

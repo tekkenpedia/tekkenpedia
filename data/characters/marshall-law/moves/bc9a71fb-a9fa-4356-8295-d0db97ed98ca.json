@@ -1,0 +1,67 @@
+{
+    "master": "43b53f07-653a-4107-a77f-e0cb563a4616",
+    "inputs": "2+3",
+    "situation": "first move whiff",
+    "slug": "2+3_first-move-whiff",
+    "heat": true,
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 26,
+            "max": 27
+        },
+        "normal-hit": 66,
+        "counter-hit": 66,
+        "block": {
+            "min": -8
+        }
+    },
+    "behaviors": {
+        "normal-hit": [
+            "AIR",
+            "WALL_SPLAT"
+        ],
+        "counter-hit": [
+            "AIR",
+            "WALL_SPLAT"
+        ]
+    },
+    "distances": {
+        "range": 260,
+        "block": {
+            "min": 250,
+            "max": 330
+        },
+        "normal-hit": {
+            "min": 217,
+            "max": 304
+        },
+        "counter-hit": {
+            "min": 217,
+            "max": 304
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 6,
+            "recoverable-damage": 6
+        },
+        "normal-hit": {
+            "damage": 23,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 27,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "IMPOSSIBLE",
+        "swl": "IMPOSSIBLE",
+        "ssr": "IMPOSSIBLE",
+        "swr": "IMPOSSIBLE"
+    }
+}

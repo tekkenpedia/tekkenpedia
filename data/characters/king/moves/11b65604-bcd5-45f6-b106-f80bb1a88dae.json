@@ -1,0 +1,67 @@
+{
+    "master": "4d90c341-836b-422c-84a3-fed8451573bc",
+    "inputs": "f+3:1+2",
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 15,
+            "max": 16
+        },
+        "block": {
+            "min": -7,
+            "max": -8
+        },
+        "normal-hit": 1,
+        "counter-hit": 1
+    },
+    "distances": {
+        "range": 210,
+        "block": {
+            "min": 158,
+            "max": 210
+        },
+        "normal-hit": {
+            "min": 183
+        },
+        "counter-hit": {
+            "min": 183
+        }
+    },
+    "behaviors": {
+        "normal-hit": [
+            "KNOCKDOWN"
+        ],
+        "counter-hit": [
+            "KNOCKDOWN"
+        ]
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 38,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 41,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "EASY",
+        "swl": "EASY",
+        "ssr": "MEDIUM",
+        "swr": "MEDIUM"
+    },
+    "comments": [
+        {
+            "comment": "1+2 is a just frame move, with a 1-frame window on the 16th frame.",
+            "type": "NORMAL"
+        }
+    ]
+}

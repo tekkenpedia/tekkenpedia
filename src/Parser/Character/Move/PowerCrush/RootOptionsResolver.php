@@ -8,48 +8,48 @@ use App\{
     Character\Move\PowerCrush\PropertyEnum,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\CommentOptionsResolver,
-    Parser\Character\Move\PowerCrush\Frame\FramesOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
+    Parser\Character\Move\PowerCrush\Frame\FramesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver
 };
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RootOptionsResolver
+class RootOptionsResolver extends OptionsResolver
 {
-    public static function configure(OptionsResolver $resolver): void
+    public function __construct()
     {
-        $resolver
+        $this
             ->define('master')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('type')
             ->default(MoveTypeEnum::POWER_CRUSH->name)
             ->allowedTypes(AllowedTypeEnum::STRING->value)
             ->allowedValues(MoveTypeEnum::POWER_CRUSH->name);
 
-        $resolver
+        $this
             ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $resolver
+        $this
             ->define('situation')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('heat')
             ->default(false)
             ->allowedTypes(AllowedTypeEnum::BOOLEAN->value);
 
-        $resolver
+        $this
             ->define('slug')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('visibility')
             ->default(
                 static function (OptionsResolver $visibilityResolver): void {
@@ -58,18 +58,18 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('damage-reduction')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value);
 
-        $resolver
+        $this
             ->define('property')
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
             ->allowedValues(...[...PropertyEnum::getNames()->toArray(), null]);
 
-        $resolver
+        $this
             ->define('frames')
             ->default(
                 static function (OptionsResolver $framesResolver): void {
@@ -78,7 +78,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('distances')
             ->default(
                 static function (OptionsResolver $damagesResolver): void {
@@ -87,7 +87,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('damages')
             ->default(
                 static function (OptionsResolver $damagesResolver): void {
@@ -96,7 +96,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('steps')
             ->default(
                 static function (OptionsResolver $stepsResolver): void {
@@ -105,7 +105,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('comments')
             ->default([])
             ->allowedValues(
@@ -116,7 +116,7 @@ class RootOptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $resolver
+        $this
             ->define('behaviors')
             ->default(
                 static function (OptionsResolver $behaviorsResolver): void {
@@ -124,5 +124,17 @@ class RootOptionsResolver
                 }
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+    }
+
+    /**
+     * @param array<mixed> $options
+     * @return TPowerCrush
+     */
+    public function resolve(array $options = []): array
+    {
+        /** @var TPowerCrush $return */
+        $return = parent::resolve($options);
+
+        return $return;
     }
 }

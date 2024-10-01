@@ -5,9 +5,14 @@ declare(strict_types=1);
 namespace App\Character;
 
 use App\{
+    Character\Move\MoveFactory,
     Character\Move\MovesFactory,
     Collection\Character\CharacterCollection,
-    Parser\Character\JsonParser
+    Collection\Character\Move\MoveInterfaceCollection,
+    Collection\Symfony\Component\Finder\SplFileInfoCollection,
+    Decoder\JsonDecoder,
+    Parser\Character\CharacterOptionsResolver,
+    Parser\Character\Move\MoveOptionsResolverFactory
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
@@ -18,21 +23,33 @@ class CharacterFactory
 
     private ?CharacterCollection $characters = null;
 
-    public function __construct(string $projectDir, private readonly JsonParser $jsonParser)
+    public function __construct(string $projectDir)
     {
         $this->charactersPath = $projectDir . '/data/characters';
     }
 
-    public function create(string $fileName): Character
+    public function create(string $slug): Character
     {
-        $jsonPathname = $this->charactersPath . '/' . $fileName . '.json';
-        $data = $this->jsonParser->getData($jsonPathname);
+        // DEBUG
+        $slug = 'alisa-bosconovitch';
+        // /DEBUG
+
+        $moves = new MoveInterfaceCollection();
+        foreach ($this->getMoveFiles($slug)->toArray() as $moveFile) {
+            $moveJsonData = JsonDecoder::decode($moveFile->getPathname());
+            $moveData = MoveOptionsResolverFactory::create($moveJsonData)->resolve($moveJsonData);
+            $moves->add(MoveFactory::create($moveFile->getBasename('.json'), $moveData));
+        }
+
+        $characterJsonData = JsonDecoder::decode($this->charactersPath . '/' . $slug . '/character.json');
+        $characterData = (new CharacterOptionsResolver($characterJsonData))->resolve($characterJsonData);
 
         return new Character(
-            $data['name'],
-            $data['slug'],
-            new SelectScreen($data['select-screen']['line'], $data['select-screen']['position']),
-            MovesFactory::create($data)
+            $characterData['name'],
+            $characterData['slug'],
+            new SelectScreen($characterData['select-screen']['line'], $characterData['select-screen']['position']),
+            MovesFactory::create($characterData),
+            $moves
         );
     }
 
@@ -40,8 +57,8 @@ class CharacterFactory
     {
         if ($this->characters instanceof CharacterCollection === false) {
             $this->characters = new CharacterCollection();
-            foreach ($this->getFileNames()->toArray() as $fileName) {
-                $this->characters->add($this->create($fileName));
+            foreach ($this->getCharactersSlugs()->toArray() as $characterSlug) {
+                $this->characters->add($this->create($characterSlug));
             }
 
             $this->characters->setReadOnly();
@@ -50,16 +67,33 @@ class CharacterFactory
         return $this->characters;
     }
 
-    private function getFileNames(): StringCollection
+    private function getCharactersSlugs(): StringCollection
     {
-        $files = (new Finder())
+        $directories = (new Finder())
             ->in($this->charactersPath)
-            ->files()
-            ->name('*.json');
+            ->directories();
 
         $return = new StringCollection();
-        foreach ($files as $file) {
-            $return->add($file->getBasename('.json'));
+        foreach ($directories as $directory) {
+            $return->add($directory->getBasename());
+        }
+
+        return $return;
+    }
+
+    private function getMoveFiles(string $slug): SplFileInfoCollection
+    {
+        $return = new SplFileInfoCollection();
+
+        if (is_dir($this->charactersPath . '/' . $slug . '/moves')) {
+            $files = (new Finder())
+                ->in($this->charactersPath . '/' . $slug . '/moves')
+                ->files()
+                ->name('*.json');
+
+            foreach ($files as $file) {
+                $return->add($file);
+            }
         }
 
         return $return;

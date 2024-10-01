@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\Character\Move\PowerCrush;
 
 use App\{
-    Character\Move\PowerCrush\Frame\Frames,
     Character\Move\MoveInterface,
+    Character\Move\PowerCrush\Frame\Frames,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
-    Collection\Character\Move\PowerCrush\PowerCrushCollection,
     Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\PowerCrush\PowerCrushCollection,
     Exception\AppException,
-    Parser\Character\Move\MoveTypeEnum
-};
+    Parser\Character\Move\MoveTypeEnum};
 
 class PowerCrush implements MoveInterface
 {

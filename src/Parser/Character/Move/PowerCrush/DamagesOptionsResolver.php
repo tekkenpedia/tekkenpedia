@@ -6,8 +6,7 @@ namespace App\Parser\Character\Move\PowerCrush;
 
 use App\{
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\DamagesOptionsResolver as DamagesDataOptionsResolver
-};
+    Parser\Character\Move\DamagesOptionsResolver as DamagesDataOptionsResolver};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DamagesOptionsResolver

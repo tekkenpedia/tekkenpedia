@@ -1,0 +1,73 @@
+{
+    "inputs": "SS2",
+    "visibility": {
+        "defense": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 16
+        },
+        "normal-hit": 14,
+        "counter-hit": 34,
+        "block": {
+            "min": -9
+        }
+    },
+    "behaviors": {
+        "normal-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BLAST",
+            "WALL_BOUND"
+        ],
+        "counter-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BLAST",
+            "WALL_BOUND",
+            "KNOCKDOWN"
+        ]
+    },
+    "distances": {
+        "range": 220,
+        "block": {
+            "min": 170,
+            "max": 213
+        },
+        "normal-hit": {
+            "min": 393,
+            "max": 434
+        },
+        "counter-hit": {
+            "min": 254,
+            "max": 296
+        }
+    },
+    "damages": {
+        "block": {
+            "damage": 0,
+            "recoverable-damage": 0
+        },
+        "normal-hit": {
+            "damage": 27,
+            "recoverable-damage": 0
+        },
+        "counter-hit": {
+            "damage": 32,
+            "recoverable-damage": 0
+        }
+    },
+    "steps": {
+        "ssl": "EASY",
+        "swl": "EASY",
+        "ssr": "EASY",
+        "swr": "EASY"
+    },
+    "comments": [
+        {
+            "comment": "f,f+1+2 is guaranteed on CH.",
+            "type": "STRENGTH"
+        }
+    ]
+}

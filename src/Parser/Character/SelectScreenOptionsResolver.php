@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Parser\Character;
 
 use App\{
-    OptionsResolver\AllowedTypeEnum,
-    Parser\Character\Move\SectionsOptionsResolver
-};
+    OptionsResolver\AllowedTypeEnum};
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SelectScreenOptionsResolver
