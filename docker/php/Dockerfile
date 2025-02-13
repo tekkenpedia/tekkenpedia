@@ -1,6 +1,6 @@
-FROM php:8.3.7-zts-alpine3.20 as php
+FROM php:8.3.16-zts-alpine3.20 AS php
 
-COPY --from=composer:2.7.6 /usr/bin/composer /usr/local/bin/
+COPY --from=composer:2.8.5 /usr/bin/composer /usr/local/bin/
 
 RUN apk add --no-cache tidyhtml bash
 
@@ -8,7 +8,7 @@ ENV COMPOSER_CACHE_DIR=/app/var/composer
 
 WORKDIR /app
 
-FROM php as dev
+FROM php AS dev
 
 RUN \
     apk add --no-cache ffmpeg \
@@ -20,7 +20,7 @@ RUN \
 
 ENV I_AM_DOCKER_CONTAINER=true
 
-FROM php as ci
+FROM php AS ci
 
 ENV COMPOSER_HOME=/composer
 
