@@ -5,5 +5,89 @@
         "line": 2,
         "position": 4
     },
-    "sections": {}
+    "sections": {
+        "Back turn (BT)": {
+            "moves": {
+                "58feceaa-92d8-4d3e-8549-fdfd5f6a4142": {
+                    "inputs": "BT 4",
+                    "heat": false,
+                    "slug": "back-turn_4",
+                    "visibility": {
+                        "defense": true
+                    },
+                    "property": "MIDDLE",
+                    "frames": {
+                        "startup": {
+                            "min": 19,
+                            "max": 20
+                        },
+                        "block": {
+                            "min": -5
+                        },
+                        "normal-hit": 17,
+                        "counter-hit": 17
+                    },
+                    "behaviors": {
+                        "normal-hit": [
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST",
+                            "HEAT_ENGAGER"
+                        ],
+                        "counter-hit": [
+                            "WALL_SPLAT",
+                            "WALL_BREAK",
+                            "WALL_BOUND",
+                            "WALL_BLAST",
+                            "HEAT_ENGAGER"
+                        ]
+                    },
+                    "distances": {
+                        "range": 340,
+                        "block": {
+                            "min": 203,
+                            "max": 252
+                        },
+                        "normal-hit": {
+                            "min": 166
+                        },
+                        "counter-hit": {
+                            "min": 166
+                        }
+                    },
+                    "steps": {
+                        "ssl": "EASY",
+                        "swl": "EASY",
+                        "ssr": "EASY",
+                        "swr": "EASY"
+                    },
+                    "damages": {
+                        "block": {
+                            "damage": 0,
+                            "recoverable-damage": 0
+                        },
+                        "normal-hit": {
+                            "damage": 21,
+                            "recoverable-damage": 0
+                        },
+                        "counter-hit": {
+                            "damage": 25,
+                            "recoverable-damage": 0
+                        }
+                    },
+                    "comments": [
+                        {
+                            "comment": "Low crush from the 7th frame.",
+                            "type": "STRENGTH"
+                        },
+                        {
+                            "comment": "Throw crush from the 7th frame.",
+                            "type": "STRENGTH"
+                        }
+                    ]
+                }
+            }
+        }
+    }
 }
