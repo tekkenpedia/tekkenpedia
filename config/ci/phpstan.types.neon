@@ -4,7 +4,7 @@ parameters:
         TComment: 'array{comment: string, type: string, width: integer}'
         TMinMax: 'array{min: integer, max: integer|null}'
         TMinMaxNullable: 'array{min: integer|null, max: integer|null}'
-        TVisibility: 'array{defense: bool}'
+        TVisibility: 'array{defense: bool, punish: bool}'
         TDamage: 'array{damage: integer|null, recoverable-damage: integer|null}'
         TSteps: 'array{ssl: string|null, swl: string|null, ssr: string|null, swr: string|null}'
         # J'aurai bien voulu mettre TSections au lieu de mixed, mais ça fait une référence circulaire dans phpstan

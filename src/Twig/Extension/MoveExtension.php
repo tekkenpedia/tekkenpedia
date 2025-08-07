@@ -6,6 +6,7 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Move\Behavior\BehaviorEnum,
+    Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
     Exception\AppException,
     Parser\Character\Move\MoveTypeEnum
@@ -29,7 +30,8 @@ class MoveExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('move_behaviors_icons', [$this, 'moveBehaviorsIcons'], ['is_safe' => ['html']])
+            new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
+            new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']])
         ];
     }
 
@@ -83,6 +85,15 @@ class MoveExtension extends AbstractExtension
         }
 
         return implode(' ', $returnParts->toArray());
+    }
+
+    public function moveVisible(Visibility $visibility, string $pageType): bool
+    {
+        return match ($pageType) {
+            'defense' => $visibility->defense,
+            'punish' => $visibility->punish,
+            default => throw new \Exception('Unknown paget ype ' . $pageType . '.')
+        };
     }
 
     private function addWallBehaviorTitlePart(StringCollection $wallBehaviorsTitleParts, BehaviorEnum $behavior): static

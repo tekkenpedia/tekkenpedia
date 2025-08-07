@@ -29,10 +29,17 @@
                             {% set character = characters.findForSelectScreen(line, position) %}
                             {% if character is not null %}
                                 <img class="card-img-top" src="images/characters/{{ character.slug }}/avatar.png" alt="{{ character.name }}" title="{{ character.name }}">
+
                                 {% if character.sections.hasDefenseMoves() %}
                                     <a href="characters/{{ character.slug }}/defense">Defense</a>
                                 {% else %}
                                     Defense
+                                {% endif %}
+
+                                {% if character.sections.hasPunishMoves() %}
+                                    <a href="characters/{{ character.slug }}/punish">Punish</a>
+                                {% else %}
+                                    Punish
                                 {% endif %}
                             {% endif %}
                         </div>

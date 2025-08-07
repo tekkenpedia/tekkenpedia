@@ -15,5 +15,10 @@ class VisibilityOptionsResolver
             ->define('defense')
             ->default(false)
             ->allowedTypes(AllowedTypeEnum::BOOLEAN->value);
+
+        $resolver
+            ->define('punish')
+            ->default(false)
+            ->allowedTypes(AllowedTypeEnum::BOOLEAN->value);
     }
 }

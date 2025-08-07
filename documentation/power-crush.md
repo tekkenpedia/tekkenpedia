@@ -9,7 +9,8 @@
     "extends": uuidv4,
     "slug": string,
     "visibility": {
-        "defense": bool
+        "defense": bool,
+        "punish": bool
     },
     "property": "HIGH|MIDDLE",
     "damage-reduction": int,

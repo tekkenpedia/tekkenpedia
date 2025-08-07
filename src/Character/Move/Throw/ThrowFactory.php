@@ -28,7 +28,10 @@ class ThrowFactory
             $throw['inputs'],
             $throw['situation'],
             $throw['slug'] ?? $throw['inputs'],
-            new Visibility($throw['visibility']['defense']),
+            new Visibility(
+                $throw['visibility']['defense'],
+                $throw['visibility']['punish']
+            ),
             PropertyEnum::create($throw['property']),
             new Frames(
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),

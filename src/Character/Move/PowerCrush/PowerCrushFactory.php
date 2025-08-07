@@ -36,7 +36,10 @@ class PowerCrushFactory
             $powerCrush['situation'],
             $slug,
             $powerCrush['heat'],
-            new Visibility($powerCrush['visibility']['defense']),
+            new Visibility(
+                $powerCrush['visibility']['defense'],
+                $powerCrush['visibility']['punish']
+            ),
             is_string($powerCrush['property']) ? PropertyEnum::create($powerCrush['property']) : null,
             $powerCrush['damage-reduction'],
             static::createDistances($powerCrush),

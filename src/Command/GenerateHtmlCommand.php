@@ -6,7 +6,8 @@ namespace App\Command;
 
 use App\{
     Generator\CharactersListGenerator,
-    Generator\DefenseGenerator
+    Generator\DefenseGenerator,
+    Generator\PunishGenerator
 };
 use Symfony\Component\Console\{
     Command\Command,
@@ -29,7 +30,8 @@ class GenerateHtmlCommand extends Command
 
     public function __construct(
         private readonly CharactersListGenerator $charactersListGenerator,
-        private readonly DefenseGenerator $defenseGenerator
+        private readonly DefenseGenerator $defenseGenerator,
+        private readonly PunishGenerator $punishGenerator
     ) {
         parent::__construct();
     }
@@ -40,6 +42,10 @@ class GenerateHtmlCommand extends Command
 
         $output->writeln('Generating defenses...');
         $this->defenseGenerator->generate(new ProgressBar($output));
+        $output->writeln('');
+
+        $output->writeln('Generating punishs...');
+        $this->punishGenerator->generate(new ProgressBar($output));
         $output->writeln('');
 
         return static::SUCCESS;

@@ -7,7 +7,8 @@
     "situation": string,
     "slug": string,
     "visibility": {
-        "defense": bool
+        "defense": bool,
+        "punish": bool
     },
     "frames": {
         "startup": {

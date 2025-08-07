@@ -34,7 +34,10 @@ class AttackFactory
             $attack['situation'],
             $slug,
             $attack['heat'],
-            new Visibility($attack['visibility']['defense']),
+            new Visibility(
+                $attack['visibility']['defense'],
+                $attack['visibility']['punish']
+            ),
             PropertyEnum::create($attack['property']),
             static::createDistances($attack),
             static::createFrames($attack),

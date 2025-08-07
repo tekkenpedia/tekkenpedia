@@ -1,0 +1,51 @@
+<div class="{{ containerClass }}">
+    <div class="card text-center">
+        <div class="card-title move-card-title">
+            {% if move.heat %}
+                <div class="heat">
+                    <img class="icon-move-behavior" src="../../../images/behaviors/heat-engager.png" title="Heat activated">
+                </div>
+            {% endif  %}
+            <div class="title">
+                {{ move.inputs }}
+                {% if move.situation is not null %}
+                    ({{ move.situation }})
+                {% endif %}
+            </div>
+            {% if showLinks is not defined or showLinks %}
+                {% set linkSlug = move.getMaster() is not null ? move.getMaster().slug : move.slug %}
+                <div class="links">
+                    <a href="../../../characters/{{ character.slug }}/punish/{{ linkSlug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                    <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/punish/{{ linkSlug }}.html" title="Copy link"></i>
+                </div>
+            {% endif %}
+        </div>
+        <br>
+        <img src="../../../images/characters/{{ character.slug }}/punish/{{ move.slug }}.gif" alt="{{ move.inputs }}">
+        <table class="table table-bordered table-sm mb-0">
+            <tbody>
+                <tr class="separator">
+                    <td class="col-3">Type</td>
+                    <td class="col-3">Property</td>
+                    <td class="col-3">On block</td>
+                    <td class="col-3"></td>
+                </tr>
+
+                <tr>
+                    <td>Attack</td>
+                    <td>{{ move.property|format_move_property }}</td>
+                    <td class="{{ move.frames.block.min|frame_bg_class }}">{{ move.frames.block|format_min_max_frames(false) }}</td>
+                    <td></td>
+                </tr>
+
+                {% if move.comments.count > 0 %}
+                    <tr class="separator">
+                        <td colspan="4">Other information</td>
+                    </tr>
+
+                    {% include 'characters/punish/index/comments.html.twig' with {comments: move.comments} only %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

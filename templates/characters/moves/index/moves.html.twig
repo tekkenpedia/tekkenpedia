@@ -1,0 +1,12 @@
+{% set containerClass = "col-12 col-sm-6 col-md-6 col-lg-3 mt-3" %}
+<div class="row">
+    {% for move in section.moves.toArray() -%}
+        {% if move.visibility|move_visible(pageType) %}
+            {% include 'characters/' ~ pageType ~ '/' ~ getMoveTemplateName(move.getType()) ~ '.html.twig' with {
+                character: character,
+                move: move,
+                containerClass: containerClass
+            } only %}
+        {% endif %}
+    {% endfor %}
+</div>

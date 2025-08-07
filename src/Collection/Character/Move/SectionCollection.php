@@ -44,4 +44,18 @@ class SectionCollection extends AbstractObjectCollection
 
         return $return;
     }
+
+    public function hasPunishMoves(): bool
+    {
+        $return = false;
+
+        foreach ($this->toArray() as $section) {
+            if ($section->hasPunishMoves()) {
+                $return = true;
+                break;
+            }
+        }
+
+        return $return;
+    }
 }
