@@ -27,4 +27,17 @@ class MoveInterfaceCollection extends AbstractObjectCollection
 
         return $return;
     }
+
+    public function hasPunishMoves(): bool
+    {
+        $return = false;
+        foreach ($this->toArray() as $move) {
+            if ($move->getVisibility()->punish) {
+                $return = true;
+                break;
+            }
+        }
+
+        return $return;
+    }
 }

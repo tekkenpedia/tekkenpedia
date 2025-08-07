@@ -6,7 +6,7 @@ namespace App\Character\Move;
 
 readonly class Visibility
 {
-    public function __construct(public bool $defense)
+    public function __construct(public bool $defense, public bool $punish)
     {
     }
 }

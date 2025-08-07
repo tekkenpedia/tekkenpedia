@@ -50,4 +50,9 @@ readonly class Section
     {
         return $this->moves->hasDefenseMoves() || $this->sections->hasDefenseMoves();
     }
+
+    public function hasPunishMoves(): bool
+    {
+        return $this->moves->hasPunishMoves() || $this->sections->hasPunishMoves();
+    }
 }
