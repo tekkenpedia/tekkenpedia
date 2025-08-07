@@ -10,6 +10,7 @@ use App\{
 };
 use Symfony\Component\Console\{
     Command\Command,
+    Helper\ProgressBar,
     Input\InputInterface,
     Output\OutputInterface
 };
@@ -36,7 +37,10 @@ class GenerateHtmlCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->charactersListGenerator->generate($output);
-        $this->defenseGenerator->generate($output);
+
+        $output->writeln('Generating defenses...');
+        $this->defenseGenerator->generate(new ProgressBar($output));
+        $output->writeln('');
 
         return static::SUCCESS;
     }

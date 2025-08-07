@@ -9,9 +9,10 @@ use App\{
     Character\CharacterFactory,
     Character\Move\Attack\Attack,
     Character\Section\Section,
+    Collection\Character\CharacterCollection,
     Tidy\Tidy
 };
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
 
@@ -27,38 +28,38 @@ readonly class DefenseGenerator
         $this->renderPath = $projectDir . '/docs/characters';
     }
 
-    public function generate(OutputInterface $output): static
+    public function generate(ProgressBar $progressBar): static
     {
         $filesystem = new Filesystem();
 
         foreach ($this->characterFactory->createAll()->toArray() as $character) {
             $this
-                ->clear($character, $filesystem, $output)
-                ->generateIndex($character, $filesystem, $output);
+                ->clear($character, $filesystem)
+                ->generateIndex($character, $filesystem, $progressBar);
 
             foreach ($character->sections->toArray() as $section) {
-                $this->generateMoves($character, $section, $filesystem, $output);
+                $this->generateMoves($character, $section, $filesystem, $progressBar);
             }
         }
+
+        $progressBar->finish();
 
         return $this;
     }
 
-    private function clear(Character $character, Filesystem $filesystem, OutputInterface $output): static
+    private function clear(Character $character, Filesystem $filesystem): static
     {
         $rootPath = $this->getRootPath($character);
         if (is_dir($rootPath)) {
-            $output->writeln('Removing <info>' . $rootPath . '</info>.');
             $filesystem->remove($rootPath);
         }
 
         return $this;
     }
 
-    private function generateIndex(Character $character, Filesystem $filesystem, OutputInterface $output): static
+    private function generateIndex(Character $character, Filesystem $filesystem, ProgressBar $progressBar): static
     {
         $renderPathname = $this->getRootPath($character) . '/index.html';
-        $output->writeln('Generating <info>' . $renderPathname . '</info>.');
 
         $filesystem->dumpFile(
             $renderPathname,
@@ -67,6 +68,8 @@ readonly class DefenseGenerator
                 ['character' => $character]
             )
         );
+
+        $progressBar->advance();
 
         Tidy::format($renderPathname);
 
@@ -77,7 +80,7 @@ readonly class DefenseGenerator
         Character $character,
         Section $section,
         Filesystem $filesystem,
-        OutputInterface $output
+        ProgressBar $progressBar
     ): static {
         $rootPath = $this->getRootPath($character);
 
@@ -87,8 +90,6 @@ readonly class DefenseGenerator
             }
 
             $renderPathname = $rootPath . '/' . $move->getSlug() . '.html';
-            $output->writeln('Generating <info>' . $renderPathname . '</info>.');
-
             $filesystem->dumpFile(
                 $renderPathname,
                 $this->twig->render(
@@ -100,11 +101,13 @@ readonly class DefenseGenerator
                 )
             );
 
+            $progressBar->advance();
+
             Tidy::format($renderPathname);
         }
 
         foreach ($section->sections->toArray() as $subSection) {
-            $this->generateMoves($character, $subSection, $filesystem, $output);
+            $this->generateMoves($character, $subSection, $filesystem, $progressBar);
         }
 
         return $this;
