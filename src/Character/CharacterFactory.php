@@ -56,7 +56,10 @@ class CharacterFactory
                 $this->characters->add($this->create($characterSlug));
             }
 
-            $this->characters->setReadOnly();
+            $this
+                ->characters
+                ->sortByName()
+                ->setReadOnly();
         }
 
         return $this->characters;

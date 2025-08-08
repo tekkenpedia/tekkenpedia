@@ -27,4 +27,14 @@ class CharacterCollection extends AbstractObjectCollection
 
         return $return;
     }
+
+    public function sortByName(): static
+    {
+        usort(
+            $this->values,
+            fn(Character $character1, Character $character2) => strcmp($character1->name, $character2->name)
+        );
+
+        return $this;
+    }
 }

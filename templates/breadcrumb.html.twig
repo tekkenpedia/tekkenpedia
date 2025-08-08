@@ -1,16 +1,24 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        {% for breadcrumbItem in breadcrumb %}
-            <li
-                class="breadcrumb-item{% if loop.last %} active{% endif %}"
-                {% if loop.last %} aria-current="page"{% endif %}
-            >
-                {% if breadcrumbItem.href is defined %}
-                    <a href="{{ breadcrumbItem.href }}">{{ breadcrumbItem.label }}</a>
-                {% else %}
-                    {{ breadcrumbItem.label }}
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ol>
-</nav>
+<div class="row">
+    <div class="col-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% for breadcrumbItem in breadcrumb %}
+                    <li
+                        class="breadcrumb-item{% if loop.last %} active{% endif %}"
+                        {% if loop.last %} aria-current="page"{% endif %}
+                    >
+                        {% if breadcrumbItem.href is defined %}
+                            <a href="{{ breadcrumbItem.href }}">{{ breadcrumbItem.label }}</a>
+                        {% else %}
+                            {{ breadcrumbItem.label }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+    <div class="col-4 text-end">
+        <a href="index.html">Characters</a>
+        <a href="add-move.html" class="ms-2">Add move</a>
+    </div>
+</div>

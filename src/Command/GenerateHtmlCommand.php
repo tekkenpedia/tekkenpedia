@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\{
+    Generator\AddMoveGenerator,
     Generator\CharactersListGenerator,
     Generator\DefenseGenerator,
     Generator\PunishGenerator
@@ -31,7 +32,8 @@ class GenerateHtmlCommand extends Command
     public function __construct(
         private readonly CharactersListGenerator $charactersListGenerator,
         private readonly DefenseGenerator $defenseGenerator,
-        private readonly PunishGenerator $punishGenerator
+        private readonly PunishGenerator $punishGenerator,
+        private readonly AddMoveGenerator $addMoveGenerator
     ) {
         parent::__construct();
     }
@@ -47,6 +49,8 @@ class GenerateHtmlCommand extends Command
         $output->writeln('Generating punishs...');
         $this->punishGenerator->generate(new ProgressBar($output));
         $output->writeln('');
+
+        $this->addMoveGenerator->generate($output);
 
         return static::SUCCESS;
     }
