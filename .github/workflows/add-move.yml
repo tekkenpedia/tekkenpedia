@@ -1,4 +1,7 @@
 name: add-move
+permissions:
+    contents: write
+    pull-requests: write
 on:
     workflow_dispatch:
         inputs:
@@ -27,5 +30,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: bin/dev/start
-            - run: bin/dev/console
+            -
+                name: Composer cache
+                uses: actions/cache@v3
+                with:
+                    path: vendor
+                    key: composer-${{ hashFiles('composer.json') }}
+                    restore-keys: composer-${{ hashFiles('composer.json') }}
+            - run: bin/ci/start
+            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ github.event.inputs.inputs }}" "${{ github.event.inputs.property }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
+            -
+                name: Create pull request
+                uses: peter-evans/create-pull-request@v7
+                with:
+                    base: master
+                    branch: "add-move-${{ github.run_id }}"
+                    title: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"
+                    body: ''
+                    commit-message: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"

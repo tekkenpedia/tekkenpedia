@@ -14,6 +14,6 @@ bin/console generate:html
 
 # Add move
 
-Le token github doit avoir accès à `Actions` et `Contents`.
+Le token github doit avoir accès à `Actions` (read and write) et `Contents` (read).
 
 https://github.com/settings/personal-access-tokens/new

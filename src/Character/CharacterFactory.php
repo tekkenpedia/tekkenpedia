@@ -8,13 +8,13 @@ use App\{
     Character\Move\MoveFactory,
     Character\Move\MovesFactory,
     Collection\Character\CharacterCollection,
+    Collection\Character\CharacterSlugEnumCollection,
     Collection\Character\Move\MoveInterfaceCollection,
     Collection\Symfony\Component\Finder\SplFileInfoCollection,
     Decoder\JsonDecoder,
     Parser\Character\CharacterOptionsResolver,
     Parser\Character\Move\MoveOptionsResolverFactory
 };
-use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 use Symfony\Component\Finder\Finder;
 
 class CharacterFactory
@@ -53,7 +53,7 @@ class CharacterFactory
         if ($this->characters instanceof CharacterCollection === false) {
             $this->characters = new CharacterCollection();
             foreach ($this->getCharactersSlugs()->toArray() as $characterSlug) {
-                $this->characters->add($this->create($characterSlug));
+                $this->characters->add($this->create($characterSlug->value));
             }
 
             $this
@@ -65,16 +65,16 @@ class CharacterFactory
         return $this->characters;
     }
 
-    private function getCharactersSlugs(): StringCollection
+    public function getCharactersSlugs(): CharacterSlugEnumCollection
     {
         $directories = (new Finder())
             ->in($this->charactersPath)
             ->depth(0)
             ->directories();
 
-        $return = new StringCollection();
+        $return = new CharacterSlugEnumCollection();
         foreach ($directories as $directory) {
-            $return->add($directory->getBasename());
+            $return->add(CharacterSlugEnum::from($directory->getBasename()));
         }
 
         return $return;
