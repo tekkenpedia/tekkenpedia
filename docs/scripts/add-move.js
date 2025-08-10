@@ -1,6 +1,15 @@
 $(function() {
     $('#token').val(window.localStorage.getItem('token'));
 
+    if (window.localStorage.getItem('character')) {
+        $('#character').val(window.localStorage.getItem('character'));
+    }
+
+    $('#character').on('change', function(e) {
+        window.localStorage.setItem('character', $(this).val());
+        console.log(window.localStorage.getItem('character'));
+    });
+
     $('#submit').on('click', function(e) {
         e.preventDefault();
 

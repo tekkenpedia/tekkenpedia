@@ -54,6 +54,7 @@
                             <label for="property" class="col-sm-2 col-form-label">Property</label>
                             <div class="col-sm-10">
                                 <select id="property" class="form-select">
+                                    <option value=""></option>
                                     {% for property in properties %}
                                         <option value="{{ property.name }}">{{ property.name }}</option>
                                     {% endfor %}
