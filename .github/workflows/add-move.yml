@@ -38,7 +38,11 @@ jobs:
                     key: composer-${{ hashFiles('composer.json') }}
                     restore-keys: composer-${{ hashFiles('composer.json') }}
             - run: bin/ci/start
-            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ github.event.inputs.inputs }}" "${{ github.event.inputs.property }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
+            -
+                name: Encode inputs
+                id: encode_inputs
+                run: echo "inputs=$(echo "${{ github.event.inputs.inputs }}" | sed 's/ /%20/g')" >> ${GITHUB_OUTPUT}
+            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.property }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
             -
                 name: Create pull request
                 uses: peter-evans/create-pull-request@v7

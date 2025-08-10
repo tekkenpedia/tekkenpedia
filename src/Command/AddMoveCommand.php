@@ -48,14 +48,12 @@ class AddMoveCommand extends Command
     {
         /** @var string $characterSlug */
         $characterSlug = $input->getArgument('characterSlug');
-        /** @var string $inputs */
-        $inputs = $input->getArgument('inputs');
         /** @var string $property */
         $property = $input->getArgument('property');
 
         $id = $this->addAttack->add(
             CharacterSlugEnum::from($characterSlug),
-            $inputs,
+            $this->getInputs($input),
             PropertyEnum::create($property),
             $this->getBlockFramesMin($input),
             $this->getBlockFramesMax($input)
@@ -84,5 +82,13 @@ class AddMoveCommand extends Command
         }
 
         return is_string($return) ? (int) $return : null;
+    }
+
+    private function getInputs(InputInterface $input): string
+    {
+        /** @var string $inputs */
+        $inputs = $input->getArgument('inputs');
+
+        return str_replace('%20', ' ', $inputs);
     }
 }
