@@ -25,14 +25,14 @@
                 <div class="col-12">
                     <form>
                         <div class="row mb-3">
-                            <label for="inputs" class="col-sm-2 col-form-label">Token</label>
+                            <label for="token" class="col-sm-2 col-form-label">Token</label>
                             <div class="col-sm-10">
                                 <input class="form-control" id="token" placeholder="Example: github_pat_11..." required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="property" class="col-sm-2 col-form-label">Character</label>
+                            <label for="character" class="col-sm-2 col-form-label">Character</label>
                             <div class="col-sm-10">
                                 <select id="character" class="form-select" required>
                                     <option value=""></option>
@@ -62,19 +62,17 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">On block frames min</label>
-                            <div class="col-sm-10">
-                                <input class="form-control w-25" id="block-frames-min" required>
+                            <label class="col-sm-2 col-form-label" for="block-frames-min">On block frames min</label>
+                            <div class="col-sm-4">
+                                <input class="form-control" id="block-frames-min" required>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">
+                            <label class="col-sm-2 col-form-label" for="block-frames-max">
                                 On block frames max
                                 <br>
                                 (fill only if different from min)
                             </label>
-                            <div class="col-sm-10">
-                                <input class="form-control w-25" id="block-frames-max">
+                            <div class="col-sm-4">
+                                <input class="form-control" id="block-frames-max">
                             </div>
                         </div>
 

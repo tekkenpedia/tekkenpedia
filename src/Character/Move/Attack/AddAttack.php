@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Character\Move\Attack;
 
 use App\Character\CharacterSlugEnum;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Uid\Uuid;
 
 readonly class AddAttack
@@ -41,8 +42,13 @@ readonly class AddAttack
             $data['frames']['block']['max'] = $blockFramesMax;
         }
 
+        $directory = $this->projectDir . '/data/characters/' . $characterSlug->value . '/moves';
+        if (is_dir($directory) === false) {
+            (new Filesystem())->mkdir($directory);
+        }
+
         file_put_contents(
-            $this->projectDir . '/data/characters/' . $characterSlug->value . '/moves/' . $id->toRfc4122() . '.json',
+            $directory . '/' . $id->toRfc4122() . '.json',
             json_encode($data, JSON_PRETTY_PRINT) . "\n"
         );
 
