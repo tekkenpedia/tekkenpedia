@@ -1,0 +1,17 @@
+{
+    "inputs": "b+4",
+    "visibility": {
+        "punish": true
+    },
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -10
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
