@@ -1,0 +1,31 @@
+name: add-move
+on:
+    workflow_dispatch:
+        inputs:
+            character:
+                description: 'Character slug'
+                required: true
+                type: string
+            inputs:
+                description: 'Inputs'
+                required: true
+                type: string
+            property:
+                description: 'Property (HIGH/MIDDLE/LOW)'
+                required: true
+                type: string
+            blockFramesMin:
+                description: 'Block frames min'
+                required: true
+                type: number
+            blockFramesMax:
+                description: 'Block frames max'
+                required: false
+                type: number
+jobs:
+    add-move:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: bin/dev/start
+            - run: bin/dev/console

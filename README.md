@@ -11,3 +11,9 @@ bin/console videos:to:gif
 
 bin/console generate:html
 ```
+
+# Add move
+
+Le token github doit avoir accès à `Actions` et `Contents`.
+
+https://github.com/settings/personal-access-tokens/new
