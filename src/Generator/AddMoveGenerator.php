@@ -6,7 +6,7 @@ namespace App\Generator;
 
 use App\{
     Character\CharacterFactory,
-    Character\Move\Throw\PropertyEnum
+    Character\Move\Attack\PropertyEnum
 };
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;

@@ -50,7 +50,7 @@ $(function() {
         };
 
         $.ajax({
-            url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move/dispatches`,
+            url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move.yml/dispatches`,
             method: "POST",
             headers: {
                 "Authorization": "token " + token,
@@ -58,8 +58,7 @@ $(function() {
             },
             contentType: "application/json",
             data: JSON.stringify({
-                // TODO : mettre master
-                ref: "add-move",
+                ref: "master",
                 inputs: workflowInputs
             }),
             success: function() {
