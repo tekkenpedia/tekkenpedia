@@ -1,6 +1,3 @@
-const REPO_OWNER = "tekkenpedia";
-const REPO_NAME = "tekkenpedia";
-
 $(function() {
     $('#token').val(window.localStorage.getItem('token'));
 
@@ -44,31 +41,16 @@ $(function() {
             return;
         }
 
-        const body = JSON.stringify(
-            {
-                'inputs': inputs,
-                'visibility': {
-                    'punish': true
-                },
-                'property': property,
-                'frames': {
-                    'startup': {
-                        'min': 7777
-                    },
-                    'block': {
-                        'min': blockFramesMin,
-                        'max': $('#block-frames-max').val(),
-                    },
-                    'normal-hit': 7777,
-                    'counter-hit': 7777
-                }
-            },
-            null,
-            4
-        );
+        const workflowInputs = {
+            character: character,
+            inputs: inputs,
+            property: property,
+            blockFramesMin: blockFramesMin,
+            blockFramesMax: $('#block-frames-max').val()
+        };
 
         $.ajax({
-            url: `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`,
+            url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move/dispatches`,
             method: "POST",
             headers: {
                 "Authorization": "token " + token,
@@ -76,15 +58,16 @@ $(function() {
             },
             contentType: "application/json",
             data: JSON.stringify({
-                title: "Add move for " + character,
-                body: '```json' + "\n" + body + "\n" + '```'
+                // TODO : mettre master
+                ref: "add-move",
+                inputs: workflowInputs
             }),
-            success: function(response) {
+            success: function() {
                 alert('Move added. Thanks!');
                 window.location.reload();
             },
             error: function(xhr) {
-                alert('Error: ' + xhr.responseJSON.message);
+                alert('Error: ' + (xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : xhr.statusText));
             }
         });
     });
