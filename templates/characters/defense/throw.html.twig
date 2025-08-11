@@ -174,8 +174,12 @@
                 <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/defense/{{ move.slug }}.html" title="Copy link"></i>
             </div>
         </div>
+
         <br>
-        <img src="../../../images/characters/{{ character.slug }}/defense/{{ move.slug }}.gif" alt="{{ move.inputs }}">
+        {% if moveHasVideo(character, move, 'defense') %}
+            <img src="../../../{{ getMoveVideoPath(character, move, 'defense') }}" alt="{{ move.inputs }}">
+        {% endif %}
+
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 {{ macros.firstLines(move) }}

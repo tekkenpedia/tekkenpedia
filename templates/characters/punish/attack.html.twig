@@ -20,8 +20,12 @@
                 </div>
             {% endif %}
         </div>
+
         <br>
-        <img src="../../../images/characters/{{ character.slug }}/punish/{{ move.slug }}.gif" alt="{{ move.inputs }}">
+        {% if moveHasVideo(character, move, 'punish') %}
+            <img src="../../../{{ getMoveVideoPath(character, move, 'punish') }}" alt="{{ move.inputs }}">
+        {% endif %}
+
         <table class="table table-bordered table-sm mb-0">
             <tbody>
                 <tr class="separator">
