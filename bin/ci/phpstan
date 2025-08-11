@@ -4,9 +4,9 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+source "${PROJECT_PATH}"/bin/ci/dockerise.inc.bash
 
 phpstan \
     analyse \
         --ansi \
-        --configuration "${ROOT_PATH}"/config/ci/phpstan.neon
+        --configuration "${PROJECT_PATH}"/config/ci/phpstan.neon

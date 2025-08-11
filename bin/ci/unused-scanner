@@ -4,6 +4,6 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+source "${PROJECT_PATH}"/bin/ci/dockerise.inc.bash
 
-unused-scanner "${ROOT_PATH}"/config/ci/unused-scanner.php
+unused-scanner "${PROJECT_PATH}"/config/ci/unused-scanner.php

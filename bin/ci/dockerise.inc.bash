@@ -2,9 +2,9 @@
 
 set -eu
 
-source "${ROOT_PATH}"/bin/docker/docker-interactive-parameter.inc.bash
-source "${ROOT_PATH}"/bin/docker/uid-gid.inc.bash
-source "${ROOT_PATH}"/bin/docker.inc.bash
+source "${PROJECT_PATH}"/bin/docker/docker-interactive-parameter.inc.bash
+source "${PROJECT_PATH}"/bin/docker/uid-gid.inc.bash
+source "${PROJECT_PATH}"/bin/docker.inc.bash
 
 if [ -z "${I_AM_DOCKER_CONTAINER:-}" ]; then
     docker \
@@ -12,7 +12,7 @@ if [ -z "${I_AM_DOCKER_CONTAINER:-}" ]; then
             ${DOCKER_INTERACTIVE_PARAMETER} \
             ${DOCKER_TTY_PARAMETER} \
             --rm \
-            --mount type=bind,source="${ROOT_PATH}",target=/app \
+            --mount type=bind,source="${PROJECT_PATH}",target=/app \
             --user "${DOCKER_UID}":"${DOCKER_GID}" \
             --name tekkenpedia_ci \
             "${DOCKER_PHP_CI_IMAGE_NAME}" \

@@ -4,4 +4,4 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-"${ROOT_PATH}"/bin/ci/console lint:yaml config
+"${PROJECT_PATH}"/bin/ci/console lint:yaml config

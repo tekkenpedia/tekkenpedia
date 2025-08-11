@@ -4,10 +4,10 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+source "${PROJECT_PATH}"/bin/ci/dockerise.inc.bash
 
 filesToCheck=()
-files=$(find "${ROOT_PATH}"/bin)
+files=$(find "${PROJECT_PATH}"/bin)
 for file in ${files}; do
     if [ -f "${file}" ] && [ "${file:(-4)}" != ".php" ]; then
         filesToCheck+=("${file}")

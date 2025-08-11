@@ -4,6 +4,6 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/dev/dockerise.inc.bash
+source "${PROJECT_PATH}"/bin/dev/dockerise.inc.bash
 
 php bin/console.php "${@:-}"
