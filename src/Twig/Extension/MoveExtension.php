@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Twig\Extension;
 
 use App\{
+    Character\Character,
     Character\Move\Behavior\BehaviorEnum,
+    Character\Move\MoveInterface,
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
     Exception\AppException,
@@ -20,10 +22,16 @@ use Twig\{
 
 class MoveExtension extends AbstractExtension
 {
+    public function __construct(private readonly string $projectDir)
+    {
+    }
+
     public function getFunctions()
     {
         return [
-            new TwigFunction('getMoveTemplateName', [$this, 'getMoveTemplateName'])
+            new TwigFunction('getMoveTemplateName', $this->getMoveTemplateName(...)),
+            new TwigFunction('moveHasVideo', $this->moveHasVideo(...)),
+            new TwigFunction('getMoveVideoPath', $this->getMoveVideoPath(...)),
         ];
     }
 
@@ -33,6 +41,16 @@ class MoveExtension extends AbstractExtension
             new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
             new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']])
         ];
+    }
+
+    public function getMoveVideoPath(Character $character, MoveInterface $move, string $pageType): string
+    {
+        return 'images/characters/' . $character->slug . '/' . $pageType . '/' . $move->getSlug() . '.gif';
+    }
+
+    public function moveHasVideo(Character $character, MoveInterface $move, string $pageType): bool
+    {
+        return file_exists($this->projectDir . '/docs/' . $this->getMoveVideoPath($character, $move, $pageType));
     }
 
     public function getMoveTemplateName(MoveTypeEnum $moveType): string
