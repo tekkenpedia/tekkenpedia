@@ -1,0 +1,29 @@
+name: add-move
+permissions:
+    contents: write
+    pull-requests: write
+on:
+    workflow_dispatch: ~
+jobs:
+    add-move:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            -
+                name: Composer cache
+                uses: actions/cache@v3
+                with:
+                    path: vendor
+                    key: composer-${{ hashFiles('composer.json') }}
+                    restore-keys: composer-${{ hashFiles('composer.json') }}
+            - run: bin/ci/start
+            - run: bin/dev/console generate:html
+            -
+                name: Create pull request
+                uses: peter-evans/create-pull-request@v7
+                with:
+                    base: master
+                    branch: generate-html
+                    title: Generate HTML
+                    body: ''
+                    commit-message: Generate HTML
