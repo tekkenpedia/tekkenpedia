@@ -18,7 +18,7 @@ parameters:
         - ../../src
     tmpDir: ../../var/ci/phpstan
     symfony:
-        container_xml_path: ../../var/cache/dev/App_KernelDevDebugContainer.xml
+        containerXmlPath: ../../var/cache/dev/App_KernelDevDebugContainer.xml
     excludePaths:
         - ../../config/bundles.php
     ignoreErrors:

@@ -32,6 +32,7 @@ class CharacterFactory
     {
         $moves = new MoveInterfaceCollection();
         foreach ($this->getMoveFiles($slug)->toArray() as $moveFile) {
+            /** @var array{type?: string|null} $moveJsonData */
             $moveJsonData = JsonDecoder::decode($moveFile->getPathname());
             $moveData = MoveOptionsResolverFactory::create($moveJsonData)->resolve($moveJsonData);
             $moves->add(MoveFactory::create($moveFile->getBasename('.json'), $moveData));

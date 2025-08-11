@@ -15,6 +15,8 @@ class SectionFactory
     public static function create(string $name, array &$section, MoveInterfaceCollection $moves): Section
     {
         $sections = new SectionCollection();
+
+        /** @var TSection $subSectionData */
         foreach ($section['sections'] as $subSectionName => $subSectionData) {
             $sections->add(static::create($subSectionName, $subSectionData, $moves));
         }

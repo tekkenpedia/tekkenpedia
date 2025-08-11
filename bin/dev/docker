@@ -27,4 +27,4 @@ docker \
         --detach \
         --name "${DOCKER_CONTAINER_NAME}" \
         --publish 80:80 \
-        nginx:1.25.4
+        nginx:1.29.0-alpine3.22

@@ -20,11 +20,23 @@ class MoveFactory
     /** @param TAttack|TPowerCrush|TThrow $moveData */
     public static function create(string $id, array &$moveData): Attack|PowerCrush|Throw_
     {
-        return match ($moveData['type']) {
-            MoveTypeEnum::ATTACK->name => AttackFactory::create($id, $moveData),
-            MoveTypeEnum::POWER_CRUSH->name => PowerCrushFactory::create($id, $moveData),
-            MoveTypeEnum::THROW->name => ThrowFactory::create($id, $moveData),
-            default => throw new AppException('Attack type "' . $moveData['type'] . '" is not taken into account.')
-        };
+        switch ($moveData['type']) {
+            case MoveTypeEnum::ATTACK->name:
+                /** @var TAttack $moveData */
+                $return = AttackFactory::create($id, $moveData);
+                break;
+            case MoveTypeEnum::POWER_CRUSH->name:
+                /** @var TPowerCrush $moveData */
+                $return = PowerCrushFactory::create($id, $moveData);
+                break;
+            case MoveTypeEnum::THROW->name:
+                /** @var TThrow $moveData */
+                $return = ThrowFactory::create($id, $moveData);
+                break;
+            default:
+                throw new AppException('Attack type "' . $moveData['type'] . '" is not taken into account.');
+        }
+
+        return $return;
     }
 }
