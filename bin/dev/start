@@ -14,8 +14,6 @@ docker \
         --mount type=bind,source="${PROJECT_PATH}",target="${PROJECT_PATH}" \
         --mount type=bind,source="$(which docker)",target=/usr/bin/docker \
         --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
-        --env HOST_UID="$(id -u)" \
-        --env HOST_GID="$(id -g)" \
         --workdir "${PROJECT_PATH}" \
         steevanb/php-parallel-processes:1.0.1-alpine \
         php \

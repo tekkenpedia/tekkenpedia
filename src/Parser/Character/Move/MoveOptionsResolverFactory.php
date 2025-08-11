@@ -12,7 +12,7 @@ use App\{
 
 class MoveOptionsResolverFactory
 {
-    /** @param array{type: string|null} $data */
+    /** @param array{type?: string|null} $data */
     public static function create(
         array &$data
     ): AttackRootOptionsResolver|PowerCrushRootOptionsResolver|ThrowRootOptionsResolver {

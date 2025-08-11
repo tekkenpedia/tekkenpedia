@@ -20,6 +20,7 @@ class MovesFactory
     {
         $sections = new SectionCollection();
 
+        /** @var TSection $sectionData */
         foreach ($character['sections'] as $sectionName => &$sectionData) {
             $sections->add(SectionFactory::create($sectionName, $sectionData, $moves));
         }

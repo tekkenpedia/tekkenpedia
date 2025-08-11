@@ -12,11 +12,6 @@ fi
 
 phpcs \
     -p \
-    --warning-severity=0 \
-    --ignore=/var/,/vendor/ \
-    --bootstrap=config/ci/phpcs.php \
-    --standard="${COMPOSER_HOME}"/vendor/steevanb/php-code-sniffs/src/Steevanb/ruleset.xml \
+    --standard=config/ci/phpcs.xml \
     --report=steevanb\\PhpCodeSniffs\\Reports\\Steevanb \
-    --cache="${PROJECT_PATH}"/var/ci/phpcs/cache \
-    "${PROJECT_PATH}" \
     "${@:-}"
