@@ -32,7 +32,7 @@
                     "label": move.inputs ~ (move.heat|default(false) ? ' (heat activated)' : null)
                 }
             ] %}
-            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
+            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb, pathToRoot: '../../../..'} only %}
             <div class="row justify-content-md-center">
                 {% set templateName = getMoveTemplateName(move.getType()) %}
                 {% include 'characters/' ~ pageType ~ '/' ~ templateName ~ '.html.twig' with {

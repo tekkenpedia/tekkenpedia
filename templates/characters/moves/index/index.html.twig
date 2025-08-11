@@ -28,7 +28,7 @@
                     "label": breadcrumbLabel
                 }
             ] %}
-            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb} only %}
+            {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb, pathToRoot: '../../..'} only %}
             {% include 'characters/' ~ pageType ~ '/index/sections.html.twig' with {sections: character.sections, character: character, level: 1} only %}
         </div>
 
