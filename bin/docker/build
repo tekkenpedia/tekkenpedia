@@ -4,20 +4,20 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/docker.inc.bash
+source "${PROJECT_PATH}"/bin/docker.inc.bash
 
 docker \
     build \
-        "${ROOT_PATH}" \
-        --file "${ROOT_PATH}"/docker/php/Dockerfile \
+        "${PROJECT_PATH}" \
+        --file "${PROJECT_PATH}"/docker/php/Dockerfile \
         --pull \
         --target dev \
         --tag "${DOCKER_PHP_DEV_IMAGE_NAME}"
 
 docker \
     build \
-        "${ROOT_PATH}" \
-        --file "${ROOT_PATH}"/docker/php/Dockerfile \
+        "${PROJECT_PATH}" \
+        --file "${PROJECT_PATH}"/docker/php/Dockerfile \
         --pull \
         --target ci \
         --tag "${DOCKER_PHP_CI_IMAGE_NAME}"

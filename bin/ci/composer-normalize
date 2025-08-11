@@ -4,7 +4,7 @@ set -eu
 
 source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
 
-source "${ROOT_PATH}"/bin/ci/dockerise.inc.bash
+source "${PROJECT_PATH}"/bin/ci/dockerise.inc.bash
 
 # Petit bug : cette commande n'accepte pas un paramètre vide ("${@:-}" si on n'a rien passé)
 # Composer could not find the config file:

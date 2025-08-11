@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+source "$(dirname "$(realpath "${0}")")"/../global-vars.inc.bash
+
+"${PROJECT_PATH}"/bin/dev/composer install --ansi
+"${PROJECT_PATH}"/bin/dev/console cache:warmup --ansi
