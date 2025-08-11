@@ -8,39 +8,28 @@ use App\{
     Character\CharacterFactory,
     Character\Move\Attack\PropertyEnum
 };
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
 use Twig\Environment;
 
-readonly class AddMoveGenerator
+readonly class AddMoveGenerator extends AbstractGenerator
 {
-    private string $renderPath;
-
     public function __construct(
         string $projectDir,
-        private CharacterFactory $characterFactory,
-        private Environment $twig
+        private Environment $twig,
+        private CharacterFactory $characterFactory
     ) {
-        $this->renderPath = $projectDir . '/docs';
+        parent::__construct($projectDir, $this->twig);
     }
 
-    public function generate(OutputInterface $output): static
+    protected function getTemplateFilename(): string
     {
-        $renderPathname = $this->renderPath . '/add-move.html';
+        return 'add-move';
+    }
 
-        $output->writeln('Generating <info>' . $renderPathname . '</info>.');
-
-        (new Filesystem())->dumpFile(
-            $renderPathname,
-            $this->twig->render(
-                'add-move.html.twig',
-                [
-                    'characters' => $this->characterFactory->createAll(),
-                    'properties' => PropertyEnum::cases()
-                ]
-            )
-        );
-
-        return $this;
+    protected function getTemplateContext(): array
+    {
+        return [
+            'characters' => $this->characterFactory->createAll(),
+            'properties' => PropertyEnum::cases()
+        ];
     }
 }

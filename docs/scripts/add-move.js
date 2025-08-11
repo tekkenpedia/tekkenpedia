@@ -1,26 +1,16 @@
 $(function() {
-    $('#token').val(window.localStorage.getItem('token'));
-
     if (window.localStorage.getItem('character')) {
         $('#character').val(window.localStorage.getItem('character'));
     }
 
     $('#character').on('change', function(e) {
-        window.localStorage.setItem('character', $(this).val());
-        console.log(window.localStorage.getItem('character'));
+        window.localStorage.setItem('character', e.target.val());
     });
 
     $('#submit').on('click', function(e) {
         e.preventDefault();
 
         let addMove = true;
-
-        let token = $('#token').val();
-        if (token === '') {
-            alert('You have to fill Token.');
-            addMove = false;
-        }
-        window.localStorage.setItem('token', token);
 
         let character = $('#character').val();
         if (character === '') {
@@ -62,7 +52,7 @@ $(function() {
             url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move.yml/dispatches`,
             method: "POST",
             headers: {
-                "Authorization": "token " + token,
+                "Authorization": "token " + window.localStorage.getItem('token'),
                 "Accept": "application/vnd.github+json"
             },
             contentType: "application/json",

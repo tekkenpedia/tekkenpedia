@@ -8,7 +8,8 @@ use App\{
     Generator\AddMoveGenerator,
     Generator\CharactersListGenerator,
     Generator\DefenseGenerator,
-    Generator\PunishGenerator
+    Generator\PunishGenerator,
+    Generator\TokenGenerator
 };
 use Symfony\Component\Console\{
     Command\Command,
@@ -33,7 +34,8 @@ class GenerateHtmlCommand extends Command
         private readonly CharactersListGenerator $charactersListGenerator,
         private readonly DefenseGenerator $defenseGenerator,
         private readonly PunishGenerator $punishGenerator,
-        private readonly AddMoveGenerator $addMoveGenerator
+        private readonly AddMoveGenerator $addMoveGenerator,
+        private readonly TokenGenerator $tokenGenerator
     ) {
         parent::__construct();
     }
@@ -51,6 +53,8 @@ class GenerateHtmlCommand extends Command
         $output->writeln('');
 
         $this->addMoveGenerator->generate($output);
+
+        $this->tokenGenerator->generate($output);
 
         return static::SUCCESS;
     }
