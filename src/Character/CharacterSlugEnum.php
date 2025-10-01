@@ -7,13 +7,17 @@ namespace App\Character;
 enum CharacterSlugEnum: string
 {
     case ALISA_BOSCONOVITCH = 'alisa-bosconovitch';
+    case ANNA_WILLIAMS = 'anna-williams';
     case ASUKA_KAZAMA = 'asuka-kazama';
     case AZUCENA_MILAGROS_ORTIZ_CASTILLO = 'azucena-milagros-ortiz-castillo';
     case BRYAN_FURY = 'bryan-fury';
     case CLAUDIO = 'claudio';
+    case CLIVE_ROSFIELD = 'clive-rosfield';
     case DEVIL_JIN = 'devil-jin';
     case EDDY_GORDO = 'eddy-gordo';
+    case FAHKUMRAM = 'fahkumram';
     case FENG_WEI = 'feng-wei';
+    case HEIHACHI_MISHIMA = 'heihachi-mishima';
     case HWOARANG = 'hwoarang';
     case JACK_8 = 'jack-8';
     case JIN_KAZAMA = 'jin-kazama';
@@ -25,6 +29,7 @@ enum CharacterSlugEnum: string
     case LEE_CHAOLAN = 'lee-chaolan';
     case LEO_KLIESEN = 'leo-kliesen';
     case LEROY_SMITH = 'leroy-smith';
+    case LIDIA_SOBIESKA = 'lidia-sobieska';
     case LILI = 'lili';
     case LING_XIAOYU = 'ling-xiaoyu';
     case MARSHALL_LAW = 'marshall-law';

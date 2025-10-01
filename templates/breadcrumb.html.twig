@@ -17,7 +17,7 @@
             </ol>
         </nav>
     </div>
-    <div class="col-4 text-end">
+    <div class="col-{{ bootstrapColumns|default(12) - 8}} text-end">
         <a href="{{ pathToRoot|default('.') }}/token.html" class="ms-2">Token</a>
         <a href="{{ pathToRoot|default('.') }}/add-move.html" class="ms-2">Add move</a>
     </div>

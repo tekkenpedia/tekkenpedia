@@ -2,8 +2,8 @@
     "name": "Reina",
     "slug": "reina",
     "select-screen": {
-        "line": 2,
-        "position": 6
+        "line": 1,
+        "position": 7
     },
     "sections": []
 }

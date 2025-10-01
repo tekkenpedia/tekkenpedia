@@ -29,7 +29,7 @@ jobs:
     add-move:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v5
             -
                 name: Composer cache
                 uses: actions/cache@v3

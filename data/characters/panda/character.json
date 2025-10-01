@@ -2,8 +2,8 @@
     "name": "Panda",
     "slug": "panda",
     "select-screen": {
-        "line": 3,
-        "position": 1
+        "line": 2,
+        "position": 2
     },
     "sections": []
 }

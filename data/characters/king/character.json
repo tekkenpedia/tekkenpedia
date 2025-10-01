@@ -2,8 +2,8 @@
     "name": "King",
     "slug": "king",
     "select-screen": {
-        "line": 4,
-        "position": 8
+        "line": 3,
+        "position": 9
     },
     "sections": {
         "Throws": {
