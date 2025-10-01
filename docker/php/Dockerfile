@@ -1,6 +1,6 @@
-FROM php:8.4.11-zts-alpine3.21 AS php
+FROM php:8.4.13-zts-alpine3.22 AS php
 
-COPY --from=composer:2.8.10 /usr/bin/composer /usr/local/bin/
+COPY --from=composer:2.8.12 /usr/bin/composer /usr/local/bin/
 
 RUN apk add --no-cache tidyhtml bash
 

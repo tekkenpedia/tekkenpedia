@@ -2,8 +2,8 @@
     "name": "Kuma",
     "slug": "kuma",
     "select-screen": {
-        "line": 4,
-        "position": 1
+        "line": 3,
+        "position": 2
     },
     "sections": []
 }

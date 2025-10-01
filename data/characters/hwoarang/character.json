@@ -2,8 +2,8 @@
     "name": "Hwoarang",
     "slug": "hwoarang",
     "select-screen": {
-        "line": 3,
-        "position": 9
+        "line": 2,
+        "position": 10
     },
     "sections": {
         "Basics": {

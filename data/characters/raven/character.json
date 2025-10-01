@@ -2,8 +2,8 @@
     "name": "Raven",
     "slug": "raven",
     "select-screen": {
-        "line": 2,
-        "position": 4
+        "line": 1,
+        "position": 5
     },
     "sections": {
         "Back turn (BT)": {
