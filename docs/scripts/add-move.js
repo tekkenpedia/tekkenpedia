@@ -3,8 +3,44 @@ $(function() {
         $('#character').val(window.localStorage.getItem('character'));
     }
 
+    // Fonction utilitaire avec jQuery pour décoder les entités HTML
+    function decodeHtmlEntities(str) {
+        return $('<textarea/>').html(str).val();
+    }
+
+    function refreshSections() {
+        let selectedOption = $('#character option:selected');
+        let sectionsData = selectedOption.attr('data-sections');
+        let sections = [];
+        if (sectionsData) {
+            // Décodage des entités HTML avant JSON.parse
+            let decodedSectionsData = decodeHtmlEntities(sectionsData);
+            try {
+                sections = JSON.parse(decodedSectionsData);
+            } catch (err) {
+                sections = [];
+            }
+        }
+
+        let $section = $('#section');
+        $section.empty();
+        sections.forEach(function(section) {
+            $section.append(
+                $(
+                    '<option>',
+                    {
+                        value: section,
+                        text: section
+                    }
+                )
+            );
+        });
+    }
+
     $('#character').on('change', function(e) {
-        window.localStorage.setItem('character', e.target.val());
+        window.localStorage.setItem('character', $(this).val());
+
+        refreshSections();
     });
 
     $('#submit').on('click', function(e) {
@@ -42,6 +78,7 @@ $(function() {
 
         const workflowInputs = {
             character: character,
+            section: $('#section').val(),
             inputs: inputs,
             property: property,
             blockFramesMin: blockFramesMin,
@@ -69,4 +106,6 @@ $(function() {
             }
         });
     });
+
+    refreshSections();
 });

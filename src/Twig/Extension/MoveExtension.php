@@ -110,7 +110,7 @@ class MoveExtension extends AbstractExtension
         return match ($pageType) {
             'defense' => $visibility->defense,
             'punish' => $visibility->punish,
-            default => throw new \Exception('Unknown paget ype ' . $pageType . '.')
+            default => throw new AppException('Unknown page type ' . $pageType . '.')
         };
     }
 
