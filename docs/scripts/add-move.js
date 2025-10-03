@@ -39,7 +39,6 @@ $(function() {
 
     $('#character').on('change', function(e) {
         window.localStorage.setItem('character', $(this).val());
-
         refreshSections();
     });
 

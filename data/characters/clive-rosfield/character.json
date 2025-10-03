@@ -6,5 +6,70 @@
         "position": 13
     },
     "sections": {
+        "Basic": {
+            "moves": [
+                "7bae1ee5-3f34-4aba-aaf1-cec92777db73",
+                "210f9594-7a12-4ad2-83f7-e6401e7f6e13",
+                "c8e595b7-e74f-4c27-8f11-1cefc717a241",
+                "a103a92a-794c-4994-b431-eb8b8abe5ad9",
+                "d5f5187e-0d9d-4952-ba9b-e2aa31e91cf5",
+                "dd7293cd-563c-40f3-89ee-b1cbafac4b6f",
+                "f21a0973-0cae-4b14-b050-82ffde5ffebf",
+                "c006a0b7-8a99-44af-8a6f-d578bea5a794",
+                "286e5b2c-0655-4ae3-968f-6ec778d48434",
+                "49671b40-13d9-426f-8b3d-ea8d6ce03f64",
+                "3a156c9f-8c52-4835-9ec4-4c56c82158fc",
+                "1fa522b7-6f0b-4054-902f-936f94bd7496",
+                "c895abf4-b7ec-41dd-952d-623bb3dcedda",
+                "40846d5a-9169-4ca2-bde7-ef580e44799f",
+                "4d6d7122-fac8-480d-ba2b-0ed6b257a4bd",
+                "83b91e75-e1bd-4466-88b2-af3a96fbadea",
+                "fe563f2e-2ce3-4f06-84b6-f225a8fe634e",
+                "1f93597b-7630-49a3-83f4-e0b886fc48e5",
+                "6e689500-211b-4817-8595-cfc6bbfc05db",
+                "b7aa258f-edb0-47d5-93d7-afb9db571c63",
+                "65a3cd0b-d32f-4214-8632-4c4f32075198",
+                "4acee86c-c7b7-46e2-940a-9c277a3bd55e",
+                "1cb6d7b9-73a6-4e8a-ac3e-60d572157d29",
+                "c8e73b70-3a32-4640-909f-2275e3b176d3",
+                "e8dd1000-598d-4d99-a558-69ee10b54e05",
+                "0611f934-4b32-4296-a22c-cfe57c7284bb",
+                "f42ab8b0-9e0a-45cb-9748-d75b90d34f01",
+                "d5758fca-58c6-4e65-ada5-40eb023c3219",
+                "810e43fa-b115-40c1-a099-d8b8f5e33967"
+            ]
+        },
+        "Heat": {
+            "moves": [
+                "5b54d2e0-2184-4d04-8daa-525823031cdb"
+            ]
+        },
+        "Power crush": {
+            "moves": [
+                "934edae6-b394-427c-8df0-1952e97f59ed"
+            ]
+        },
+        "Phoenix Shift": {
+            "moves": [
+                "33baedb4-afad-4d9e-883f-4f3d01195af8",
+                "da260307-9aed-41ca-bee1-8ea7b0f3c7bf",
+                "ac01de6c-fc92-4e36-90d3-956b5739a424",
+                "9e9f8c1a-8234-4f86-9003-650caaae88f0",
+                "bd5ad55d-464e-4df7-9ed4-25546aaa520d"
+            ]
+        },
+        "Wings of Light": {
+            "moves": [
+                "25b53453-b136-4915-a707-e5153d810cfa",
+                "0a57fa81-05f9-44b0-98cf-586cae6f1922",
+                "8ab3afab-615b-4502-8764-eac08fbdbef5"
+            ]
+        },
+        "Updraft": {
+            "moves": [
+                "470ac74b-4fb7-48fc-9634-b4d16552067a",
+                "d5483001-8b0e-42eb-9a81-cd1b910faf39"
+            ]
+        }
     }
 }
