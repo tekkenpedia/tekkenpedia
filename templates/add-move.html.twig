@@ -30,9 +30,18 @@
                                 <select id="character" class="form-select" required>
                                     <option value=""></option>
                                     {% for character in characters.toArray() %}
-                                        <option value="{{ character.slug }}">{{ character.name }}</option>
+                                        <option value="{{ character.slug }}" data-sections="{{ character|sections_to_json }}">
+                                            {{ character.name }}
+                                        </option>
                                     {% endfor %}
                                 </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="character" class="col-sm-2 col-form-label">Section</label>
+                            <div class="col-sm-10">
+                                <select id="section" class="form-select" required></select>
                             </div>
                         </div>
 

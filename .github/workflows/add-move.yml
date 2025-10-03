@@ -13,6 +13,10 @@ on:
                 description: 'Inputs'
                 required: true
                 type: string
+            section:
+                description: 'Section'
+                required: true
+                type: string
             property:
                 description: 'Property (HIGH/MIDDLE/LOW)'
                 required: true
@@ -50,5 +54,5 @@ jobs:
                     base: master
                     branch: "add-move-${{ github.run_id }}"
                     title: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"
-                    body: ''
+                    body: 'Section: ${{ github.event.inputs.section }}'
                     commit-message: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"
