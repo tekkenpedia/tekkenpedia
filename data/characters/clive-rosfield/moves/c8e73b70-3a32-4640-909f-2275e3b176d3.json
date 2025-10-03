@@ -1,0 +1,17 @@
+{
+    "inputs": "1,2",
+    "visibility": {
+        "punish": true
+    },
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -14
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
