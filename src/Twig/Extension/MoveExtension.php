@@ -39,8 +39,18 @@ class MoveExtension extends AbstractExtension
     {
         return [
             new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
-            new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']])
+            new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']]),
+            new TwigFilter('move_type', $this->moveType(...), ['is_safe' => ['html']])
         ];
+    }
+
+    public function moveType(MoveTypeEnum $moveType): string
+    {
+        return match ($moveType) {
+            MoveTypeEnum::ATTACK => 'Attack',
+            MoveTypeEnum::POWER_CRUSH => 'Power crush',
+            MoveTypeEnum::THROW => 'Throw'
+        };
     }
 
     public function getMoveVideoPath(Character $character, MoveInterface $move, string $pageType): string

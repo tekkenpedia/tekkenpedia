@@ -1,5 +1,6 @@
 {
     "inputs": "1",
+    "type": "POWER_CRUSH",
     "visibility": {
         "punish": true
     },
