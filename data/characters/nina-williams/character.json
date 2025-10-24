@@ -5,5 +5,10 @@
         "line": 2,
         "position": 9
     },
-    "sections": []
+    "sections": {
+        "Basics": {
+            "moves": [
+            ]
+        }
+    }
 }
