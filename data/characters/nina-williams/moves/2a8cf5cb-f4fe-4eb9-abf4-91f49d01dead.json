@@ -1,0 +1,17 @@
+{
+    "inputs": "d+3",
+    "visibility": {
+        "punish": true
+    },
+    "property": "LOW",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -17
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
