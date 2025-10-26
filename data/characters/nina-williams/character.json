@@ -15,7 +15,6 @@
                 "b80bea95-8f6e-4eb5-aca8-4ac801e89ae6",
                 "ff7f39cb-1cb7-4cd0-993c-f4775de467c2",
                 "fa7ca561-6892-42ed-8f8c-2f9c1d3e49b3",
-                "982484ec-0393-484b-ac9b-cabf90357b55",
                 "33ed525f-472d-4859-8d6e-a58584b64dc6",
                 "6ceb3212-6e72-49e0-9ae1-7a8cb251a5a5",
                 "8b39f4d6-6f0d-43a2-a5d0-57cf7e10e7ff",
@@ -85,19 +84,25 @@
         "d+3": {
             "moves": [
                 "038ec664-af0b-417e-b92f-cc1c8f2d3a8e",
-                "ac2cd2d0-1cb2-49db-9735-c75e87151a5d"
+                "982484ec-0393-484b-ac9b-cabf90357b55"
             ]
         },
         "df+3": {
             "moves": [
-                "0e09c46a-0d14-4f01-a133-4a575587e470",
                 "22120672-0385-4d83-8db1-9dbde5f4cb13"
             ],
             "sections": {
+                "df+3,1": {
+                    "moves": [
+                        "b9978fb3-fd12-42dc-afe6-65d1b4e3b3ad",
+                        "0e09c46a-0d14-4f01-a133-4a575587e470"
+                    ]
+                },
                 "df+3,2": {
                     "moves": [
                         "a4c674e3-cb1b-49a7-85c6-8d51ed008234",
                         "0f810687-c34e-4444-8b7b-455ec48ccb6b",
+                        "ac2cd2d0-1cb2-49db-9735-c75e87151a5d",
                         "fde1a819-8173-4239-ac58-ee0dbbd7ea88",
                         "6fe71d8b-a474-4530-afe5-cd86c46bd3a4",
                         "ce220e8d-7444-49a1-a25b-097d815e5187",
