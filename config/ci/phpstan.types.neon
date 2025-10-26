@@ -23,7 +23,7 @@ parameters:
         TThrowFramesHitWall: 'array{normal: integer|null, splat: integer|null, break: integer|null}'
         TThrowFramesEscape: 'array{normal-hit: integer|null, counter-hit: integer|null}'
 
-        TAttack: 'array{master: string|null, type: string, inputs: string, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, property: string, frames: TAttackFrames, distances: TAttackDistances, damages: TAttackDamages, steps: TSteps, behaviors: TAttackBehaviors, comments: array<TComment>}'
+        TAttack: 'array{master: string|null, type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, property: string, frames: TAttackFrames, distances: TAttackDistances, damages: TAttackDamages, steps: TSteps, behaviors: TAttackBehaviors, comments: array<TComment>}'
         TAttackFrames: 'array{startup: TMinMax, block: TMinMax, normal-hit: integer, counter-hit: integer}'
         TAttackDistances: 'array{range: integer|null, block: TAttackDistancesMinMax, normal-hit: TAttackDistancesMinMax, counter-hit: TAttackDistancesMinMax}'
         TAttackDistancesMinMax: 'array{min: integer|null, max: integer|null}'

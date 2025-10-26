@@ -59,6 +59,15 @@ $(function() {
             addMove = false;
         }
 
+        // changed: select checked checkboxes by name and build an array of values
+        let defenses = $('input[name="defenses[]"]:checked').map(function() {
+            return $(this).val();
+        }).get();
+        if (defenses.length === 0) {
+            alert('You have to fill Defenses.');
+            addMove = false;
+        }
+
         let property = $('#property').val();
         if (property === '') {
             alert('You have to fill Property.');
@@ -79,6 +88,7 @@ $(function() {
             character: character,
             section: $('#section').val(),
             inputs: inputs,
+            defenses: defenses.join(','),
             property: property,
             blockFramesMin: blockFramesMin,
             blockFramesMax: $('#block-frames-max').val()
