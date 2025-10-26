@@ -50,7 +50,7 @@ jobs:
                 name: Encode inputs
                 id: encode_inputs
                 run: echo "inputs=$(echo "${{ github.event.inputs.inputs }}" | sed 's/ /%20/g')" >> ${GITHUB_OUTPUT}
-            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ steps.encode_inputs.outputs.defenses }}" "${{ github.event.inputs.property }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
+            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.property }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
             -
                 name: Create pull request
                 uses: peter-evans/create-pull-request@v7
