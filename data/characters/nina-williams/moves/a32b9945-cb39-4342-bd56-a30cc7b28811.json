@@ -1,0 +1,21 @@
+{
+    "inputs": "3,3,3",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "PUNISH",
+        "DUCK"
+    ],
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -14
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
