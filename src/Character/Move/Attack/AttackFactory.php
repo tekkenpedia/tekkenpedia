@@ -31,6 +31,7 @@ class AttackFactory
             $attack['master'],
             $id,
             $attack['inputs'],
+            $attack['defenses'],
             $attack['situation'],
             $slug,
             $attack['heat'],

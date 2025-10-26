@@ -10,6 +10,7 @@ use App\{
     Character\Move\Step\Steps,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\AttackCollection,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\CommentCollection,
     Exception\AppException,
     Parser\Character\Move\MoveTypeEnum
@@ -27,6 +28,7 @@ class Attack implements MoveInterface
         public readonly ?string $masterId,
         public readonly string $id,
         public readonly string $inputs,
+        public readonly DefenseEnumCollection $defenses,
         public readonly ?string $situation,
         public readonly string $slug,
         public readonly bool $heat,

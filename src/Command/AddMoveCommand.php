@@ -7,7 +7,9 @@ namespace App\Command;
 use App\{
     Character\CharacterSlugEnum,
     Character\Move\Attack\AddAttack,
+    Character\Move\Attack\DefenseEnum,
     Character\Move\Attack\PropertyEnum,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     Exception\AppException
 };
 use Symfony\Component\Console\{
@@ -39,6 +41,7 @@ class AddMoveCommand extends Command
         $this
             ->addArgument('characterSlug', InputArgument::REQUIRED, 'Character slug')
             ->addArgument('inputs', InputArgument::REQUIRED, 'Move inputs')
+            ->addArgument('defenses', InputArgument::REQUIRED, 'DefenseEnum[]. Example: PUNISH,POWER_CRUSH.')
             ->addArgument('property', InputArgument::REQUIRED, 'Move property')
             ->addArgument('blockFramesMin', InputArgument::REQUIRED, 'Minimum block frames')
             ->addArgument('blockFramesMax', InputArgument::OPTIONAL, 'Maximum block frames (null if not applicable)');
@@ -54,6 +57,7 @@ class AddMoveCommand extends Command
         $id = $this->addAttack->add(
             CharacterSlugEnum::from($characterSlug),
             $this->getInputs($input),
+            $this->getDefenses($input),
             PropertyEnum::create($property),
             $this->getBlockFramesMin($input),
             $this->getBlockFramesMax($input)
@@ -90,5 +94,18 @@ class AddMoveCommand extends Command
         $inputs = $input->getArgument('inputs');
 
         return str_replace('%20', ' ', $inputs);
+    }
+
+    private function getDefenses(InputInterface $input): DefenseEnumCollection
+    {
+        $return = new DefenseEnumCollection();
+        /** @var string $defenses */
+        $defenses = $input->getArgument('defenses');
+
+        foreach (explode(',', $defenses) as $defense) {
+            $return->add(DefenseEnum::create($defense));
+        }
+
+        return $return;
     }
 }

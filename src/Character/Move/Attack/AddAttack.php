@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace App\Character\Move\Attack;
 
-use App\Character\CharacterSlugEnum;
+use App\{
+    Character\CharacterSlugEnum,
+    Collection\Character\Move\Attack\DefenseEnumCollection
+};
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Uid\Uuid;
 
@@ -17,6 +20,7 @@ readonly class AddAttack
     public function add(
         CharacterSlugEnum $characterSlug,
         string $inputs,
+        DefenseEnumCollection $defenses,
         PropertyEnum $property,
         int $blockFramesMin,
         ?int $blockFramesMax
@@ -26,6 +30,7 @@ readonly class AddAttack
         $data = [
             'inputs' => $inputs,
             'visibility' => ['punish' => true],
+            'defenses' => $defenses->toNamesArray(),
             'property' => $property->name,
             'frames' => [
                 'startup' => [
@@ -49,7 +54,7 @@ readonly class AddAttack
 
         file_put_contents(
             $directory . '/' . $id->toRfc4122() . '.json',
-            json_encode($data, JSON_PRETTY_PRINT) . "\n"
+            json_encode($data, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) . "\n"
         );
 
         return $id;

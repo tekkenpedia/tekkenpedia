@@ -6,6 +6,8 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Character,
+    Character\Move\Attack\Attack,
+    Character\Move\Attack\DefenseEnum,
     Character\Move\Behavior\BehaviorEnum,
     Character\Move\MoveInterface,
     Character\Move\Visibility,
@@ -26,7 +28,8 @@ class MoveExtension extends AbstractExtension
     {
     }
 
-    public function getFunctions()
+    /** @return TwigFunction[] */
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('getMoveTemplateName', $this->getMoveTemplateName(...)),
@@ -35,11 +38,13 @@ class MoveExtension extends AbstractExtension
         ];
     }
 
+    /** @return TwigFilter[] */
     public function getFilters(): array
     {
         return [
             new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
-            new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']])
+            new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']]),
+            new TwigFilter('move_defense', $this->moveDefense(...), ['is_safe' => ['html']])
         ];
     }
 
@@ -112,6 +117,36 @@ class MoveExtension extends AbstractExtension
             'punish' => $visibility->punish,
             default => throw new AppException('Unknown page type ' . $pageType . '.')
         };
+    }
+
+    public function moveDefense(MoveInterface $move): string
+    {
+        if ($move instanceof Attack === false) {
+            throw new AppException('Only ' . Attack::class . ' move type can have a defense for now.');
+        }
+
+        $return = new StringCollection();
+        foreach ($move->defenses->toArray() as $defense) {
+            $return->add(
+                match ($defense) {
+                    DefenseEnum::PUNISH => (string) $move->frames->block->min,
+                    DefenseEnum::SSL => 'SSL',
+                    DefenseEnum::SWL => 'SWL',
+                    DefenseEnum::SSR => 'SSR',
+                    DefenseEnum::SWR => 'SWR',
+                    DefenseEnum::DUCK => 'Duck',
+                    DefenseEnum::REVERSAL => 'Reversal',
+                    DefenseEnum::POWER_CRUSH => 'Power crush',
+                    DefenseEnum::LOW_PARRY => 'Low parry'
+                }
+            );
+        }
+
+        if ($return->count() === 0) {
+            throw new AppException('Move ' . $move->id . ' has no defense.');
+        }
+
+        return implode(', ', $return->toArray());
     }
 
     private function addWallBehaviorTitlePart(StringCollection $wallBehaviorsTitleParts, BehaviorEnum $behavior): static

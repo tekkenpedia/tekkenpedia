@@ -53,6 +53,18 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Defenses</label>
+                            <div class="col-sm-10">
+                                {% for defense in enum('App\\Character\\Move\\Attack\\DefenseEnum').cases() %}
+                                    <label class="pe-2">
+                                        <input type="checkbox" name="defenses[]" value="{{ defense.name }}">
+                                        {{ defense.name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="property" class="col-sm-2 col-form-label">Property</label>
                             <div class="col-sm-10">
                                 <select id="property" class="form-select">

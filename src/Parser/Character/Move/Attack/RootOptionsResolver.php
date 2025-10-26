@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Parser\Character\Move\Attack;
 
 use App\{
+    Character\Move\Attack\DefenseEnum,
     Character\Move\Attack\PropertyEnum,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     OptionsResolver\AllowedTypeEnum,
+    OptionsResolver\AllowedValues,
     Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
@@ -33,6 +36,22 @@ class RootOptionsResolver extends OptionsResolver
             ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $this
+            ->define('defenses')
+            ->default([])
+            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value)
+            ->allowedValues(static fn(array $values) => AllowedValues::isAllowed($values, DefenseEnum::getNames()))
+            ->normalize(
+                static function (OptionsResolver $optionsResolver, array $values): DefenseEnumCollection {
+                    $return = new DefenseEnumCollection();
+                    foreach ($values as $value) {
+                        $return->add(DefenseEnum::create($value));
+                    }
+
+                    return $return;
+                }
+            );
 
         $this
             ->define('situation')
