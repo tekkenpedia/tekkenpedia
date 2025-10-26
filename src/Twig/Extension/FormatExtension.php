@@ -21,11 +21,11 @@ class FormatExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('format_frame', [$this, 'formatFrame']),
-            new TwigFilter('format_move_property', [$this, 'formatMoveProperty']),
-            new TwigFilter('format_min_max_frames', [$this, 'formatMinMaxFrames'], ['is_safe' => ['html']]),
-            new TwigFilter('format_distance', [$this, 'formatDistance'], ['is_safe' => ['html']]),
-            new TwigFilter('format_distances', [$this, 'formatDistances'], ['is_safe' => ['html']])
+            new TwigFilter('format_frame', $this->formatFrame(...)),
+            new TwigFilter('format_move_property', $this->formatMoveProperty(...)),
+            new TwigFilter('format_min_max_frames', $this->formatMinMaxFrames(...), ['is_safe' => ['html']]),
+            new TwigFilter('format_distance', $this->formatDistance(...), ['is_safe' => ['html']]),
+            new TwigFilter('format_distances', $this->formatDistances(...), ['is_safe' => ['html']])
         ];
     }
 

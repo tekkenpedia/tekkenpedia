@@ -24,7 +24,7 @@ use Twig\{
 
 class MoveExtension extends AbstractExtension
 {
-    public function __construct(private readonly string $projectDir)
+    public function __construct(private readonly string $projectDir, private readonly FormatExtension $formatExtension)
     {
     }
 
@@ -129,7 +129,7 @@ class MoveExtension extends AbstractExtension
         foreach ($move->defenses->toArray() as $defense) {
             $return->add(
                 match ($defense) {
-                    DefenseEnum::PUNISH => (string) $move->frames->block->min,
+                    DefenseEnum::PUNISH => (string) $this->formatExtension->formatMinMaxFrames($move->frames->block),
                     DefenseEnum::SSL => 'SSL',
                     DefenseEnum::SWL => 'SWL',
                     DefenseEnum::SSR => 'SSR',
