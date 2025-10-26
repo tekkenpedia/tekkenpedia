@@ -8,49 +8,161 @@
     "sections": {
         "Basics": {
             "moves": [
-                "0d63f78c-0b7c-446b-a5b9-bd99bed5a6c6",
-                "0e09c46a-0d14-4f01-a133-4a575587e470",
-                "2a8cf5cb-f4fe-4eb9-abf4-91f49d01dead",
-                "3fa24744-efbb-443d-b545-deda6743b437",
                 "03c0202f-6191-4186-998b-af92b7f67d08",
                 "5b427932-522b-451e-9160-40dd42c0a113",
-                "6fe71d8b-a474-4530-afe5-cd86c46bd3a4",
-                "7bd33298-0d81-4f1a-beaa-b4261c086e9b",
-                "010dcc37-1248-4d9f-999f-18dfe8b8c78f",
-                "038ec664-af0b-417e-b92f-cc1c8f2d3a8e",
-                "53ff9e2e-e67d-4492-9927-ade7bbe944f8",
-                "74f64687-29f4-4bfb-ac04-415a6947815d",
-                "79ad6984-fe3c-4243-9d0b-2067ed0850f7",
-                "171ade9e-5dcc-49ad-aea4-6123b5f49443",
-                "500b2f01-7b9f-41e8-be33-43a760f9807c",
-                "1864314f-9e6a-4456-8cbf-6764e1e893c8",
-                "9318345b-54ee-4da2-a46c-fa3ecb6df329",
-                "22120672-0385-4d83-8db1-9dbde5f4cb13",
+                "ab3feeeb-b206-4a72-ad51-1e712a1a9cc9",
+                "b280f8e1-113c-4f92-b12a-b86057346d64",
                 "b80bea95-8f6e-4eb5-aca8-4ac801e89ae6",
-                "ce220e8d-7444-49a1-a25b-097d815e5187",
-                "d3b85b2f-fa8f-4481-b7a4-a222840588aa",
-                "d6393e4c-5106-4158-9b75-2b0188ccf589",
-                "e5be736e-203f-47c1-8e24-6b487c766e53",
-                "fa7ca561-6892-42ed-8f8c-2f9c1d3e49b3",
                 "ff7f39cb-1cb7-4cd0-993c-f4775de467c2",
-                "2307b788-106c-4d6c-8f6b-af70136e7c43",
-                "d5718b17-d227-40ad-954e-dfd9742f7ba6",
-                "72b82293-6e38-4066-b54d-9da9f47b8b7b",
-                "168b24e9-c83e-4ffe-83bf-ed24eb9cfd92",
-                "332b7433-c67c-4e6b-83da-933894617442",
-                "f25e80fa-596b-4354-a2e4-dd1437854c0f",
-                "0c4f43c3-e61a-4993-a027-f6b036d64278",
-                "7a9ce183-fb38-4439-a846-6cb788cecdbc",
-                "be019c5b-0b78-4c6e-90dd-4a369a318eab",
-                "506faab8-0d8a-4b34-8845-4b9c7b18bf92",
-                "cff9fd4b-2a32-4a34-85ad-45a56d638d44",
-                "5d13439d-212f-4f6b-9e4e-c2185e6dd54f",
+                "fa7ca561-6892-42ed-8f8c-2f9c1d3e49b3",
+                "982484ec-0393-484b-ac9b-cabf90357b55",
+                "33ed525f-472d-4859-8d6e-a58584b64dc6",
                 "6ceb3212-6e72-49e0-9ae1-7a8cb251a5a5",
-                "0c37c549-1301-4c0f-9764-515a6de3fc4f",
+                "8b39f4d6-6f0d-43a2-a5d0-57cf7e10e7ff",
+                "cff9fd4b-2a32-4a34-85ad-45a56d638d44",
+                "e5be736e-203f-47c1-8e24-6b487c766e53",
+                "5e53814b-bd40-4c98-af49-7308a2e1c79b",
                 "06931df0-7859-4b99-ae70-98d5280bd54b",
-                "a9ae1054-9130-4412-a5c9-a68a9de45258",
-                "5e53814b-bd40-4c98-af49-7308a2e1c79b"
+                "506faab8-0d8a-4b34-8845-4b9c7b18bf92",
+                "be019c5b-0b78-4c6e-90dd-4a369a318eab",
+                "7a9ce183-fb38-4439-a846-6cb788cecdbc",
+                "f25e80fa-596b-4354-a2e4-dd1437854c0f",
+                "332b7433-c67c-4e6b-83da-933894617442"
             ]
+        },
+        "1": {
+            "sections": {
+                "1,4": {
+                    "moves": [
+                        "de935042-9f20-4d07-98c8-8e9b68c5be6c",
+                        "d6393e4c-5106-4158-9b75-2b0188ccf589"
+                    ]
+                },
+                "1,2": {
+                    "moves": [
+                        "0c4c2c6f-3833-4faf-8572-7fd61f2471aa",
+                        "1fa987ca-5cab-4535-83e8-e19fb5f41327",
+                        "7bd33298-0d81-4f1a-beaa-b4261c086e9b",
+                        "02758c65-443e-49f5-ae84-ff445494877c"
+                    ]
+                }
+            }
+        },
+        "3": {
+            "moves": [
+                "a74706ed-bdd3-4fd6-8c4a-1ce2738caff1"
+            ],
+            "sections": {
+                "3,3": {
+                    "moves": [
+                        "a32b9945-cb39-4342-bd56-a30cc7b28811",
+                        "b7605b34-9906-4f74-97b0-3d7b6cceb4a1"
+
+                    ]
+                }
+            }
+        },
+        "4": {
+            "moves": [
+                "39acbae1-524c-4986-898b-8e801e6fa672",
+                "e0d60777-7bae-4ddc-9bfd-453238dac26f",
+                "1864314f-9e6a-4456-8cbf-6764e1e893c8",
+                "b39b5156-8363-488c-ae04-de3c5bfe7160"
+            ]
+        },
+        "f+2": {
+            "moves": [
+                "010dcc37-1248-4d9f-999f-18dfe8b8c78f",
+                "53c9e32a-1c08-493e-8b11-0c399ddcdc6e"
+            ]
+        },
+        "d+2": {
+            "moves": [
+                "d3b85b2f-fa8f-4481-b7a4-a222840588aa",
+                "171ade9e-5dcc-49ad-aea4-6123b5f49443"
+            ]
+        },
+        "d+3": {
+            "moves": [
+                "038ec664-af0b-417e-b92f-cc1c8f2d3a8e",
+                "ac2cd2d0-1cb2-49db-9735-c75e87151a5d"
+            ]
+        },
+        "df+3": {
+            "moves": [
+                "0e09c46a-0d14-4f01-a133-4a575587e470",
+                "22120672-0385-4d83-8db1-9dbde5f4cb13"
+            ],
+            "sections": {
+                "df+3,2": {
+                    "moves": [
+                        "a4c674e3-cb1b-49a7-85c6-8d51ed008234",
+                        "0f810687-c34e-4444-8b7b-455ec48ccb6b",
+                        "fde1a819-8173-4239-ac58-ee0dbbd7ea88",
+                        "6fe71d8b-a474-4530-afe5-cd86c46bd3a4",
+                        "ce220e8d-7444-49a1-a25b-097d815e5187",
+                        "f04d3313-56f5-4efc-88a7-c78b078d93a9"
+                    ]
+                }
+            }
+        },
+        "b+3+4": {
+            "moves": [
+                "5d13439d-212f-4f6b-9e4e-c2185e6dd54f",
+                "670183d8-f876-4563-886a-8a627e10e4d0"
+            ]
+        },
+        "uf+4": {
+            "moves": [
+                "0c4f43c3-e61a-4993-a027-f6b036d64278",
+                "ed0f6e83-787a-49b1-a569-3c7eced97b43"
+            ]
+        },
+        "Low": {
+            "moves": [
+                "0d63f78c-0b7c-446b-a5b9-bd99bed5a6c6",
+                "2a8cf5cb-f4fe-4eb9-abf4-91f49d01dead",
+                "79ad6984-fe3c-4243-9d0b-2067ed0850f7",
+                "d3b85b2f-fa8f-4481-b7a4-a222840588aa",
+                "0c4f43c3-e61a-4993-a027-f6b036d64278"
+            ]
+        },
+        "Side step": {
+            "moves": [
+                "2307b788-106c-4d6c-8f6b-af70136e7c43",
+                "9fd9c9ac-dd32-4c5b-923b-f60b3af347a6"
+            ]
+        },
+        "Full crouch": {
+            "moves": [
+                "500b2f01-7b9f-41e8-be33-43a760f9807c",
+                "3fa24744-efbb-443d-b545-deda6743b437",
+                "74f64687-29f4-4bfb-ac04-415a6947815d",
+                "53ff9e2e-e67d-4492-9927-ade7bbe944f8"
+            ]
+        },
+        "While standing": {
+            "moves": [
+                "72b82293-6e38-4066-b54d-9da9f47b8b7b",
+                "d5718b17-d227-40ad-954e-dfd9742f7ba6",
+                "9318345b-54ee-4da2-a46c-fa3ecb6df329",
+                "0c37c549-1301-4c0f-9764-515a6de3fc4f"
+            ],
+            "sections": {
+                "ws+1": {
+                    "moves": [
+                        "3dd5dd8e-709e-409c-8775-5ffc0437f0f5",
+                        "1956ed6b-a98a-4dde-a5df-02d5c1b33575"
+                    ]
+                },
+                "ws+4": {
+                    "moves": [
+                        "ca253109-40aa-47c8-8b53-488aa62dad8a",
+                        "d6df560b-fa21-463d-bbb2-1fa46bc9a32c",
+                        "802fa2bd-b49a-42d6-87e4-8407d19efb5f"
+                    ]
+                }
+            }
         },
         "Ducking Step": {
             "moves": [
@@ -60,6 +172,12 @@
         "Sway": {
             "moves": [
                 "c3a440d4-6748-41e7-8d47-478ec54ee13e"
+            ]
+        },
+        "wr+3": {
+            "moves": [
+                "23b95ce7-8925-4d4c-851b-79891c4fb4fb",
+                "168b24e9-c83e-4ffe-83bf-ed24eb9cfd92"
             ]
         }
     }
