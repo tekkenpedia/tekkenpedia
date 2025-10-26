@@ -37,6 +37,9 @@
         },
         "Ducking Step": {
             "moves": []
+        },
+        "Sway": {
+            "moves": []
         }
     }
 }
