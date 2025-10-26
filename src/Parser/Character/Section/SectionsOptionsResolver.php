@@ -16,10 +16,10 @@ class SectionsOptionsResolver
             ->define('sections')
             ->default(
                 static function (OptionsResolver $resolver) use (&$data): void {
-                    /** @var string $sectionName */
+                    /** @var string|int $sectionName */
                     foreach (array_keys($data['sections'] ?? []) as $sectionName) {
                         $resolver
-                            ->define($sectionName)
+                            ->define((string) $sectionName)
                             ->default(
                                 static function (OptionsResolver $sectionResolver) use ($data, $sectionName): void {
                                     SectionOptionsResolver::configure(

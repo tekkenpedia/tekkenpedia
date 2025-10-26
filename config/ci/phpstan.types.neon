@@ -2,7 +2,7 @@ parameters:
     typeAliases:
         TCharacter: 'array{name: string, slug: string, select-screen: TSelectScreen, sections: TSections}'
         # J'aurai bien voulu mettre TSections au lieu de mixed, mais ça fait une référence circulaire dans phpstan
-        TSections: 'array{sections: array<mixed>, moves: array<string>}'
+        TSections: 'array{sections: array<string|int, mixed>, moves: array<string>}'
         TSection: 'array{sections: TSections, moves: array<string>}'
 
         TComment: 'array{comment: string, type: string, width: integer}'

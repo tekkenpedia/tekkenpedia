@@ -1,6 +1,6 @@
 {
     "type": "THROW",
-    "inputs": "FC,db+1+2",
+    "inputs": "fc,db+1+2",
     "visibility": {
         "defense": true
     },

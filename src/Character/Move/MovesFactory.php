@@ -20,9 +20,12 @@ class MovesFactory
     {
         $sections = new SectionCollection();
 
-        /** @var TSection $sectionData */
+        /**
+         * @var string|int $sectionName Je n'ai pas trouvé pourquoi ce n'est pas pris en compte depuis TSections
+         * @var TSection $sectionData
+         */
         foreach ($character['sections'] as $sectionName => &$sectionData) {
-            $sections->add(SectionFactory::create($sectionName, $sectionData, $moves));
+            $sections->add(SectionFactory::create((string) $sectionName, $sectionData, $moves));
         }
 
         static::configureSlavesAttacks($sections);
