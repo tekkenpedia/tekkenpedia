@@ -3,7 +3,13 @@
     "visibility": {
         "punish": true
     },
-    "defenses": ["PUNISH"],
+    "defenses": [
+        "PUNISH",
+        "SSL",
+        "SSR",
+        "REVERSAL",
+        "POWER_CRUSH"
+    ],
     "property": "MIDDLE",
     "frames": {
         "startup": {

@@ -27,25 +27,39 @@ $(function() {
         let $element = $(element);
 
         $element.on('click', function(event) {
-            navigator.clipboard.writeText(window.location.origin + '/' + $element.data('copy-url'));
-
-            let $tooltip = $("#tooltip");
-            $tooltip.text('Link copied');
-
-            console.log(event.pageY);
-
-            $tooltip.css({
-                top: event.pageY + 30 - window.scrollY,
-                left: event.pageX - ($tooltip.width() / 2)
-            });
-
-            $tooltip.show();
-            setTimeout(
-                function(){
-                    $tooltip.fadeOut();
-                },
-                1000
+            copyToClipboard(
+                window.location.origin + '/' + $element.data('copy-url'),
+                'Link copied',
+                event
             );
         });
     });
+
+    $('i[data-copy-move-id]').each(function(index, element) {
+        let $element = $(element);
+
+        $element.on('click', function(event) {
+            copyToClipboard($element.data('copy-move-id'), 'Move id copied', event);
+        });
+    });
+
+    function copyToClipboard(toCopy, confirmationMessage, event) {
+        navigator.clipboard.writeText(toCopy);
+
+        let $tooltip = $("#tooltip");
+        $tooltip.text(confirmationMessage);
+
+        $tooltip.css({
+            top: event.pageY + 30 - window.scrollY,
+            left: event.pageX - ($tooltip.width() / 2)
+        });
+
+        $tooltip.show();
+        setTimeout(
+            function(){
+                $tooltip.fadeOut();
+            },
+            1000
+        );
+    }
 });

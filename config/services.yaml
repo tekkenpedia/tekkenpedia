@@ -4,6 +4,7 @@ services:
         autoconfigure: true
         bind:
             $projectDir: "%kernel.project_dir%"
+            $copyMoveId: "%env(bool:APP_COPY_MOVE_ID)%"
 
     App\:
         resource: '../src/'

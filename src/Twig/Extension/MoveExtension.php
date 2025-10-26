@@ -24,8 +24,11 @@ use Twig\{
 
 class MoveExtension extends AbstractExtension
 {
-    public function __construct(private readonly string $projectDir, private readonly FormatExtension $formatExtension)
-    {
+    public function __construct(
+        private readonly string $projectDir,
+        private readonly FormatExtension $formatExtension,
+        private readonly bool $copyMoveId
+    ) {
     }
 
     /** @return TwigFunction[] */
@@ -35,6 +38,7 @@ class MoveExtension extends AbstractExtension
             new TwigFunction('getMoveTemplateName', $this->getMoveTemplateName(...)),
             new TwigFunction('moveHasVideo', $this->moveHasVideo(...)),
             new TwigFunction('getMoveVideoPath', $this->getMoveVideoPath(...)),
+            new TwigFunction('copyMoveId', $this->copyMoveId(...))
         ];
     }
 
@@ -50,7 +54,10 @@ class MoveExtension extends AbstractExtension
 
     public function getMoveVideoPath(Character $character, MoveInterface $move, string $pageType): string
     {
-        return 'images/characters/' . $character->slug . '/' . $pageType . '/' . $move->getSlug() . '.gif';
+        $path = 'images/characters/' . $character->slug . '/' . $pageType . '/';
+
+        // TODO : mettre toutes les images avec le slug
+        return $path . (($pageType === 'punish') ? $move->getId() : $move->getSlug()) . '.gif';
     }
 
     public function moveHasVideo(Character $character, MoveInterface $move, string $pageType): bool
@@ -65,6 +72,11 @@ class MoveExtension extends AbstractExtension
             MoveTypeEnum::POWER_CRUSH => 'power-crush',
             MoveTypeEnum::THROW => 'throw'
         };
+    }
+
+    public function copyMoveId(): bool
+    {
+        return $this->copyMoveId;
     }
 
     public function moveBehaviorsIcons(BehaviorEnumCollection $behaviors): string

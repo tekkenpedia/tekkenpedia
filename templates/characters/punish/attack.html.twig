@@ -17,6 +17,9 @@
                 <div class="links">
                     <a href="../../../characters/{{ character.slug }}/punish/{{ linkSlug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
                     <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/punish/{{ linkSlug }}.html" title="Copy link"></i>
+                    {% if copyMoveId() %}
+                        <i class="bi bi-copy cursor-pointer" data-copy-move-id="{{ move.id }}" title="Copy move id"></i>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>
