@@ -1,0 +1,24 @@
+{
+    "inputs": "df+3,1",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "SWL",
+        "SSR",
+        "DUCK",
+        "REVERSAL",
+        "POWER_CRUSH"
+    ],
+    "property": "HIGH",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -8
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
