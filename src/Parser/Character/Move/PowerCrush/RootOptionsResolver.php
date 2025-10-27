@@ -7,7 +7,7 @@ namespace App\Parser\Character\Move\PowerCrush;
 use App\{
     Character\Move\PowerCrush\PropertyEnum,
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\CommentOptionsResolver,
+    Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\PowerCrush\Frame\FramesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver

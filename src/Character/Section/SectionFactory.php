@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Character\Section;
 
 use App\{
+    Character\Section\Comment\CommentsFactory,
     Collection\Character\Move\MoveInterfaceCollection,
     Collection\Character\Move\SectionCollection
 };
@@ -27,6 +28,6 @@ class SectionFactory
             $sectionMoves->add($moves->getById($moveId));
         }
 
-        return new Section($name, $sectionMoves, $sections);
+        return new Section($name, $sectionMoves, $sections, CommentsFactory::create($section['comments']));
     }
 }

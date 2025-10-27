@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Character\Move\Comment;
+namespace App\Character\Section\Comment;
 
-use App\Collection\Character\Move\CommentCollection;
+use App\Collection\Character\Section\CommentCollection;
 
 class CommentsFactory
 {
-    /** @param array<TMoveComment> $comments */
+    /** @param array<TSectionComment> $comments */
     public static function create(array &$comments): CommentCollection
     {
         $return = new CommentCollection();
@@ -16,8 +16,7 @@ class CommentsFactory
             $return->add(
                 new Comment(
                     $comment['comment'],
-                    TypeEnum::create($comment['type']),
-                    WidthEnum::from($comment['width'])
+                    TypeEnum::create($comment['type'])
                 )
             );
         }

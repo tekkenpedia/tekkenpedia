@@ -8,7 +8,7 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     Character\Move\Throw\PropertyEnum,
     OptionsResolver\AllowedTypeEnum,
-    Parser\Character\CommentOptionsResolver,
+    Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
     Parser\Character\Move\Throw\Frame\FramesOptionsResolver,

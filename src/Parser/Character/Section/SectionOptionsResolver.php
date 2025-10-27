@@ -17,6 +17,17 @@ class SectionOptionsResolver
             ->default([])
             ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
 
+        $resolver
+            ->define('comments')
+            ->default([])
+            ->allowedValues(
+                /** @param array<mixed> $comments */
+                static function (array &$comments): bool {
+                    return CommentOptionsResolver::resolve($comments);
+                }
+            )
+            ->allowedTypes(AllowedTypeEnum::ARRAY->value);
+
         SectionsOptionsResolver::configure($resolver, $data);
     }
 }
