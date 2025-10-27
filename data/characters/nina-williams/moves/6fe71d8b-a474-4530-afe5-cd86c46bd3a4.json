@@ -3,7 +3,10 @@
     "visibility": {
         "punish": true
     },
-    "defenses": ["PUNISH"],
+    "defenses": [
+        "PUNISH",
+        "LOW_PARRY"
+    ],
     "property": "LOW",
     "frames": {
         "startup": {
