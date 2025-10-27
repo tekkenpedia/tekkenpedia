@@ -128,3 +128,7 @@ i.vertical-symmetry:before {
 .no-border {
     border: 0;
 }
+
+.alert {
+    padding: 0.7rem;
+}

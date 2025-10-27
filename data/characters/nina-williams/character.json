@@ -32,6 +32,11 @@
         "1": {
             "sections": {
                 "1,4": {
+                    "comments": [
+                        {
+                            "comment": "You can <strong>duck and start</strong> <strong>1,4</strong> or <strong>1,4,1</strong> with the same timing."
+                        }
+                    ],
                     "moves": [
                         "de935042-9f20-4d07-98c8-8e9b68c5be6c",
                         "d6393e4c-5106-4158-9b75-2b0188ccf589"
@@ -48,6 +53,11 @@
             }
         },
         "3": {
+            "comments": [
+                {
+                    "comment": "You can <strong>duck</strong> every options after <strong>3</strong>."
+                }
+            ],
             "moves": [
                 "a74706ed-bdd3-4fd6-8c4a-1ce2738caff1"
             ],
@@ -62,6 +72,11 @@
             }
         },
         "4": {
+            "comments": [
+                {
+                    "comment": "You can <strong>reversal</strong> or <strong>power crush</strong> every options after <strong>4</strong>."
+                }
+            ],
             "moves": [
                 "39acbae1-524c-4986-898b-8e801e6fa672",
                 "e0d60777-7bae-4ddc-9bfd-453238dac26f",

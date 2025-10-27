@@ -7,7 +7,8 @@ namespace App\Character\Section;
 use App\{
     Character\Move\Attack\Attack,
     Collection\Character\Move\MoveInterfaceCollection,
-    Collection\Character\Move\SectionCollection
+    Collection\Character\Move\SectionCollection,
+    Collection\Character\Section\CommentCollection
 };
 use Symfony\Component\String\Slugger\AsciiSlugger;
 
@@ -18,7 +19,8 @@ readonly class Section
     public function __construct(
         public string $name,
         public MoveInterfaceCollection $moves,
-        public SectionCollection $sections
+        public SectionCollection $sections,
+        public CommentCollection $comments
     ) {
         $this->slug = (new AsciiSlugger())->slug($this->name)->toString();
     }

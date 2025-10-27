@@ -10,8 +10,8 @@ use App\{
     Collection\Character\Move\Attack\DefenseEnumCollection,
     OptionsResolver\AllowedTypeEnum,
     OptionsResolver\AllowedValues,
-    Parser\Character\CommentOptionsResolver,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
+    Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\VisibilityOptionsResolver
 };

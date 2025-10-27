@@ -6,6 +6,13 @@
             <i class="bi bi-toggle-on float-right" data-toggle-icon="{{ toggleId }}"></i>
         </h{{ level }}>
 
+        {% for comment in section.comments.toArray() %}
+            <div class="alert alert-success mt-3 mb-0" role="alert">
+                <i class="bi bi-shield-fill-check"></i>
+                {{ comment.comment|raw }}
+            </div>
+        {% endfor %}
+
         <div data-toggle="{{ toggleId }}">
             {% if section.moves.count() > 0 %}
                 {% include 'characters/' ~ pageType ~ '/index/moves.html.twig' with {section: section, character: character} only %}
