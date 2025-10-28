@@ -16,5 +16,6 @@ enum PropertyEnum
 
     case HIGH;
     case MIDDLE;
+    case SPECIAL_MIDDLE;
     case LOW;
 }

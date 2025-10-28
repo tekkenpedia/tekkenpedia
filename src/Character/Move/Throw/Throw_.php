@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Character\Move\Throw;
 
 use App\{
+    Character\Move\FramesInterface,
     Character\Move\MoveInterface,
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Frame\Frames,
     Character\Move\Visibility,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
     Parser\Character\Move\MoveTypeEnum
@@ -21,6 +23,7 @@ readonly class Throw_ implements MoveInterface
     public function __construct(
         public string $id,
         public string $inputs,
+        public readonly DefenseEnumCollection $defenses,
         public ?string $situation,
         public string $slug,
         public Visibility $visibility,
@@ -52,5 +55,15 @@ readonly class Throw_ implements MoveInterface
     public function getType(): MoveTypeEnum
     {
         return MoveTypeEnum::THROW;
+    }
+
+    public function getDefenses(): DefenseEnumCollection
+    {
+        return $this->defenses;
+    }
+
+    public function getFrames(): FramesInterface
+    {
+        return $this->frames;
     }
 }

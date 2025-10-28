@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App\Character\Move\Attack\Frame;
 
-readonly class Frames
+use App\{
+    Character\Move\FramesBlockInterface,
+    Character\Move\FramesInterface,
+    Character\Move\MinMaxFramesInterface
+};
+
+readonly class Frames implements FramesInterface, FramesBlockInterface
 {
     public function __construct(
         public Startup $startup,
@@ -12,5 +18,10 @@ readonly class Frames
         public int $normalHit,
         public int $counterHit
     ) {
+    }
+
+    public function getBlock(): MinMaxFramesInterface
+    {
+        return $this->block;
     }
 }

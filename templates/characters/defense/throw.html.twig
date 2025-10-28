@@ -7,7 +7,7 @@
     </tr>
 
     <tr>
-        <td>Throw</td>
+        <td>{{ move.type|move_type }}</td>
         <td class="{{ move.property|throw_property_bg_class }}">{{ move.property|format_move_property }}</td>
         <td class="{% if move.frames.startup.min < 12 %} bg-danger text-white{% elseif move.frames.startup.min > 12 %} bg-warning{% endif %}">
             {{ move.frames.startup|format_min_max_frames }}

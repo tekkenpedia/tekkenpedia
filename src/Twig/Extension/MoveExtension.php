@@ -6,9 +6,9 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Character,
-    Character\Move\Attack\Attack,
     Character\Move\Attack\DefenseEnum,
     Character\Move\Behavior\BehaviorEnum,
+    Character\Move\FramesBlockInterface,
     Character\Move\MoveInterface,
     Character\Move\Visibility,
     Collection\Character\Move\BehaviorEnumCollection,
@@ -48,7 +48,8 @@ class MoveExtension extends AbstractExtension
         return [
             new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
             new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']]),
-            new TwigFilter('move_defense', $this->moveDefense(...), ['is_safe' => ['html']])
+            new TwigFilter('move_defense', $this->moveDefense(...), ['is_safe' => ['html']]),
+            new TwigFilter('move_type', $this->moveType(...), ['is_safe' => ['html']])
         ];
     }
 
@@ -133,32 +134,57 @@ class MoveExtension extends AbstractExtension
 
     public function moveDefense(MoveInterface $move): string
     {
-        if ($move instanceof Attack === false) {
-            throw new AppException('Only ' . Attack::class . ' move type can have a defense for now.');
-        }
-
         $return = new StringCollection();
-        foreach ($move->defenses->toArray() as $defense) {
-            $return->add(
-                match ($defense) {
-                    DefenseEnum::PUNISH => (string) $this->formatExtension->formatMinMaxFrames($move->frames->block),
-                    DefenseEnum::SSL => 'SSL',
-                    DefenseEnum::SWL => 'SWL',
-                    DefenseEnum::SSR => 'SSR',
-                    DefenseEnum::SWR => 'SWR',
-                    DefenseEnum::DUCK => 'Duck',
-                    DefenseEnum::REVERSAL => 'Reversal',
-                    DefenseEnum::POWER_CRUSH => 'Power crush',
-                    DefenseEnum::LOW_PARRY => 'Low parry'
-                }
-            );
+        foreach ($move->getDefenses()->toArray() as $defense) {
+            $defenseLabel = match ($defense) {
+                DefenseEnum::PUNISH => $move->getFrames() instanceof FramesBlockInterface
+                    ? (string) $this->formatExtension->formatMinMaxFrames($move->getFrames()->getBlock())
+                    : throw new AppException(
+                        'Move ' . $move->getId() . ' can\'t have ' . DefenseEnum::PUNISH->name . ' in defenses.'
+                    ),
+                DefenseEnum::SSL => 'SSL',
+                DefenseEnum::SWL => 'SWL',
+                DefenseEnum::SSR => 'SSR',
+                DefenseEnum::SWR => 'SWR',
+                DefenseEnum::DUCK => 'Duck',
+                DefenseEnum::REVERSAL => 'Reversal',
+                DefenseEnum::POWER_CRUSH => 'Power crush',
+                DefenseEnum::LOW_PARRY => 'Low parry',
+                DefenseEnum::THROW => 'Throw'
+            };
+            if (
+                $return->count() > 0
+                && in_array(
+                    $defense,
+                    [
+                        DefenseEnum::DUCK,
+                        defenseEnum::REVERSAL,
+                        DefenseEnum::POWER_CRUSH,
+                        DefenseEnum::LOW_PARRY,
+                        DefenseEnum::THROW
+                    ],
+                    true
+                )
+            ) {
+                $defenseLabel = lcfirst($defenseLabel);
+            }
+            $return->add($defenseLabel);
         }
 
         if ($return->count() === 0) {
-            throw new AppException('Move ' . $move->id . ' has no defense.');
+            throw new AppException('Move ' . $move->getId() . ' has no defense.');
         }
 
         return implode(', ', $return->toArray());
+    }
+
+    public function moveType(MoveTypeEnum $type): string
+    {
+        return match ($type) {
+            MoveTypeEnum::ATTACK => 'Attack',
+            MoveTypeEnum::POWER_CRUSH => 'Power cr.',
+            MoveTypeEnum::THROW => 'Throw'
+        };
     }
 
     private function addWallBehaviorTitlePart(StringCollection $wallBehaviorsTitleParts, BehaviorEnum $behavior): static

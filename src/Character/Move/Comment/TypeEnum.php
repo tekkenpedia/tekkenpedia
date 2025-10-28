@@ -17,4 +17,5 @@ enum TypeEnum
     case NORMAL;
     case DEFENSE;
     case STRENGTH;
+    case WARNING;
 }

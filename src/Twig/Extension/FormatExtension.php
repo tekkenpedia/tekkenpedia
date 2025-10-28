@@ -6,9 +6,9 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
-    Character\Move\PowerCrush\PropertyEnum as PowerCrushPropertyEnum,
     Character\Move\Distance\MinMax,
     Character\Move\MinMaxFramesInterface,
+    Character\Move\PowerCrush\PropertyEnum as PowerCrushPropertyEnum,
     Character\Move\Throw\PropertyEnum as ThrowPropertyEnum
 };
 use Twig\{
@@ -31,6 +31,10 @@ class FormatExtension extends AbstractExtension
 
     public function formatMoveProperty(AttackPropertyEnum|PowerCrushPropertyEnum|ThrowPropertyEnum $property): string
     {
+        if ($property === AttackPropertyEnum::SPECIAL_MIDDLE) {
+            return 'Spé. mid.';
+        }
+
         return ucfirst(strtolower($property->name));
     }
 

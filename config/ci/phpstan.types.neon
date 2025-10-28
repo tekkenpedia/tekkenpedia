@@ -15,7 +15,7 @@ parameters:
 
         TSelectScreen: 'array{line: integer, position: integer}'
 
-        TThrow: 'array{type: string, inputs: string, situation: string|null, slug: string|null, visibility: TVisibility, frames: TThrowFrames, distances: TThrowDistances, escapes: array<string>, damages: TThrowDamages, property: string, behaviors: array<string>, comments: array<TMoveComment>}'
+        TThrow: 'array{type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, slug: string|null, visibility: TVisibility, frames: TThrowFrames, distances: TThrowDistances, escapes: array<string>, damages: TThrowDamages, property: string, behaviors: array<string>, comments: array<TMoveComment>}'
         TThrowDamages: 'array{normal: integer, wall: integer, ukemi: integer}'
         TThrowDistances: 'array{range: integer, hit: TThrowDistanceHit, escape: integer|null}'
         TThrowDistanceHit: 'array{normal: integer, ukemi: integer}'
@@ -31,7 +31,7 @@ parameters:
         TAttackDamages: 'array{block: TDamage, normal-hit: TDamage, counter-hit: TDamage}'
         TAttackBehaviors: 'array{block: array<string>, normal-hit: array<string>, counter-hit: array<string>}'
 
-        TPowerCrush: 'array{master: string|null, type: string, inputs: string, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, damage-reduction: integer|null, property: string|null, frames: TPowerCrushFrames, distances: TPowerCrushDistances, damages: TPowerCrushDamages, steps: TSteps, behaviors: TPowerCrushBehaviors, comments: array<TMoveComment>}'
+        TPowerCrush: 'array{master: string|null, type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, damage-reduction: integer|null, property: string|null, frames: TPowerCrushFrames, distances: TPowerCrushDistances, damages: TPowerCrushDamages, steps: TSteps, behaviors: TPowerCrushBehaviors, comments: array<TMoveComment>}'
         TPowerCrushFrames: 'array{startup: TMinMax, absorption: TMinMaxNullable, after-absorption: TPowerCrushFramesAfterAbsorption, block: TMinMaxNullable, normal-hit: integer, counter-hit: integer}'
         TPowerCrushFramesAfterAbsorption: 'array{block: integer|null}'
         TPowerCrushDistances: 'array{range: integer|null, block: TAttackDistancesMinMax, normal-hit: TAttackDistancesMinMax, counter-hit: TAttackDistancesMinMax}'

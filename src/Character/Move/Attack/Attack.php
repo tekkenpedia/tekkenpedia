@@ -6,6 +6,7 @@ namespace App\Character\Move\Attack;
 
 use App\{
     Character\Move\Attack\Frame\Frames,
+    Character\Move\FramesInterface,
     Character\Move\MoveInterface,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
@@ -79,5 +80,15 @@ class Attack implements MoveInterface
     public function getType(): MoveTypeEnum
     {
         return MoveTypeEnum::ATTACK;
+    }
+
+    public function getDefenses(): DefenseEnumCollection
+    {
+        return $this->defenses;
+    }
+
+    public function getFrames(): FramesInterface
+    {
+        return $this->frames;
     }
 }
