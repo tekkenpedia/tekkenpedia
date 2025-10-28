@@ -1,0 +1,56 @@
+<div class="{{ containerClass }}">
+    <div class="card text-center">
+        <div class="card-title move-card-title">
+            {% if move.heat %}
+                <div class="heat">
+                    <img class="icon-move-behavior" src="../../../images/behaviors/heat-engager.png" title="Heat activated">
+                </div>
+            {% endif  %}
+            <div class="title">
+                {{ move.inputs }}
+                {% if move.situation is not null %}
+                    ({{ move.situation }})
+                {% endif %}
+            </div>
+            {% if showLinks is not defined or showLinks %}
+                {% set linkSlug = move.getMaster() is not null ? move.getMaster().slug : move.slug %}
+                <div class="links">
+                    <a href="../../../characters/{{ character.slug }}/punish/{{ linkSlug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                    <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/punish/{{ linkSlug }}.html" title="Copy link"></i>
+                    {% if copyMoveId() %}
+                        <i class="bi bi-copy cursor-pointer" data-copy-move-id="{{ move.id }}" title="Copy move id"></i>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+
+        <br>
+        {% if moveHasVideo(character, move, 'punish') %}
+            <img src="../../../{{ getMoveVideoPath(character, move, 'punish') }}" alt="{{ move.inputs }}">
+        {% endif %}
+
+        <table class="table table-bordered table-sm mb-0">
+            <tbody>
+                <tr class="separator">
+                    <td class="col-3">Type</td>
+                    <td class="col-3">Property</td>
+                    <td class="col-6">Defense</td>
+                </tr>
+
+                <tr>
+                    <td>{{ move.type|move_type }}</td>
+                    <td>{{ move.property|format_move_property }}</td>
+                    <td>{{ move|move_defense() }}</td>
+                </tr>
+
+                {% if move.comments.count() > 0 %}
+                    <tr class="separator">
+                        <td colspan="4">Other information</td>
+                    </tr>
+
+                    {% include 'characters/punish/index/comments.html.twig' with {comments: move.comments} only %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>

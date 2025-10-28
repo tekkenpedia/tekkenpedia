@@ -5,9 +5,13 @@ declare(strict_types=1);
 namespace App\Parser\Character\Move\PowerCrush;
 
 use App\{
+    Character\Move\Attack\DefenseEnum,
     Character\Move\PowerCrush\PropertyEnum,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     OptionsResolver\AllowedTypeEnum,
+    OptionsResolver\AllowedValues,
     Parser\Character\Move\CommentOptionsResolver,
+    Parser\Character\Move\DefineDefensesOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\PowerCrush\Frame\FramesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver
@@ -16,6 +20,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RootOptionsResolver extends OptionsResolver
 {
+    use DefineDefensesOptionTrait;
+
     public function __construct()
     {
         $this
@@ -33,6 +39,8 @@ class RootOptionsResolver extends OptionsResolver
             ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $this->defineDefensesOption();
 
         $this
             ->define('situation')

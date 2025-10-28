@@ -1,9 +1,13 @@
 {
     "inputs": "f+1+2",
+    "type": "POWER_CRUSH",
     "visibility": {
         "punish": true
     },
-    "defenses": ["PUNISH"],
+    "defenses": [
+        "PUNISH",
+        "THROW"
+    ],
     "property": "MIDDLE",
     "frames": {
         "startup": {

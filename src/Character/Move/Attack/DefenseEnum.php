@@ -23,4 +23,5 @@ enum DefenseEnum
     case REVERSAL;
     case POWER_CRUSH;
     case LOW_PARRY;
+    case THROW;
 }

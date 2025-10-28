@@ -9,6 +9,7 @@ use App\{
     Character\Move\Throw\PropertyEnum,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\Move\CommentOptionsResolver,
+    Parser\Character\Move\DefineDefensesOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
     Parser\Character\Move\Throw\Frame\FramesOptionsResolver,
@@ -18,6 +19,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RootOptionsResolver extends OptionsResolver
 {
+    use DefineDefensesOptionTrait;
+
     public function __construct()
     {
         $this
@@ -30,6 +33,8 @@ class RootOptionsResolver extends OptionsResolver
             ->define('inputs')
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
+
+        $this->defineDefensesOption();
 
         $this
             ->define('situation')

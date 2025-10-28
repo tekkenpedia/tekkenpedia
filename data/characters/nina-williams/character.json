@@ -13,7 +13,6 @@
                 "ab3feeeb-b206-4a72-ad51-1e712a1a9cc9",
                 "b280f8e1-113c-4f92-b12a-b86057346d64",
                 "b80bea95-8f6e-4eb5-aca8-4ac801e89ae6",
-                "ff7f39cb-1cb7-4cd0-993c-f4775de467c2",
                 "fa7ca561-6892-42ed-8f8c-2f9c1d3e49b3",
                 "33ed525f-472d-4859-8d6e-a58584b64dc6",
                 "6ceb3212-6e72-49e0-9ae1-7a8cb251a5a5",
@@ -88,6 +87,17 @@
             "moves": [
                 "010dcc37-1248-4d9f-999f-18dfe8b8c78f",
                 "53c9e32a-1c08-493e-8b11-0c399ddcdc6e"
+            ]
+        },
+        "f+3+4": {
+            "comments": [
+                {
+                    "comment": "Best defense after <strong>f+3+4</strong> is to <strong>block</strong>:<ul class=\"mb-0\"><li>if the follow-up is <strong>1</strong>: punish it</li><li>if the follow-up is <strong>2</strong>: you can't punish</li></ul>"
+                }
+            ],
+            "moves": [
+                "ff7f39cb-1cb7-4cd0-993c-f4775de467c2",
+                "d1fe8639-e85d-48ba-b66c-40ff7d4c34a2"
             ]
         },
         "d+2": {

@@ -33,6 +33,7 @@ class PowerCrushFactory
             $powerCrush['master'],
             $id,
             $powerCrush['inputs'],
+            $powerCrush['defenses'],
             $powerCrush['situation'],
             $slug,
             $powerCrush['heat'],

@@ -22,12 +22,12 @@ class BgClassExtension extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new TwigFilter('frame_bg_class', [$this, 'frameBgClass']),
-            new TwigFilter('step_bg_class', [$this, 'stepBgClass']),
-            new TwigFilter('throw_hit_bg_class', [$this, 'throwHitBgClass']),
-            new TwigFilter('throw_escape_bg_class', [$this, 'throwEscapeBgClass']),
-            new TwigFilter('throw_property_bg_class', [$this, 'throwPropertyBgClass']),
-            new TwigFilter('comment_type_bg_class', [$this, 'commentTypeBgClass'])
+            new TwigFilter('frame_bg_class', $this->frameBgClass(...)),
+            new TwigFilter('step_bg_class', $this->stepBgClass(...)),
+            new TwigFilter('throw_hit_bg_class', $this->throwHitBgClass(...)),
+            new TwigFilter('throw_escape_bg_class', $this->throwEscapeBgClass(...)),
+            new TwigFilter('throw_property_bg_class', $this->throwPropertyBgClass(...)),
+            new TwigFilter('comment_type_bg_class', $this->commentTypeBgClass(...))
         ];
     }
 
@@ -46,7 +46,8 @@ class BgClassExtension extends AbstractExtension
         return match ($type) {
             TypeEnum::NORMAL => null,
             TypeEnum::DEFENSE => 'bg-success text-white',
-            TypeEnum::STRENGTH => 'bg-danger text-white'
+            TypeEnum::STRENGTH => 'bg-danger text-white',
+            TypeEnum::WARNING => 'bg-warning'
         };
     }
 

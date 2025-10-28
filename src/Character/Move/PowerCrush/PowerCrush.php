@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Character\Move\PowerCrush;
 
 use App\{
+    Character\Move\FramesInterface,
     Character\Move\MoveInterface,
     Character\Move\PowerCrush\Frame\Frames,
     Character\Move\Step\Steps,
     Character\Move\Visibility,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\CommentCollection,
     Collection\Character\Move\PowerCrush\PowerCrushCollection,
     Exception\AppException,
@@ -27,6 +29,7 @@ class PowerCrush implements MoveInterface
         public readonly ?string $masterId,
         public readonly string $id,
         public readonly string $inputs,
+        public readonly DefenseEnumCollection $defenses,
         public readonly ?string $situation,
         public readonly string $slug,
         public readonly bool $heat,
@@ -78,5 +81,15 @@ class PowerCrush implements MoveInterface
     public function getType(): MoveTypeEnum
     {
         return MoveTypeEnum::POWER_CRUSH;
+    }
+
+    public function getDefenses(): DefenseEnumCollection
+    {
+        return $this->defenses;
+    }
+
+    public function getFrames(): FramesInterface
+    {
+        return $this->frames;
     }
 }

@@ -26,6 +26,7 @@ class ThrowFactory
         return new Throw_(
             $id,
             $throw['inputs'],
+            $throw['defenses'],
             $throw['situation'],
             $throw['slug'] ?? $throw['inputs'],
             new Visibility(

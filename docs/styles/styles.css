@@ -132,3 +132,7 @@ i.vertical-symmetry:before {
 .alert {
     padding: 0.7rem;
 }
+
+.bg-warning {
+    background-color: #ff8c00 !important;
+}

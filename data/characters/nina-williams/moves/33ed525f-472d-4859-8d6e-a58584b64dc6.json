@@ -16,5 +16,19 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "Post <strong>d+4</strong>, <strong>1</strong> is the only follow-up.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "You can duck the <strong>1</strong> with <strong>d+4</strong> on block or hit.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "Timing to punish <strong>1</strong> with <strong>d+4</strong> on hit is short.",
+            "type": "WARNING"
+        }
+    ]
 }

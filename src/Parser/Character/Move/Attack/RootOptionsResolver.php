@@ -12,6 +12,7 @@ use App\{
     OptionsResolver\AllowedValues,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
     Parser\Character\Move\CommentOptionsResolver,
+    Parser\Character\Move\DefineDefensesOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\VisibilityOptionsResolver
 };
@@ -19,6 +20,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RootOptionsResolver extends OptionsResolver
 {
+    use DefineDefensesOptionTrait;
+
     public function __construct()
     {
         $this
@@ -37,21 +40,7 @@ class RootOptionsResolver extends OptionsResolver
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $this
-            ->define('defenses')
-            ->default([])
-            ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value)
-            ->allowedValues(static fn(array $values) => AllowedValues::isAllowed($values, DefenseEnum::getNames()))
-            ->normalize(
-                static function (OptionsResolver $optionsResolver, array $values): DefenseEnumCollection {
-                    $return = new DefenseEnumCollection();
-                    foreach ($values as $value) {
-                        $return->add(DefenseEnum::create($value));
-                    }
-
-                    return $return;
-                }
-            );
+        $this->defineDefensesOption();
 
         $this
             ->define('situation')
