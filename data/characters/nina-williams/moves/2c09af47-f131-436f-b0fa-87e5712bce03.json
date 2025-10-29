@@ -1,0 +1,23 @@
+{
+    "inputs": "3,2",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "SSL",
+        "SSR",
+        "REVERSAL",
+        "POWER_CRUSH"
+    ],
+    "property": "MIDDLE",
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -8
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
