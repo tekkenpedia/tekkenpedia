@@ -14,5 +14,11 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "Yes, it's a middle...",
+            "type": "WARNING"
+        }
+    ]
 }

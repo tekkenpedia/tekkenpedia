@@ -29,6 +29,11 @@
             ]
         },
         "1": {
+            "comments": [
+                {
+                    "comment": "You should always <strong>duck</strong> after <strong>1</strong>:<ul class=\"mb-0\"><li>As <strong>1,2</strong> jail, your duck will not be taken into account</li><li>You will duck <strong>1,4</strong> and can punish it with a launcher, even for <strong>1,4,1</strong></li></ul>"
+                }
+            ],
             "sections": {
                 "1,4": {
                     "comments": [
@@ -42,6 +47,11 @@
                     ]
                 },
                 "1,2": {
+                    "comments": [
+                        {
+                            "comment": "You should always <strong>duck</strong> after <strong>1,2</strong>:<ul class=\"mb-0\"><li>You will <strong>duck 3 of the 4 options<strong>: 1,2,1, 1,2,1,1+2 and 1,2,4</li><li>The only middle option after <strong>1,2</strong> is <strong>1+2</strong>: it's a 23F move, so <strong>you can see it and stand up again</strong></li></ul>"
+                        }
+                    ],
                     "moves": [
                         "0c4c2c6f-3833-4faf-8572-7fd61f2471aa",
                         "1fa987ca-5cab-4535-83e8-e19fb5f41327",
@@ -54,10 +64,11 @@
         "3": {
             "comments": [
                 {
-                    "comment": "You can <strong>duck</strong> every options after <strong>3</strong>."
+                    "comment": "You should always <strong>duck</strong> after <strong>3</strong>:<ul class=\"mb-0\"><li>You will duck <strong>3,3</strong> and <strong>3,4</strong></li><li>The only middle option after <strong>3</strong> is <strong>3,2</strong>: it's a very slow move, so <strong>you can see it and stand up again</strong></li></ul>"
                 }
             ],
             "moves": [
+                "2c09af47-f131-436f-b0fa-87e5712bce03",
                 "a74706ed-bdd3-4fd6-8c4a-1ce2738caff1"
             ],
             "sections": {

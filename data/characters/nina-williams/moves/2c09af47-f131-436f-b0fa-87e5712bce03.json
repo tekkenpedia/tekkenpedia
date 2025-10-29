@@ -19,5 +19,15 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "You can SSL or SSR even if 3 is on hit.",
+            "type": "DEFENSE"
+        },
+        {
+            "comment": "As SSL or SSR has a short timing, prefer using SWL or SWR.",
+            "type": "WARNING"
+        }
+    ]
 }

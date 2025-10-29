@@ -14,5 +14,11 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "Post <strong>uf+2</strong>, <strong>1</strong> can be delayed.",
+            "type": "WARNING"
+        }
+    ]
 }
