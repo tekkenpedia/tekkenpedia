@@ -14,5 +14,11 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "Post <strong>db+4</strong>, <strong>3</strong> is the only follow-up.",
+            "type": "DEFENSE"
+        }
+    ]
 }
