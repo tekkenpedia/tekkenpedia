@@ -12,38 +12,28 @@ use App\{
     Character\Move\Visibility,
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\CommentCollection,
-    Collection\Character\Move\PowerCrush\PowerCrushCollection,
-    Exception\AppException,
     Parser\Character\Move\MoveTypeEnum
 };
 
-class PowerCrush implements MoveInterface
+readonly class PowerCrush implements MoveInterface
 {
-    public PowerCrushCollection $slaves;
-
-    private bool $masterIsDefined = false;
-
-    private ?PowerCrush $master = null;
-
     public function __construct(
-        public readonly ?string $masterId,
-        public readonly string $id,
-        public readonly string $inputs,
-        public readonly DefenseEnumCollection $defenses,
-        public readonly ?string $situation,
-        public readonly string $slug,
-        public readonly bool $heat,
-        public readonly Visibility $visibility,
-        public readonly ?PropertyEnum $property,
-        public readonly ?int $damageReduction,
-        public readonly Distances $distances,
-        public readonly Frames $frames,
-        public readonly Damages $damages,
-        public readonly Behaviors $behaviors,
-        public readonly Steps $steps,
-        public readonly CommentCollection $comments
+        public string $id,
+        public string $inputs,
+        public DefenseEnumCollection $defenses,
+        public ?string $situation,
+        public string $slug,
+        public bool $heat,
+        public Visibility $visibility,
+        public ?PropertyEnum $property,
+        public ?int $damageReduction,
+        public Distances $distances,
+        public Frames $frames,
+        public Damages $damages,
+        public Behaviors $behaviors,
+        public Steps $steps,
+        public CommentCollection $comments
     ) {
-        $this->slaves = new PowerCrushCollection();
     }
 
     public function getId(): string
@@ -59,23 +49,6 @@ class PowerCrush implements MoveInterface
     public function getVisibility(): Visibility
     {
         return $this->visibility;
-    }
-
-    public function setMaster(?PowerCrush $master): static
-    {
-        if ($this->masterIsDefined) {
-            throw new AppException('Master has already been defined.');
-        }
-
-        $this->master = $master;
-        $this->masterIsDefined = true;
-
-        return $this;
-    }
-
-    public function getMaster(): ?PowerCrush
-    {
-        return $this->master;
     }
 
     public function getType(): MoveTypeEnum

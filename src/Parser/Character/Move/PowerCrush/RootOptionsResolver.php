@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace App\Parser\Character\Move\PowerCrush;
 
 use App\{
-    Character\Move\Attack\DefenseEnum,
     Character\Move\PowerCrush\PropertyEnum,
-    Collection\Character\Move\Attack\DefenseEnumCollection,
     OptionsResolver\AllowedTypeEnum,
-    OptionsResolver\AllowedValues,
     Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\DefineDefensesOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
@@ -24,11 +21,6 @@ class RootOptionsResolver extends OptionsResolver
 
     public function __construct()
     {
-        $this
-            ->define('master')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
-
         $this
             ->define('type')
             ->default(MoveTypeEnum::POWER_CRUSH->name)

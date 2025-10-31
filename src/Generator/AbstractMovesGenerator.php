@@ -7,7 +7,6 @@ namespace App\Generator;
 use App\{
     Character\Character,
     Character\CharacterFactory,
-    Character\Move\Attack\Attack,
     Character\Move\MoveInterface,
     Character\Section\Section,
     Tidy\Tidy
@@ -89,11 +88,7 @@ abstract class AbstractMovesGenerator
         $rootPath = $this->getRootPath($character);
 
         foreach ($section->moves->toArray() as $move) {
-            if (
-                (
-                    $move instanceof Attack && is_string($move->masterId)
-                ) || $this->isMoveVisible($move) === false
-            ) {
+            if ($this->isMoveVisible($move) === false) {
                 continue;
             }
 
