@@ -41,16 +41,6 @@
                     containerClass: "col-12 col-sm-12 col-md-12 col-lg-6",
                     showLinks: false
                 } only %}
-                {% if move.slaves|default(null) is not null %}
-                    {% for slave in move.slaves.toArray() %}
-                        {% include 'characters/' ~ pageType ~ '/' ~ templateName ~ '.html.twig' with {
-                            character: character,
-                            move: slave,
-                            containerClass: "col-12 col-sm-12 col-md-12 col-lg-6",
-                            showLinks: false
-                        } only %}
-                    {% endfor %}
-                {% endif %}
             </div>
         </div>
 

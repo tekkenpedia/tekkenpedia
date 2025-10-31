@@ -25,11 +25,6 @@ class RootOptionsResolver extends OptionsResolver
     public function __construct()
     {
         $this
-            ->define('master')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
-
-        $this
             ->define('type')
             ->default(MoveTypeEnum::ATTACK->name)
             ->allowedTypes(AllowedTypeEnum::STRING->value)

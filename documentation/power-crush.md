@@ -2,7 +2,6 @@
 
 ```json
 {
-    "master": uuidv4,
     "inputs": string,
     "situation": string,
     "heat": bool,

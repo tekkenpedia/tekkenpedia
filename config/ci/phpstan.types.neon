@@ -24,14 +24,14 @@ parameters:
         TThrowFramesHitWall: 'array{normal: integer|null, splat: integer|null, break: integer|null}'
         TThrowFramesEscape: 'array{normal-hit: integer|null, counter-hit: integer|null}'
 
-        TAttack: 'array{master: string|null, type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, property: string, frames: TAttackFrames, distances: TAttackDistances, damages: TAttackDamages, steps: TSteps, behaviors: TAttackBehaviors, comments: array<TMoveComment>}'
+        TAttack: 'array{type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, property: string, frames: TAttackFrames, distances: TAttackDistances, damages: TAttackDamages, steps: TSteps, behaviors: TAttackBehaviors, comments: array<TMoveComment>}'
         TAttackFrames: 'array{startup: TMinMax, block: TMinMax, normal-hit: integer, counter-hit: integer}'
         TAttackDistances: 'array{range: integer|null, block: TAttackDistancesMinMax, normal-hit: TAttackDistancesMinMax, counter-hit: TAttackDistancesMinMax}'
         TAttackDistancesMinMax: 'array{min: integer|null, max: integer|null}'
         TAttackDamages: 'array{block: TDamage, normal-hit: TDamage, counter-hit: TDamage}'
         TAttackBehaviors: 'array{block: array<string>, normal-hit: array<string>, counter-hit: array<string>}'
 
-        TPowerCrush: 'array{master: string|null, type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, damage-reduction: integer|null, property: string|null, frames: TPowerCrushFrames, distances: TPowerCrushDistances, damages: TPowerCrushDamages, steps: TSteps, behaviors: TPowerCrushBehaviors, comments: array<TMoveComment>}'
+        TPowerCrush: 'array{type: string, inputs: string, defenses: App\Collection\Character\Move\Attack\DefenseEnumCollection, situation: string|null, heat: boolean, slug: string|null, visibility: TVisibility, damage-reduction: integer|null, property: string|null, frames: TPowerCrushFrames, distances: TPowerCrushDistances, damages: TPowerCrushDamages, steps: TSteps, behaviors: TPowerCrushBehaviors, comments: array<TMoveComment>}'
         TPowerCrushFrames: 'array{startup: TMinMax, absorption: TMinMaxNullable, after-absorption: TPowerCrushFramesAfterAbsorption, block: TMinMaxNullable, normal-hit: integer, counter-hit: integer}'
         TPowerCrushFramesAfterAbsorption: 'array{block: integer|null}'
         TPowerCrushDistances: 'array{range: integer|null, block: TAttackDistancesMinMax, normal-hit: TAttackDistancesMinMax, counter-hit: TAttackDistancesMinMax}'

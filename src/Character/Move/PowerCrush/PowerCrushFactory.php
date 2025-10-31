@@ -30,7 +30,6 @@ class PowerCrushFactory
         }
 
         return new PowerCrush(
-            $powerCrush['master'],
             $id,
             $powerCrush['inputs'],
             $powerCrush['defenses'],

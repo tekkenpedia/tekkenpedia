@@ -28,7 +28,6 @@ class AttackFactory
         }
 
         return new Attack(
-            $attack['master'],
             $id,
             $attack['inputs'],
             $attack['defenses'],
