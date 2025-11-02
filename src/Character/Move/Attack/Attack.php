@@ -11,6 +11,7 @@ use App\{
     Character\Move\Step\Steps,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\DefenseEnumCollection,
+    Collection\Character\Move\Attack\PropertyEnumCollection,
     Collection\Character\Move\CommentCollection,
     Parser\Character\Move\MoveTypeEnum
 };
@@ -25,7 +26,7 @@ readonly class Attack implements MoveInterface
         public string $slug,
         public bool $heat,
         public Visibility $visibility,
-        public PropertyEnum $property,
+        public PropertyEnumCollection $properties,
         public Distances $distances,
         public Frames $frames,
         public Damages $damages,

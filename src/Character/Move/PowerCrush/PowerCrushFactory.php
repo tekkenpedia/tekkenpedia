@@ -40,7 +40,7 @@ class PowerCrushFactory
                 $powerCrush['visibility']['defense'],
                 $powerCrush['visibility']['punish']
             ),
-            is_string($powerCrush['property']) ? PropertyEnum::create($powerCrush['property']) : null,
+            $powerCrush['properties'],
             $powerCrush['damage-reduction'],
             static::createDistances($powerCrush),
             static::createFrames($powerCrush),

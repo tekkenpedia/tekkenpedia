@@ -1,11 +1,11 @@
 {
-    "inputs": "BT 4",
+    "inputs": "BT,4",
     "heat": false,
     "slug": "back-turn_4",
     "visibility": {
         "defense": true
     },
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 19,

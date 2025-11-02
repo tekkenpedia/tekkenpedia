@@ -1,10 +1,11 @@
 {
     "inputs": "ws+1+2",
+    "type": "POWER_CRUSH",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

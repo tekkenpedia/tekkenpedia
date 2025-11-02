@@ -1,10 +1,10 @@
 {
-    "inputs": "3",
+    "inputs": "PS,3",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "LOW",
+    "properties": ["LOW"],
     "frames": {
         "startup": {
             "min": 7777

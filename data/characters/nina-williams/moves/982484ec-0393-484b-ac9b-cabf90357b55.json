@@ -6,7 +6,7 @@
     "defenses": [
         "REVERSAL"
     ],
-    "property": "MIDDLE",
+    "properties": ["LOW", "HIGH", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

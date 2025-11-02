@@ -1,11 +1,10 @@
 {
     "inputs": "4,4,4",
-
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH", "LOW_PARRY"],
-    "property": "LOW",
+    "properties": ["HIGH", "HIGH", "LOW"],
     "frames": {
         "startup": {
             "min": 7777

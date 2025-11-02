@@ -7,7 +7,7 @@
         "PUNISH",
         "REVERSAL"
     ],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

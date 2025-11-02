@@ -6,7 +6,7 @@
     "defenses": [
         "POWER_CRUSH"
     ],
-    "property": "SPECIAL_MIDDLE",
+    "properties": ["MIDDLE", "SPECIAL_MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

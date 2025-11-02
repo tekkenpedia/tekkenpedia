@@ -33,7 +33,7 @@ class ThrowFactory
                 $throw['visibility']['defense'],
                 $throw['visibility']['punish']
             ),
-            PropertyEnum::create($throw['property']),
+            $throw['properties'],
             new Frames(
                 new Startup($throw['frames']['startup']['min'], $throw['frames']['startup']['max']),
                 new FramesHit(

@@ -13,6 +13,7 @@ use App\{
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\BehaviorEnumCollection,
     Collection\Character\Move\CommentCollection,
+    Collection\Character\Move\Throw\PropertyEnumCollection,
     Parser\Character\Move\MoveTypeEnum
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
@@ -23,11 +24,11 @@ readonly class Throw_ implements MoveInterface
     public function __construct(
         public string $id,
         public string $inputs,
-        public readonly DefenseEnumCollection $defenses,
+        public DefenseEnumCollection $defenses,
         public ?string $situation,
         public string $slug,
         public Visibility $visibility,
-        public PropertyEnum $property,
+        public PropertyEnumCollection $properties,
         public Frames $frames,
         public Distances $distances,
         public StringCollection $escapes,

@@ -65,14 +65,17 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="property" class="col-sm-2 col-form-label">Property</label>
+                            <label for="properties" class="col-sm-2 col-form-label">Properties</label>
                             <div class="col-sm-10">
-                                <select id="property" class="form-select">
-                                    <option value=""></option>
+                                {% for propertyIndex in 1..5 %}
                                     {% for property in properties %}
-                                        <option value="{{ property.name }}">{{ property.name }}</option>
+                                        <label class="me-2">
+                                            <input type="radio" name="properties[{{ propertyIndex }}]" value="{{ property.name }}">
+                                            {{ property.name }}
+                                        </label>
                                     {% endfor %}
-                                </select>
+                                    <br>
+                                {% endfor %}
                             </div>
                         </div>
 

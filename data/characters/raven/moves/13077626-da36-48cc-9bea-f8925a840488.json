@@ -1,11 +1,11 @@
 {
-    "inputs": "BT d+3",
+    "inputs": "BT,d+3",
     "situation": "long range",
     "slug": "back-turn_d+3_long-range",
     "visibility": {
         "defense": true
     },
-    "property": "LOW",
+    "properties": ["LOW"],
     "frames": {
         "startup": {
             "min": 25,

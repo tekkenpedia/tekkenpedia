@@ -1,10 +1,10 @@
 {
-    "inputs": "RFS f+3",
+    "inputs": "RFS,f+3",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

@@ -1,10 +1,10 @@
 {
-    "inputs": "LFS f+4",
+    "inputs": "LFS,f+4",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

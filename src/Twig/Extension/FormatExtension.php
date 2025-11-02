@@ -6,15 +6,19 @@ namespace App\Twig\Extension;
 
 use App\{
     Character\Move\Attack\PropertyEnum as AttackPropertyEnum,
+    Character\Move\PowerCrush\PropertyEnum as PowerCrushPropertyEnum,
+    Character\Move\Throw\PropertyEnum as ThrowPropertyEnum,
     Character\Move\Distance\MinMax,
     Character\Move\MinMaxFramesInterface,
-    Character\Move\PowerCrush\PropertyEnum as PowerCrushPropertyEnum,
-    Character\Move\Throw\PropertyEnum as ThrowPropertyEnum
+    Collection\Character\Move\Attack\PropertyEnumCollection as AttackPropertyEnumCollection,
+    Collection\Character\Move\PowerCrush\PropertyEnumCollection as PowerCrushPropertyEnumCollection,
+    Collection\Character\Move\Throw\PropertyEnumCollection as ThrowPropertyEnumCollection
 };
 use Twig\{
     Extension\AbstractExtension,
     TwigFilter
 };
+use Steevanb\PhpCollection\ScalarCollection\StringCollection;
 
 class FormatExtension extends AbstractExtension
 {
@@ -22,20 +26,32 @@ class FormatExtension extends AbstractExtension
     {
         return [
             new TwigFilter('format_frame', $this->formatFrame(...)),
-            new TwigFilter('format_move_property', $this->formatMoveProperty(...)),
+            new TwigFilter('format_move_properties', $this->formatMoveProperties(...), ['is_safe' => ['html']]),
             new TwigFilter('format_min_max_frames', $this->formatMinMaxFrames(...), ['is_safe' => ['html']]),
             new TwigFilter('format_distance', $this->formatDistance(...), ['is_safe' => ['html']]),
             new TwigFilter('format_distances', $this->formatDistances(...), ['is_safe' => ['html']])
         ];
     }
 
-    public function formatMoveProperty(AttackPropertyEnum|PowerCrushPropertyEnum|ThrowPropertyEnum $property): string
-    {
-        if ($property === AttackPropertyEnum::SPECIAL_MIDDLE) {
-            return 'Spé. mid.';
+    public function formatMoveProperties(
+        AttackPropertyEnumCollection|PowerCrushPropertyEnumCollection|ThrowPropertyEnumCollection $properties
+    ): string {
+        $propertyLabels = new StringCollection();
+        foreach ($properties->toArray() as $property) {
+            $propertyLabels->add(
+                match ($property) {
+                    AttackPropertyEnum::HIGH, PowerCrushPropertyEnum::HIGH, ThrowPropertyEnum::HIGH
+                        => '<span title="High">h</span>',
+                    AttackPropertyEnum::MIDDLE, PowerCrushPropertyEnum::MIDDLE, ThrowPropertyEnum::MIDDLE
+                        => '<span title="Middle">m</span>',
+                    AttackPropertyEnum::SPECIAL_MIDDLE => '<span title="Special middle">sm</span>',
+                    AttackPropertyEnum::LOW, ThrowPropertyEnum::LOW => '<span title="Low">l</span>',
+                    AttackPropertyEnum::SPECIAL_LOW => '<span title="Special low">sl</span>'
+                }
+            );
         }
 
-        return ucfirst(strtolower($property->name));
+        return implode(',', $propertyLabels->toArray());
     }
 
     public function formatMinMaxFrames(MinMaxFramesInterface $minMaxFrames, bool $absolute = true): ?string

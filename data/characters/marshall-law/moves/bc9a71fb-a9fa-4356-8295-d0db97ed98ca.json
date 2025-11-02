@@ -6,7 +6,7 @@
     "visibility": {
         "defense": true
     },
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 26,

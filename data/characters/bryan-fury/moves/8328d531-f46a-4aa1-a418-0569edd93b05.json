@@ -4,7 +4,7 @@
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "LOW",
+    "properties": ["LOW"],
     "frames": {
         "startup": {
             "min": 19,

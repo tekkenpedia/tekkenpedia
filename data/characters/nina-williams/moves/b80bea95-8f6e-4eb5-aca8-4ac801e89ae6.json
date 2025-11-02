@@ -8,7 +8,7 @@
         "PUNISH",
         "THROW"
     ],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

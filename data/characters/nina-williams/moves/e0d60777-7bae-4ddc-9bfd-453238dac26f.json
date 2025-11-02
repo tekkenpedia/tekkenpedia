@@ -8,7 +8,7 @@
         "REVERSAL",
         "POWER_CRUSH"
     ],
-    "property": "HIGH",
+    "properties": ["HIGH", "HIGH"],
     "frames": {
         "startup": {
             "min": 7777

@@ -6,7 +6,7 @@
     "defenses": [
         "PUNISH"
     ],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE", "HIGH", "HIGH", "HIGH", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

@@ -3,7 +3,7 @@
     "visibility": {
         "defense": true
     },
-    "property": "LOW",
+    "properties": ["LOW"],
     "frames": {
         "startup": {
             "min": 23,

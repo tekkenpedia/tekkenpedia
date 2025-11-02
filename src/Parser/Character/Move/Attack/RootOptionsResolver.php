@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Parser\Character\Move\Attack;
 
 use App\{
-    Character\Move\Attack\DefenseEnum,
     Character\Move\Attack\PropertyEnum,
-    Collection\Character\Move\Attack\DefenseEnumCollection,
+    Collection\Character\Move\Attack\PropertyEnumCollection,
     OptionsResolver\AllowedTypeEnum,
-    OptionsResolver\AllowedValues,
     Parser\Character\Move\Attack\Frame\FramesOptionsResolver,
     Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\DefineDefensesOptionTrait,
+    Parser\Character\Move\DefineUnitEnumCollectionOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\VisibilityOptionsResolver
 };
@@ -21,6 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RootOptionsResolver extends OptionsResolver
 {
     use DefineDefensesOptionTrait;
+    use DefineUnitEnumCollectionOptionTrait;
 
     public function __construct()
     {
@@ -61,11 +61,7 @@ class RootOptionsResolver extends OptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $this
-            ->define('property')
-            ->required()
-            ->allowedTypes(AllowedTypeEnum::STRING->value)
-            ->allowedValues(...PropertyEnum::getNames()->toArray());
+        $this->defineUnitEnumCollectionOption('properties', PropertyEnum::class, PropertyEnumCollection::class);
 
         $this
             ->define('frames')
