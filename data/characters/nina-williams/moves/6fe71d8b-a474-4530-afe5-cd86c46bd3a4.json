@@ -7,7 +7,7 @@
         "PUNISH",
         "LOW_PARRY"
     ],
-    "property": "LOW",
+    "properties": ["MIDDLE", "HIGH", "HIGH", "LOW"],
     "frames": {
         "startup": {
             "min": 7777

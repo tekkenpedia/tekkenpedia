@@ -7,7 +7,7 @@
         "SWL",
         "SWR"
     ],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

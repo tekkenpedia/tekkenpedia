@@ -1,16 +1,14 @@
 {
     "inputs": "u+1+2",
-    "visibility": {
-        "punish": true
-    },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777
         },
         "block": {
-            "min": -12
+            "min": -4,
+            "max": -5
         },
         "normal-hit": 7777,
         "counter-hit": 7777

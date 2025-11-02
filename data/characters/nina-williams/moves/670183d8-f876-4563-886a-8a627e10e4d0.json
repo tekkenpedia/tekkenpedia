@@ -6,7 +6,7 @@
     "defenses": [
         "DUCK"
     ],
-    "property": "HIGH",
+    "properties": ["HIGH", "HIGH"],
     "frames": {
         "startup": {
             "min": 7777

@@ -7,7 +7,7 @@
         "PUNISH",
         "DUCK"
     ],
-    "property": "HIGH",
+    "properties": ["MIDDLE", "HIGH", "HIGH", "HIGH"],
     "frames": {
         "startup": {
             "min": 7777

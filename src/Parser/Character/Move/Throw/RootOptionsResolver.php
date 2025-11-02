@@ -7,9 +7,11 @@ namespace App\Parser\Character\Move\Throw;
 use App\{
     Character\Move\Behavior\BehaviorEnum,
     Character\Move\Throw\PropertyEnum,
+    Collection\Character\Move\Throw\PropertyEnumCollection,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\DefineDefensesOptionTrait,
+    Parser\Character\Move\DefineUnitEnumCollectionOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
     Parser\Character\Move\Throw\Frame\FramesOptionsResolver,
@@ -20,6 +22,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RootOptionsResolver extends OptionsResolver
 {
     use DefineDefensesOptionTrait;
+    use DefineUnitEnumCollectionOptionTrait;
 
     public function __construct()
     {
@@ -90,10 +93,7 @@ class RootOptionsResolver extends OptionsResolver
             )
             ->allowedTypes(AllowedTypeEnum::ARRAY->value);
 
-        $this
-            ->define('property')
-            ->default(PropertyEnum::HIGH->name)
-            ->allowedValues(...PropertyEnum::getNames()->toArray());
+        $this->defineUnitEnumCollectionOption('properties', PropertyEnum::class, PropertyEnumCollection::class);
 
         $this
             ->define('behaviors')

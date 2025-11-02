@@ -6,7 +6,8 @@ namespace App\Character\Move\Attack;
 
 use App\{
     Character\CharacterSlugEnum,
-    Collection\Character\Move\Attack\DefenseEnumCollection
+    Collection\Character\Move\Attack\DefenseEnumCollection,
+    Collection\Character\Move\Attack\PropertyEnumCollection
 };
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Uid\Uuid;
@@ -21,7 +22,7 @@ readonly class AddAttack
         CharacterSlugEnum $characterSlug,
         string $inputs,
         DefenseEnumCollection $defenses,
-        PropertyEnum $property,
+        PropertyEnumCollection $properties,
         int $blockFramesMin,
         ?int $blockFramesMax
     ): Uuid {
@@ -31,7 +32,7 @@ readonly class AddAttack
             'inputs' => $inputs,
             'visibility' => ['punish' => true],
             'defenses' => $defenses->toNamesArray(),
-            'property' => $property->name,
+            'properties' => $properties->getStringValues()->toArray(),
             'frames' => [
                 'startup' => [
                     'min' => 7777

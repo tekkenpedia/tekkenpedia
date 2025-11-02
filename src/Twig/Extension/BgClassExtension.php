@@ -26,7 +26,6 @@ class BgClassExtension extends AbstractExtension
             new TwigFilter('step_bg_class', $this->stepBgClass(...)),
             new TwigFilter('throw_hit_bg_class', $this->throwHitBgClass(...)),
             new TwigFilter('throw_escape_bg_class', $this->throwEscapeBgClass(...)),
-            new TwigFilter('throw_property_bg_class', $this->throwPropertyBgClass(...)),
             new TwigFilter('comment_type_bg_class', $this->commentTypeBgClass(...))
         ];
     }
@@ -75,14 +74,6 @@ class BgClassExtension extends AbstractExtension
         }
 
         return $return;
-    }
-
-    public function throwPropertyBgClass(PropertyEnum $property): ?string
-    {
-        return match ($property) {
-            PropertyEnum::HIGH => null,
-            PropertyEnum::MIDDLE, PropertyEnum::LOW => 'bg-warning'
-        };
     }
 
     public function frameBgClass(?int $frame): ?string

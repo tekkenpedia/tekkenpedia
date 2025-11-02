@@ -6,9 +6,11 @@ namespace App\Parser\Character\Move\PowerCrush;
 
 use App\{
     Character\Move\PowerCrush\PropertyEnum,
+    Collection\Character\Move\PowerCrush\PropertyEnumCollection,
     OptionsResolver\AllowedTypeEnum,
     Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\DefineDefensesOptionTrait,
+    Parser\Character\Move\DefineUnitEnumCollectionOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\PowerCrush\Frame\FramesOptionsResolver,
     Parser\Character\Move\VisibilityOptionsResolver
@@ -18,6 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class RootOptionsResolver extends OptionsResolver
 {
     use DefineDefensesOptionTrait;
+    use DefineUnitEnumCollectionOptionTrait;
 
     public function __construct()
     {
@@ -63,11 +66,7 @@ class RootOptionsResolver extends OptionsResolver
             ->default(null)
             ->allowedTypes(AllowedTypeEnum::INTEGER->value, AllowedTypeEnum::NULL->value);
 
-        $this
-            ->define('property')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value)
-            ->allowedValues(...[...PropertyEnum::getNames()->toArray(), null]);
+        $this->defineUnitEnumCollectionOption('properties', PropertyEnum::class, PropertyEnumCollection::class);
 
         $this
             ->define('frames')

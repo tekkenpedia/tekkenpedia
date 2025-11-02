@@ -7,7 +7,7 @@
         "SWL",
         "POWER_CRUSH"
     ],
-    "property": "MIDDLE",
+    "properties": ["HIGH", "HIGH", "MIDDLE", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

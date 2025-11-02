@@ -1,9 +1,9 @@
 {
-    "inputs": "SS2",
+    "inputs": "ss,2",
     "visibility": {
         "defense": true
     },
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 16

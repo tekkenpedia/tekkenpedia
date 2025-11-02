@@ -10,7 +10,7 @@
         "REVERSAL",
         "POWER_CRUSH"
     ],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE", "MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

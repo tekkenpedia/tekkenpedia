@@ -4,7 +4,7 @@
     "visibility": {
         "defense": true
     },
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "damage-reduction": 0,
     "frames": {
         "startup": {

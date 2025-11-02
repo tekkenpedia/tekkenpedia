@@ -5,14 +5,16 @@ declare(strict_types=1);
 namespace App\Character\Move\PowerCrush;
 
 use App\{
+    Enum\CreateInterface,
     Enum\CreateTrait,
+    Enum\GetNamesInterface,
     Enum\GetNamesTrait
 };
 
-enum PropertyEnum
+enum PropertyEnum implements CreateInterface, GetNamesInterface
 {
-    use GetNamesTrait;
     use CreateTrait;
+    use GetNamesTrait;
 
     case HIGH;
     case MIDDLE;

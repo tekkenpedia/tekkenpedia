@@ -1,16 +1,16 @@
 {
-    "inputs": "LFS uf+3+4",
+    "inputs": "LFS,uf+3+4",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE", "HIGH"],
     "frames": {
         "startup": {
             "min": 7777
         },
         "block": {
-            "min": -14
+            "min": -10
         },
         "normal-hit": 7777,
         "counter-hit": 7777

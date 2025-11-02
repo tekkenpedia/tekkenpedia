@@ -59,7 +59,6 @@ $(function() {
             addMove = false;
         }
 
-        // changed: select checked checkboxes by name and build an array of values
         let defenses = $('input[name="defenses[]"]:checked').map(function() {
             return $(this).val();
         }).get();
@@ -68,9 +67,12 @@ $(function() {
             addMove = false;
         }
 
-        let property = $('#property').val();
-        if (property === '') {
-            alert('You have to fill Property.');
+        let properties = $('input[name^="properties["]:checked').map(function() {
+            return $(this).val();
+        }).get();
+        console.log(properties);
+        if (properties.length === 0) {
+            alert('You have to fill Properties.');
             addMove = false;
         }
 
@@ -89,10 +91,11 @@ $(function() {
             section: $('#section').val(),
             inputs: inputs,
             defenses: defenses.join(','),
-            property: property,
+            properties: properties.join(','),
             blockFramesMin: blockFramesMin,
             blockFramesMax: $('#block-frames-max').val()
         };
+        console.log(workflowInputs);
 
         $.ajax({
             url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move.yml/dispatches`,

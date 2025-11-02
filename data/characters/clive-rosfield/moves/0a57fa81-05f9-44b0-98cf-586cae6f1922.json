@@ -1,10 +1,10 @@
 {
-    "inputs": "2",
+    "inputs": "WOL,2",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777

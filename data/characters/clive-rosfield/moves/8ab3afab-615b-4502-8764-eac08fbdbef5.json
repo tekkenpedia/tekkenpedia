@@ -1,16 +1,17 @@
 {
-    "inputs": "1",
+    "inputs": "WOL,1",
     "visibility": {
         "punish": true
     },
     "defenses": ["PUNISH"],
-    "property": "MIDDLE",
+    "properties": ["SPECIAL_MIDDLE"],
     "frames": {
         "startup": {
             "min": 7777
         },
         "block": {
-            "min": -20
+            "min": -11,
+            "max": -20
         },
         "normal-hit": 7777,
         "counter-hit": 7777

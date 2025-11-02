@@ -10,6 +10,7 @@ use App\{
     Character\Move\Attack\DefenseEnum,
     Character\Move\Attack\PropertyEnum,
     Collection\Character\Move\Attack\DefenseEnumCollection,
+    Collection\Character\Move\Attack\PropertyEnumCollection,
     Exception\AppException
 };
 use Symfony\Component\Console\{
@@ -42,7 +43,7 @@ class AddMoveCommand extends Command
             ->addArgument('characterSlug', InputArgument::REQUIRED, 'Character slug')
             ->addArgument('inputs', InputArgument::REQUIRED, 'Move inputs')
             ->addArgument('defenses', InputArgument::REQUIRED, 'DefenseEnum[]. Example: PUNISH,POWER_CRUSH.')
-            ->addArgument('property', InputArgument::REQUIRED, 'Move property')
+            ->addArgument('properties', InputArgument::REQUIRED, 'PropertyEnum[]. Example: HIGH,MIDDLE.')
             ->addArgument('blockFramesMin', InputArgument::REQUIRED, 'Minimum block frames')
             ->addArgument('blockFramesMax', InputArgument::OPTIONAL, 'Maximum block frames (null if not applicable)');
     }
@@ -51,14 +52,12 @@ class AddMoveCommand extends Command
     {
         /** @var string $characterSlug */
         $characterSlug = $input->getArgument('characterSlug');
-        /** @var string $property */
-        $property = $input->getArgument('property');
 
         $id = $this->addAttack->add(
             CharacterSlugEnum::from($characterSlug),
             $this->getInputs($input),
             $this->getDefenses($input),
-            PropertyEnum::create($property),
+            $this->getProperties($input),
             $this->getBlockFramesMin($input),
             $this->getBlockFramesMax($input)
         );
@@ -107,5 +106,20 @@ class AddMoveCommand extends Command
         }
 
         return $return;
+    }
+
+    private function getProperties(InputInterface $input): PropertyEnumCollection
+    {
+        $return = $input->getArgument('properties');
+        if (is_string($return) === false) {
+            throw new AppException('properties should be a string.');
+        }
+
+        return new PropertyEnumCollection(
+            array_map(
+                static fn(string $property) => PropertyEnum::create($property),
+                explode(',', $return)
+            )
+        );
     }
 }
