@@ -1,0 +1,26 @@
+{
+    "inputs": "tesmte",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "PUNISH",
+        "SWL"
+    ],
+    "properties": [
+        "HIGH",
+        "MIDDLE",
+        "SPECIAL_MIDDLE",
+        "LOW"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -99
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
