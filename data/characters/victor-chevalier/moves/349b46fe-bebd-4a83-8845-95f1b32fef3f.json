@@ -1,0 +1,25 @@
+{
+    "inputs": "f+2,2,1,1",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "PUNISH"
+    ],
+    "properties": [
+        "HIGH",
+        "HIGH",
+        "MIDDLE",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -15
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
