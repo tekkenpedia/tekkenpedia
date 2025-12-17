@@ -5,5 +5,7 @@
         "line": 1,
         "position": 6
     },
-    "sections": []
+    "sections": {
+        "Moves": {}
+    }
 }

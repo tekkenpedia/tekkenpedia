@@ -10,7 +10,7 @@
         "phpstan/phpstan-symfony": "2.0.8",
         "spaze/phpstan-disallowed-calls": "4.7.0",
         "steevanb/php-code-sniffs": "5.0.0",
-        "steevanb/php-parallel-processes": "1.0.1"
+        "steevanb/php-parallel-processes": "1.1.0"
     },
     "config": {
         "allow-plugins": {

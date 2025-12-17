@@ -26,7 +26,7 @@
             "type": "DEFENSE"
         },
         {
-            "comment": "As SSL or SSR has a short timing, prefer using SWL or SWR.",
+            "comment": "As SSL or SSR have a short timing, prefer using SWL or SWR.",
             "type": "WARNING"
         }
     ]
