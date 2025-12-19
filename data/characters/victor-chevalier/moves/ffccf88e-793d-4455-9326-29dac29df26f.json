@@ -4,6 +4,7 @@
         "punish": true
     },
     "defenses": [
+        "POWER_CRUSH",
         "PUNISH"
     ],
     "properties": [

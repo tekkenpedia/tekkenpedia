@@ -4,6 +4,7 @@
         "punish": true
     },
     "defenses": [
+        "PUNISH",
         "LOW_PARRY"
     ],
     "properties": [
