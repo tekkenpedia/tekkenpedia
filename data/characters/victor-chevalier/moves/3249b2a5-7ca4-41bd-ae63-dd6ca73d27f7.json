@@ -1,0 +1,22 @@
+{
+    "inputs": "b+1+4",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "PUNISH"
+    ],
+    "properties": [
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -21
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
