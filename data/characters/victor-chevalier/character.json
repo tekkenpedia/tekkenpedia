@@ -6,6 +6,41 @@
         "position": 6
     },
     "sections": {
-        "Moves": {}
+        "Basics": {
+            "moves": [
+                "7810c349-729e-4b31-9a31-765e98ea5110",
+                "d962f03d-e1fb-4a49-a627-1b018ee82674",
+                "0316ca5d-b70b-4654-95f0-b7c04b35d08c",
+                "3249b2a5-7ca4-41bd-ae63-dd6ca73d27f7",
+                "25a58112-670b-49f4-8646-03cf3e7e91dc",
+                "7eba57a5-3bcd-4fcd-aedf-5160dff7e355",
+                "cb11c800-2835-49d1-a653-eb08fb12d158",
+                "319d430e-bbdf-41ea-bff8-aa83ac5c6ed5",
+                "f1b70867-ba6c-4f16-9adb-5305d81811aa",
+                "bb580a62-b9d1-474a-a432-e350509221fa",
+                "72dd889a-4a9d-444a-95d3-4b4b96f82619",
+                "4bdbb020-8e16-4672-9f23-0ab753b2e19c",
+                "dddba03a-82e0-4248-80d7-17853a8105d3",
+                "a387605a-ded8-4e41-8ec1-06831fb9a733",
+                "a866abd5-f86a-49a9-9dfb-0675b7c9a886",
+                "891ddfe1-d643-4d94-81ff-c630e5f173a4",
+                "ffccf88e-793d-4455-9326-29dac29df26f",
+                "bb92b02e-e27d-4b58-aa4a-e800a5e186db",
+                "349b46fe-bebd-4a83-8845-95f1b32fef3f",
+                "d314d898-491b-46fc-9875-2a2cdc4e43dd",
+                "5eb1b715-1757-4c8f-a9a7-2ea836f96f28",
+                "fdb0c26d-87ba-4178-a20a-dca8c80403f5",
+                "113a3c0e-8e7b-4007-8d60-c947d40693b6",
+                "aba8513d-b491-4289-aa2e-3c43157fff41",
+                "495866da-2cb5-4e81-9cf3-782c00a85461",
+                "d35f8433-7b7d-4b01-b3ea-41ba8643a647",
+                "d9837f48-56d3-4fa2-83bc-c99e87da5bcc",
+                "73a98703-0c9d-4701-9b51-deeb8a3aebb1",
+                "4895bdc7-4408-4f66-af20-9e69c05d2219",
+                "6e3ee0e7-77af-410f-95bc-570d9447073a",
+                "c229e1bf-1352-4765-81b6-30c8dcd00d3d",
+                "50e21ef0-b78a-4cfb-ad00-1bbc07748fb9"
+            ]
+        }
     }
 }
