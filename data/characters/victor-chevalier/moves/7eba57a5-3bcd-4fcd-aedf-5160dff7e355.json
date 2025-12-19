@@ -1,0 +1,22 @@
+{
+    "inputs": "db+3",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "PUNISH"
+    ],
+    "properties": [
+        "HIGH"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -11
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
