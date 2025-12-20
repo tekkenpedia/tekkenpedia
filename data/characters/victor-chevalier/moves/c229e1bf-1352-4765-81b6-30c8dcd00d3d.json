@@ -1,5 +1,5 @@
 {
-    "inputs": "2+3",
+    "inputs": "-- bad input: 2+3 --",
     "visibility": {
         "punish": true
     },
