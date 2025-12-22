@@ -93,7 +93,7 @@ div.move-card-title div.title {
     color: white;
 }
 
-div.move-card-title div.heat {
+div.move-card-title div.left {
     position: absolute;
     left: 0;
     margin-left: 0.4rem;
@@ -101,8 +101,13 @@ div.move-card-title div.heat {
     z-index: 1;
 }
 
-div.move-card-title div.heat img {
-    vertical-align: bottom;
+div.move-card-title div.left i {
+    vertical-align: middle;
+    color: #e2e21c;
+}
+
+div.move-card-title div.left img {
+    padding-top: 3px;
 }
 
 div.move-card-title div.links {

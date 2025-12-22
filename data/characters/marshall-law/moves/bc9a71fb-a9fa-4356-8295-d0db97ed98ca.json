@@ -1,6 +1,5 @@
 {
     "inputs": "2+3",
-    "situation": "first move whiff",
     "slug": "2+3_first-move-whiff",
     "heat": true,
     "visibility": {

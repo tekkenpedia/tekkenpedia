@@ -6,6 +6,7 @@ namespace App\Character\Move\Attack;
 
 use App\{
     Character\CharacterSlugEnum,
+    Character\Move\UsedEnum,
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\Attack\PropertyEnumCollection
 };
@@ -21,6 +22,7 @@ readonly class AddAttack
     public function add(
         CharacterSlugEnum $characterSlug,
         string $inputs,
+        UsedEnum $used,
         DefenseEnumCollection $defenses,
         PropertyEnumCollection $properties,
         int $blockFramesMin,

@@ -10,7 +10,9 @@ use App\{
     Character\Move\Behavior\BehaviorEnum,
     Character\Move\FramesBlockInterface,
     Character\Move\MoveInterface,
+    Character\Move\UsedEnum,
     Character\Move\Visibility,
+    Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\BehaviorEnumCollection,
     Exception\AppException,
     Parser\Character\Move\MoveTypeEnum
@@ -38,7 +40,8 @@ class MoveExtension extends AbstractExtension
             new TwigFunction('getMoveTemplateName', $this->getMoveTemplateName(...)),
             new TwigFunction('moveHasVideo', $this->moveHasVideo(...)),
             new TwigFunction('getMoveVideoPath', $this->getMoveVideoPath(...)),
-            new TwigFunction('copyMoveId', $this->copyMoveId(...))
+            new TwigFunction('copyMoveId', $this->copyMoveId(...)),
+            new TwigFunction('getMoveDefenses', $this->getMoveDefenses(...))
         ];
     }
 
@@ -49,8 +52,14 @@ class MoveExtension extends AbstractExtension
             new TwigFilter('move_behaviors_icons', $this->moveBehaviorsIcons(...), ['is_safe' => ['html']]),
             new TwigFilter('move_visible', $this->moveVisible(...), ['is_safe' => ['html']]),
             new TwigFilter('move_defense', $this->moveDefense(...), ['is_safe' => ['html']]),
+            new TwigFilter('move_used', $this->moveUsed(...), ['is_safe' => ['html']]),
             new TwigFilter('move_type', $this->moveType(...), ['is_safe' => ['html']])
         ];
+    }
+
+    public function getMoveDefenses(): DefenseEnumCollection
+    {
+        return DefenseEnumCollection::createAll();
     }
 
     public function getMoveVideoPath(Character $character, MoveInterface $move, string $pageType): string
@@ -176,6 +185,26 @@ class MoveExtension extends AbstractExtension
         }
 
         return implode(', ', $return->toArray());
+    }
+
+    public function moveUsed(?UsedEnum $used): ?string
+    {
+        if ($used === null) {
+            return null;
+        }
+
+        $stars = match ($used) {
+            UsedEnum::RARELY => 1,
+            UsedEnum::SITUATIONALLY => 2,
+            UsedEnum::FREQUENTLY => 3
+        };
+
+        $starsHtmlParts = new StringCollection();
+        for ($star = 1; $star <= 3; $star++) {
+            $starsHtmlParts->add('<i class="bi bi-star' . ($star <= $stars ? '-fill' : null) . '"></i>');
+        }
+
+        return implode(' ', $starsHtmlParts->toArray());
     }
 
     public function moveType(MoveTypeEnum $type): string

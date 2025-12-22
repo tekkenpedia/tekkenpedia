@@ -9,6 +9,7 @@ use App\{
     Character\Move\FramesInterface,
     Character\Move\MoveInterface,
     Character\Move\Step\Steps,
+    Character\Move\UsedEnum,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\Attack\PropertyEnumCollection,
@@ -21,8 +22,8 @@ readonly class Attack implements MoveInterface
     public function __construct(
         public string $id,
         public string $inputs,
+        public ?UsedEnum $used,
         public DefenseEnumCollection $defenses,
-        public ?string $situation,
         public string $slug,
         public bool $heat,
         public Visibility $visibility,

@@ -14,6 +14,7 @@ use App\{
     Character\Move\Throw\Frame\Hit\Hit as FramesHit,
     Character\Move\Throw\Frame\Hit\Wall,
     Character\Move\Throw\Frame\Startup,
+    Character\Move\UsedEnum,
     Character\Move\Visibility
 };
 use Steevanb\PhpCollection\ScalarCollection\StringCollection;
@@ -26,8 +27,8 @@ class ThrowFactory
         return new Throw_(
             $id,
             $throw['inputs'],
+            $throw['used'] === null ? null : UsedEnum::create($throw['used']),
             $throw['defenses'],
-            $throw['situation'],
             $throw['slug'] ?? $throw['inputs'],
             new Visibility(
                 $throw['visibility']['defense'],

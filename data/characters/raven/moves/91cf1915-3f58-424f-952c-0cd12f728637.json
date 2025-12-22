@@ -1,6 +1,5 @@
 {
     "inputs": "BT,d+3",
-    "situation": "short range",
     "slug": "back-turn_d+3",
     "visibility": {
         "defense": true

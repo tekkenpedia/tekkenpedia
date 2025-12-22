@@ -59,6 +59,12 @@ $(function() {
             addMove = false;
         }
 
+        let used = $('input[name="used"]:checked').val();
+        if (typeof used !== 'string') {
+            alert('You have to select Used.');
+            addMove = false;
+        }
+
         let defenses = $('input[name="defenses[]"]:checked').map(function() {
             return $(this).val();
         }).get();
@@ -70,9 +76,8 @@ $(function() {
         let properties = $('input[name^="properties["]:checked').map(function() {
             return $(this).val();
         }).get();
-        console.log(properties);
         if (properties.length === 0) {
-            alert('You have to fill Properties.');
+            alert('You have to select Properties.');
             addMove = false;
         }
 
@@ -93,7 +98,8 @@ $(function() {
             defenses: defenses.join(','),
             properties: properties.join(','),
             blockFramesMin: blockFramesMin,
-            blockFramesMax: $('#block-frames-max').val()
+            blockFramesMax: $('#block-frames-max').val(),
+            used: used
         };
         console.log(workflowInputs);
 

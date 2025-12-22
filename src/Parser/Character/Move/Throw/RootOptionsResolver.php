@@ -12,6 +12,7 @@ use App\{
     Parser\Character\Move\CommentOptionsResolver,
     Parser\Character\Move\DefineDefensesOptionTrait,
     Parser\Character\Move\DefineUnitEnumCollectionOptionTrait,
+    Parser\Character\Move\DefineUsedOptionTrait,
     Parser\Character\Move\MoveTypeEnum,
     Parser\Character\Move\Throw\Distance\DistancesOptionsResolver,
     Parser\Character\Move\Throw\Frame\FramesOptionsResolver,
@@ -23,6 +24,7 @@ class RootOptionsResolver extends OptionsResolver
 {
     use DefineDefensesOptionTrait;
     use DefineUnitEnumCollectionOptionTrait;
+    use DefineUsedOptionTrait;
 
     public function __construct()
     {
@@ -37,12 +39,9 @@ class RootOptionsResolver extends OptionsResolver
             ->required()
             ->allowedTypes(AllowedTypeEnum::STRING->value);
 
-        $this->defineDefensesOption();
-
         $this
-            ->define('situation')
-            ->default(null)
-            ->allowedTypes(AllowedTypeEnum::STRING->value, AllowedTypeEnum::NULL->value);
+            ->defineUsedOption()
+            ->defineDefensesOption();
 
         $this
             ->define('slug')

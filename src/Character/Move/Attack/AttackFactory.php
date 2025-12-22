@@ -14,6 +14,7 @@ use App\{
     Character\Move\Distance\MinMax,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
+    Character\Move\UsedEnum,
     Character\Move\Visibility
 };
 
@@ -30,8 +31,8 @@ class AttackFactory
         return new Attack(
             $id,
             $attack['inputs'],
+            $attack['used'] === null ? null : UsedEnum::create($attack['used']),
             $attack['defenses'],
-            $attack['situation'],
             $slug,
             $attack['heat'],
             new Visibility(

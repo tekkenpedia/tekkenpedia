@@ -119,12 +119,7 @@
                     <img class="icon-move-behavior" src="../../../images/behaviors/heat-engager.png" title="Heat activated">
                 </div>
             {% endif  %}
-            <div class="title">
-                {{ move.inputs }}
-                {% if move.situation is not null %}
-                    ({{ move.situation }})
-                {% endif %}
-            </div>
+            <div class="title">{{ move.inputs }}</div>
             {% if showLinks is not defined or showLinks %}
                 <div class="links">
                     <a href="../../../characters/{{ character.slug }}/defense/{{ move.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>

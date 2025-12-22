@@ -15,6 +15,16 @@ class DefenseEnumCollection extends AbstractObjectCollection
         return DefenseEnum::class;
     }
 
+    public static function createAll(): DefenseEnumCollection
+    {
+        $return = new DefenseEnumCollection();
+        foreach (DefenseEnum::cases() as $defense) {
+            $return->add($defense);
+        }
+
+        return $return;
+    }
+
     /** @return string[] */
     public function toNamesArray(): array
     {
