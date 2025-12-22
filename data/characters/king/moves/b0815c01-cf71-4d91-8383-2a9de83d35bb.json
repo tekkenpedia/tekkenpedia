@@ -1,7 +1,6 @@
 {
     "type": "THROW",
     "inputs": "f,hcf+1",
-    "situation": "blue",
     "slug": "f,hcf+1-blue",
     "visibility": {
         "defense": true

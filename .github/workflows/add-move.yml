@@ -6,31 +6,35 @@ on:
     workflow_dispatch:
         inputs:
             character:
-                description: 'Character slug'
+                description: Character slug
                 required: true
                 type: string
             inputs:
-                description: 'Inputs'
+                description: Inputs
+                required: true
+                type: string
+            used:
+                description: 'Used. Allowed values: RARELY, SITUATIONALLY, FREQUENTLY.'
                 required: true
                 type: string
             defenses:
-                description: 'Defenses. Example: PUNISH,POWER_CRUSH.'
+                description: 'Defenses. Examples: PUNISH,POWER_CRUSH.'
                 required: true
                 type: string
             section:
-                description: 'Section'
+                description: Section
                 required: true
                 type: string
             properties:
-                description: 'Properties (HIGH/MIDDLE/SPECIAL_MIDDLE/LOW/SPECIAL_LOW)'
+                description: 'Properties. Allowed values: HIGH, MIDDLE, SPECIAL_MIDDLE, LOW, SPECIAL_LOW'
                 required: true
                 type: string
             blockFramesMin:
-                description: 'Block frames min'
+                description: Block frames min
                 required: true
                 type: number
             blockFramesMax:
-                description: 'Block frames max'
+                description: Block frames max
                 required: false
                 type: number
 jobs:
@@ -50,7 +54,7 @@ jobs:
                 name: Encode inputs
                 id: encode_inputs
                 run: echo "inputs=$(echo "${{ github.event.inputs.inputs }}" | sed 's/ /%20/g')" >> ${GITHUB_OUTPUT}
-            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
+            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ steps.encode_inputs.outputs.used }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
             -
                 name: Create pull request
                 uses: peter-evans/create-pull-request@v7

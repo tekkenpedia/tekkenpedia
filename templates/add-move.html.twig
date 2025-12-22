@@ -53,9 +53,21 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Used</label>
+                            <div class="col-sm-10">
+                                {% for used in enum('App\\Character\\Move\\UsedEnum').cases() %}
+                                    <label class="me-2">
+                                        <input type="radio" name="used" value="{{ used.name }}">
+                                        {{ used.name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Defenses</label>
                             <div class="col-sm-10">
-                                {% for defense in enum('App\\Character\\Move\\Attack\\DefenseEnum').cases() %}
+                                {% for defense in getMoveDefenses().sort().toArray() %}
                                     <label class="pe-2">
                                         <input type="checkbox" name="defenses[]" value="{{ defense.name }}">
                                         {{ defense.name }}

@@ -1,5 +1,7 @@
 {
-    "inputs": "-- bad input: 2+3 --",
+    "inputs": "2+3",
+    "heat": true,
+    "used": "SITUATIONALLY",
     "visibility": {
         "punish": true
     },

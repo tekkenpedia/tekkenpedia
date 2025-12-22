@@ -9,6 +9,7 @@ use App\{
     Character\Move\MoveInterface,
     Character\Move\PowerCrush\Frame\Frames,
     Character\Move\Step\Steps,
+    Character\Move\UsedEnum,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\CommentCollection,
@@ -21,8 +22,8 @@ readonly class PowerCrush implements MoveInterface
     public function __construct(
         public string $id,
         public string $inputs,
+        public ?UsedEnum $used,
         public DefenseEnumCollection $defenses,
-        public ?string $situation,
         public string $slug,
         public bool $heat,
         public Visibility $visibility,

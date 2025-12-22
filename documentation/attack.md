@@ -3,7 +3,6 @@
 ```json
 {
     "inputs": string,
-    "situation": string,
     "heat": bool,
     "extends": uuidv4,
     "slug": string,

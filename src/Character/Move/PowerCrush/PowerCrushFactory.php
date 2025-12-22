@@ -5,17 +5,18 @@ declare(strict_types=1);
 namespace App\Character\Move\PowerCrush;
 
 use App\{
+    Character\Move\Behavior\BehaviorsFactory,
+    Character\Move\Comment\CommentsFactory,
     Character\Move\Damages as DamagesData,
+    Character\Move\Distance\MinMax,
     Character\Move\PowerCrush\Frame\Absorption,
     Character\Move\PowerCrush\Frame\AfterAbsorption,
     Character\Move\PowerCrush\Frame\Block,
     Character\Move\PowerCrush\Frame\Frames,
     Character\Move\PowerCrush\Frame\Startup,
-    Character\Move\Behavior\BehaviorsFactory,
-    Character\Move\Comment\CommentsFactory,
-    Character\Move\Distance\MinMax,
     Character\Move\Step\StepEnum,
     Character\Move\Step\Steps,
+    Character\Move\UsedEnum,
     Character\Move\Visibility
 };
 
@@ -32,8 +33,8 @@ class PowerCrushFactory
         return new PowerCrush(
             $id,
             $powerCrush['inputs'],
+            $powerCrush['used'] === null ? null : UsedEnum::create($powerCrush['used']),
             $powerCrush['defenses'],
-            $powerCrush['situation'],
             $slug,
             $powerCrush['heat'],
             new Visibility(

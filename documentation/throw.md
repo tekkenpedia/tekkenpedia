@@ -4,7 +4,6 @@
 {
     "type": "THROW",
     "inputs": string,
-    "situation": string,
     "slug": string,
     "visibility": {
         "defense": bool,

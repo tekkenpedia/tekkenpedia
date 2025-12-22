@@ -9,6 +9,7 @@ use App\{
     Character\Move\MoveInterface,
     Character\Move\Throw\Distance\Distances,
     Character\Move\Throw\Frame\Frames,
+    Character\Move\UsedEnum,
     Character\Move\Visibility,
     Collection\Character\Move\Attack\DefenseEnumCollection,
     Collection\Character\Move\BehaviorEnumCollection,
@@ -24,8 +25,8 @@ readonly class Throw_ implements MoveInterface
     public function __construct(
         public string $id,
         public string $inputs,
+        public ?UsedEnum $used,
         public DefenseEnumCollection $defenses,
-        public ?string $situation,
         public string $slug,
         public Visibility $visibility,
         public PropertyEnumCollection $properties,
