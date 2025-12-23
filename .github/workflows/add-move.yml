@@ -47,18 +47,18 @@ jobs:
                 uses: actions/cache@v3
                 with:
                     path: vendor
-                    key: composer-${{ hashFiles('composer.json') }}
-                    restore-keys: composer-${{ hashFiles('composer.json') }}
+                    key: composer-${{ hashFiles('composer.lock') }}
+                    restore-keys: composer-${{ hashFiles('composer.lock') }}
             - run: bin/ci/start
             -
                 name: Encode inputs
                 id: encode_inputs
                 run: echo "inputs=$(echo "${{ github.event.inputs.inputs }}" | sed 's/ /%20/g')" >> ${GITHUB_OUTPUT}
-            - name: Run move:add and capture output
+            - name: Run move:add
               id: add_move
               run: |
                 set -o pipefail
-                output=$(bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.used }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}" 2>&1 || true)
+                output=$(bin/ci/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.used }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}" 2>&1 || true)
                 echo "move_output<<EOF" >> "$GITHUB_OUTPUT"
                 echo "$output" >> "$GITHUB_OUTPUT"
                 echo "EOF" >> "$GITHUB_OUTPUT"
