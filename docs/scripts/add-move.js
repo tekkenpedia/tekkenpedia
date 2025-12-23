@@ -37,13 +37,15 @@ $(function() {
         });
     }
 
-    $('#character').on('change', function(e) {
+    $('#character').on('change', function() {
         window.localStorage.setItem('character', $(this).val());
         refreshSections();
     });
 
     $('#submit').on('click', function(e) {
         e.preventDefault();
+        const $submitBtn = $('#submit');
+        $submitBtn.prop('disabled', true);
 
         let addMove = true;
 
@@ -88,6 +90,7 @@ $(function() {
         }
 
         if (addMove === false) {
+            $submitBtn.prop('disabled', false);
             return;
         }
 
@@ -95,13 +98,12 @@ $(function() {
             character: character,
             section: $('#section').val(),
             inputs: inputs,
+            used: used,
             defenses: defenses.join(','),
             properties: properties.join(','),
             blockFramesMin: blockFramesMin,
-            blockFramesMax: $('#block-frames-max').val(),
-            used: used
+            blockFramesMax: $('#block-frames-max').val()
         };
-        console.log(workflowInputs);
 
         $.ajax({
             url: `https://api.github.com/repos/tekkenpedia/tekkenpedia/actions/workflows/add-move.yml/dispatches`,
@@ -121,6 +123,7 @@ $(function() {
             },
             error: function(xhr) {
                 alert('Error: ' + (xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : xhr.statusText));
+                $submitBtn.prop('disabled', false);
             }
         });
     });
