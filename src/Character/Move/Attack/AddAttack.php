@@ -33,6 +33,7 @@ readonly class AddAttack
         $data = [
             'inputs' => $inputs,
             'visibility' => ['punish' => true],
+            'used' => $used->name,
             'defenses' => $defenses->toNamesArray(),
             'properties' => $properties->getStringValues()->toArray(),
             'frames' => [

@@ -65,7 +65,7 @@ class AddMoveCommand extends Command
             $this->getBlockFramesMax($input)
         );
 
-        $output->writeln('Move added: <comment>' . $id . '</comment>.');
+        $output->writeln('Move id: ' . $id);
 
         return static::SUCCESS;
     }
