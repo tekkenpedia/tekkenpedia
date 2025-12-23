@@ -4,13 +4,13 @@ jobs:
     validate:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             -
                 name: Composer cache
-                uses: actions/cache@v3
+                uses: actions/cache@v5
                 with:
                     path: vendor
-                    key: composer-${{ hashFiles('composer.json') }}
-                    restore-keys: composer-${{ hashFiles('composer.json') }}
+                    key: composer-${{ hashFiles('composer.lock') }}
+                    restore-keys: composer-${{ hashFiles('composer.lock') }}
             - run: bin/ci/start
             - run: bin/ci/validate --theme=summary
