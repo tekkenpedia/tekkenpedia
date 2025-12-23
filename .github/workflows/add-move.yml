@@ -54,7 +54,14 @@ jobs:
                 name: Encode inputs
                 id: encode_inputs
                 run: echo "inputs=$(echo "${{ github.event.inputs.inputs }}" | sed 's/ /%20/g')" >> ${GITHUB_OUTPUT}
-            - run: bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.used }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}"
+            - name: Run move:add and capture output
+              id: add_move
+              run: |
+                set -o pipefail
+                output=$(bin/dev/console move:add -- "${{ github.event.inputs.character }}" "${{ steps.encode_inputs.outputs.inputs }}" "${{ github.event.inputs.used }}" "${{ github.event.inputs.defenses }}" "${{ github.event.inputs.properties }}" "${{ github.event.inputs.blockFramesMin }}" "${{ github.event.inputs.blockFramesMax }}" 2>&1 || true)
+                echo "move_output<<EOF" >> "$GITHUB_OUTPUT"
+                echo "$output" >> "$GITHUB_OUTPUT"
+                echo "EOF" >> "$GITHUB_OUTPUT"
             -
                 name: Create pull request
                 uses: peter-evans/create-pull-request@v7
@@ -62,5 +69,7 @@ jobs:
                     base: master
                     branch: "add-move-${{ github.run_id }}"
                     title: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"
-                    body: 'Section: ${{ github.event.inputs.section }}'
+                    body: |
+                      Section: ${{ github.event.inputs.section }}
+                      ${{ steps.add_move.outputs.move_output }}
                     commit-message: "Add ${{ github.event.inputs.inputs }} for ${{ github.event.inputs.character }}"
