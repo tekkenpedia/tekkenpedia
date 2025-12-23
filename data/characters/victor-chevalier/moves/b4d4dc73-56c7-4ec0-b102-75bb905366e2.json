@@ -1,0 +1,22 @@
+{
+    "inputs": "test",
+    "visibility": {
+        "punish": true
+    },
+    "defenses": [
+        "SWL"
+    ],
+    "properties": [
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -14
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
