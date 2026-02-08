@@ -1,0 +1,27 @@
+{
+    "inputs": "1,2,4,4",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "SSR",
+        "LOW_PARRY"
+    ],
+    "properties": [
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "LOW"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -15
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
