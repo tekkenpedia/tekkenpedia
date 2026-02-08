@@ -1,0 +1,25 @@
+{
+    "inputs": "2,3",
+    "visibility": {
+        "punish": true
+    },
+    "used": "RARELY",
+    "defenses": [
+        "REVERSAL",
+        "POWER_CRUSH"
+    ],
+    "properties": [
+        "HIGH",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -4
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
