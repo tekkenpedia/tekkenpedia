@@ -1,0 +1,26 @@
+{
+    "inputs": "1,2,4,3,4",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "POWER_CRUSH"
+    ],
+    "properties": [
+        "HIGH",
+        "HIGH",
+        "HIGH",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -5
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
