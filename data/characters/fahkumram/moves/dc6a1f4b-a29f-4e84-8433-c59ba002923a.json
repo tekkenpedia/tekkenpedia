@@ -1,0 +1,24 @@
+{
+    "inputs": "ws+1,2",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "DUCK"
+    ],
+    "properties": [
+        "MIDDLE",
+        "HIGH"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -9
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
