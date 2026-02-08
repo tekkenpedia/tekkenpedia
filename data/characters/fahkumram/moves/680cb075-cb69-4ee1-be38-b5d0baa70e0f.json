@@ -1,0 +1,29 @@
+{
+    "inputs": "1,2,1 (delayed)",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "SSL",
+        "SWL",
+        "REVERSAL",
+        "POWER_CRUSH",
+        "PUNISH"
+    ],
+    "properties": [
+        "HIGH",
+        "HIGH",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -10
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
