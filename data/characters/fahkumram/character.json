@@ -6,5 +6,8 @@
         "position": 13
     },
     "sections": {
+        "Basics": {
+            "moves": []
+        }
     }
 }
