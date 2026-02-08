@@ -1,0 +1,24 @@
+{
+    "inputs": "df+1,2",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "POWER_CRUSH"
+    ],
+    "properties": [
+        "MIDDLE",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": -13
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
