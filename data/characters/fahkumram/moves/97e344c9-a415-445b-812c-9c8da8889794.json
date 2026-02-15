@@ -3,9 +3,12 @@
     "visibility": {
         "punish": true
     },
-    "used": "RARELY",
+    "used": "FREQUENTLY",
     "defenses": [
-        "DUCK"
+        "DUCK",
+        "REVERSAL",
+        "POWER_CRUSH",
+        "INTERRUPT_11F"
     ],
     "properties": [
         "MIDDLE",
@@ -13,12 +16,36 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 16
         },
         "block": {
             "min": 3
         },
-        "normal-hit": 7777,
-        "counter-hit": 7777
-    }
+        "normal-hit": 13,
+        "counter-hit": 30
+    },
+    "behaviors": {
+        "normal-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BOUND",
+            "WALL_BLAST"
+        ],
+        "counter-hit": [
+            "WALL_SPLAT",
+            "WALL_BREAK",
+            "WALL_BOUND",
+            "WALL_BLAST"
+        ]
+    },
+    "comments": [
+        {
+            "comment": "On CH 3, 4,4 is guaranteed.",
+            "type": "STRENGTH"
+        },
+        {
+            "comment": "On CH 4,4, f,f+1+2 is guaranteed.",
+            "type": "STRENGTH"
+        }
+    ]
 }

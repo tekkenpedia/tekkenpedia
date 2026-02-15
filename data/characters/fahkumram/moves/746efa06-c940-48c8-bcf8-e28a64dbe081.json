@@ -1,11 +1,16 @@
 {
     "inputs": "3,4,3 (charged)",
+    "slug": "3,4,3-charged",
     "visibility": {
         "punish": true
     },
     "used": "SITUATIONALLY",
     "defenses": [
-        "LOW_PARRY"
+        "SSL",
+        "SWL",
+        "SSR",
+        "SWR",
+        "INTERRUPT_15F"
     ],
     "properties": [
         "MIDDLE",
@@ -13,12 +18,22 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 36
         },
         "block": {
-            "min": 0
+            "min": 9
         },
-        "normal-hit": 7777,
-        "counter-hit": 7777
+        "normal-hit": 70,
+        "counter-hit": 70
+    },
+    "behaviors": {
+        "normal-hit": [
+            "AIR",
+            "WALL_SPLAT"
+        ],
+        "counter-hit": [
+            "AIR",
+            "WALL_SPLAT"
+        ]
     }
 }

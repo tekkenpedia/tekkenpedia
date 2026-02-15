@@ -5,6 +5,7 @@
     },
     "used": "SITUATIONALLY",
     "defenses": [
+        "LOW_PARRY",
         "PUNISH"
     ],
     "properties": [
@@ -14,7 +15,7 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 20
         },
         "block": {
             "min": -15

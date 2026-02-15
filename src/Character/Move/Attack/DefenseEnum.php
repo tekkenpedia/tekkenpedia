@@ -24,4 +24,10 @@ enum DefenseEnum
     case POWER_CRUSH;
     case LOW_PARRY;
     case THROW;
+    case INTERRUPT_10F;
+    case INTERRUPT_11F;
+    case INTERRUPT_12F;
+    case INTERRUPT_13F;
+    case INTERRUPT_14F;
+    case INTERRUPT_15F;
 }
