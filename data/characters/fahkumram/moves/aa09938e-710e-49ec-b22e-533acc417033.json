@@ -3,9 +3,12 @@
     "visibility": {
         "punish": true
     },
-    "used": "RARELY",
+    "used": "SITUATIONALLY",
     "defenses": [
-        "SWR"
+        "SWR",
+        "REVERSAL",
+        "POWER_CRUSH",
+        "INTERRUPT_15F"
     ],
     "properties": [
         "MIDDLE",
@@ -13,12 +16,22 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 18
         },
         "block": {
             "min": -7
         },
-        "normal-hit": 7777,
-        "counter-hit": 7777
-    }
+        "normal-hit": 9,
+        "counter-hit": 27
+    },
+    "comments": [
+        {
+            "comment": "On CH 3, 4,3 is guaranteed.",
+            "type": "STRENGTH"
+        },
+        {
+            "comment": "On CH 4,3, f,f+1+2 is guaranteed.",
+            "type": "STRENGTH"
+        }
+    ]
 }

@@ -1,5 +1,6 @@
 {
     "inputs": "1,2,1 (delayed)",
+    "slug": "1,2,1-delayed",
     "visibility": {
         "punish": true
     },

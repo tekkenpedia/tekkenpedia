@@ -159,7 +159,13 @@ class MoveExtension extends AbstractExtension
                 DefenseEnum::REVERSAL => 'Reversal',
                 DefenseEnum::POWER_CRUSH => 'Power crush',
                 DefenseEnum::LOW_PARRY => 'Low parry',
-                DefenseEnum::THROW => 'Throw'
+                DefenseEnum::THROW => 'Throw',
+                DefenseEnum::INTERRUPT_10F => 'Interrupt 10F',
+                DefenseEnum::INTERRUPT_11F => 'Interrupt 11F',
+                DefenseEnum::INTERRUPT_12F => 'Interrupt 12F',
+                DefenseEnum::INTERRUPT_13F => 'Interrupt 13F',
+                DefenseEnum::INTERRUPT_14F => 'Interrupt 14F',
+                DefenseEnum::INTERRUPT_15F => 'Interrupt 15F'
             };
             if (
                 $return->count() > 0
@@ -170,7 +176,13 @@ class MoveExtension extends AbstractExtension
                         defenseEnum::REVERSAL,
                         DefenseEnum::POWER_CRUSH,
                         DefenseEnum::LOW_PARRY,
-                        DefenseEnum::THROW
+                        DefenseEnum::THROW,
+                        DefenseEnum::INTERRUPT_10F,
+                        DefenseEnum::INTERRUPT_11F,
+                        DefenseEnum::INTERRUPT_12F,
+                        DefenseEnum::INTERRUPT_13F,
+                        DefenseEnum::INTERRUPT_14F,
+                        DefenseEnum::INTERRUPT_15F
                     ],
                     true
                 )

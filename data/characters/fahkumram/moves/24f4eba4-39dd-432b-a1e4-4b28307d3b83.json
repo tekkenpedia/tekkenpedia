@@ -13,12 +13,22 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 19
         },
         "block": {
             "min": -12
         },
-        "normal-hit": 7777,
-        "counter-hit": 7777
-    }
+        "normal-hit": 24,
+        "counter-hit": 34
+    },
+    "comments": [
+        {
+            "comment": "On CH 3, 4 is guaranteed.",
+            "type": "STRENGTH"
+        },
+        {
+            "comment": "On CH 4, f,f+1+2 is guaranteed.",
+            "type": "STRENGTH"
+        }
+    ]
 }

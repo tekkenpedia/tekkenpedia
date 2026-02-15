@@ -5,19 +5,22 @@
     },
     "used": "FREQUENTLY",
     "defenses": [
-        "PUNISH"
+        "SSL",
+        "SWL",
+        "SSR",
+        "SWR"
     ],
     "properties": [
         "MIDDLE"
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 13
         },
         "block": {
-            "min": 0
+            "min": -9
         },
-        "normal-hit": 7777,
-        "counter-hit": 7777
+        "normal-hit": 3,
+        "counter-hit": 9
     }
 }
