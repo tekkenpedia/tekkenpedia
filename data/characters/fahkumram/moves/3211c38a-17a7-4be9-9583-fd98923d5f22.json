@@ -1,0 +1,29 @@
+{
+    "inputs": "df+1,4,3 (charged)",
+    "visibility": {
+        "punish": true
+    },
+    "used": "SITUATIONALLY",
+    "defenses": [
+        "SSL",
+        "SWL",
+        "SSR",
+        "SWR",
+        "POWER_CRUSH",
+        "INTERRUPT_15F"
+    ],
+    "properties": [
+        "MIDDLE",
+        "MIDDLE"
+    ],
+    "frames": {
+        "startup": {
+            "min": 7777
+        },
+        "block": {
+            "min": 9
+        },
+        "normal-hit": 7777,
+        "counter-hit": 7777
+    }
+}
