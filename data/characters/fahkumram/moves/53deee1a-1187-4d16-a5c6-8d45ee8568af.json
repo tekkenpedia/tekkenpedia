@@ -13,7 +13,7 @@
     ],
     "frames": {
         "startup": {
-            "min": 7777
+            "min": 27
         },
         "block": {
             "min": -13

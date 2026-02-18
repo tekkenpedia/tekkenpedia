@@ -26,12 +26,10 @@
     },
     "comments": [
         {
-            "comment": "On CH 3, 4,3 is guaranteed.",
-            "type": "STRENGTH"
+            "comment": "On CH 3, 4,3 is guaranteed."
         },
         {
-            "comment": "On CH 4,3, f,f+1+2 is guaranteed.",
-            "type": "STRENGTH"
+            "comment": "On CH 4,3, f,f+1+2 is guaranteed."
         }
     ]
 }
