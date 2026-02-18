@@ -1,5 +1,6 @@
 {
     "inputs": "df+1,4,3 (charged)",
+    "slug": "df+1,4,3-charged",
     "visibility": {
         "punish": true
     },

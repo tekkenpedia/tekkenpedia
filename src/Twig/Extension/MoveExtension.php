@@ -26,11 +26,8 @@ use Twig\{
 
 class MoveExtension extends AbstractExtension
 {
-    public function __construct(
-        private readonly string $projectDir,
-        private readonly FormatExtension $formatExtension,
-        private readonly bool $copyMoveId
-    ) {
+    public function __construct(private readonly string $projectDir, private readonly bool $copyMoveId)
+    {
     }
 
     /** @return TwigFunction[] */
@@ -145,58 +142,44 @@ class MoveExtension extends AbstractExtension
     {
         $return = new StringCollection();
         foreach ($move->getDefenses()->toArray() as $defense) {
-            $defenseLabel = match ($defense) {
-                DefenseEnum::PUNISH => $move->getFrames() instanceof FramesBlockInterface
-                    ? (string) $this->formatExtension->formatMinMaxFrames($move->getFrames()->getBlock())
-                    : throw new AppException(
-                        'Move ' . $move->getId() . ' can\'t have ' . DefenseEnum::PUNISH->name . ' in defenses.'
-                    ),
-                DefenseEnum::SSL => 'SSL',
-                DefenseEnum::SWL => 'SWL',
-                DefenseEnum::SSR => 'SSR',
-                DefenseEnum::SWR => 'SWR',
-                DefenseEnum::DUCK => 'Duck',
-                DefenseEnum::REVERSAL => 'Reversal',
-                DefenseEnum::POWER_CRUSH => 'Power crush',
-                DefenseEnum::LOW_PARRY => 'Low parry',
-                DefenseEnum::THROW => 'Throw',
-                DefenseEnum::INTERRUPT_10F => 'Interrupt 10F',
-                DefenseEnum::INTERRUPT_11F => 'Interrupt 11F',
-                DefenseEnum::INTERRUPT_12F => 'Interrupt 12F',
-                DefenseEnum::INTERRUPT_13F => 'Interrupt 13F',
-                DefenseEnum::INTERRUPT_14F => 'Interrupt 14F',
-                DefenseEnum::INTERRUPT_15F => 'Interrupt 15F'
-            };
-            if (
-                $return->count() > 0
-                && in_array(
-                    $defense,
-                    [
-                        DefenseEnum::DUCK,
-                        defenseEnum::REVERSAL,
-                        DefenseEnum::POWER_CRUSH,
-                        DefenseEnum::LOW_PARRY,
-                        DefenseEnum::THROW,
-                        DefenseEnum::INTERRUPT_10F,
-                        DefenseEnum::INTERRUPT_11F,
-                        DefenseEnum::INTERRUPT_12F,
-                        DefenseEnum::INTERRUPT_13F,
-                        DefenseEnum::INTERRUPT_14F,
-                        DefenseEnum::INTERRUPT_15F
-                    ],
-                    true
-                )
-            ) {
-                $defenseLabel = lcfirst($defenseLabel);
-            }
-            $return->add($defenseLabel);
+            $return->add(
+                match ($defense) {
+                    DefenseEnum::PUNISH => 'Punish',
+                    DefenseEnum::SSL => 'SSL',
+                    DefenseEnum::SWL => 'SWL',
+                    DefenseEnum::SSR => 'SSR',
+                    DefenseEnum::SWR => 'SWR',
+                    DefenseEnum::DUCK => 'Duck',
+                    DefenseEnum::REVERSAL => 'Reversal',
+                    DefenseEnum::POWER_CRUSH => 'Power cr.',
+                    DefenseEnum::LOW_PARRY => 'Low parry',
+                    DefenseEnum::THROW => 'Throw',
+                    DefenseEnum::INTERRUPT_10F => 'Break 10F',
+                    DefenseEnum::INTERRUPT_11F => 'Break 11F',
+                    DefenseEnum::INTERRUPT_12F => 'Break 12F',
+                    DefenseEnum::INTERRUPT_13F => 'Break 13F',
+                    DefenseEnum::INTERRUPT_14F => 'Break 14F',
+                    DefenseEnum::INTERRUPT_15F => 'Break 15F'
+                }
+            );
         }
 
         if ($return->count() === 0) {
             throw new AppException('Move ' . $move->getId() . ' has no defense.');
         }
 
-        return implode(', ', $return->toArray());
+        $htmlRows = [
+            '<tr class="separator"><td class="col-12" colspan="4">Defense'
+            . ($return->count() > 1 ? 's' : null)
+            . '</td></tr>'
+        ];
+
+        // Transformer chaque label en <td> et grouper par 4 pour entourer par <tr>
+        $cells = array_map(fn($label) => '<td class="col-3">' . $label . '</td>', $return->toArray());
+        $rows = array_chunk($cells, 4);
+        $htmlRows = array_merge($htmlRows, array_map(fn($row) => '<tr>' . implode('', $row) . '</tr>', $rows));
+
+        return implode('', $htmlRows);
     }
 
     public function moveUsed(?UsedEnum $used): ?string

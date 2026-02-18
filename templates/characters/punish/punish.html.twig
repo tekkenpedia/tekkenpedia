@@ -29,14 +29,18 @@
                 <tr class="separator">
                     <td class="col-3">Type</td>
                     <td class="col-3">Property</td>
-                    <td class="col-6">Defense</td>
+                    <td class="col-3">On block</td>
+                    <td class="col-3"></td>
                 </tr>
 
                 <tr>
                     <td>{{ move.type|move_type }}</td>
                     <td>{{ move.properties|format_move_properties }}</td>
-                    <td>{{ move|move_defense() }}</td>
+                    <td>{{ move.frames.block|format_min_max_frames(false) }}</td>
+                    <td></td>
                 </tr>
+
+                {{ move|move_defense }}
 
                 {% if move.comments.count() > 0 %}
                     <tr class="separator">
