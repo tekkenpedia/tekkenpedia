@@ -4,9 +4,9 @@
         "punish": true
     },
     "defenses": [
-        "PUNISH",
         "REVERSAL",
-        "POWER_CRUSH"
+        "POWER_CRUSH",
+        "PUNISH"
     ],
     "properties": ["MIDDLE", "HIGH", "MIDDLE"],
     "frames": {

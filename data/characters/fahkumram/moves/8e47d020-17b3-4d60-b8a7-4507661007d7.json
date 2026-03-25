@@ -3,9 +3,11 @@
     "visibility": {
         "punish": true
     },
-    "used": "SITUATIONALLY",
+    "used": "RARELY",
     "defenses": [
-        "POWER_CRUSH"
+        "RAGE_ART",
+        "POWER_CRUSH",
+        "INTERRUPT_15F"
     ],
     "properties": [
         "HIGH",

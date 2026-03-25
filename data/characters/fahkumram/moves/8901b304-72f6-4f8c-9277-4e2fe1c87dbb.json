@@ -22,5 +22,10 @@
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "3rd and 4th hits can be delayed."
+        }
+    ]
 }

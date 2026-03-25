@@ -4,8 +4,8 @@
         "punish": true
     },
     "defenses": [
-        "PUNISH",
-        "LOW_PARRY"
+        "LOW_PARRY",
+        "PUNISH"
     ],
     "properties": ["MIDDLE", "HIGH", "HIGH", "LOW"],
     "frames": {

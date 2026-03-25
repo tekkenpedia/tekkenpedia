@@ -152,6 +152,7 @@ class MoveExtension extends AbstractExtension
                     DefenseEnum::DUCK => 'Duck',
                     DefenseEnum::REVERSAL => 'Reversal',
                     DefenseEnum::POWER_CRUSH => 'Power cr.',
+                    DefenseEnum::RAGE_ART => 'Rage art',
                     DefenseEnum::LOW_PARRY => 'Low parry',
                     DefenseEnum::THROW => 'Throw',
                     DefenseEnum::INTERRUPT_10F => 'Break 10F',
@@ -165,7 +166,7 @@ class MoveExtension extends AbstractExtension
         }
 
         if ($return->count() === 0) {
-            throw new AppException('Move ' . $move->getId() . ' has no defense.');
+            return '';
         }
 
         $htmlRows = [
