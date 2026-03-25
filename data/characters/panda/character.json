@@ -5,5 +5,10 @@
         "line": 2,
         "position": 2
     },
-    "sections": []
+    "sections": {
+        "Basics": {
+            "id": "4cba8978-d2ce-4229-b694-3ef4bc67a811",
+            "moves": []
+        }
+    }
 }

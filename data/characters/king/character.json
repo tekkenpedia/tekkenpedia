@@ -7,6 +7,7 @@
     },
     "sections": {
         "Throws": {
+            "id": "7329f148-7591-4287-a4b8-529feeeb1b60",
             "moves": [
                 "3ef5450d-9b74-40f5-b519-29f1ccfa9d0f",
                 "fbb44cf6-a7af-4d57-84da-dcf56fec729a",
@@ -15,6 +16,7 @@
             ]
         },
         "Basics": {
+            "id": "68a8622a-f7b0-446f-bccd-f25b694196cc",
             "moves": [
                 "4d90c341-836b-422c-84a3-fed8451573bc",
                 "11b65604-bcd5-45f6-b106-f80bb1a88dae"

@@ -7,6 +7,7 @@
     },
     "sections": {
         "Basics": {
+            "id": "c9d1d15c-e18c-4818-8114-5b8b54748442",
             "moves": [
                 "03c0202f-6191-4186-998b-af92b7f67d08",
                 "5b427932-522b-451e-9160-40dd42c0a113",
@@ -29,6 +30,7 @@
             ]
         },
         "1": {
+            "id": "cb777749-93b8-4744-bd3f-69e9e04668de",
             "comments": [
                 {
                     "comment": "You should always <strong>duck</strong> after <strong>1</strong>:<ul class=\"mb-0\"><li>As <strong>1,2</strong> jail, your duck will not be taken into account</li><li>You will duck <strong>1,4</strong> and can punish it with a launcher, even for <strong>1,4,1</strong></li></ul>"
@@ -36,6 +38,7 @@
             ],
             "sections": {
                 "1,4": {
+                    "id": "228146c6-3a9d-4e04-9d68-f3b5e75f07a2",
                     "comments": [
                         {
                             "comment": "You can <strong>duck and start</strong> <strong>1,4</strong> or <strong>1,4,1</strong> with the same timing."
@@ -47,6 +50,7 @@
                     ]
                 },
                 "1,2": {
+                    "id": "0fd4768f-c9f8-4d55-b4fe-ca5b5089f42f",
                     "comments": [
                         {
                             "comment": "You should always <strong>duck</strong> after <strong>1,2</strong>:<ul class=\"mb-0\"><li>You will <strong>duck 3 of the 4 options<strong>: 1,2,1, 1,2,1,1+2 and 1,2,4</li><li>The only middle option after <strong>1,2</strong> is <strong>1+2</strong>: it's a 23F move, so <strong>you can see it and stand up again</strong></li></ul>"
@@ -62,6 +66,7 @@
             }
         },
         "3": {
+            "id": "3c5fd0ce-deb0-410e-b98e-c1a2287cfd12",
             "comments": [
                 {
                     "comment": "You should always <strong>duck</strong> after <strong>3</strong>:<ul class=\"mb-0\"><li>You will duck <strong>3,3</strong> and <strong>3,4</strong></li><li>The only middle option after <strong>3</strong> is <strong>3,2</strong>: it's a very slow move, so <strong>you can see it and stand up again</strong></li></ul>"
@@ -73,15 +78,16 @@
             ],
             "sections": {
                 "3,3": {
+                    "id": "698c2785-6c43-4fad-b70d-935d9bb8e5fb",
                     "moves": [
                         "a32b9945-cb39-4342-bd56-a30cc7b28811",
                         "b7605b34-9906-4f74-97b0-3d7b6cceb4a1"
-
                     ]
                 }
             }
         },
         "4": {
+            "id": "dae0b81e-f92a-440d-9837-7df68614991e",
             "comments": [
                 {
                     "comment": "You can <strong>reversal</strong> or <strong>power crush</strong> every options after <strong>4</strong>."
@@ -95,12 +101,14 @@
             ]
         },
         "f+2": {
+            "id": "89db1772-cb9f-46df-b017-3cef278f0029",
             "moves": [
                 "010dcc37-1248-4d9f-999f-18dfe8b8c78f",
                 "53c9e32a-1c08-493e-8b11-0c399ddcdc6e"
             ]
         },
         "f+3+4": {
+            "id": "bb85a6df-1b60-4475-801a-7b8074ed036c",
             "comments": [
                 {
                     "comment": "Best defense after <strong>f+3+4</strong> is to <strong>block</strong>:<ul class=\"mb-0\"><li>if the follow-up is <strong>1</strong>: punish it</li><li>if the follow-up is <strong>2</strong>: you can't punish</li></ul>"
@@ -112,29 +120,34 @@
             ]
         },
         "d+2": {
+            "id": "3228ae65-e761-4e03-b4fe-fe0eb518f3c4",
             "moves": [
                 "d3b85b2f-fa8f-4481-b7a4-a222840588aa",
                 "171ade9e-5dcc-49ad-aea4-6123b5f49443"
             ]
         },
         "d+3": {
+            "id": "7de15e09-38c2-4f4a-a42b-8483ad1feaa4",
             "moves": [
                 "038ec664-af0b-417e-b92f-cc1c8f2d3a8e",
                 "982484ec-0393-484b-ac9b-cabf90357b55"
             ]
         },
         "df+3": {
+            "id": "c934b588-7d74-44da-af0e-0469582942da",
             "moves": [
                 "22120672-0385-4d83-8db1-9dbde5f4cb13"
             ],
             "sections": {
                 "df+3,1": {
+                    "id": "4616f13b-96e8-4014-8d7e-711d12f140c4",
                     "moves": [
                         "b9978fb3-fd12-42dc-afe6-65d1b4e3b3ad",
                         "0e09c46a-0d14-4f01-a133-4a575587e470"
                     ]
                 },
                 "df+3,2": {
+                    "id": "6d18fea5-fcc0-48dd-8af0-f59f5e680231",
                     "moves": [
                         "a4c674e3-cb1b-49a7-85c6-8d51ed008234",
                         "0f810687-c34e-4444-8b7b-455ec48ccb6b",
@@ -148,18 +161,21 @@
             }
         },
         "b+3+4": {
+            "id": "368476c4-cad4-4e78-a320-dbfd3df5dcbf",
             "moves": [
                 "5d13439d-212f-4f6b-9e4e-c2185e6dd54f",
                 "670183d8-f876-4563-886a-8a627e10e4d0"
             ]
         },
         "uf+4": {
+            "id": "ea535f7a-3fd7-415f-903a-9b833ea44802",
             "moves": [
                 "0c4f43c3-e61a-4993-a027-f6b036d64278",
                 "ed0f6e83-787a-49b1-a569-3c7eced97b43"
             ]
         },
         "Low": {
+            "id": "841663d2-a28b-49b7-a940-12938c0a7e8b",
             "moves": [
                 "0d63f78c-0b7c-446b-a5b9-bd99bed5a6c6",
                 "2a8cf5cb-f4fe-4eb9-abf4-91f49d01dead",
@@ -169,12 +185,14 @@
             ]
         },
         "Side step": {
+            "id": "1aeb7b1d-c05c-481f-beba-afd7609db5cd",
             "moves": [
                 "2307b788-106c-4d6c-8f6b-af70136e7c43",
                 "9fd9c9ac-dd32-4c5b-923b-f60b3af347a6"
             ]
         },
         "Full crouch": {
+            "id": "15d9ac1b-678c-45ba-9ce9-8315ea1c33f4",
             "moves": [
                 "500b2f01-7b9f-41e8-be33-43a760f9807c",
                 "3fa24744-efbb-443d-b545-deda6743b437",
@@ -183,6 +201,7 @@
             ]
         },
         "While standing": {
+            "id": "c4957007-ceba-4c94-a238-28d30ba5fa2a",
             "moves": [
                 "72b82293-6e38-4066-b54d-9da9f47b8b7b",
                 "d5718b17-d227-40ad-954e-dfd9742f7ba6",
@@ -191,12 +210,14 @@
             ],
             "sections": {
                 "ws+1": {
+                    "id": "2e19c8aa-9aad-4794-b130-a449b1253004",
                     "moves": [
                         "3dd5dd8e-709e-409c-8775-5ffc0437f0f5",
                         "1956ed6b-a98a-4dde-a5df-02d5c1b33575"
                     ]
                 },
                 "ws+4": {
+                    "id": "c9bbd4b5-e9d2-4f58-b4ab-1ce7f9a1f1eb",
                     "moves": [
                         "ca253109-40aa-47c8-8b53-488aa62dad8a",
                         "d6df560b-fa21-463d-bbb2-1fa46bc9a32c",
@@ -206,16 +227,19 @@
             }
         },
         "Ducking Step": {
+            "id": "16c8e516-0fa3-4eab-82cd-e0e4ed1fba00",
             "moves": [
                 "ca0a4cef-c384-4b2c-ad7a-6a84218fe929"
             ]
         },
         "Sway": {
+            "id": "02ca4650-f402-4d6b-a998-418d2b595a0a",
             "moves": [
                 "c3a440d4-6748-41e7-8d47-478ec54ee13e"
             ]
         },
         "wr+3": {
+            "id": "d3a5fe35-6bb8-4c54-b114-5106154ce690",
             "moves": [
                 "23b95ce7-8925-4d4c-851b-79891c4fb4fb",
                 "168b24e9-c83e-4ffe-83bf-ed24eb9cfd92"

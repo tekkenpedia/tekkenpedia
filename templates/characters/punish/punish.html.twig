@@ -10,8 +10,8 @@
             <div class="title">{{ move.inputs }}</div>
             {% if showLinks is not defined or showLinks %}
                 <div class="links">
-                    <a href="../../../characters/{{ character.slug }}/punish/{{ move.slug }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
-                    <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/punish/{{ move.slug }}.html" title="Copy link"></i>
+                    <a href="../../../characters/{{ character.slug }}/punish/{{ move.id }}.html" class="text-black" title="Show only this move"><i class="bi bi-eye"></i></a>
+                    <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/punish/{{ move.id }}.html" title="Copy link"></i>
                     {% if copyMoveId() %}
                         <i class="bi bi-copy cursor-pointer" data-copy-move-id="{{ move.id }}" title="Copy move id"></i>
                     {% endif %}

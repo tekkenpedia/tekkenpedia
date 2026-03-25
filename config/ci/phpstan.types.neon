@@ -3,7 +3,7 @@ parameters:
         TCharacter: 'array{name: string, slug: string, select-screen: TSelectScreen, sections: TSections}'
         # J'aurai bien voulu mettre TSections au lieu de mixed, mais ça fait une référence circulaire dans phpstan
         TSections: 'array{sections: array<string|int, mixed>, moves: array<string>}'
-        TSection: 'array{sections: TSections, moves: array<string>, comments: array<TSectionComment>}'
+        TSection: 'array{id: string, sections: TSections, moves: array<string>, comments: array<TSectionComment>}'
         TSectionComment: 'array{comment: string, type: string}'
 
         TMoveComment: 'array{comment: string, type: string, width: integer}'

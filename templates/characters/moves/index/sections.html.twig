@@ -3,6 +3,8 @@
         {% set toggleId = character.slug ~ '_' ~ section.slug %}
         <h{{ level }} class="cursor-pointer{% if level > 1 or not loop.first %} mt-4{% endif %}" data-toggle data-toggle-id="{{ toggleId }}">
             {{ section.name }}
+            <a href="../../../characters/{{ character.slug }}/{{ pageType }}/{{ section.id }}.html" class="text-black" title="Show only this section"><i class="bi bi-eye"></i></a>
+            <i class="bi bi-link cursor-pointer" data-copy-url="characters/{{ character.slug }}/{{ pageType }}/{{ section.id }}.html" title="Copy link"></i>
             <i class="bi bi-toggle-on float-right" data-toggle-icon="{{ toggleId }}"></i>
         </h{{ level }}>
 

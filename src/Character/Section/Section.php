@@ -17,6 +17,7 @@ readonly class Section
     public string $slug;
 
     public function __construct(
+        public string $id,
         public string $name,
         public MoveInterfaceCollection $moves,
         public SectionCollection $sections,

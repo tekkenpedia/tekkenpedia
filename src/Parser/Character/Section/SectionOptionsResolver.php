@@ -13,6 +13,11 @@ class SectionOptionsResolver
     public static function configure(OptionsResolver $resolver, array &$data): void
     {
         $resolver
+            ->define('id')
+            ->required()
+            ->allowedTypes('string');
+
+        $resolver
             ->define('moves')
             ->default([])
             ->allowedTypes(AllowedTypeEnum::ARRAY_OF_STRINGS->value);
