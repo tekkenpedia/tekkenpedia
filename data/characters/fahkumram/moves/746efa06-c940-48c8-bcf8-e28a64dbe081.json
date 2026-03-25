@@ -10,6 +10,7 @@
         "SWL",
         "SSR",
         "SWR",
+        "RAGE_ART",
         "INTERRUPT_15F"
     ],
     "properties": [
