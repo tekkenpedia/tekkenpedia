@@ -29,6 +29,23 @@
                 }
             ] %}
             {% include 'breadcrumb.html.twig' with {breadcrumb: breadcrumb, pathToRoot: '../../..'} only %}
+
+            <div id="search-zone" class="mb-3 p-3 bg-light rounded">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <label class="form-label fw-bold mb-0">Usage frequency:</label>
+                    </div>
+                    <div class="col-auto">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-secondary btn-sm active" data-filter-used="all">All</button>
+                            <button type="button" class="btn btn-outline-success btn-sm" data-filter-used="frequently">Frequently</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm" data-filter-used="situationally">Situationally</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" data-filter-used="rarely">Rarely</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {% include 'characters/' ~ pageType ~ '/index/sections.html.twig' with {sections: character.sections, character: character, level: 1} only %}
         </div>
 

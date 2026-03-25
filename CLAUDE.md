@@ -56,7 +56,7 @@ Moves contain: inputs, visibility (punish/defense), usage frequency (`UsedEnum`)
 - PHP 8.1+ backed enums with `CreateTrait` and `GetNamesTrait`
 - Typed collections via `steevanb/php-collection`
 - PSR-4 autoloading under `App\` namespace → `src/`
-- Project language: French in documentation/comments, English in code
+- Everything in English: code, comments, template labels, documentation. Only git commit messages may be in French.
 
 ## GitHub Actions Workflows
 - **ci.yml**: Runs validation on every push
