@@ -60,17 +60,18 @@ class DefenseEnumCollection extends AbstractObjectCollection
             DefenseEnum::SSR,
             DefenseEnum::SWR,
             DefenseEnum::DUCK,
+            DefenseEnum::RAGE_ART,
             DefenseEnum::REVERSAL,
             DefenseEnum::POWER_CRUSH,
             DefenseEnum::LOW_PARRY,
-            DefenseEnum::PUNISH,
-            DefenseEnum::THROW,
             DefenseEnum::INTERRUPT_10F,
             DefenseEnum::INTERRUPT_11F,
             DefenseEnum::INTERRUPT_12F,
             DefenseEnum::INTERRUPT_13F,
             DefenseEnum::INTERRUPT_14F,
-            DefenseEnum::INTERRUPT_15F
+            DefenseEnum::INTERRUPT_15F,
+            DefenseEnum::PUNISH,
+            DefenseEnum::THROW
         ];
 
         usort(

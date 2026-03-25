@@ -8,8 +8,10 @@
     "defenses": [
         "SSL",
         "SWL",
+        "RAGE_ART",
         "REVERSAL",
         "POWER_CRUSH",
+        "INTERRUPT_11F",
         "PUNISH"
     ],
     "properties": [

@@ -1,27 +1,30 @@
 {
-    "inputs": "1,2,4,4",
+    "inputs": "1,2,1",
     "visibility": {
         "punish": true
     },
     "used": "SITUATIONALLY",
     "defenses": [
-        "SSR",
-        "LOW_PARRY"
+        "PUNISH"
     ],
     "properties": [
         "HIGH",
         "HIGH",
-        "HIGH",
-        "LOW"
+        "MIDDLE"
     ],
     "frames": {
         "startup": {
             "min": 7777
         },
         "block": {
-            "min": -15
+            "min": -10
         },
         "normal-hit": 7777,
         "counter-hit": 7777
-    }
+    },
+    "comments": [
+        {
+            "comment": "3rd hit can be delayed."
+        }
+    ]
 }

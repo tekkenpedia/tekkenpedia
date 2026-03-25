@@ -5,8 +5,10 @@
     },
     "used": "RARELY",
     "defenses": [
+        "RAGE_ART",
         "REVERSAL",
-        "POWER_CRUSH"
+        "POWER_CRUSH",
+        "INTERRUPT_12F"
     ],
     "properties": [
         "HIGH",

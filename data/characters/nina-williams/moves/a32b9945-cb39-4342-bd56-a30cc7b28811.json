@@ -4,8 +4,8 @@
         "punish": true
     },
     "defenses": [
-        "PUNISH",
-        "DUCK"
+        "DUCK",
+        "PUNISH"
     ],
     "properties": ["HIGH", "HIGH", "HIGH"],
     "frames": {

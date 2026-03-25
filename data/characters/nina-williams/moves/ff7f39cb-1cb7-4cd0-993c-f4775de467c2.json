@@ -4,8 +4,8 @@
         "punish": true
     },
     "defenses": [
-        "PUNISH",
-        "REVERSAL"
+        "REVERSAL",
+        "PUNISH"
     ],
     "properties": ["MIDDLE", "MIDDLE"],
     "frames": {

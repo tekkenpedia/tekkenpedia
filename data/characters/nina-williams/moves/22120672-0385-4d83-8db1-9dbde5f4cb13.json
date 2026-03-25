@@ -4,11 +4,11 @@
         "punish": true
     },
     "defenses": [
-        "PUNISH",
         "SSL",
         "SSR",
         "REVERSAL",
-        "POWER_CRUSH"
+        "POWER_CRUSH",
+        "PUNISH"
     ],
     "properties": ["MIDDLE", "MIDDLE"],
     "frames": {
