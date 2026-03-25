@@ -41,6 +41,7 @@ abstract class AbstractMovesGenerator
                 ->generateIndex($character, $filesystem, $progressBar);
 
             foreach ($character->sections->toArray() as $section) {
+                $this->generateSections($character, $section, $filesystem, $progressBar);
                 $this->generateMoves($character, $section, $filesystem, $progressBar);
             }
         }
@@ -79,6 +80,37 @@ abstract class AbstractMovesGenerator
         return $this;
     }
 
+    private function generateSections(
+        Character $character,
+        Section $section,
+        Filesystem $filesystem,
+        ProgressBar $progressBar
+    ): static {
+        $rootPath = $this->getRootPath($character);
+
+        $renderPathname = $rootPath . '/' . $section->id . '.html';
+        $filesystem->dumpFile(
+            $renderPathname,
+            $this->twig->render(
+                'characters/' . $this->getType()->value . '/section/section.html.twig',
+                [
+                    'character' => $character,
+                    'section' => $section
+                ]
+            )
+        );
+
+        $progressBar->advance();
+
+        Tidy::format($renderPathname);
+
+        foreach ($section->sections->toArray() as $subSection) {
+            $this->generateSections($character, $subSection, $filesystem, $progressBar);
+        }
+
+        return $this;
+    }
+
     private function generateMoves(
         Character $character,
         Section $section,
@@ -92,7 +124,7 @@ abstract class AbstractMovesGenerator
                 continue;
             }
 
-            $renderPathname = $rootPath . '/' . $move->getSlug() . '.html';
+            $renderPathname = $rootPath . '/' . $move->getId() . '.html';
             $filesystem->dumpFile(
                 $renderPathname,
                 $this->twig->render(

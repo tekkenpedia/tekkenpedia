@@ -7,6 +7,7 @@
     },
     "sections": {
         "Throws": {
+            "id": "2f6418b1-1317-4619-a37b-51a9aa3af680",
             "moves": [
                 "4fdd3ccf-fe3e-4677-b411-a1e5b36de6bc",
                 "770eb25c-822f-4f55-8121-634f4fd4e6ac",
@@ -19,18 +20,22 @@
             ]
         },
         "Power crush": {
+            "id": "b3552aab-19a0-4a02-bab3-d9757258ded9",
             "moves": [
                 "ce4c5100-e0c5-4614-a42b-d10f60ddbac2"
             ]
         },
         "Heat": {
+            "id": "96c26d9f-871d-40ae-9b6b-7c9e29f7e409",
             "sections": {
                 "Activation": {
+                    "id": "33fc0c1d-f0af-4691-99d5-16b681e7de26",
                     "moves": [
                         "d29905fc-c7c6-4ea5-a42c-b9c64160ab5d"
                     ]
                 },
                 "Heat smash": {
+                    "id": "784de1e0-c5b1-46fa-bc4e-99c8d070956b",
                     "moves": [
                         "43b53f07-653a-4107-a77f-e0cb563a4616",
                         "bc9a71fb-a9fa-4356-8295-d0db97ed98ca"

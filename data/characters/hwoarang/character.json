@@ -7,6 +7,7 @@
     },
     "sections": {
         "Basics": {
+            "id": "382e2dbb-3db7-4c82-bbc8-d0319e873c0b",
             "moves": [
                 "a9593f04-06b4-4773-88b4-7caad7abb82b",
                 "850cfb6c-6f2f-4770-b8db-1296ffcf5f09",
@@ -17,6 +18,7 @@
             ]
         },
         "LFS": {
+            "id": "823e5e25-c4f5-4fa8-a149-681f305e0035",
             "moves": [
                 "6e5c3dcb-50d9-4e6a-974b-95368eae7c7f",
                 "16f1ba6b-4d53-4a1c-a277-81d95b1e0e4f",
@@ -27,6 +29,7 @@
             ]
         },
         "RFS": {
+            "id": "e2dbcd15-7415-4f6c-872e-541d45532ced",
             "moves": [
                 "26167697-94a8-4068-abde-13c51972aee9"
             ]

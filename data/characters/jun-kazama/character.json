@@ -7,6 +7,7 @@
     },
     "sections": {
         "Throws": {
+            "id": "cf32880f-84f6-4cc2-aa3b-7cbff10317dc",
             "moves": [
                 "7aea3568-b4e9-4825-b5d2-9af2c913d006",
                 "27d6c801-ba7c-45f3-a86f-a68c25cd0dd8",
@@ -16,6 +17,7 @@
             ]
         },
         "Basics": {
+            "id": "aa05a6b8-9994-4b3b-bfb0-b686cca0dca5",
             "moves": [
                 "0c46b58c-a95a-4b0f-9a93-f868626f313b",
                 "27fbfcbf-ebd9-4e15-92a0-dd92220c8e0b",
@@ -24,8 +26,10 @@
             ]
         },
         "1,2": {
+            "id": "e460f5d2-802c-4b1f-82f1-f98bfcc75a44",
             "sections": {
                 "1,2,2": {
+                    "id": "553c59de-99f5-4761-bddb-a2fa29dfee53",
                     "moves": [
                         "19764b90-b8ef-425d-8c52-5c0edcbda5e5",
                         "23274ec1-7778-4435-83d5-9f3f1064cdd0",

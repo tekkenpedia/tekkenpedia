@@ -7,6 +7,7 @@
     },
     "sections": {
         "Basic": {
+            "id": "bf5c7207-9cba-4698-a65c-9775183257b5",
             "moves": [
                 "7bae1ee5-3f34-4aba-aaf1-cec92777db73",
                 "210f9594-7a12-4ad2-83f7-e6401e7f6e13",
@@ -40,16 +41,19 @@
             ]
         },
         "Heat": {
+            "id": "f3629cb7-fc1a-4a82-9166-d8af966b23be",
             "moves": [
                 "5b54d2e0-2184-4d04-8daa-525823031cdb"
             ]
         },
         "Power crush": {
+            "id": "6acb2d40-a5be-4827-886f-c86530a69e8d",
             "moves": [
                 "934edae6-b394-427c-8df0-1952e97f59ed"
             ]
         },
         "Phoenix Shift": {
+            "id": "a11ff1e5-8f33-41fd-8a85-ff6b5d4970ce",
             "moves": [
                 "33baedb4-afad-4d9e-883f-4f3d01195af8",
                 "da260307-9aed-41ca-bee1-8ea7b0f3c7bf",
@@ -59,6 +63,7 @@
             ]
         },
         "Wings of Light": {
+            "id": "6a64508c-0992-4c23-a1e1-11c91beaa061",
             "moves": [
                 "25b53453-b136-4915-a707-e5153d810cfa",
                 "0a57fa81-05f9-44b0-98cf-586cae6f1922",
@@ -66,6 +71,7 @@
             ]
         },
         "Updraft": {
+            "id": "d9843717-a7a5-41f9-8bf0-6e03a912b670",
             "moves": [
                 "470ac74b-4fb7-48fc-9634-b4d16552067a",
                 "d5483001-8b0e-42eb-9a81-cd1b910faf39"

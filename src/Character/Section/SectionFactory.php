@@ -28,6 +28,12 @@ class SectionFactory
             $sectionMoves->add($moves->getById($moveId));
         }
 
-        return new Section($name, $sectionMoves, $sections, CommentsFactory::create($section['comments']));
+        return new Section(
+            $section['id'],
+            $name,
+            $sectionMoves,
+            $sections,
+            CommentsFactory::create($section['comments'])
+        );
     }
 }

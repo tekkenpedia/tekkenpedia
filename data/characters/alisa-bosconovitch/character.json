@@ -7,6 +7,7 @@
     },
     "sections": {
         "Throws": {
+            "id": "0c78442a-49de-46fc-8e65-e025335c29f8",
             "moves": [
                 "4dbbc769-9206-4767-8a00-43c8355b7fe0",
                 "200404e1-f529-4c28-9bad-c16558006c87",
@@ -15,8 +16,10 @@
             ]
         },
         "Heat": {
+            "id": "402f07c3-8435-4ca4-a5cd-843843891bd2",
             "sections": {
                 "Activation": {
+                    "id": "dd66eadd-f4dd-46a3-ad2b-099d57be162b",
                     "moves": [
                         "4767958b-2f82-4d86-b07e-af15db3bfa71"
                     ]
